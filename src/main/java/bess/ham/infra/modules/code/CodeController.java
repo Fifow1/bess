@@ -1,4 +1,4 @@
-package bess.ham.infra.modules.codegroup;
+package bess.ham.infra.modules.code;
 
 import java.util.List;
 
@@ -8,24 +8,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
-
 @Controller
-@RequestMapping(value = "/codeGroup") //*********
-public class CodeGroupController {
-	
+@RequestMapping(value = "/code")
+public class CodeController {
+		
 	@Autowired
-	CodeGroupServiceImpl service;
+	CodeServiceImpl service;
 	
 
-	@RequestMapping(value = "codeGroupList")
+	@RequestMapping(value = "codeList")
 	
 	public String codeGroupList(Model model) throws Exception {
 
-		List<CodeGroup> list = service.selectList();
+		List<Code> list = service.selectList();
 		model.addAttribute("list", list);
 		
-		return "infra/codegroup/xdmin/codeGroupList";
+		return "infra/code/xdmin/codeList";
 	}
-	
+		
 
 }

@@ -1,4 +1,4 @@
-package bess.ham.infra.modules.codegroup;
+package bess.ham.infra.modules.code;
 
 import java.util.List;
 
@@ -6,15 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-
 @Service
-public class CodeGroupServiceImpl implements CodeGroupService{
-
+public class CodeServiceImpl implements CodeService{
 	@Autowired
-	CodeGroupDao dao;
+	CodeDao dao;
 	
-	public List<CodeGroup> selectList() throws Exception {
+	public List<Code> selectList() throws Exception {
 		return dao.selectList();
-	}
 	
+
+	}
 }

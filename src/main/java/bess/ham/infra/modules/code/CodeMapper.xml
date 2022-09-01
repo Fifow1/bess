@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bess.ham.infra.modules.code.CodeMapper">
+
+    <resultMap id="resultMapObj" type="bess.ham.infra.modules.code.Code"></resultMap>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		SELECT 
+	CC.seq AS CCseq
+    ,CCG.seq AS CCGseq
+	,CCG.groupName AS CCGname
+	,CCG.groupName_en AS CCGname_en
+    ,CC.seq AS CCseq
+    ,CC.codename AS CCname
+    ,CC.regdate AS CCregdate
+    ,CC.delYn AS CCdelYn
+FROM code CC
+INNER JOIN codeGroup CCG ON CCG.seq = CC.group_seq;
+	</select>
+
+</mapper>	

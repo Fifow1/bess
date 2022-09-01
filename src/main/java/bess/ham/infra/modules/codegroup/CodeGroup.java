@@ -3,21 +3,18 @@ package bess.ham.infra.modules.codegroup;
 import java.util.Date;
 
 public class CodeGroup {
-
 	
-	private String seq;
+	private Integer seq;
 	private String groupName;
 	private String groupName_en;
 	private Date regdate;
 	private Integer useYn;
 	private Integer delYn;
-	
-//--------------------------------------------------------------------
-	
-	public String getSeq() {
+// ------------------------------------------------
+	public Integer getSeq() {
 		return seq;
 	}
-	public void setSeq(String seq) {
+	public void setSeq(Integer seq) {
 		this.seq = seq;
 	}
 	public String getGroupName() {
@@ -50,7 +47,5 @@ public class CodeGroup {
 	public void setDelYn(Integer delYn) {
 		this.delYn = delYn;
 	}
-	
-	
-	
+
 }
