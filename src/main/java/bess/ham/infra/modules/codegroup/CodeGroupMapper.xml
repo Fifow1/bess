@@ -13,7 +13,7 @@
 			a.*
 		FROM codeGroup a
 		WHERE 1=1
-			AND useYn = 0
+			AND delYn = 1
 			AND groupName LIKE CONCAT('%',#{shValue},'%')
 	</select>
 
