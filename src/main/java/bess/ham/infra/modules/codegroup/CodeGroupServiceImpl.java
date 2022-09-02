@@ -13,8 +13,14 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 	@Autowired
 	CodeGroupDao dao;
 	
-	public List<CodeGroup> selectList() throws Exception {
-		return dao.selectList();
+	@Override
+	public List<CodeGroup> selectList(CodeGroupVo vo) throws Exception {
+		
+		List<CodeGroup> list = dao.selectList(vo);
+		
+		return list;
 	}
+
+	
 	
 }

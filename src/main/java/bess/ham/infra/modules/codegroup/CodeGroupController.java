@@ -19,13 +19,12 @@ public class CodeGroupController {
 
 	@RequestMapping(value = "codeGroupList")
 	
-	public String codeGroupList(Model model) throws Exception {
+	public String codeGroupList(Model model, CodeGroupVo vo) throws Exception {
+		
 
-		List<CodeGroup> list = service.selectList();
+		List<CodeGroup> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		
 		return "infra/codegroup/xdmin/codeGroupList";
 	}
-	
-
 }

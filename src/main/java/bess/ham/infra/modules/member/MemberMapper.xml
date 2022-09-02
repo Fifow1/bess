@@ -4,17 +4,16 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="bess.ham.infra.modules.codegroup.CodeGroupMapper">
+<mapper namespace="bess.ham.infra.modules.member.MemberMapper">
 
-    <resultMap id="resultMapObj" type="bess.ham.infra.modules.codegroup.CodeGroup"></resultMap>
+    <resultMap id="resultMapObj" type="bess.ham.infra.modules.member.Member"></resultMap>
 	
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
 			a.*
-		FROM codeGroup a
+		FROM member a
 		WHERE 1=1
-			AND useYn = 0
-			AND groupName LIKE CONCAT('%',#{shValue},'%')
+			AND delYn = 1
 	</select>
 
 </mapper>	
