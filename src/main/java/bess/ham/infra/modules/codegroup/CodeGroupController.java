@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "/codeGroup") //*********
 public class CodeGroupController {
 	
+	
+	// New
 	@Autowired
 	CodeGroupServiceImpl service;
 	
@@ -23,6 +25,7 @@ public class CodeGroupController {
 		
 
 		List<CodeGroup> list = service.selectList(vo);
+		
 		model.addAttribute("list", list);
 		
 		// viewResolver -> /WEB-INF/views/ + home + .jsp

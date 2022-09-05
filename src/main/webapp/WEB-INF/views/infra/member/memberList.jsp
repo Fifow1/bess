@@ -261,12 +261,12 @@
 										<c:forEach items="${list}" var="list" varStatus="status">
 											<tr>
 												<td style="text-align: center;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-											<%-- <td><c:out value="${list.seq }" /></td> --%>
+												<td><c:out value="${list.seq }" /></td>
 												<td><c:out value="${list.id }" /></td>
 												<td><c:out value="${list.pw }" /></td>
 												<td><c:out value="${list.gender }" /></td>
 												<td><c:out value="${list.email }" /></td>
-												<td><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+												<td><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd" /></td>
 												<td><c:out value="${list.delYn }" /></td>
 											</tr>
 										</c:forEach>

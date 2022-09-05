@@ -7,7 +7,9 @@ public class CodeGroup {
 	private Integer seq;
 	private String groupName;
 	private String groupName_en;
+	private Integer CCcount;
 	private Date regdate;
+	private Date moddate;
 	private Integer useYn;
 	private Integer delYn;
 // ------------------------------------------------
@@ -17,6 +19,7 @@ public class CodeGroup {
 	public void setSeq(Integer seq) {
 		this.seq = seq;
 	}
+	
 	public String getGroupName() {
 		return groupName;
 	}
@@ -29,11 +32,23 @@ public class CodeGroup {
 	public void setGroupName_en(String groupName_en) {
 		this.groupName_en = groupName_en;
 	}
+	public Integer getCCcount() {
+		return CCcount;
+	}
+	public void setCCcount(Integer cCcount) {
+		CCcount = cCcount;
+	}
 	public Date getRegdate() {
 		return regdate;
 	}
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
+	}
+	public Date getModdate() {
+		return moddate;
+	}
+	public void setModdate(Date moddate) {
+		this.moddate = moddate;
 	}
 	public Integer getUseYn() {
 		return useYn;

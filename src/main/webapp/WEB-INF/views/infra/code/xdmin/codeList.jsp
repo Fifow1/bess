@@ -165,6 +165,15 @@
 						<div class="form-check">
 							<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked> <label class="form-check-label" style="color: black;margin-top: 2px;" for="flexRadioDefault2">최신순</label>
 						</div>
+						<div style="width: 200px; float: left; margin-left: 50px; display: inline-block;">
+							<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="height: 30px; width: 180px">
+						</div>
+						<div style="width: 5px; float: left;display: inline-block;">
+							<p>~</p>
+						</div>
+						<div style="width: 200px; float: left; margin-left: 30px;display: inline-block;" >
+							<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="height: 30px; width: 180px">
+						</div>
 					</div>
 				</div>
 				<div class="row border-top" style=" width: 1400px; margin-left: 0px; height: 80px; border-bottom: 1px solid black; margin-bottom: 30px;">

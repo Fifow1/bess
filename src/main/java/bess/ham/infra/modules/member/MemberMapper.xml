@@ -10,7 +10,7 @@
 	
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
-			a.*
+			*
 		FROM member a
 		WHERE 1=1
 			AND delYn = 1
