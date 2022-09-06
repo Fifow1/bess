@@ -160,13 +160,13 @@
 							<h5 style="padding-left: 0px; margin-top: 15px; font-size: 17px; font-weight: 700; color: black;">검색순서</h5>
 						</div>
 						<div class="col" style="margin-top: 10px;">
-							<div class="form-check" style="float: left; margin-right: 40px;">
+							<div class="form-check" style="float: left; margin-right: 40px; display: inline-block;">
 								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"> <label class="form-check-label" for="flexRadioDefault1" style="color: black;margin-top: 2px;">번호순</label>
 							</div>
-							<div class="form-check">
+							<div class="form-check" style="float: left; margin-right: 40px; display: inline-block;">
 								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked> <label class="form-check-label" style="color: black;margin-top: 2px;" for="flexRadioDefault2">최신순</label>
 							</div>
-							<div style="width: 200px; float: left; margin-left: 50px; display: inline-block;">
+							<div style="width: 200px; float: left; display: inline-block;">
 								<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="height: 30px; width: 180px">
 							</div>
 							<div style="width: 5px; float: left;display: inline-block;">
@@ -175,6 +175,13 @@
 							<div style="width: 200px; float: left; margin-left: 30px;display: inline-block;" >
 								<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="height: 30px; width: 180px">
 							</div>
+							<div class="dropdown" style="float: left;">
+								<select class="form-select" aria-label="Default select example" id="shdate" name="shdate" style="padding-bottom: 2px; padding-top: 2px;">
+									<option value="" <c:if test = "${empty vo.shdate }"> selected</c:if>>검색구분</option>
+									<option value="1" <c:if test = "${ vo.shdate eq 1 }"> selected</c:if>>등록일</option>
+									<option value="2" <c:if test = "${ vo.shdate eq 2}"> selected</c:if>>수정일</option>
+								</select>
+							</div>
 						</div>
 					</div>
 					<div class="row border-top" style=" width: 1400px; margin-left: 0px; height: 80px; border-bottom: 1px solid black; margin-bottom: 30px;">
@@ -182,29 +189,29 @@
 							<h5 style="padding-left: 0px; margin-top: 30px; font-size: 17px; font-weight: 700; color: black;">검색조건</h5>
 						</div>
 						<div class="col">
-							<div class="dropdown" style="float: left; margin-right:10px; margin-top: 20px;">
-								<button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">검색조건1</button>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="#">Action</a></li>
-									<li><a class="dropdown-item" href="#">Another action</a></li>
-									<li><a class="dropdown-item" href="#">Something else here</a></li>
-								</ul>
-							</div>
-							<div class="dropdown" style="float: left; margin-right:10px; margin-top: 20px;">
-								<button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">검색조건2</button>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="#">Action</a></li>
-									<li><a class="dropdown-item" href="#">Another action</a></li>
-									<li><a class="dropdown-item" href="#">Something else here</a></li>
-								</ul>
-							</div>
 							<div class="dropdown" style="float: left; margin-top: 20px;">
-								<button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">검색조건2</button>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="#">Action</a></li>
-									<li><a class="dropdown-item" href="#">Another action</a></li>
-									<li><a class="dropdown-item" href="#">Something else here</a></li>
-								</ul>
+								<select class="form-select" aria-label="Default select example">
+									<option selected>검색조건3</option>
+									<option value="1">One</option>
+									<option value="2">Two</option>
+									<option value="3">Three</option>
+								</select>
+							</div>
+							<div class="dropdown ps-2" style="float: left; margin-top: 20px;">
+								<select class="form-select" aria-label="Default select example">
+									<option selected>검색조건3</option>
+									<option value="1">One</option>
+									<option value="2">Two</option>
+									<option value="3">Three</option>
+								</select>
+							</div>
+							<div class="dropdown ps-2" style="float: left; margin-top: 20px;">
+								<select class="form-select" aria-label="Default select example">
+									<option selected>검색조건3</option>
+									<option value="1">One</option>
+									<option value="2">Two</option>
+									<option value="3">Three</option>
+								</select>
 							</div>
 							<div style="width: 300px; float: left; margin-top: 20px; margin-left: 20px;">
 								<input type="text" class="form-control bg-light border-0 small" placeholder="검색어를 입력해주세요." aria-label="Search" aria-describedby="basic-addon2" style="width: 250px; float: left;">

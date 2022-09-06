@@ -37,6 +37,13 @@ public class CodeController {
 		
 		return "infra/code/xdmin/codeForm";
 	}
+	
+	@RequestMapping(value = "codeIsrt")
+	public String codeIsrt(Code dto) throws Exception{
+		
+		int result = service.insert(dto);
+		return "redirect:/code/codeList";
+	}
 		
 
 }

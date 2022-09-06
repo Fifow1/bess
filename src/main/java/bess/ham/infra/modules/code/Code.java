@@ -4,13 +4,6 @@ import java.util.Date;
 
 public class Code {
 
-	private Integer seq;
-	private Integer group_seq;
-	private String gropName;
-	private String codename;
-	private Date regdate;
-	private Integer useYn;
-	private Integer delYn;
 	
 	private Integer CCseq;
 	private Integer CCGseq;
@@ -64,48 +57,5 @@ public class Code {
 	public void setCCdelYn(Integer cCdelYn) {
 		CCdelYn = cCdelYn;
 	}
-	public String getGropName() {
-		return gropName;
-	}
-	public void setGropName(String gropName) {
-		this.gropName = gropName;
-	}
-	public Integer getSeq() {
-		return seq;
-	}
-	public void setSeq(Integer seq) {
-		this.seq = seq;
-	}
-	public Integer getGroup_seq() {
-		return group_seq;
-	}
-	public void setGroup_seq(Integer group_seq) {
-		this.group_seq = group_seq;
-	}
-	public String getCodename() {
-		return codename;
-	}
-	public void setCodename(String codename) {
-		this.codename = codename;
-	}
-	public Date getRegdate() {
-		return regdate;
-	}
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
-	}
-	public Integer getUseYn() {
-		return useYn;
-	}
-	public void setUseYn(Integer useYn) {
-		this.useYn = useYn;
-	}
-	public Integer getDelYn() {
-		return delYn;
-	}
-	public void setDelYn(Integer delYn) {
-		this.delYn = delYn;
-	}
-	
 
 }

@@ -26,14 +26,14 @@ WHERE 1=1
 	</select>
 	
 	<insert id="insert">
-		INSERT INTO codeGroup(
-	    	codeName
-	    	,regdate
+		INSERT INTO code(
+	    	CCname
+	    	,CCregdate
 	    	,delYn
 		)
 		
 		VALUES (
-			#{groupName}
+			#{CCname}
 			,NOW()
 			,1
 		)
