@@ -11,15 +11,34 @@
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT 
 	CC.seq AS CCseq
-    ,CCG.seq AS CCGseq
+	,CCG.seq AS CCGseq
 	,CCG.groupName AS CCGname
 	,CCG.groupName_en AS CCGname_en
-    ,CC.seq AS CCseq
-    ,CC.codename AS CCname
-    ,CC.regdate AS CCregdate
-    ,CC.delYn AS CCdelYn
+	,CC.seq AS CCseq
+	,CC.codename AS CCname
+	,CC.regdate AS CCregdate
+	,CC.delYn AS CCdelYn
 FROM code CC
-INNER JOIN codeGroup CCG ON CCG.seq = CC.group_seq;
+INNER JOIN codeGroup CCG ON CCG.seq = CC.group_seq
+WHERE 1=1
+;
+		
 	</select>
-
+	
+	<insert id="insert">
+		INSERT INTO codeGroup(
+	    	codeName
+	    	,regdate
+	    	,delYn
+		)
+		
+		VALUES (
+			#{groupName}
+			,NOW()
+			,1
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+		SELECT last_insert_id()
+		</selectKey>
+	</insert>
 </mapper>	

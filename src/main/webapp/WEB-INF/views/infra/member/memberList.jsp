@@ -235,7 +235,7 @@
 				</div>
 				<div class="">
 					<div class="table-responsive">
-						<table class="table border-top" id="dataTable" width="100%" cellspacing="0">
+						<table class="table border-top table-hover" id="dataTable" width="100%" cellspacing="0">
 							<thead>
 								<tr style="color: black; font-weight: 600;">
 									<td style="text-align: center;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>

@@ -28,8 +28,15 @@ public class CodeGroupDao {
 	
 	public List<CodeGroup> selectList(CodeGroupVo vo){ 
 //		List<CodeGroup> list = sqlSession.selectList(namespace + ".selectList", vo); 
-		List<CodeGroup> list = sqlSession.selectList("bess.ham.infra.modules.codegroup.CodeGroupMapper.selectList", vo );
+		List<CodeGroup> list = sqlSession.selectList("bess.ham.infra.modules.codegroup.CodeGroupMapper.selectList",vo );
 		return list;
+	}
+	
+	
+	public int insert(CodeGroup dto) {
+		int result = sqlSession.insert(namespace + ".insert", dto);
+		System.out.println("dao result:" +result);
+		return result;
 	}
 
 	

@@ -18,7 +18,13 @@ public class CodeDao {
 	
 	private static String namespace = "bess.ham.infra.modules.code.CodeMapper";
 	
-	public List<Code> selectList(){ return sqlSession.selectList(namespace + ".selectList", ""); }
 
+	public List<Code> selectList(){
+		
+		List<Code> list = sqlSession.selectList("bess.ham.infra.modules.code.CodeMapper.selectList");
+		
+		return list;
+	}
+	
 
 }

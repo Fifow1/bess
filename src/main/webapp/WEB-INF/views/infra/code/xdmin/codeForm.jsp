@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -20,11 +21,11 @@
     <title>회원관리</title>
 
     <!-- Custom fonts for this template-->
-    <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- Custom styles for this template-->
-    <link href="/resources/css/1.css" rel="stylesheet">
+    <link href="css/1.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -32,7 +33,7 @@
     <!-- Page Wrapper -->
 	<div id="wrapper">
 
-		<!-- Sidebar -->
+		<!-- Sidebar -->	
 		<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 			<!-- Sidebar - Brand -->
@@ -148,151 +149,140 @@
 				<button class="rounded-circle border-0" id="sidebarToggle"></button>
 			</div>
 		</ul>
-
-		<div class="container" style="margin-right: 400px;">
-			<form action="/code/codeList" method="post">
-				<div style="height: 500px; width: 1400px">
-					<div style="margin-top: 100px; margin-bottom: 30px;">
-						<h5 class="m-0 font-weight-bold text-dark">코드 관리</h5>
-					</div>
-					<div class="row" style="width: 1400px; margin-left: 0px; height: 50px; border-top: 1px solid black;">
-						<div class="col-1">
-							<h5 style="padding-left: 0px; margin-top: 15px; font-size: 17px; font-weight: 700; color: black;">검색순서</h5>
-						</div>
-						<div class="col" style="margin-top: 10px;">
-							<div class="form-check" style="float: left; margin-right: 40px;">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"> <label class="form-check-label" for="flexRadioDefault1" style="color: black;margin-top: 2px;">번호순</label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked> <label class="form-check-label" style="color: black;margin-top: 2px;" for="flexRadioDefault2">최신순</label>
-							</div>
-							<div style="width: 200px; float: left; margin-left: 50px; display: inline-block;">
-								<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="height: 30px; width: 180px">
-							</div>
-							<div style="width: 5px; float: left;display: inline-block;">
-								<p>~</p>
-							</div>
-							<div style="width: 200px; float: left; margin-left: 30px;display: inline-block;" >
-								<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="height: 30px; width: 180px">
-							</div>
-						</div>
-					</div>
-					<div class="row border-top" style=" width: 1400px; margin-left: 0px; height: 80px; border-bottom: 1px solid black; margin-bottom: 30px;">
-						<div class="col-1">
-							<h5 style="padding-left: 0px; margin-top: 30px; font-size: 17px; font-weight: 700; color: black;">검색조건</h5>
-						</div>
-						<div class="col">
-							<div class="dropdown" style="float: left; margin-right:10px; margin-top: 20px;">
-								<button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">검색조건1</button>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="#">Action</a></li>
-									<li><a class="dropdown-item" href="#">Another action</a></li>
-									<li><a class="dropdown-item" href="#">Something else here</a></li>
-								</ul>
-							</div>
-							<div class="dropdown" style="float: left; margin-right:10px; margin-top: 20px;">
-								<button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">검색조건2</button>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="#">Action</a></li>
-									<li><a class="dropdown-item" href="#">Another action</a></li>
-									<li><a class="dropdown-item" href="#">Something else here</a></li>
-								</ul>
-							</div>
-							<div class="dropdown" style="float: left; margin-top: 20px;">
-								<button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">검색조건2</button>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="#">Action</a></li>
-									<li><a class="dropdown-item" href="#">Another action</a></li>
-									<li><a class="dropdown-item" href="#">Something else here</a></li>
-								</ul>
-							</div>
-							<div style="width: 300px; float: left; margin-top: 20px; margin-left: 20px;">
-								<input type="text" class="form-control bg-light border-0 small" placeholder="검색어를 입력해주세요." aria-label="Search" aria-describedby="basic-addon2" style="width: 250px; float: left;">
-								<button class="btn btn-dark" type="button"style="background-color: #2E2E2E;">
-									<i class="fas fa-search fa-sm"></i>
-								</button>
-							</div>
-						</div>
-					</div>
-					<div class="">
-						<div class="table-responsive">
-							<table class="table border-top" id="dataTable" width="100%" cellspacing="0">
-								<thead>
-									<tr style="color: black; font-weight: 600; background-color: #2E2E2E;">
-										<td style="text-align: center; width: 5%;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-										<th style="color: white;border-bottom: 0px;">#</th>
-										<th style="color: white;border-bottom: 0px;">코드그룹 코드</th>
-										<th style="color: white;border-bottom: 0px;">코드그룹 이름(한글)</th>
-										<th style="color: white;border-bottom: 0px;">코드</th>
-										<th style="color: white;border-bottom: 0px;">대체 코드</th>
-										<th style="color: white;border-bottom: 0px;">코드 이름(한글)</th>
-										<th style="color: white;border-bottom: 0px;">사용</th>
-										<th style="color: white;border-bottom: 0px;">순서</th>
-										<th style="color: white;border-bottom: 0px;">등록일</th>
-										<th style="color: white;border-bottom: 0px;">수정일</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${list}" var="list" varStatus="status">
-									<tr>
-										<td style="text-align: center;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-										<td><c:out value="${list.CCseq}" /></td>
-										<td></td>
-										<td><c:out value="${list.CCGname }" /></td>
-										<td></td>
-										<td></td>
-										<td><a href="#" class="link-dark"><c:out value="${list.CCname }" /></a></td>
-										<td><c:out value="${list.CCdelYn }" /></td>
-										<td>1</td>
-										<td><c:out value="${list.CCregdate}"/></td>
-										<th>2022.08.29</th>
-									</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
-						<div class="d-flex justify-content-center">
-							<nav aria-label="Page navigation example">
-								<ul class="pagination">
-									<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-									<li class="page-item"><a class="page-link" href="#">1</a></li>
-									<li class="page-item"><a class="page-link" href="#">2</a></li>
-									<li class="page-item"><a class="page-link" href="#">3</a></li>
-									<li class="page-item"><a class="page-link" href="#">Next</a></li>
-								</ul>
-							</nav>
-						</div>
-						<div class="row">
-							<div class="d-flex justify-content-start" style="float: left; width:50%;">
-								<button type="button" class="btn btn-outline-dark">삭제</button>
-							</div>
-							<div class="d-flex justify-content-end" style="float: right; width: 50%">
-								<button type="button" class="btn btn-dark" style="background-color: #2E2E2E;" onclick="location.href='/code/codeForm'">등록</button>
-							</div>
-						</div>
-					</div>
-				</div>	
-			</form>
+		<div class="container">
+			<br><br>
+			<div class="row">
+				<div class="col">
+					<h5 class="m-0 font-weight-bold text-dark">코드 관리</h5>
+				</div>
+			</div>
+			<br> <br>
+			<div class="row">
+				<div class="col">
+					<select class="form-select" aria-label="Default select example">
+						<option selected>Open this select menu</option>
+						<option value="1">One</option>
+						<option value="2">Two</option>
+						<option value="3">Three</option>
+					</select>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col">
+					<fieldset disabled>
+						<label for="disabledTextInput" class="form-label">코드</label> <input type="text" id="disabledTextInput" class="form-control" placeholder="자동생성">
+					</fieldset>
+				</div>
+				<div class="col">
+					<p class="h6" color="#2E2E2E";>코드(Another)</p>
+					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="영문(대소문자)숫자">
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col">
+					<p class="h6" color="#2E2E2E";>코드그룹 이름(한글)</p>
+					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="한글,숫자">
+				</div>
+				<div class="col">
+					<p class="h6" color="#2E2E2E";>코드그룸 이름(영문)</p>
+					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="영문(대소문자)숫자">
+				</div>
+			</div><br>
+			<div class="row">
+				<div class="col">
+					<p class="h6" color="#2E2E2E";>사용여부</p>
+					<select class="form-select" aria-label="Default select example">
+						<option selected>선택해주세요</option>
+						<option value="1">Y</option>
+						<option value="2">N</option>
+					</select>
+				</div>
+				<div class="col">
+					<p class="h6" color="#2E2E2E";>순서</p>
+					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="숫자">
+				</div>
+			</div><br>
+			<div class="row">
+				<div class="col">
+					<p class="h6" color="#2E2E2E";>설명</p>
+					<textarea class="form-control" placeholder="입력해 주세요." id="floatingTextarea2" style="height: 100px"></textarea>
+				</div>
+				<div class="col">
+					<p class="h6" color="#2E2E2E";>삭제여부</p>
+					<select class="form-select" aria-label="Default select example">
+						<option selected>선택해주세요</option>
+						<option value="1">Y</option>
+						<option value="2">N</option>
+					</select>
+				</div>
+			</div><br>
+			<div class="row">
+				<div class="col">
+					<p class="h6" color="#2E2E2E";>예비1(varchar type)</p>
+					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="영문(대소문자)숫자">
+				</div>
+				<div class="col">
+					<p class="h6" color="#2E2E2E";>예비2(varchar type)</p>
+					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="영문(대소문자)숫자">
+				</div>
+			</div><br>
+			<div class="row">
+				<div class="col">
+					<p class="h6" color="#2E2E2E";>예비3(varchar type)</p>
+					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="영문(대소문자)숫자">
+				</div>
+				<div class="col">
+					<p class="h6" color="#2E2E2E";>예비4(varchar type)</p>
+					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="영문(대소문자)숫자">
+				</div>
+			</div><br>
+			<div class="row">
+				<div class="col">
+					<p class="h6" color="#2E2E2E";>예비1(int type)</p>
+					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="숫자">
+				</div>
+				<div class="col">
+					<p class="h6" color="#2E2E2E";>예비2(int type)</p>
+					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="숫자">
+				</div>
+			</div><br>
+			<div class="row">
+				<div class="col">
+					<p class="h6" color="#2E2E2E";>예비3(int type)</p>
+					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="숫자">
+				</div>
+				<div class="col">
+					<p class="h6" color="#2E2E2E";>예비4(int type)</p>
+					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="숫자">
+				</div>
+			</div><br><br>
+			<div class="row">
+				<div class="col d-flex justify-content-center">
+					<button type="button" class="btn btn-dark" style="width: 200px;"onclick="location.href='codeList.html'">등록하기</button>
+				</div>
+			</div>
+			<br><br><br><br><br><br>
 		</div>
 	</div>
+	
+	<!-- Bootstrap core JavaScript-->
+	<script src="/resources/vendor/jquery/jquery.min.js"></script>
+	<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="/resources/vendor/jquery/jquery.min.js"></script>
-    <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Core plugin JavaScript-->
+	<script src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<!-- Custom scripts for all pages-->
+	<script src="/resources/js/sb-admin-2.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="/resources/js/sb-admin-2.min.js"></script>
+	<!-- Page level plugins -->
+	<script src="/resources/vendor/chart.js/Chart.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="/resources/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="/resources/js/demo/chart-area-demo.js"></script>
-    <script src="/resources/js/demo/chart-pie-demo.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+	<!-- Page level custom scripts -->
+	<script src="/resources/js/demo/chart-area-demo.js"></script>
+	<script src="/resources/js/demo/chart-pie-demo.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
-
 </html>

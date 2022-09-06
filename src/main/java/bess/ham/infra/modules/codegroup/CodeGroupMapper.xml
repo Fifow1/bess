@@ -27,9 +27,6 @@
 		FROM  codeGroup CCG
 		WHERE 1=1
 		<!-- AND groupName LIKE CONCAT('%',#{shValue},'%') -->
-		
-		
-		
 		<if test="shDelYn != null and !shDelYn.equals('')">AND CCG.delYn = #{shDelYn}</if>
 		<!-- <if test="shregdate_s != null and !shregdate_s.equals('') and shregdate_e != null and !shregdate_e.equals('')">AND CCG.regdate between #{shregdate_s} and #{shregdate_e}</if> -->
 		<choose>
@@ -43,9 +40,25 @@
 			<when test="shdate == 2">AND CCG.moddate between #{shdate_s} and #{shdate_e}</when>
 			<otherwise></otherwise>
 		</choose>
-		
-		
-		
-		
 	</select>
+	
+	
+	<insert id="insert">
+		INSERT INTO codeGroup(
+	    	groupName
+	    	,groupName_en
+	    	,regdate
+	    	,delYn
+		)
+		
+		VALUES (
+			#{groupName}
+			,#{groupName_en}
+			,NOW()
+			,1
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+		SELECT last_insert_id()
+		</selectKey>
+	</insert>	
 </mapper>	

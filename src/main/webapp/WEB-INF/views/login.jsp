@@ -149,132 +149,104 @@
 			</div>
 		</ul>
 
-		<div class="container" style="margin-right: 400px;">
-			<form action="/code/codeList" method="post">
-				<div style="height: 500px; width: 1400px">
-					<div style="margin-top: 100px; margin-bottom: 30px;">
-						<h5 class="m-0 font-weight-bold text-dark">코드 관리</h5>
+		<div class="container">
+
+</div>
+	<nav class="navbar bg-dark fixed-top">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#" style="color: white;">Offcanvas navbar</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+				<div class="offcanvas-header">
+					<h5 class="offcanvas-title" id="offcanvasNavbarLabel">nice</h5>
+				</div>
+				<div class="offcanvas-body">
+					<div style="float: left;">
+						<button class="btn btn-success" type="submit" >로그인</button>
 					</div>
-					<div class="row" style="width: 1400px; margin-left: 0px; height: 50px; border-top: 1px solid black;">
-						<div class="col-1">
-							<h5 style="padding-left: 0px; margin-top: 15px; font-size: 17px; font-weight: 700; color: black;">검색순서</h5>
-						</div>
-						<div class="col" style="margin-top: 10px;">
-							<div class="form-check" style="float: left; margin-right: 40px;">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"> <label class="form-check-label" for="flexRadioDefault1" style="color: black;margin-top: 2px;">번호순</label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked> <label class="form-check-label" style="color: black;margin-top: 2px;" for="flexRadioDefault2">최신순</label>
-							</div>
-							<div style="width: 200px; float: left; margin-left: 50px; display: inline-block;">
-								<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="height: 30px; width: 180px">
-							</div>
-							<div style="width: 5px; float: left;display: inline-block;">
-								<p>~</p>
-							</div>
-							<div style="width: 200px; float: left; margin-left: 30px;display: inline-block;" >
-								<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="height: 30px; width: 180px">
-							</div>
-						</div>
+					<div>
+						<button class="btn btn-secondary" type="submit" style="margin-left:5px;">로그아웃</button>
 					</div>
-					<div class="row border-top" style=" width: 1400px; margin-left: 0px; height: 80px; border-bottom: 1px solid black; margin-bottom: 30px;">
-						<div class="col-1">
-							<h5 style="padding-left: 0px; margin-top: 30px; font-size: 17px; font-weight: 700; color: black;">검색조건</h5>
-						</div>
-						<div class="col">
-							<div class="dropdown" style="float: left; margin-right:10px; margin-top: 20px;">
-								<button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">검색조건1</button>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="#">Action</a></li>
-									<li><a class="dropdown-item" href="#">Another action</a></li>
-									<li><a class="dropdown-item" href="#">Something else here</a></li>
-								</ul>
-							</div>
-							<div class="dropdown" style="float: left; margin-right:10px; margin-top: 20px;">
-								<button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">검색조건2</button>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="#">Action</a></li>
-									<li><a class="dropdown-item" href="#">Another action</a></li>
-									<li><a class="dropdown-item" href="#">Something else here</a></li>
-								</ul>
-							</div>
-							<div class="dropdown" style="float: left; margin-top: 20px;">
-								<button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">검색조건2</button>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="#">Action</a></li>
-									<li><a class="dropdown-item" href="#">Another action</a></li>
-									<li><a class="dropdown-item" href="#">Something else here</a></li>
-								</ul>
-							</div>
-							<div style="width: 300px; float: left; margin-top: 20px; margin-left: 20px;">
-								<input type="text" class="form-control bg-light border-0 small" placeholder="검색어를 입력해주세요." aria-label="Search" aria-describedby="basic-addon2" style="width: 250px; float: left;">
-								<button class="btn btn-dark" type="button"style="background-color: #2E2E2E;">
-									<i class="fas fa-search fa-sm"></i>
-								</button>
-							</div>
-						</div>
-					</div>
-					<div class="">
-						<div class="table-responsive">
-							<table class="table border-top" id="dataTable" width="100%" cellspacing="0">
-								<thead>
-									<tr style="color: black; font-weight: 600; background-color: #2E2E2E;">
-										<td style="text-align: center; width: 5%;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-										<th style="color: white;border-bottom: 0px;">#</th>
-										<th style="color: white;border-bottom: 0px;">코드그룹 코드</th>
-										<th style="color: white;border-bottom: 0px;">코드그룹 이름(한글)</th>
-										<th style="color: white;border-bottom: 0px;">코드</th>
-										<th style="color: white;border-bottom: 0px;">대체 코드</th>
-										<th style="color: white;border-bottom: 0px;">코드 이름(한글)</th>
-										<th style="color: white;border-bottom: 0px;">사용</th>
-										<th style="color: white;border-bottom: 0px;">순서</th>
-										<th style="color: white;border-bottom: 0px;">등록일</th>
-										<th style="color: white;border-bottom: 0px;">수정일</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${list}" var="list" varStatus="status">
-									<tr>
-										<td style="text-align: center;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-										<td><c:out value="${list.CCseq}" /></td>
-										<td></td>
-										<td><c:out value="${list.CCGname }" /></td>
-										<td></td>
-										<td></td>
-										<td><a href="#" class="link-dark"><c:out value="${list.CCname }" /></a></td>
-										<td><c:out value="${list.CCdelYn }" /></td>
-										<td>1</td>
-										<td><c:out value="${list.CCregdate}"/></td>
-										<th>2022.08.29</th>
-									</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
-						<div class="d-flex justify-content-center">
-							<nav aria-label="Page navigation example">
-								<ul class="pagination">
-									<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-									<li class="page-item"><a class="page-link" href="#">1</a></li>
-									<li class="page-item"><a class="page-link" href="#">2</a></li>
-									<li class="page-item"><a class="page-link" href="#">3</a></li>
-									<li class="page-item"><a class="page-link" href="#">Next</a></li>
-								</ul>
-							</nav>
-						</div>
-						<div class="row">
-							<div class="d-flex justify-content-start" style="float: left; width:50%;">
-								<button type="button" class="btn btn-outline-dark">삭제</button>
-							</div>
-							<div class="d-flex justify-content-end" style="float: right; width: 50%">
-								<button type="button" class="btn btn-dark" style="background-color: #2E2E2E;" onclick="location.href='/code/codeForm'">등록</button>
-							</div>
-						</div>
-					</div>
-				</div>	
-			</form>
+					<br><br>
+					<form class="d-flex" role="search">
+						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+						<button class="btn btn-outline-success" type="submit">Search</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</nav>
+<br><br><br><br><br>
+<div class="container ">
+	<div class="row">
+		<div class="col">
+			<h2>로그인</h2>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col"></div>
+		<div class="col">
+    		<label for="exampleInputEmail1" class="form-label">아이디</label>
+   			<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+		</div>
+		<div class="col"></div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col"></div>
+		<div class="col">
+    		<label for="exampleInputEmail1" class="form-label">비밀번호</label>
+   			<input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+		</div>
+		<div class="col"></div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col"></div>
+		<div class="col">
+   			<button type="button" class="btn btn-warnning" style="width: 416px;">로그인</button>
+		</div>
+		<div class="col"></div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col"></div>
+		<div class="col">
+   			<button type="button" class="btn btn-secondary"style="width: 416px;">회원가입</button>
+		</div>
+		<div class="col"></div>
+	</div>
+	<br><br>
+	<div class="row">
+		<div class="col"></div>
+		<div class="col d-flex justify-content-center"; style="padding-left: 0px; padding-right: 30px;">
+   			<button type="button" class="btn btn-primary"style="width: 80px; height: 80px;margin-left:30px;"><i class="fa-brands fa-facebook"></i></button>
+   			<button type="button" class="btn btn-success"style="width: 80px; height: 80px;margin-left:30px;"><i class="fa-solid fa-n"></i></button>
+   			<button type="button" class="btn btn-danger"style="width: 80px; height: 80px;margin-left:30px;"><i class="fa-brands fa-google"></i></button>
+   			<button type="button" class="btn btn-warning"style="width: 80px; height: 80px;margin-left:30px;"><i class="fa-solid fa-message"></i></button>
+		</div>
+		<div class="col"></div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col"></div>
+		<div class="col">
+   			<a href="#" class="card-link">아이디를 잊어버리셨나요?</a>
+		</div>
+		<div class="col"></div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col"></div>
+		<div class="col">
+			<a href="#" class="card-link">비밀번호를 잊어버리셨나요?</a>
+		</div>
+		<div class="col"></div>
+	</div>
+</div>
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="/resources/vendor/jquery/jquery.min.js"></script>
@@ -296,3 +268,6 @@
 </body>
 
 </html>
+
+<br>
+

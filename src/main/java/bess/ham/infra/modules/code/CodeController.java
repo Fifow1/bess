@@ -16,14 +16,26 @@ public class CodeController {
 	CodeServiceImpl service;
 	
 
-	@RequestMapping(value = "codeList")
 	
-	public String codeGroupList(Model model) throws Exception {
+	@RequestMapping(value = "codeList")
+	public String codeList(Model model) throws Exception {
 
 		List<Code> list = service.selectList();
 		model.addAttribute("list", list);
 		
 		return "infra/code/xdmin/codeList";
+	}
+	
+	
+	
+	@RequestMapping(value = "codeForm")
+	public String codeFrom(Model model) throws Exception{
+		
+		List<Code> list = service.selectList();
+		
+		model.addAttribute("list", list);
+		
+		return "infra/code/xdmin/codeForm";
 	}
 		
 
