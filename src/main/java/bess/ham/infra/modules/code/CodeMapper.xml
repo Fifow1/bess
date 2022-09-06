@@ -15,7 +15,7 @@
 	,CCG.groupName AS CCGname
 	,CCG.groupName_en AS CCGname_en
 	,CC.seq AS CCseq
-	,CC.codename AS CCname
+	,CC.codeName AS CCname
 	,CC.regdate AS CCregdate
 	,CC.delYn AS CCdelYn
 FROM code CC
@@ -27,13 +27,13 @@ WHERE 1=1
 	
 	<insert id="insert">
 		INSERT INTO code(
-	    	CCname
-	    	,CCregdate
+	    	codeName
+	    	,regdate
 	    	,delYn
 		)
 		
 		VALUES (
-			#{CCname}
+			#{codeName}
 			,NOW()
 			,1
 		)
