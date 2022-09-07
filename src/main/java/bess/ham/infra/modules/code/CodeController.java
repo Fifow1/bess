@@ -31,9 +31,9 @@ public class CodeController {
 	@RequestMapping(value = "codeForm")
 	public String codeFrom(Model model) throws Exception{
 		
-		List<Code> list = service.selectList();
+		List<Code> list = service.groupList();
 		
-		model.addAttribute("list", list);
+		model.addAttribute("groupList", list);
 		
 		return "infra/code/xdmin/codeForm";
 	}
@@ -42,6 +42,7 @@ public class CodeController {
 	public String codeIsrt(Code dto) throws Exception{
 		
 		int result = service.insert(dto);
+		System.out.println("result:" + result);
 		return "redirect:/code/codeList";
 	}
 		

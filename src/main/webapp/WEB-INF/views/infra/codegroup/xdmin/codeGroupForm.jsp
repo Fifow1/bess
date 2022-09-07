@@ -149,7 +149,7 @@
 			</div>
 		</ul>
 		<div class="container">
-			<form method="post" action="/codeGroup/codeGroupIsrt">
+			<form method="post" action="/codeGroup/codeGroupIsrt" name ="myForm" id="myForm">
 				<br><br>
 				<div class="row">
 					<div class="col">
@@ -158,31 +158,34 @@
 				</div><br><br>
 				<div class="row">
 					<div class="col">
-						<p class="h6" color="#2E2E2E";>코드그룹 코드</p>
-						<input type="text" class="form-control" placeholder="영문(대소문자)숫자">
+						<fieldset disabled>
+							<label for="disabledTextInput" class="form-label">코드그룹 코드</label>
+							<input type="text" id="disabledTextInput" class="form-control" placeholder="자동생성">
+						</fieldset>
 					</div>
 					<div class="col">
 						<p class="h6" color="#2E2E2E";>코드그룹 이름(Another)</p>
-						<input type="text" class="form-control" placeholder="영문(대소문자)숫자">
+						<input type="text" class="form-control" placeholder="영문(대소문자)숫자" name="groupName_code" id="groupName_code">
+						<p class="h6 text-danger pt-3";>다시 작성해 주세요</p>
 					</div>
 				</div><br>
 				<div class="row">
 					<div class="col">
 						<p class="h6" color="#2E2E2E";>코드그룹 이름(한글)</p>
-						<input type="text" class="form-control" placeholder="한글,숫자" name="groupName">
+						<input type="text" class="form-control" placeholder="한글,숫자" name="groupName" id="groupName">
 					</div>
 					<div class="col">
 						<p class="h6" color="#2E2E2E";>코드그룸 이름(영문)</p>
-						<input type="text" class="form-control" placeholder="영문(대소문자)숫자" name="groupName_en">
+						<input type="text" class="form-control" placeholder="영문(대소문자)숫자" name="groupName_en" id="groupName_en">
 					</div>
 				</div><br>
 				<div class="row">
 					<div class="col">
 						<p class="h6" color="#2E2E2E";>사용여부</p>
-						<select class="form-select" aria-label="Default select example">
+						<select class="form-select" name="useYn" id="useYn">
 							<option selected>선택해주세요</option>
 							<option value="1">Y</option>
-							<option value="2">N</option>
+							<option value="0">N</option>
 						</select>
 					</div>
 					<div class="col">
@@ -197,60 +200,60 @@
 					</div>
 					<div class="col">
 						<p class="h6" color="#2E2E2E";>삭제여부</p>
-						<select class="form-select" aria-label="Default select example">
+						<select class="form-select" name="delYn" id="delYn">
 							<option selected>선택해주세요</option>
 							<option value="1">Y</option>
-							<option value="2">N</option>
+							<option value="0">N</option>
 						</select>
 					</div>
 				</div><br>
 				<div class="row">
-					<div class="col">
-						<p class="h6" color="#2E2E2E";>예비1(varchar type)</p>
-						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="영문(대소문자)숫자">
-					</div>
-					<div class="col">
-						<p class="h6" color="#2E2E2E";>예비2(varchar type)</p>
-						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="영문(대소문자)숫자">
-					</div>
-				</div><br>
-				<div class="row">
-					<div class="col">
-						<p class="h6" color="#2E2E2E";>예비3(varchar type)</p>
-						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="영문(대소문자)숫자">
-					</div>
-					<div class="col">
-						<p class="h6" color="#2E2E2E";>예비4(varchar type)</p>
-						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="영문(대소문자)숫자">
-					</div>
-				</div><br>
-				<div class="row">
-					<div class="col">
-						<p class="h6" color="#2E2E2E";>예비1(int type)</p>
-						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="숫자">
-					</div>
-					<div class="col">
-						<p class="h6" color="#2E2E2E";>예비2(int type)</p>
-						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="숫자">
-					</div>
-				</div><br>
-				<div class="row">
-					<div class="col">
-						<p class="h6" color="#2E2E2E";>예비3(int type)</p>
-						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="숫자">
-					</div>
-					<div class="col">
-						<p class="h6" color="#2E2E2E";>예비4(int type)</p>
-						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="숫자">
-					</div>
-				</div><br><br>
-				<div class="row">
 					<div class="col d-flex justify-content-center">
-						<button type="submit" class="btn btn-dark" style="width: 200px;" onclick="location.href='/codeGroup/codeGroupIsrt/'">등록하기</button>
+						<button type="button" class="btn btn-outline-dark" style="width: 200px;" onclick="test();">test</button>
+						<button type="submit" class="btn btn-dark" style="width: 200px;">등록하기</button>
 					</div>
 				</div>
 			</form>
 			<br><br><br><br><br>
+			
+			
+			
+			
+			
+			
+			
+			
+			<script type="text/javascript">
+				function test() {
+					if(document.getElementById('groupName').value == "" || document.getElementById('groupName').value == null){
+						alert("코드그룹이름(한글) 입력해 주세요.");
+						document.getElementById("groupName").value = "";
+						document.getElementById("groupName").value = "";
+						return false;
+					} else if (document.getElementById('groupName_code').value == "" || document.getElementById('groupName_code').value == null){
+						alert("코드그룹이름(코드)을 입력해 주세요.");
+						document.getElementById("groupName_code").value = "";
+						document.getElementById("groupName_code").value = "";
+						return false;
+					} else if (document.getElementById('groupName_en').value == "" || document.getElementById('groupName_en').value == null){
+						alert("코드그룹이름(영어)을 입력해 주세요.");
+						document.getElementById("groupName_en").value = "";
+						document.getElementById("groupName_en").value = "";
+						return false;
+					}
+					
+					
+					
+					document.getElementById("myForm").submit();
+				}
+				
+			</script>
+			
+					
+					
+					
+			
+			
 			
 			<!-- Bootstrap core JavaScript-->
 			<script src="/resources/vendor/jquery/jquery.min.js"></script>

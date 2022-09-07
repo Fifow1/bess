@@ -244,7 +244,7 @@
 									<tr>
 										<td style="text-align: center;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
 										<td><c:out value="${list.CCseq}" /></td>
-										<td></td>
+										<td><c:out value="${list.CCGseq}" /></td>
 										<td><c:out value="${list.CCGname }" /></td>
 										<td></td>
 										<td></td>

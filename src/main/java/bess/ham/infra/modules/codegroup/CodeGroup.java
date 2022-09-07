@@ -5,7 +5,7 @@ import java.util.Date;
 public class CodeGroup {
 	
 	private String seq;
-	private String group_seq;
+	private String groupName_code;
 	private String groupName;
 	private String groupName_en;
 	private Integer CCcount;
@@ -24,11 +24,11 @@ public class CodeGroup {
 	public void setSeq(String seq) {
 		this.seq = seq;
 	}
-	public String getGroup_seq() {
-		return group_seq;
+	public String getGroupName_code() {
+		return groupName_code;
 	}
-	public void setGroup_seq(String group_seq) {
-		this.group_seq = group_seq;
+	public void setGroupName_code(String groupName_code) {
+		this.groupName_code = groupName_code;
 	}
 	public void setGroupName(String groupName) {
 		this.groupName = groupName;

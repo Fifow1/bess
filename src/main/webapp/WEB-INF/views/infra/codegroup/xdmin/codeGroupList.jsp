@@ -291,8 +291,8 @@ z<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 								<thead>
 									<tr style="color: black; font-weight: 600; background-color: #2E2E2E;">
 										<td style="text-align: center; width: 5%;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-										<th style="color: white; width: 16%; border-bottom: 0px;">#</th>
-										<th style="color: white; width: 16%; border-bottom: 0px;">코드그룹 코드</th>
+										<th style="color: white; width: 10%; border-bottom: 0px;">#</th>
+										<th style="color: white; width: 15%; border-bottom: 0px;">코드그룹 코드</th>
 										<th style="color: white; width: 16%; border-bottom: 0px;">코드그룹 이름(한글)</th>
 										<th style="color: white; width: 16%; border-bottom: 0px;">코드그룹 이름(영문)</th>
 										<th style="color: white; width: 10%; border-bottom: 0px;">코드갯수</th>
@@ -313,7 +313,7 @@ z<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 												<tr>
 													<td style="text-align: center;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
 													<td><c:out value="${list.seq }" /></td>
-													<td>43</td>
+													<td><c:out value="${list.groupName_code }" /></td>
 													<td><a href="#" class="link-dark"><c:out value="${list.groupName }" /></a></td>
 													<td><c:out value="${list.groupName_en }" /></td>
 													<td><c:out value="${list.CCcount }" /></td>

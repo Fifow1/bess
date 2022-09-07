@@ -21,16 +21,22 @@ public class CodeDao {
 
 	public List<Code> selectList(){
 		
-		List<Code> list = sqlSession.selectList("bess.ham.infra.modules.code.CodeMapper.selectList");
+		List<Code> list = sqlSession.selectList(namespace + ".selectList", "");
 		
 		return list;
 	}
 	
+	
+	public List<Code> groupList(){
+		
+		List<Code> list = sqlSession.selectList(namespace + ".groupList", "");
+		
+		return list;
+	}
+
 	public int insert(Code dto) {
 		int result = sqlSession.insert(namespace + ".insert", dto);
 		System.out.println("dao result:" + result);
 		return result;
 	}
-	
-
 }

@@ -150,7 +150,7 @@
 			</div>
 		</ul>
 		<div class="container">
-			<form method="post" action="/codeGroup/codeGroupIsrt">
+			<form method="post" action="/code/codeIsrt">
 				<br><br>
 				<div class="row">
 					<div class="col">
@@ -160,11 +160,11 @@
 				<br> <br>
 				<div class="row">
 					<div class="col">
-						<select class="form-select" aria-label="Default select example">
+						<select class="form-select" aria-label="Default select example" name="group_seq">
 							<option selected>Open this select menu</option>
-							<option value="1">One</option>
-							<option value="2">Two</option>
-							<option value="3">Three</option>
+							<c:forEach items="${groupList}" var="list" varStatus="status">
+								<option value="<c:out value="${list.seq}"></c:out>"><c:out value="${list.groupName}"></c:out></option>
+							</c:forEach>
 						</select>
 					</div>
 				</div>
@@ -184,7 +184,7 @@
 				<div class="row">
 					<div class="col">
 						<p class="h6" color="#2E2E2E";>코드 이름(한글)</p>
-						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="한글,숫자" name="CCname">
+						<input type="text" class="form-control"placeholder="한글,숫자" name="CCname">
 					</div>
 					<div class="col">
 						<p class="h6" color="#2E2E2E";>코드 이름(영문)</p>
@@ -261,7 +261,7 @@
 				</div><br><br>
 				<div class="row">
 					<div class="col d-flex justify-content-center">
-						<button type="submit" class="btn btn-dark" style="width: 200px;"onclick="location.href='/code/codeIsrt/'">등록하기</button>
+						<button type="submit" class="btn btn-dark" style="width: 200px;">등록하기</button>
 					</div>
 				</div>
 				<br><br><br><br><br><br>

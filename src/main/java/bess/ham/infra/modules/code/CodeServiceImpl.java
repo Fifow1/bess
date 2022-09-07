@@ -20,6 +20,16 @@ public class CodeServiceImpl implements CodeService{
 		return list;
 	}
 	
+	
+	@Override
+	public List<Code> groupList() throws Exception {
+		
+		List<Code> list = dao.groupList();
+		
+		return list;
+	}
+	
+	
 	@Override
 	public int insert(Code dto) throws Exception{
 		int result = dao.insert(dto);

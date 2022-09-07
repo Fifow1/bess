@@ -4,34 +4,48 @@ import java.util.Date;
 
 public class Code {
 
-	private Integer seq;
-	private Integer group_seq;
-	private String gropName;
+	// codeTABLE
+	private String group_seq;
+	private String groupName;
 	private String codeName;
-	private Date regdate;
-	private Integer useYn;
-	private Integer delYn;
 	
-	private Integer CCseq;
-	private Integer CCGseq;
+	private String CCseq;
+	private String CCGseq;
 	private String CCGname;
 	private String CCGname_en;
 	private String CCname;
-	private String CCregdate;
+	private Date CCregdate;
 	private Integer CCdelYn;
 	
 	
-	
-	public Integer getCCseq() {
+	public String getGroup_seq() {
+		return group_seq;
+	}
+	public void setGroup_seq(String group_seq) {
+		this.group_seq = group_seq;
+	}
+	public String getGroupName() {
+		return groupName;
+	}
+	public void setGroupName(String groupName) {
+		this.groupName = groupName;
+	}
+	public String getCodeName() {
+		return codeName;
+	}
+	public void setCodeName(String codeName) {
+		this.codeName = codeName;
+	}
+	public String getCCseq() {
 		return CCseq;
 	}
-	public void setCCseq(Integer cCseq) {
+	public void setCCseq(String cCseq) {
 		CCseq = cCseq;
 	}
-	public Integer getCCGseq() {
+	public String getCCGseq() {
 		return CCGseq;
 	}
-	public void setCCGseq(Integer cCGseq) {
+	public void setCCGseq(String cCGseq) {
 		CCGseq = cCGseq;
 	}
 	public String getCCGname() {
@@ -52,10 +66,10 @@ public class Code {
 	public void setCCname(String cCname) {
 		CCname = cCname;
 	}
-	public String getCCregdate() {
+	public Date getCCregdate() {
 		return CCregdate;
 	}
-	public void setCCregdate(String cCregdate) {
+	public void setCCregdate(Date cCregdate) {
 		CCregdate = cCregdate;
 	}
 	public Integer getCCdelYn() {
@@ -64,48 +78,8 @@ public class Code {
 	public void setCCdelYn(Integer cCdelYn) {
 		CCdelYn = cCdelYn;
 	}
-	public String getGropName() {
-		return gropName;
-	}
-	public void setGropName(String gropName) {
-		this.gropName = gropName;
-	}
-	public Integer getSeq() {
-		return seq;
-	}
-	public void setSeq(Integer seq) {
-		this.seq = seq;
-	}
-	public Integer getGroup_seq() {
-		return group_seq;
-	}
-	public void setGroup_seq(Integer group_seq) {
-		this.group_seq = group_seq;
-	}
-	public String getCodename() {
-		return codeName;
-	}
-	public void setCodename(String codename) {
-		this.codeName = codename;
-	}
-	public Date getRegdate() {
-		return regdate;
-	}
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
-	}
-	public Integer getUseYn() {
-		return useYn;
-	}
-	public void setUseYn(Integer useYn) {
-		this.useYn = useYn;
-	}
-	public Integer getDelYn() {
-		return delYn;
-	}
-	public void setDelYn(Integer delYn) {
-		this.delYn = delYn;
-	}
+	
+
 	
 
 }

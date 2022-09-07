@@ -20,6 +20,7 @@
 			
 		SELECT
 			CCG.seq
+			,CCG.groupName_code
 	    	,CCG.groupName
 	    	,CCG.groupName_en
 			,(select count(CC.seq) from code CC where 1=1 and group_seq = CCG.seq) as CCcount
@@ -45,17 +46,21 @@
 	
 	<insert id="insert">
 		INSERT INTO codeGroup(
-	    	groupName
+			groupName_code
+	    	,groupName
 	    	,groupName_en
 	    	,regdate
+	    	,useYn
 	    	,delYn
 		)
 		
 		VALUES (
-			#{groupName}
+			#{groupName_code}
+			,#{groupName}
 			,#{groupName_en}
 			,NOW()
-			,1
+			,#{useYn}
+			,#{delYn}
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 		SELECT last_insert_id()
