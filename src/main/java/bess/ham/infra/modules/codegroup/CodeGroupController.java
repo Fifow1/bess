@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.google.protobuf.GeneratedMessageLite.MethodToInvoke;
+
 
 
 @Controller
@@ -49,7 +51,6 @@ public class CodeGroupController {
 	@RequestMapping(value = "codeGroupIsrt")
 	
 	public String codeGroupIsrt(CodeGroup dto) throws Exception{
-		
 		System.out.println("dto.getGroupName(): " + dto.getGroupName());
 		
 		int result = service.insert(dto);
@@ -57,6 +58,17 @@ public class CodeGroupController {
 		return "redirect:/codeGroup/codeGroupList";
 	}
 	
+	@RequestMapping(value = "codeGroupView")
 	
+	public String codeGroupView(Model model,CodeGroupVo vo) throws Exception {
+		
+		System.out.println("con:"+vo.getShSeq());
+		CodeGroup result = service.selectOne(vo);
+		
+		model.addAttribute("item", result);
+		System.out.println("c:"+result);
+		// viewResolver -> /WEB-INF/views/ + home + .jsp
+		return "infra/codegroup/xdmin/codeGroupForm";
+	}
 	
 }

@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.dao.support.DaoSupport;
 import org.springframework.stereotype.Repository;
 
 
@@ -36,6 +37,14 @@ public class CodeGroupDao {
 	public int insert(CodeGroup dto) {
 		int result = sqlSession.insert(namespace + ".insert", dto);
 		System.out.println("dao result:" +result);
+		return result;
+	}
+	
+	
+	public CodeGroup selectOne(CodeGroupVo vo) {
+		
+		CodeGroup result = sqlSession.selectOne(namespace +".selectOne", vo);
+		System.out.println("d:"+result);
 		return result;
 	}
 

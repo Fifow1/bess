@@ -14,10 +14,6 @@ public class CodeGroup {
 	private Integer useYn;
 	private Integer delYn;
 // ------------------------------------------------
-	
-	public String getGroupName() {
-		return groupName;
-	}
 	public String getSeq() {
 		return seq;
 	}
@@ -29,6 +25,9 @@ public class CodeGroup {
 	}
 	public void setGroupName_code(String groupName_code) {
 		this.groupName_code = groupName_code;
+	}
+	public String getGroupName() {
+		return groupName;
 	}
 	public void setGroupName(String groupName) {
 		this.groupName = groupName;
@@ -69,5 +68,7 @@ public class CodeGroup {
 	public void setDelYn(Integer delYn) {
 		this.delYn = delYn;
 	}
+	
+	
 
 }

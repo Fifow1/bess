@@ -2,7 +2,7 @@ package bess.ham.infra.modules.codegroup;
 
 
 public class CodeGroupVo {
-	
+	private String shSeq;
 	private Integer shOption;
 	private String shValue;
 	private Integer shDelYn;
@@ -11,6 +11,18 @@ public class CodeGroupVo {
 	private String shdate_e;
 	
 	
+
+	
+	
+	
+	
+	
+	public String getShSeq() {
+		return shSeq;
+	}
+	public void setShSeq(String shSeq) {
+		this.shSeq = shSeq;
+	}
 	public Integer getShOption() {
 		return shOption;
 	}
@@ -23,12 +35,17 @@ public class CodeGroupVo {
 	public void setShValue(String shValue) {
 		this.shValue = shValue;
 	}
-	
 	public Integer getShDelYn() {
 		return shDelYn;
 	}
 	public void setShDelYn(Integer shDelYn) {
 		this.shDelYn = shDelYn;
+	}
+	public Integer getShdate() {
+		return shdate;
+	}
+	public void setShdate(Integer shdate) {
+		this.shdate = shdate;
 	}
 	public String getShdate_s() {
 		return shdate_s;
@@ -42,11 +59,7 @@ public class CodeGroupVo {
 	public void setShdate_e(String shdate_e) {
 		this.shdate_e = shdate_e;
 	}
-	public Integer getShdate() {
-		return shdate;
-	}
-	public void setShdate(Integer shdate) {
-		this.shdate = shdate;
-	}
-
+	
+	
+	
 }

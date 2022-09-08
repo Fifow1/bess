@@ -215,7 +215,7 @@ z<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 		</ul>
 
 		<div class="container" style="margin-right: 400px;">
-			<form method="post" action="/codeGroup/codeGroupList" style="float: left; width: 1150px;">
+			<form method="get" action="/codeGroup/codeGroupList" style="float: left; width: 1150px;">
 				<div style="height: 500px; width: 1400px">
 					<div style="margin-top: 100px; margin-bottom: 30px;">
 						<h5 class="m-0 font-weight-bold text-dark">코드그룹 관리</h5>
@@ -314,7 +314,7 @@ z<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 													<td style="text-align: center;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
 													<td><c:out value="${list.seq }" /></td>
 													<td><c:out value="${list.groupName_code }" /></td>
-													<td><a href="#" class="link-dark"><c:out value="${list.groupName }" /></a></td>
+													<td><a href="/codeGroup/codeGroupView?shSeq=<c:out value="${list.seq}"/>" class="link-dark"><c:out value="${list.seq}" /></a></td>
 													<td><c:out value="${list.groupName_en }" /></td>
 													<td><c:out value="${list.CCcount }" /></td>
 													<td><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd" /></td>

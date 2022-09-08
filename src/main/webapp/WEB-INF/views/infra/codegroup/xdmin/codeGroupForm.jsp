@@ -165,24 +165,24 @@
 					</div>
 					<div class="col">
 						<p class="h6" color="#2E2E2E";>코드그룹 이름(Another)</p>
-						<input type="text" class="form-control" placeholder="영문(대소문자)숫자" name="groupName_code" id="groupName_code">
+						<input type="text" class="form-control" placeholder="영문(대소문자)숫자" name="groupName_code" id="groupName_code" value="<c:out value="${item.groupName_code }"/>">
 						<p class="h6 text-danger pt-3";>다시 작성해 주세요</p>
 					</div>
 				</div><br>
 				<div class="row">
 					<div class="col">
 						<p class="h6" color="#2E2E2E";>코드그룹 이름(한글)</p>
-						<input type="text" class="form-control" placeholder="한글,숫자" name="groupName" id="groupName">
+						<input type="text" class="form-control" placeholder="한글,숫자" name="groupName" id="groupName" value="<c:out value="${item.groupName }"/>">
 					</div>
 					<div class="col">
 						<p class="h6" color="#2E2E2E";>코드그룸 이름(영문)</p>
-						<input type="text" class="form-control" placeholder="영문(대소문자)숫자" name="groupName_en" id="groupName_en">
+						<input type="text" class="form-control" placeholder="영문(대소문자)숫자" name="groupName_en" id="groupName_en" value="<c:out value="${item.groupName_en }"/>">
 					</div>
 				</div><br>
 				<div class="row">
 					<div class="col">
 						<p class="h6" color="#2E2E2E";>사용여부</p>
-						<select class="form-select" name="useYn" id="useYn">
+						<select class="form-select" name="useYn" id="useYn" value="<c:out value="${item.useYn }"/>">
 							<option selected>선택해주세요</option>
 							<option value="1">Y</option>
 							<option value="0">N</option>
@@ -200,7 +200,7 @@
 					</div>
 					<div class="col">
 						<p class="h6" color="#2E2E2E";>삭제여부</p>
-						<select class="form-select" name="delYn" id="delYn">
+						<select class="form-select" name="delYn" id="delYn" value="<c:out value="${delYn }"/>">
 							<option selected>선택해주세요</option>
 							<option value="1">Y</option>
 							<option value="0">N</option>

@@ -42,7 +42,20 @@
 			<otherwise></otherwise>
 		</choose>
 	</select>
-	
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			groupName_code	
+			,groupName
+			,groupName_en
+			,useYn
+			,delYn
+		FROM codeGroup
+		WHERE 1=1
+		AND seq = #{shSeq}
+		;
+		
+		
+	</select>
 	
 	<insert id="insert">
 		INSERT INTO codeGroup(
