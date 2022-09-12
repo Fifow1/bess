@@ -12,14 +12,19 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class MemberDao {
-
 	@Inject
 	@Resource(name = "sqlSession")
+	
 	private SqlSession sqlSession;
 	
 	private static String namespace = "bess.ham.infra.modules.member.MemberMapper";
 	
-	public List<Member> selectList(){ return sqlSession.selectList(namespace + ".selectList", ""); }
+	public List<Member> selectList(){
+		List<Member> list = sqlSession.selectList(namespace + ".selectList");
+		return list;
+		
+	}
+
 
 
 }

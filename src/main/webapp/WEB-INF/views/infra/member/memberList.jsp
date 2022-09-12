@@ -237,17 +237,16 @@
 					<div class="table-responsive">
 						<table class="table border-top table-hover" id="dataTable" width="100%" cellspacing="0">
 							<thead>
-								<tr style="color: black; font-weight: 600;">
-									<td style="text-align: center;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-									<th>번호</th>
-									<th>이름</th>
-									<th>성별</th>
-									<th>나이</th>
-									<th>권한</th>
-									<th>이메일</th>
-									<th>전화번호</th>
-									<th>등록일자</th>
-									<th>탈퇴여부</th>
+								<tr style="background-color: #2E2E2E;; font-weight: 600;">
+									<td style="text-align: center; width: 5%;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+									<th style="color: white;  border-bottom: 0px;">#</th>
+									<th style="color: white;  border-bottom: 0px;">id</th>
+									<th style="color: white;  border-bottom: 0px;">pw</th>
+									<th style="color: white;  border-bottom: 0px;">성별</th>
+									<th style="color: white;  border-bottom: 0px;">권한</th>
+									<th style="color: white;  border-bottom: 0px;">이메일</th>
+									<th style="color: white;  border-bottom: 0px;">전화번호</th>
+									<th style="color: white;  border-bottom: 0px;">등록일자</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -261,13 +260,14 @@
 										<c:forEach items="${list}" var="list" varStatus="status">
 											<tr>
 												<td style="text-align: center;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-												<td><c:out value="${list.seq }" /></td>
+												<td></td>
 												<td><c:out value="${list.id }" /></td>
 												<td><c:out value="${list.pw }" /></td>
 												<td><c:out value="${list.gender }" /></td>
 												<td><c:out value="${list.email }" /></td>
 												<td><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd" /></td>
 												<td><c:out value="${list.delYn }" /></td>
+												<td>1</td>
 											</tr>
 										</c:forEach>
 									</c:otherwise>
