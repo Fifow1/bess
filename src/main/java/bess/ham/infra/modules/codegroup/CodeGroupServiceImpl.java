@@ -36,5 +36,15 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 		System.out.println("s:"+result);
 		return result;
 	}
+
+
+	@Override
+	public int update(CodeGroup dto) throws Exception {
+		
+		int result = dao.update(dto);
+		System.out.println("dao.update result: " + result);
+		
+		return result;
+	}
 	
 }

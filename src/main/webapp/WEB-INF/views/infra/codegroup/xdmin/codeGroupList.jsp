@@ -314,7 +314,7 @@ z<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 													<td style="text-align: center;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
 													<td><c:out value="${list.seq }" /></td>
 													<td><c:out value="${list.groupName_code }" /></td>
-													<td><a href="/codeGroup/codeGroupView?shSeq=<c:out value="${list.seq}"/>" class="link-dark"><c:out value="${list.seq}" /></a></td>
+													<td><a href="/codeGroup/codeGroupView?shSeq=<c:out value="${list.seq}"/>" class="link-dark"><c:out value="${list.groupName}" /></a></td>
 													<td><c:out value="${list.groupName_en }" /></td>
 													<td><c:out value="${list.CCcount }" /></td>
 													<td><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd" /></td>
@@ -349,6 +349,21 @@ z<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 				</div>
 		</div>
 	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	<!-- Bootstrap core JavaScript-->
 	<script src="/resources/vendor/jquery/jquery.min.js"></script>

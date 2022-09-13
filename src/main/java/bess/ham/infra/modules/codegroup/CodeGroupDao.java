@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
-import org.springframework.dao.support.DaoSupport;
 import org.springframework.stereotype.Repository;
 
 
@@ -29,7 +28,7 @@ public class CodeGroupDao {
 	
 	public List<CodeGroup> selectList(CodeGroupVo vo){ 
 //		List<CodeGroup> list = sqlSession.selectList(namespace + ".selectList", vo); 
-		List<CodeGroup> list = sqlSession.selectList("bess.ham.infra.modules.codegroup.CodeGroupMapper.selectList",vo );
+		List<CodeGroup> list = sqlSession.selectList(namespace +".selectList",vo );
 		return list;
 	}
 	
@@ -48,5 +47,12 @@ public class CodeGroupDao {
 		return result;
 	}
 
+	public int update(CodeGroup dto) {
+		int result = sqlSession.update(namespace + ".update", dto);
+		System.out.println("dao result:" + result);
+		return result;
+	}
+	
+	
 	
 }

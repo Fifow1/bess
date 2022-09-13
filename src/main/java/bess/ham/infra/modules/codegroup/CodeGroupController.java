@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.google.protobuf.GeneratedMessageLite.MethodToInvoke;
+
 
 
 
@@ -62,13 +62,46 @@ public class CodeGroupController {
 	
 	public String codeGroupView(Model model,CodeGroupVo vo) throws Exception {
 		
-		System.out.println("con:"+vo.getShSeq());
 		CodeGroup result = service.selectOne(vo);
 		
 		model.addAttribute("item", result);
 		System.out.println("c:"+result);
 		// viewResolver -> /WEB-INF/views/ + home + .jsp
-		return "infra/codegroup/xdmin/codeGroupForm";
+		return "infra/codegroup/xdmin/codeGroupView";
 	}
+	
+	
+	@RequestMapping(value = "codeGroupUpdt")
+	
+	public String codeGroupUpdt(CodeGroup dto) throws Exception{
+		System.out.println("dto.getGroupName(): " + dto.getGroupName());
+		System.out.println("dto.getsesq(): " + dto.getSeq());
+		System.out.println("useYn : " + dto.getUseYn());
+		int result = service.update(dto);
+		System.out.println("controller result:"+result);
+		return "redirect:/codeGroup/codeGroupList";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

@@ -3,6 +3,7 @@ package bess.ham.infra.modules.codegroup;
 import java.util.Date;
 
 public class CodeGroup {
+
 	
 	private String seq;
 	private String groupName_code;
