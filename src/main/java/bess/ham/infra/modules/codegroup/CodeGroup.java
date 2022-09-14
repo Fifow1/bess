@@ -14,6 +14,9 @@ public class CodeGroup {
 	private Date moddate;
 	private Integer useYn;
 	private Integer delYn;
+	
+	
+	
 // ------------------------------------------------
 	public String getSeq() {
 		return seq;
