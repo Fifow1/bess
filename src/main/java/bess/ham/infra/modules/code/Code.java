@@ -12,12 +12,11 @@ public class Code {
 	private String CCseq;
 	private String CCGseq;
 	private String CCGname;
+	private String CCGname_code;
 	private String CCGname_en;
 	private String CCname;
 	private Date CCregdate;
 	private Integer CCdelYn;
-	
-	
 	public String getGroup_seq() {
 		return group_seq;
 	}
@@ -54,6 +53,12 @@ public class Code {
 	public void setCCGname(String cCGname) {
 		CCGname = cCGname;
 	}
+	public String getCCGname_code() {
+		return CCGname_code;
+	}
+	public void setCCGname_code(String cCGname_code) {
+		CCGname_code = cCGname_code;
+	}
 	public String getCCGname_en() {
 		return CCGname_en;
 	}
@@ -79,7 +84,6 @@ public class Code {
 		CCdelYn = cCdelYn;
 	}
 	
-
 	
 
 }

@@ -25,6 +25,10 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- Custom styles for this template-->
     <link href="/resources/css/1.css" rel="stylesheet">
+    
+    <!-- Jquery CDN -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -149,7 +153,7 @@
 			</div>
 		</ul>
 		<div class="container">
-			<form method="post" action="/codeGroup/codeGroupUpdt">
+			<form method="post" name="form">
 				<br><br>
 				<div class="row">
 					<div class="col">
@@ -206,7 +210,7 @@
 				<div class="row">
 					<div class="col d-flex justify-content-center">
 						<button type="button" class="btn btn-outline-dark" style="width: 200px;" id="btnUelete">삭제</button>
-						<button type="submit" class="btn btn-dark" style="width: 200px;">등록하기</button>
+						<button type="button" id="btnSave" name="btnSave" class="btn btn-dark" style="width: 200px;">등록하기</button>
 					</div>
 				</div>
 			</form>
@@ -219,7 +223,7 @@
 			
 			
 			
-			<script type="text/javascript">
+			<!-- <script type="text/javascript">
 				function test() {
 			 		if(document.getElementById('groupName').value == "" || document.getElementById('groupName').value == null){
 						alert("코드그룹이름(한글) 입력해 주세요.");
@@ -243,9 +247,35 @@
 					document.getElementById("myForm").submit();
 				}
 				
+			</script> -->
+
+			<script type="text/javascript">
+				var goUrlList = "/codeGroup/codeGroupList"; /* #-> */
+				var goUrlInst = "/codeGroup/codeGroupIsrt"; /* #-> */
+				var goUrlUpdt = "/codeGroup/codeGroupUpdt"; /* #-> */
+		//		var goUrlUele = "/codeGroup/codeGroupUele"; /* #-> */
+		//		var goUrlDele = "/codeGroup/codeGroupDele"; /* #-> */
+
+				var seq = $("input:text[name=seq]"); /* #-> */
+
+				var form = $("form[name=form]");
+				var formVo = $("form[name=formVo]");
+
+				$("#btnSave").on("click", function() {
+					if (seq.val() == "0" || seq.val() == "") {
+						// insert
+						//if (validationInst() == false)
+						//	return false;
+						form.attr("action", goUrlInst).submit();
+					} else {
+						// update
+						/* keyName.val(atob(keyName.val())); */
+						//if (validationUpdt() == false)
+						//	return false;
+						form.attr("action", goUrlUpdt).submit();
+					}
+				});
 			</script>
-
-
 
 
 

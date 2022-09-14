@@ -13,6 +13,7 @@
 			CC.seq AS CCseq
 			,CCG.seq AS CCGseq
 			,CCG.groupName AS CCGname
+			,CCG.groupName_code AS CCGname_code
 			,CCG.groupName_en AS CCGname_en
 			,CC.seq AS CCseq
 			,CC.codeName AS CCname

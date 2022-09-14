@@ -231,7 +231,6 @@
 										<th style="color: white;border-bottom: 0px;">코드그룹 코드</th>
 										<th style="color: white;border-bottom: 0px;">코드그룹 이름(한글)</th>
 										<th style="color: white;border-bottom: 0px;">코드</th>
-										<th style="color: white;border-bottom: 0px;">대체 코드</th>
 										<th style="color: white;border-bottom: 0px;">코드 이름(한글)</th>
 										<th style="color: white;border-bottom: 0px;">사용</th>
 										<th style="color: white;border-bottom: 0px;">순서</th>
@@ -244,9 +243,8 @@
 									<tr>
 										<td style="text-align: center;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
 										<td><c:out value="${list.CCseq}" /></td>
-										<td><c:out value="${list.CCGseq}" /></td>
+										<td><c:out value="${list.CCGname_code}" /></td>
 										<td><c:out value="${list.CCGname }" /></td>
-										<td></td>
 										<td></td>
 										<td><a href="#" class="link-dark"><c:out value="${list.CCname }" /></a></td>
 										<td><c:out value="${list.CCdelYn }" /></td>

@@ -25,7 +25,6 @@ z<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <!-- Custom styles for this template-->
 <link href="/resources/css/1.css" rel="stylesheet">
-
 <!-- Datepicker -->
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -76,7 +75,8 @@ z<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 											'10월', '11월', '12월' ],
 									monthNames : [ '1월', '2월', '3월', '4월',
 											'5월', '6월', '7월', '8월', '9월',
-											'10월', '11월', '12월' ],
+
+												'10월', '11월', '12월' ],
 									dateFormat : "yy-mm-dd",
 									/* maxDate: 0,                       // 선택할수있는 최대날짜, ( 0 : 오늘 이후 날짜 선택 불가) */
 									onClose : function(selectedDate) {
@@ -93,14 +93,13 @@ z<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 </head>
 
 <body id="page-top">
-
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 
 		<!-- Sidebar -->
 		<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-			<!-- Sidebar - Brand -->
+			<!-- Sidebar - B	rand -->
 			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-laugh-wink"></i>
@@ -255,7 +254,7 @@ z<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 						</div>
 						<div class="col">
 							<div class="dropdown" style="float: left; margin-right: 10px; margin-top: 20px;">
-								<select class="form-select" aria-label="Default select example" id="shOption" name="shOption">
+								<select class="form-select" id="shOption" name="shOption">
 									<option value="" <c:if test = "${empty vo.shOption }"> selected</c:if>>검색구분</option>
 									<option value="1" <c:if test = "${ vo.shOption eq 1 }"> selected</c:if>>코드그룹 코드</option>
 									<option value="2" <c:if test = "${ vo.shOption eq 2}"> selected</c:if>>코드그룹 이름 (한글)</option>
@@ -263,10 +262,10 @@ z<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 								</select>
 							</div>
 							<div class="dropdown" style="float: left; margin-right: 10px; margin-top: 20px;">
-								<select class="form-select" aria-label="Default select example" id="shDelYn" name="shDelYn">
-									<option value="" <c:if test = "${empty vo.shOption }"> selected</c:if>>삭제여부</option>
-									<option value="0" <c:if test = "${ vo.shOption eq 0}"> selected</c:if>>Yes</option>
-									<option value="1" <c:if test = "${ vo.shOption eq 1}"> selected</c:if>>No</option>
+								<select class="form-select" id="shDelYn" name="shDelYn">
+									<option value="" <c:if test = "${empty vo.shDelYn }"> selected</c:if>>삭제여부</option>
+									<option value="0" <c:if test = "${ vo.shDelYn eq 0}"> selected</c:if>>Yes</option>
+									<option value="1" <c:if test = "${ vo.shDelYn eq 1}"> selected</c:if>>No</option>
 								</select>
 							</div>
 							<div class="dropdown" style="float: left; margin-top: 20px;">
@@ -278,7 +277,7 @@ z<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 								</select>
 							</div>
 							<div style="width: 300px; float: left; margin-top: 20px; margin-left: 20px;">
-								<input type="text" class="form-control bg-light border-0 small" id="shValue" name="shValue" <c:out value="${vo.shValue }"/> placeholder="검색어를 입력해주세요." aria-label="Search" aria-describedby="basic-addon2" style="width: 250px; float: left;">
+								<input type="text" class="form-control bg-light border-0 small" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>" placeholder="검색어를 입력해주세요." style="width: 250px; float: left;">
 								<button class="btn btn-dark" type="submit" style="background-color: #2E2E2E;">
 									<i class="fas fa-search fa-sm"></i>
 								</button>
@@ -342,15 +341,14 @@ z<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 								<button type="button" class="btn btn-outline-dark">삭제</button>
 							</div>
 							<div class="d-flex justify-content-end" style="float: right; width: 50%">
-								<button type="button" class="btn btn-dark" style="background-color: #2E2E2E;" onclick="location.href='/codeGroup/codeGroupForm/'">등록</button>
+								<button type="button" class="btn btn-dark" style="background-color: #2E2E2E;" onclick="location.href='/codeGroup/codeGroupView/'">등록</button>
 							</div>
 						</div>
 					</div>
 				</div>
+			</form>
 		</div>
 	</div>
-
-
 
 
 

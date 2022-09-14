@@ -31,7 +31,7 @@
 		<if test="shDelYn != null and !shDelYn.equals('')">AND CCG.delYn = #{shDelYn}</if>
 		<!-- <if test="shregdate_s != null and !shregdate_s.equals('') and shregdate_e != null and !shregdate_e.equals('')">AND CCG.regdate between #{shregdate_s} and #{shregdate_e}</if> -->
 		<choose>
-			<when test="shOption == 1">AND CCG.seq = #{shValue}</when>
+			<when test="shOption == 1">AND CCG.groupName_code = #{shValue}</when>
 			<when test="shOption == 2">AND CCG.groupName LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 3">AND CCG.groupName_en LIKE CONCAT('%',#{shValue},'%')</when>
 			<otherwise></otherwise>
@@ -42,6 +42,7 @@
 			<otherwise></otherwise>
 		</choose>
 	</select>
+	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
 			seq
@@ -53,8 +54,6 @@
 		FROM codeGroup
 		WHERE 1=1
 		AND seq = #{shSeq}
-		
-		
 	</select>
 	
 	<insert id="insert">

@@ -25,7 +25,7 @@ public class MemberController {
 		List<Member> list = service.selectList();
 		model.addAttribute("list", list);
 		
-		return "infra/member/memberList";
+		return "infra/member/xdimn/memberList";
 	}
 	
 	
