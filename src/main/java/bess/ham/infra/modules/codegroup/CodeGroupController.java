@@ -21,15 +21,20 @@ public class CodeGroupController {
 	@Autowired
 	CodeGroupServiceImpl service;
 	
+	
+	
+	
 
 	@RequestMapping(value = "codeGroupList")
 	
 	public String codeGroupList(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
 		
 
-		List<CodeGroup> list = service.selectList(vo);
+		vo.setParamsPaging(service.selectOneCount(vo));
 		
-		model.addAttribute("list", list);
+			List<CodeGroup> list = service.selectList(vo);
+			model.addAttribute("list", list);
+
 		
 		// viewResolver -> /WEB-INF/views/ + home + .jsp
 		return "infra/codegroup/xdmin/codeGroupList";

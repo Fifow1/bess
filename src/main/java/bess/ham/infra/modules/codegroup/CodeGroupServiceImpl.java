@@ -15,12 +15,9 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 	
 	@Override
 	public List<CodeGroup> selectList(CodeGroupVo vo) throws Exception {
-		
 		List<CodeGroup> list = dao.selectList(vo);
-		
 		return list;
 	}
-
 	
 	@Override
 	public int insert(CodeGroup dto) throws Exception{
@@ -45,6 +42,12 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 		System.out.println("dao.update result: " + result);
 		
 		return result;
+	}
+
+
+	@Override
+	public int selectOneCount(CodeGroupVo vo) throws Exception {
+		return  dao.selectOneCount(vo);
 	}
 	
 }

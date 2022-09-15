@@ -214,7 +214,12 @@ z<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 		</ul>
 
 		<div class="container" style="margin-right: 400px;">
-			<form method="get" action="/codeGroup/codeGroupList" style="float: left; width: 1150px;">
+			<form method="get" action="/codeGroup/codeGroupList" style="float: left; width: 1150px;" name="formList" id="formList">
+				<input type="hidden" name="mainKey">
+				<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+				<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+				<input type="hidden" name="checkboxSeqArray">
+				
 				<div style="height: 500px; width: 1400px">
 					<div style="margin-top: 100px; margin-bottom: 30px;">
 						<h5 class="m-0 font-weight-bold text-dark">코드그룹 관리</h5>
@@ -325,17 +330,9 @@ z<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 								</tbody>
 							</table>
 						</div>
-						<div class="d-flex justify-content-center">
-							<nav aria-label="Page navigation example">
-								<ul class="pagination">
-									<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-									<li class="page-item"><a class="page-link" href="#">1</a></li>
-									<li class="page-item"><a class="page-link" href="#">2</a></li>
-									<li class="page-item"><a class="page-link" href="#">3</a></li>
-									<li class="page-item"><a class="page-link" href="#">Next</a></li>
-								</ul>
-							</nav>
-						</div>
+						<!-- pagination s -->
+						<%@include file="./pagination.jsp"%>
+						<!-- pagination e -->
 						<div class="row">
 							<div class="d-flex justify-content-start" style="float: left; width: 50%;">
 								<button type="button" class="btn btn-outline-dark">삭제</button>
@@ -352,9 +349,16 @@ z<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 
 
 
-
-
-
+	
+	<script type="text/javascript">
+		var goUrlList = "/codeGroup/codeGroupList"; /* #-> */
+	
+		goList = function(thisPage) {
+			$("input:hidden[name=thisPage]").val(thisPage);
+			form.attr("action", goUrlList).submit();
+		}
+		
+	</script>
 
 
 

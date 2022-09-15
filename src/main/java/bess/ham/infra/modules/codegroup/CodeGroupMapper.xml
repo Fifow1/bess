@@ -17,7 +17,7 @@
 			AND groupName LIKE CONCAT('%',#{shValue},'%')
 			 -->
 			
-			
+		SELECT aa.* FROM (
 		SELECT
 			CCG.seq
 			,CCG.groupName_code
@@ -41,7 +41,20 @@
 			<when test="shdate == 2">AND CCG.moddate between #{shdate_s} and #{shdate_e}</when>
 			<otherwise></otherwise>
 		</choose>
+		ORDER BY CCG.seq ASC
+		) aa
+		
+		limit #{rowNumToShow} offset #{startRnumForMysql}
 	</select>
+	
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT
+			count(*)
+			FROM  codeGroup CCG
+	</select>
+	
+	
 	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
