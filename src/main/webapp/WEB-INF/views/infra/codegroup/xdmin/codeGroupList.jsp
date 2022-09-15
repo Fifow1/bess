@@ -214,7 +214,7 @@ z<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 		</ul>
 
 		<div class="container" style="margin-right: 400px;">
-			<form method="get" action="/codeGroup/codeGroupList" style="float: left; width: 1150px;" name="formList" id="formList">
+			<form method="get"  style="float: left; width: 1150px;" name="form" id="form">
 				<input type="hidden" name="mainKey">
 				<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 				<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
@@ -352,7 +352,7 @@ z<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 	
 	<script type="text/javascript">
 		var goUrlList = "/codeGroup/codeGroupList"; /* #-> */
-	
+		var form = $("form[name=form]");
 		goList = function(thisPage) {
 			$("input:hidden[name=thisPage]").val(thisPage);
 			form.attr("action", goUrlList).submit();
