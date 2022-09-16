@@ -153,7 +153,8 @@
 			</div>
 		</ul>
 		<div class="container">
-			<form method="post" name="form">
+			<form id="form" name="form" method="post" autocomplete="off" enctype="multipart/form-data">
+			<%@include file="./codeGroupVo.jsp"%>	
 				<br><br>
 				<div class="row">
 					<div class="col">
@@ -211,8 +212,15 @@
 					<div class="col d-flex justify-content-center">
 						<button type="button" class="btn btn-outline-dark" style="width: 200px;" id="btnUelete">삭제</button>
 						<button type="button" id="btnSave" name="btnSave" class="btn btn-dark" style="width: 200px;">등록하기</button>
+						<button type="button" id="btnList" name="btnList" class="btn btn-dark" style="width: 200px;">목록으로</button>
 					</div>
 				</div>
+			</form>
+			<form name="formVo" id="formVo" method="post">
+				<!-- *Vo.jsp s -->
+				<%@include file="./codeGroupVo.jsp"%>
+				<!-- #-> -->
+				<!-- *Vo.jsp e -->
 			</form>
 			<br><br><br><br><br>
 			
@@ -275,7 +283,14 @@
 						form.attr("action", goUrlUpdt).submit();
 					}
 				});
+				
+				
+				$("#btnList").on("click", function(){
+					formVo.attr("action", goUrlList).submit();
+				});
+				
 			</script>
+
 
 
 

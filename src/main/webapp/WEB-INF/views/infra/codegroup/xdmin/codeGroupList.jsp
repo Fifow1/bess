@@ -214,8 +214,8 @@ z<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 		</ul>
 
 		<div class="container" style="margin-right: 400px;">
-			<form method="get"  style="float: left; width: 1150px;" name="form" id="form">
-				<input type="hidden" name="mainKey">
+			<form method="post"  style="float: left; width: 1150px;" name="formList" id="formList">
+				<input type="hidden" name="shSeq">
 				<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 				<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 				<input type="hidden" name="checkboxSeqArray">
@@ -268,7 +268,7 @@ z<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 							</div>
 							<div class="dropdown" style="float: left; margin-right: 10px; margin-top: 20px;">
 								<select class="form-select" id="shDelYn" name="shDelYn">
-									<option value="" <c:if test = "${empty vo.shDelYn }"> selected</c:if>>삭제여부</option>
+									<option value="2" <c:if test = "${empty vo.shDelYn }"> selected</c:if>>삭제여부</option>
 									<option value="0" <c:if test = "${ vo.shDelYn eq 0}"> selected</c:if>>Yes</option>
 									<option value="1" <c:if test = "${ vo.shDelYn eq 1}"> selected</c:if>>No</option>
 								</select>
@@ -318,7 +318,7 @@ z<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 													<td style="text-align: center;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
 													<td><c:out value="${list.seq }" /></td>
 													<td><c:out value="${list.groupName_code }" /></td>
-													<td><a href="/codeGroup/codeGroupView?shSeq=<c:out value="${list.seq}"/>" class="link-dark"><c:out value="${list.groupName}" /></a></td>
+													<td><a href="javascript:goForm(<c:out value="${list.seq }"/>)" class="link-dark"><c:out value="${list.groupName}" /></a></td>
 													<td><c:out value="${list.groupName_en }" /></td>
 													<td><c:out value="${list.CCcount }" /></td>
 													<td><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd" /></td>
@@ -331,14 +331,14 @@ z<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 							</table>
 						</div>
 						<!-- pagination s -->
-						<%@include file="./pagination.jsp"%>
+						<%@include file="../../base/pagination.jsp"%>
 						<!-- pagination e -->
 						<div class="row">
 							<div class="d-flex justify-content-start" style="float: left; width: 50%;">
 								<button type="button" class="btn btn-outline-dark">삭제</button>
 							</div>
 							<div class="d-flex justify-content-end" style="float: right; width: 50%">
-								<button type="button" class="btn btn-dark" style="background-color: #2E2E2E;" onclick="location.href='/codeGroup/codeGroupView/'">등록</button>
+								<button type="button" class="btn btn-dark" style="background-color: #2E2E2E;" id="btnForm">등록</button>
 							</div>
 						</div>
 					</div>
@@ -351,20 +351,29 @@ z<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 
 	
 	<script type="text/javascript">
+	
 		var goUrlList = "/codeGroup/codeGroupList"; /* #-> */
-		var form = $("form[name=form]");
+		var goUrlForm = "/codeGroup/codeGroupForm";
+		
+		var seq = $("input:hidden[name=shSeq]");
+		var form = $("form[name=formList]");
+		
 		goList = function(thisPage) {
 			$("input:hidden[name=thisPage]").val(thisPage);
 			form.attr("action", goUrlList).submit();
 		}
 		
+		$('#btnForm').on("click", function() {
+			goForm(0);                
+		});
+	
+		goForm = function(keyValue) {
+	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+	    	seq.val(keyValue);
+			form.attr("action", goUrlForm).submit();
+		}
 	</script>
-
-
-
-
-
-
+	
 
 
 	<!-- Bootstrap core JavaScript-->

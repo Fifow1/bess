@@ -7,6 +7,25 @@
 <mapper namespace="bess.ham.infra.modules.codegroup.CodeGroupMapper">
 
     <resultMap id="resultMapObj" type="bess.ham.infra.modules.codegroup.CodeGroup"></resultMap>
+    
+    <sql id="selectCommon">
+    	FROM codeGroup CCG
+    	WHERE 1=1
+    		<if test="shDelYn != null and !shDelYn.equals('')">AND CCG.delYn = #{shDelYn}</if>
+		<!-- <if test="shregdate_s != null and !shregdate_s.equals('') and shregdate_e != null and !shregdate_e.equals('')">AND CCG.regdate between #{shregdate_s} and #{shregdate_e}</if> -->
+		<choose>
+			<when test="shOption == 1">AND CCG.groupName_code LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 2">AND CCG.groupName LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND CCG.groupName_en LIKE CONCAT('%',#{shValue},'%')</when>
+			<otherwise></otherwise>
+		</choose>
+		<choose>
+			<when test="shdate == 1">AND CCG.regdate between #{shdate_s} and #{shdate_e}</when>
+			<when test="shdate == 2">AND CCG.moddate between #{shdate_s} and #{shdate_e}</when>
+			<otherwise></otherwise>
+		</choose>
+    </sql>
+    
 	
 	<select id="selectList" resultMap="resultMapObj">
 		<!-- SELECT
@@ -17,7 +36,7 @@
 			AND groupName LIKE CONCAT('%',#{shValue},'%')
 			 -->
 			
-		SELECT aa.* FROM (
+		<include refid="Base.selectListUpperForMysql"/>
 		SELECT
 			CCG.seq
 			,CCG.groupName_code
@@ -25,33 +44,16 @@
 	    	,CCG.groupName_en
 			,(select count(CC.seq) from code CC where 1=1 and group_seq = CCG.seq) as CCcount
 	    	,CCG.regdate
-		FROM  codeGroup CCG
-		WHERE 1=1
 		<!-- AND groupName LIKE CONCAT('%',#{shValue},'%') -->
-		<if test="shDelYn != null and !shDelYn.equals('')">AND CCG.delYn = #{shDelYn}</if>
-		<!-- <if test="shregdate_s != null and !shregdate_s.equals('') and shregdate_e != null and !shregdate_e.equals('')">AND CCG.regdate between #{shregdate_s} and #{shregdate_e}</if> -->
-		<choose>
-			<when test="shOption == 1">AND CCG.groupName_code = #{shValue}</when>
-			<when test="shOption == 2">AND CCG.groupName LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 3">AND CCG.groupName_en LIKE CONCAT('%',#{shValue},'%')</when>
-			<otherwise></otherwise>
-		</choose>
-		<choose>
-			<when test="shdate == 1">AND CCG.regdate between #{shdate_s} and #{shdate_e}</when>
-			<when test="shdate == 2">AND CCG.moddate between #{shdate_s} and #{shdate_e}</when>
-			<otherwise></otherwise>
-		</choose>
+		<include refid="selectCommon"/>
 		ORDER BY CCG.seq ASC
-		) aa
-		
-		limit #{rowNumToShow} offset #{startRnumForMysql}
+		<include refid="Base.selectListLowerForMysql"/>
 	</select>
-	
 	
 	<select id="selectOneCount" resultType="Integer">
 		SELECT
 			count(*)
-			FROM  codeGroup CCG
+		<include refid="selectCommon"/>
 	</select>
 	
 	

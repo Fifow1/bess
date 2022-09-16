@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 
@@ -16,21 +17,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "/codeGroup") //*********
 public class CodeGroupController {
 	
-	
 	// New
 	@Autowired
 	CodeGroupServiceImpl service;
 	
+	public void setSearchAndPaging(CodeGroupVo vo) throws Exception{
+		
+	//	vo.setShOption(vo.getShOption() == 	null ? 2 : vo.getShOption());
+		vo.setShDelYn(vo.getShDelYn() == null ? 1 : vo.getShDelYn());
+		
+		
+		vo.setParamsPaging(service.selectOneCount(vo));
+	}
 	
 	
 	
 
 	@RequestMapping(value = "codeGroupList")
-	
 	public String codeGroupList(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
 		
 
-		vo.setParamsPaging(service.selectOneCount(vo));
+			setSearchAndPaging(vo);
 		
 			List<CodeGroup> list = service.selectList(vo);
 			model.addAttribute("list", list);
@@ -41,51 +48,59 @@ public class CodeGroupController {
 	}	
 	
 	
-	@RequestMapping(value = "codeGroupForm")
 	
-	public String codeGroupForm(Model model, CodeGroupVo vo) throws Exception {
-		
 
-		List<CodeGroup> list = service.selectList(vo);
+	
+	
+	
+	
+	@RequestMapping(value = "codeGroupForm")
+	public String codeGroupForm(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
 		
+		
+		List<CodeGroup> list = service.selectList(vo);
+		CodeGroup result = service.selectOne(vo);
+		model.addAttribute("item", result);
 		model.addAttribute("list", list);
+		System.out.println("getSeq: " + vo.getSeq());
+		System.out.println("getShSeq: " + vo.getShSeq());
 		
 		// viewResolver -> /WEB-INF/views/ + home + .jsp
 		return "infra/codegroup/xdmin/codeGroupForm";
 	}
 	
+
 	
 	@RequestMapping(value = "codeGroupView")
-	
 	public String codeGroupView(Model model,CodeGroupVo vo) throws Exception {
 		
 		CodeGroup result = service.selectOne(vo);
-		
 		model.addAttribute("item", result);
 		System.out.println("c:"+result);
 		// viewResolver -> /WEB-INF/views/ + home + .jsp
-		return "infra/codegroup/xdmin/codeGroupView";
+		return "infra/codegroup/xdmin/codeGroupForm";
 	}
+	
 	
 	@RequestMapping(value = "codeGroupIsrt")
-	
-	public String codeGroupIsrt(CodeGroup dto) throws Exception{
-		System.out.println("dto.getGroupName(): " + dto.getGroupName());
+	public String codeGroupIsrt(CodeGroupVo vo,CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception{
 		
-		int result = service.insert(dto);
-		System.out.println("controller result:"+result);
-		return "redirect:/codeGroup/codeGroupList";
+		service.insert(dto);
+		vo.setShSeq(dto.getSeq());
+		redirectAttributes.addFlashAttribute("vo",vo);
+		return "redirect:/codeGroup/codeGroupForm";
 	}
 	
-	@RequestMapping(value = "codeGroupUpdt")
 	
-	public String codeGroupUpdt(CodeGroup dto) throws Exception{
-		System.out.println("dto.getGroupName(): " + dto.getGroupName());
-		System.out.println("dto.getsesq(): " + dto.getSeq());
-		System.out.println("useYn : " + dto.getUseYn());
-		int result = service.update(dto);
-		System.out.println("controller result:"+result);
-		return "redirect:/codeGroup/codeGroupList";
+	@RequestMapping(value = "codeGroupUpdt")
+	public String codeGroupUpdt(CodeGroupVo vo,CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception{
+		
+		
+		service.update(dto);
+		vo.setShSeq(dto.getSeq());
+		redirectAttributes.addFlashAttribute("vo",vo);
+		
+		return "redirect:/codeGroup/codeGroupForm";
 	}
 	
 	

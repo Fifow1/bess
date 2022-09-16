@@ -13,6 +13,7 @@ public class CodeGroupVo {
 	private Integer shdate;
 	private String shdate_s;
 	private String shdate_e;
+	private String seq;
 	
 	
 	private int thisPage = 1;									// 현재 페이지
@@ -81,6 +82,18 @@ public void setParamsPaging(int totalRows) {
 //		System.out.println("getStartRnumForMysql(): " + getStartRnumForMysql());
 		
 	}
+
+
+
+public String getSeq() {
+	return seq;
+}
+
+
+
+public void setSeq(String seq) {
+	this.seq = seq;
+}
 
 
 
