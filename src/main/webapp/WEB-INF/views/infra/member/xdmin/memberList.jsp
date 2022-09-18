@@ -1,3 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,11 +18,11 @@
     <title>회원관리</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="/resources/	vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- Custom styles for this template-->
-    <link href="css/1.css" rel="stylesheet">
+    <link href="/resources/css/1.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -152,20 +158,20 @@
 					</div>
 					<div class="col" >
 						<div class="form-check" style="margin-top: 10px; float: left; margin-right: 50px;">
-							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" style="accent-color: black;"> 
-							<label class="form-check-label" for="flexCheckDefault1" style="color: black; margin-top: 2px;">전체 </label>
+							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="accent-color: black;"> 
+							<label class="form-check-label" for="flexCheckDefault" style="color: black; margin-top: 2px;">전체 </label>
 						</div>
 						<div class="form-check" style="margin-top: 10px; float: left; margin-right: 50px;">
-							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2" style="accent-color: black;"> 
-							<label class="form-check-label" for="flexCheckDefault2" style="color: black; margin-top: 2px;">회원</label>
+							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="accent-color: black;"> 
+							<label class="form-check-label" for="flexCheckDefault" style="color: black; margin-top: 2px;">회원</label>
 						</div>
 						<div class="form-check" style="margin-top: 10px; float: left; margin-right: 50px;">
-							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3" style="accent-color: black;"> 
-							<label class="form-check-label" for="flexCheckDefault3" style="color: black; margin-top: 2px;">관리자</label>
+							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="accent-color: black;"> 
+							<label class="form-check-label" for="flexCheckDefault" style="color: black; margin-top: 2px;">관리자</label>
 						</div>
 						<div class="form-check" style="margin-top: 10px; float: left; margin-right: 50px;">
-							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4" style="accent-color: black;"> 
-							<label class="form-check-label" for="flexCheckDefault4" style="color: black; margin-top: 2px;">탈퇴대기자</label>
+							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="accent-color: black;"> 
+							<label class="form-check-label" for="flexCheckDefault" style="color: black; margin-top: 2px;">탈퇴대기자</label>
 						</div>
 					</div>
 				</div>
@@ -193,13 +199,13 @@
 						<h5 style="padding-left: 0px; margin-top: 30px; font-size: 17px; font-weight: 700; color: black;">검색조건</h5>
 					</div>
 					<div class="col">
-						<div class="dropdown" style="float: left; margin-right:10px; margin-top: 20px;">
-							<button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">검색조건1</button>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">Action</a></li>
-								<li><a class="dropdown-item" href="#">Another action</a></li>
-								<li><a class="dropdown-item" href="#">Something else here</a></li>
-							</ul>
+						<div class="dropdown" style="float: left; margin-right: 10px; margin-top: 20px;">
+							<select class="form-select">
+								<option>검색구분</option>
+								<option>코드그룹 코드</option>
+								<option>코드그룹 이름 (한글)</option>
+								<option>코드그룹 이름 (영문)</option>
+							</select>
 						</div>
 						<div class="dropdown" style="float: left; margin-right:10px; margin-top: 20px;">
 							<button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">검색조건2</button>
@@ -227,58 +233,45 @@
 				</div>
 				<div class="">
 					<div class="table-responsive">
-						<table class="table border-top table-hover" id="dataTable" width="100%" cellspacing="0">
+						<table class="table border-top" id="dataTable" width="100%" cellspacing="0">
 							<thead>
-								<tr style="color: white; font-weight: 600; background-color: #2E2E2E;">
-									<td style="text-align: center;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-									<th style="border-bottom: 0;">번호</th>
-									<th style="border-bottom: 0;">이름</th>
-									<th style="border-bottom: 0;">성별</th>
-									<th style="border-bottom: 0;">나이</th>
-									<th style="border-bottom: 0;">권한</th>
-									<th style="border-bottom: 0;">이메일</th>
-									<th style="border-bottom: 0;">전화번호</th>
-									<th style="border-bottom: 0;">등록일자</th>
-									<th style="border-bottom: 0;">탈퇴여부</th>
+								<tr style="color: black; font-weight: 600; background-color: #2E2E2E;">
+									<td style="text-align: center; width: 5%;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+									<th style="color: white; border-bottom: 0;">번호</th>
+									<th style="color: white; border-bottom: 0;">이름</th>
+									<th style="color: white; border-bottom: 0;">성별</th>
+									<th style="color: white; border-bottom: 0;">나이</th>
+									<th style="color: white; border-bottom: 0;">권한</th>
+									<th style="color: white; border-bottom: 0;">이메일</th>
+									<th style="color: white; border-bottom: 0;">전화번호</th>
+									<th style="color: white; border-bottom: 0;">등록일자</th>
+									<th style="color: white; border-bottom: 0;">탈퇴여부</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td style="text-align: center;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-									<td>1</td>
-									<td>함승윤</td>
-									<td>남</td>
-									<td>20</td>
-									<td>관리자</td>
-									<td>lasldjf123@naver.com</td>
-									<td>010-6477-5721</td>
-									<td>2022.06.23</td>
-									<td>N</td>
-								</tr>
-								<tr>
-									<td style="text-align: center;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-									<td>1</td>
-									<td>함승윤</td>
-									<td>남</td>
-									<td>20</td>
-									<td>관리자</td>
-									<td>lasldjf123@naver.com</td>
-									<td>010-6477-5721</td>
-									<td>2022.06.23</td>
-									<td>N</td>
-								</tr>
-								<tr>
-									<td style="text-align: center;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-									<td>1</td>
-									<td>함승윤</td>
-									<td>남</td>
-									<td>20</td>
-									<td>관리자</td>
-									<td>lasldjf123@naver.com</td>
-									<td>010-6477-5721</td>
-									<td>2022.06.23</td>
-									<td>N</td>
-								</tr>
+								<c:choose>
+									<c:when test="${fn:length(list) eq 0 }">
+										<tr>
+											<td class = "text-center" colspan="10">없음</td>
+										</tr>
+									</c:when>
+									<c:otherwise>
+										<c:forEach items="${list}" var="list" varStatus="status">
+											<tr>
+												<td style="text-align: center;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+												<td><c:out value="${list.seq }" /></td>
+												<td><c:out value="${list.id }"/></td>
+												<td><c:out value="${list.pw }"/></td>
+												<td><c:out value="${list.gender }"/></td>
+												<td><c:out value="${list.authority }"/></td>
+												<td><c:out value="${list.email }"/></td>
+												<td><c:out value="${list.number_phone }"/></td>
+												<td><c:out value="${list.regdate }"/></td>
+												<td>N</td>
+											</tr>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>
 							</tbody>
 						</table>
 					</div>
@@ -293,10 +286,7 @@
 							</ul>
 						</nav>
 					</div>
-					<div class="d-flex justify-content-end" style="float: left;">
-						<button type="button" class="btn btn-dark">등록</button>
-					</div>
-					<div class="d-flex justify-content-start">
+					<div class="d-flex justify-content-end">
 						<button type="button" class="btn btn-dark">삭제</button>
 					</div>
 				</div>
@@ -305,21 +295,21 @@
 	</div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="/resources/vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="/resources/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="/resources/js/demo/chart-area-demo.js"></script>
+    <script src="/resources/js/demo/chart-pie-demo.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 

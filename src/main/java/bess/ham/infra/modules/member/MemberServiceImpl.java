@@ -16,8 +16,6 @@ public class MemberServiceImpl implements MemberService {
 	public List<Member> selectList() throws Exception {
 		return dao.selectList();
 	}
-
-	
 }
 
 
