@@ -20,11 +20,10 @@ public class MemberController {
 	
 
 	@RequestMapping(value = "memberList")
-	public String memberList(Model model) throws Exception {
+	public String memberList(MemberVo vo, Model model) throws Exception {
 
-		List<Member> list = service.selectList();
+		List<Member> list = service.selectList(vo);
 		model.addAttribute("list", list);
-		
 		return "infra/member/xdmin/memberList";
 	}
 	
@@ -32,8 +31,6 @@ public class MemberController {
 	@RequestMapping(value = "memberLogin")
 	public String memberLogin(Model model) throws Exception {
 
-		List<Member> list = service.selectList();
-		model.addAttribute("list", list);
 		
 		return "infra/member/user/memberLogin";
 	}
@@ -41,8 +38,6 @@ public class MemberController {
 	@RequestMapping(value = "memberRegForm")
 	public String memberRegForm(Model model) throws Exception {
 
-		List<Member> list = service.selectList();
-		model.addAttribute("list", list);
 		
 		return "infra/member/user/memberRegForm";
 	}
@@ -51,8 +46,6 @@ public class MemberController {
 	@RequestMapping(value = "memberFindId_email")
 	public String memberFindId_email(Model model) throws Exception {
 
-		List<Member> list = service.selectList();
-		model.addAttribute("list", list);
 		
 		return "infra/member/user/memberFindId_email";
 	}
@@ -60,8 +53,6 @@ public class MemberController {
 	@RequestMapping(value = "memberFindId_phone")
 	public String memberFindId_phone(Model model) throws Exception {
 
-		List<Member> list = service.selectList();
-		model.addAttribute("list", list);
 		
 		return "infra/member/user/memberFindId_phone";
 	}
@@ -69,8 +60,6 @@ public class MemberController {
 	@RequestMapping(value = "memberFindId_result")
 	public String memberFindId_result(Model model) throws Exception {
 
-		List<Member> list = service.selectList();
-		model.addAttribute("list", list);
 		
 		return "infra/member/user/memberFindId_result";
 	}
@@ -79,8 +68,6 @@ public class MemberController {
 	@RequestMapping(value = "memberFindPwd_phone")
 	public String memberFindPwd_phone(Model model) throws Exception {
 
-		List<Member> list = service.selectList();
-		model.addAttribute("list", list);
 		
 		return "infra/member/user/memberFindPwd_phone";
 	}
@@ -88,8 +75,6 @@ public class MemberController {
 	@RequestMapping(value = "memberFindPwd_email")
 	public String memberFindPwd_email(Model model) throws Exception {
 
-		List<Member> list = service.selectList();
-		model.addAttribute("list", list);
 		
 		return "infra/member/user/memberFindPwd_email";
 	}
@@ -97,8 +82,6 @@ public class MemberController {
 	@RequestMapping(value = "memberFindPwd_result")
 	public String memberFindPwd_result(Model model) throws Exception {
 
-		List<Member> list = service.selectList();
-		model.addAttribute("list", list);
 		
 		return "infra/member/user/memberFindPwd_result";
 	}
@@ -108,8 +91,6 @@ public class MemberController {
 	@RequestMapping(value = "memberMypage_myinfo")
 	public String memberMypage_myinfo(Model model) throws Exception {
 
-		List<Member> list = service.selectList();
-		model.addAttribute("list", list);
 		
 		return "infra/member/user/memberMypage_myinfo";
 	}
@@ -117,8 +98,6 @@ public class MemberController {
 	@RequestMapping(value = "memberMypage_order")
 	public String memberMypage_order(Model model) throws Exception {
 
-		List<Member> list = service.selectList();
-		model.addAttribute("list", list);
 		
 		return "infra/member/user/memberMypage_order";
 	}
@@ -126,8 +105,6 @@ public class MemberController {
 	@RequestMapping(value = "memberMypage_qa")
 	public String memberMypage_qa(Model model) throws Exception {
 
-		List<Member> list = service.selectList();
-		model.addAttribute("list", list);
 		
 		return "infra/member/user/memberMypage_qa";
 	}

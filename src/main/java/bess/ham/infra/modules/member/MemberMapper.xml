@@ -11,9 +11,17 @@
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
 			*
-		FROM member a
+		FROM member
 		WHERE 1=1
-			AND delYn = 1
+			<choose>
+				<when test="shDelYn == 2">AND delYn is not null</when>
+				<when test="shDelYn != null and !shDelYn.equals('')">AND delYn = #{shDelYn}</when>
+			</choose>
+			<choose>
+				<when test="shOption == 1">AND id Like CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 2">AND email Like CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND number_phone Like CONCAT('%',#{shValue},'%')</when>
+			</choose>
 	</select>
 
 </mapper>	

@@ -19,8 +19,8 @@ public class MemberDao {
 	
 	private static String namespace = "bess.ham.infra.modules.member.MemberMapper";
 	
-	public List<Member> selectList(){
-		List<Member> list = sqlSession.selectList(namespace + ".selectList");
+	public List<Member> selectList(MemberVo vo){
+		List<Member> list = sqlSession.selectList(namespace + ".selectList", vo);
 		return list;
 		
 	}

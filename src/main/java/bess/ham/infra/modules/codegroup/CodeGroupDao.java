@@ -29,6 +29,7 @@ public class CodeGroupDao {
 	public List<CodeGroup> selectList(CodeGroupVo vo){ 
 //		List<CodeGroup> list = sqlSession.selectList(namespace + ".selectList", vo); 
 		List<CodeGroup> list = sqlSession.selectList(namespace +".selectList",vo );
+		System.out.println("D shd: " + vo.getShDelYn());
 		return list;
 	}
 	

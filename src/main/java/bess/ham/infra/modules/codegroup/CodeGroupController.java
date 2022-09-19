@@ -2,6 +2,7 @@ package bess.ham.infra.modules.codegroup;
 
 import java.util.List;
 
+import org.apache.taglibs.standard.tag.el.sql.SetDataSourceTag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,8 +42,9 @@ public class CodeGroupController {
 		
 			List<CodeGroup> list = service.selectList(vo);
 			model.addAttribute("list", list);
-
-		
+			System.out.println("C shd: " + vo.getShDelYn());
+			
+			
 		// viewResolver -> /WEB-INF/views/ + home + .jsp
 		return "infra/codegroup/xdmin/codeGroupList";
 	}	

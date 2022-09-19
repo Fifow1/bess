@@ -148,149 +148,151 @@
 		</ul>
 
 		<div class="container" style="margin-right: 400px;">
-			<div style="height: 500px; width: 1400px">
-				<div style="margin-top: 100px; margin-bottom: 30px;">
-					<h5 class="m-0 font-weight-bold text-dark">회원관리</h5>
-				</div>
-				<div class="row" style="border-top: 1px solid black; width: 1400px; margin-left: 0px; height: 50px;">
-					<div class="col-1">
-						<h5 style="padding-left: 0px; margin-top: 15px; font-size: 17px; font-weight: 700; color: black;">회원등급</h5>
+			<form action="/member/memberList" method="GET">
+				<div style="height: 500px; width: 1400px">
+					<div style="margin-top: 100px; margin-bottom: 30px;">
+						<h5 class="m-0 font-weight-bold text-dark">회원관리</h5>
 					</div>
-					<div class="col" >
-						<div class="form-check" style="margin-top: 10px; float: left; margin-right: 50px;">
-							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="accent-color: black;"> 
-							<label class="form-check-label" for="flexCheckDefault" style="color: black; margin-top: 2px;">전체 </label>
+					<div class="row" style="border-top: 1px solid black; width: 1400px; margin-left: 0px; height: 50px;">
+						<div class="col-1">
+							<h5 style="padding-left: 0px; margin-top: 15px; font-size: 17px; font-weight: 700; color: black;">회원등급</h5>
 						</div>
-						<div class="form-check" style="margin-top: 10px; float: left; margin-right: 50px;">
-							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="accent-color: black;"> 
-							<label class="form-check-label" for="flexCheckDefault" style="color: black; margin-top: 2px;">회원</label>
-						</div>
-						<div class="form-check" style="margin-top: 10px; float: left; margin-right: 50px;">
-							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="accent-color: black;"> 
-							<label class="form-check-label" for="flexCheckDefault" style="color: black; margin-top: 2px;">관리자</label>
-						</div>
-						<div class="form-check" style="margin-top: 10px; float: left; margin-right: 50px;">
-							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="accent-color: black;"> 
-							<label class="form-check-label" for="flexCheckDefault" style="color: black; margin-top: 2px;">탈퇴대기자</label>
-						</div>
-					</div>
-				</div>
-				<div class="row border-top" style=" width: 1400px; margin-left: 0px; height: 50px;">
-					<div class="col-1">
-						<h5 style="padding-left: 0px; margin-top: 15px; font-size: 17px; font-weight: 700; color: black;">검색순서</h5>
-					</div>
-					<div class="col" >
-						<div class="form-check" style="margin-top: 10px; float: left; margin-right: 33px;">
-							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="accent-color: black;"> 
-							<label class="form-check-label" for="flexCheckDefault" style="color: black; margin-top: 2px;">번호순</label>
-						</div>
-						<div class="form-check" style="margin-top: 10px; float: left; margin-right: 33px;">
-							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="accent-color: black;"> 
-							<label class="form-check-label" for="flexCheckDefault" style="color: black; margin-top: 2px;">최신순</label>
-						</div>
-						<div class="form-check" style="margin-top: 10px; float: left; margin-right: 50px;">
-							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="accent-color: black;"> 
-							<label class="form-check-label" for="flexCheckDefault" style="color: black; margin-top: 2px;">이름순</label>
+						<div class="col" >
+							<div class="form-check" style="margin-top: 10px; float: left; margin-right: 50px;">
+								<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="accent-color: black;"> 
+								<label class="form-check-label" for="flexCheckDefault" style="color: black; margin-top: 2px;">전체 </label>
+							</div>
+							<div class="form-check" style="margin-top: 10px; float: left; margin-right: 50px;">
+								<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="accent-color: black;"> 
+								<label class="form-check-label" for="flexCheckDefault" style="color: black; margin-top: 2px;">회원</label>
+							</div>
+							<div class="form-check" style="margin-top: 10px; float: left; margin-right: 50px;">
+								<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="accent-color: black;"> 
+								<label class="form-check-label" for="flexCheckDefault" style="color: black; margin-top: 2px;">관리자</label>
+							</div>
+							<div class="form-check" style="margin-top: 10px; float: left; margin-right: 50px;">
+								<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="accent-color: black;"> 
+								<label class="form-check-label" for="flexCheckDefault" style="color: black; margin-top: 2px;">탈퇴대기자</label>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="row border-top" style=" width: 1400px; margin-left: 0px; height: 80px; border-bottom: 1px solid black; margin-bottom: 30px;">
-					<div class="col-1">
-						<h5 style="padding-left: 0px; margin-top: 30px; font-size: 17px; font-weight: 700; color: black;">검색조건</h5>
-					</div>
-					<div class="col">
-						<div class="dropdown" style="float: left; margin-right: 10px; margin-top: 20px;">
-							<select class="form-select">
-								<option>검색구분</option>
-								<option>코드그룹 코드</option>
-								<option>코드그룹 이름 (한글)</option>
-								<option>코드그룹 이름 (영문)</option>
-							</select>
+					<div class="row border-top" style=" width: 1400px; margin-left: 0px; height: 50px;">
+						<div class="col-1">
+							<h5 style="padding-left: 0px; margin-top: 15px; font-size: 17px; font-weight: 700; color: black;">검색순서</h5>
 						</div>
-						<div class="dropdown" style="float: left; margin-right:10px; margin-top: 20px;">
-							<button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">검색조건2</button>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">Action</a></li>
-								<li><a class="dropdown-item" href="#">Another action</a></li>
-								<li><a class="dropdown-item" href="#">Something else here</a></li>
-							</ul>
-						</div>
-						<div class="dropdown" style="float: left; margin-top: 20px;">
-							<button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">검색조건2</button>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">Action</a></li>
-								<li><a class="dropdown-item" href="#">Another action</a></li>
-								<li><a class="dropdown-item" href="#">Something else here</a></li>
-							</ul>
-						</div>
-						<div style="width: 300px; float: left; margin-top: 20px; margin-left: 20px;">
-							<input type="text" class="form-control bg-light border-0 small" placeholder="검색어를 입력해주세요." aria-label="Search" aria-describedby="basic-addon2" style="width: 250px; float: left;">
-							<button class="btn btn-dark" type="button">
-								<i class="fas fa-search fa-sm"></i>
-							</button>
+						<div class="col" >
+							<div class="form-check" style="margin-top: 10px; float: left; margin-right: 33px;">
+								<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="accent-color: black;"> 
+								<label class="form-check-label" for="flexCheckDefault" style="color: black; margin-top: 2px;">번호순</label>
+							</div>
+							<div class="form-check" style="margin-top: 10px; float: left; margin-right: 33px;">
+								<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="accent-color: black;"> 
+								<label class="form-check-label" for="flexCheckDefault" style="color: black; margin-top: 2px;">최신순</label>
+							</div>
+							<div class="form-check" style="margin-top: 10px; float: left; margin-right: 50px;">
+								<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="accent-color: black;"> 
+								<label class="form-check-label" for="flexCheckDefault" style="color: black; margin-top: 2px;">이름순</label>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="">
-					<div class="table-responsive">
-						<table class="table border-top" id="dataTable" width="100%" cellspacing="0">
-							<thead>
-								<tr style="color: black; font-weight: 600; background-color: #2E2E2E;">
-									<td style="text-align: center; width: 5%;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-									<th style="color: white; border-bottom: 0;">번호</th>
-									<th style="color: white; border-bottom: 0;">이름</th>
-									<th style="color: white; border-bottom: 0;">성별</th>
-									<th style="color: white; border-bottom: 0;">나이</th>
-									<th style="color: white; border-bottom: 0;">권한</th>
-									<th style="color: white; border-bottom: 0;">이메일</th>
-									<th style="color: white; border-bottom: 0;">전화번호</th>
-									<th style="color: white; border-bottom: 0;">등록일자</th>
-									<th style="color: white; border-bottom: 0;">탈퇴여부</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:choose>
-									<c:when test="${fn:length(list) eq 0 }">
-										<tr>
-											<td class = "text-center" colspan="10">없음</td>
-										</tr>
-									</c:when>
-									<c:otherwise>
-										<c:forEach items="${list}" var="list" varStatus="status">
+					<div class="row border-top" style=" width: 1400px; margin-left: 0px; height: 80px; border-bottom: 1px solid black; margin-bottom: 30px;">
+						<div class="col-1">
+							<h5 style="padding-left: 0px; margin-top: 30px; font-size: 17px; font-weight: 700; color: black;">검색조건</h5>
+						</div>
+						<div class="col">
+							<div class="dropdown" style="float: left; margin-right: 10px; margin-top: 20px;">
+								<select class="form-select" name="shOption" id="shOption">
+									<option value=""  <c:if test="${empty vo.shOption}">selected</c:if>>검색구분</option>
+									<option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>아이디</option>
+									<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>이메일</option>
+									<option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>전화번호</option>
+								</select>
+							</div>
+							<div class="dropdown" style="float: left; margin-right: 10px; margin-top: 20px;">
+								<select class="form-select" name="shDelYn" id="shDelYn" >
+									<option value="" <c:if test="${empty vo.shDelYn}">selected</c:if>>삭제여부</option>
+									<option value="2" <c:if test="${vo.shDelYn eq 2}">selected</c:if>>all</option>
+									<option value="1" <c:if test="${vo.shDelYn eq 1}">selected</c:if>>Yes</option>
+									<option value="0" <c:if test="${vo.shDelYn eq 0}">selected</c:if>>No</option>
+								</select>
+							</div>	
+							<div class="dropdown" style="float: left; margin-right: 10px; margin-top: 20px;">
+								<select class="form-select">
+									<option>검색구분</option>
+									<option>코드그룹 코드</option>
+									<option>코드그룹 이름 (한글)</option>
+									<option>코드그룹 이름 (영문)</option>
+								</select>
+							</div>
+							<div style="width: 300px; float: left; margin-top: 20px; margin-left: 20px;">
+								<input type="text" class="form-control bg-light border-0 small" placeholder="검색어를 입력해주세요." name="shValue" id="shValue"style="width: 250px; float: left;">
+								<button class="btn btn-dark" type="submit">
+									<i class="fas fa-search fa-sm"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="">
+						<div class="table-responsive">
+							<table class="table border-top" id="dataTable" width="100%" cellspacing="0">
+								<thead>
+									<tr style="color: black; font-weight: 600; background-color: #2E2E2E;">
+										<td style="text-align: center; width: 5%;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+										<th style="color: white; border-bottom: 0;">번호</th>
+										<th style="color: white; border-bottom: 0;">아이디</th>
+										<th style="color: white; border-bottom: 0;">비밀번호</th>
+										<th style="color: white; border-bottom: 0;">성별</th>
+										<th style="color: white; border-bottom: 0;">권한</th>
+										<th style="color: white; border-bottom: 0;">이메일</th>
+										<th style="color: white; border-bottom: 0;">전화번호</th>
+										<th style="color: white; border-bottom: 0;">등록일자</th>
+										<th style="color: white; border-bottom: 0;">탈퇴여부</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:choose>
+										<c:when test="${fn:length(list) eq 0 }">
 											<tr>
-												<td style="text-align: center;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-												<td><c:out value="${list.seq }" /></td>
-												<td><c:out value="${list.id }"/></td>
-												<td><c:out value="${list.pw }"/></td>
-												<td><c:out value="${list.gender }"/></td>
-												<td><c:out value="${list.authority }"/></td>
-												<td><c:out value="${list.email }"/></td>
-												<td><c:out value="${list.number_phone }"/></td>
-												<td><c:out value="${list.regdate }"/></td>
-												<td>N</td>
+												<td class = "text-center" colspan="10">없음</td>
 											</tr>
-										</c:forEach>
-									</c:otherwise>
-								</c:choose>
-							</tbody>
-						</table>
+										</c:when>
+										<c:otherwise>
+											<c:forEach items="${list}" var="list" varStatus="status">
+												<tr>
+													<td style="text-align: center;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+													<td><c:out value="${list.seq }" /></td>
+													<td><c:out value="${list.id }"/></td>
+													<td><c:out value="${list.pw }"/></td>
+													<td><c:out value="${list.gender }"/></td>
+													<td><c:out value="${list.authority }"/></td>
+													<td><c:out value="${list.email }"/></td>
+													<td><c:out value="${list.number_phone }"/></td>
+													<td><c:out value="${list.regdate }"/></td>
+													<td>N</td>
+												</tr>
+											</c:forEach>
+										</c:otherwise>
+									</c:choose>
+								</tbody>
+							</table>
+						</div>
+						<div class="d-flex justify-content-center">
+							<nav aria-label="Page navigation example">
+								<ul class="pagination">
+									<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+									<li class="page-item"><a class="page-link" href="#">1</a></li>
+									<li class="page-item"><a class="page-link" href="#">2</a></li>
+									<li class="page-item"><a class="page-link" href="#">3</a></li>
+									<li class="page-item"><a class="page-link" href="#">Next</a></li>
+								</ul>
+							</nav>
+						</div>
+						<div class="d-flex justify-content-end">
+							<button type="button" class="btn btn-dark">삭제</button>
+						</div>
 					</div>
-					<div class="d-flex justify-content-center">
-						<nav aria-label="Page navigation example">
-							<ul class="pagination">
-								<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-								<li class="page-item"><a class="page-link" href="#">1</a></li>
-								<li class="page-item"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item"><a class="page-link" href="#">Next</a></li>
-							</ul>
-						</nav>
-					</div>
-					<div class="d-flex justify-content-end">
-						<button type="button" class="btn btn-dark">삭제</button>
-					</div>
-				</div>
-			</div>	
+				</div>	
+			</form>
 		</div>
 	</div>
 

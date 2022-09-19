@@ -268,9 +268,10 @@ z<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 							</div>
 							<div class="dropdown" style="float: left; margin-right: 10px; margin-top: 20px;">
 								<select class="form-select" id="shDelYn" name="shDelYn">
-									<option value="2" <c:if test = "${empty vo.shDelYn }"> selected</c:if>>삭제여부</option>
-									<option value="0" <c:if test = "${ vo.shDelYn eq 0}"> selected</c:if>>Yes</option>
-									<option value="1" <c:if test = "${ vo.shDelYn eq 1}"> selected</c:if>>No</option>
+									<option value="" <c:if test = "${empty vo.shDelYn }"> selected</c:if>>삭제여부</option>
+									<option value="2" <c:if test = "${ vo.shDelYn eq 2}"> selected</c:if>>All</option>
+									<option value="1" <c:if test = "${ vo.shDelYn eq 1}"> selected</c:if>>Yes</option>
+									<option value="0" <c:if test = "${ vo.shDelYn eq 0}"> selected</c:if>>No</option>
 								</select>
 							</div>
 							<div class="dropdown" style="float: left; margin-top: 20px;">

@@ -15,6 +15,7 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 	
 	@Override
 	public List<CodeGroup> selectList(CodeGroupVo vo) throws Exception {
+		System.out.println("S shd: " + vo.getShDelYn());
 		List<CodeGroup> list = dao.selectList(vo);
 		return list;
 	}

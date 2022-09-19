@@ -11,7 +11,11 @@
     <sql id="selectCommon">
     	FROM codeGroup CCG
     	WHERE 1=1
-    		<if test="shDelYn != null and !shDelYn.equals('')">AND CCG.delYn = #{shDelYn}</if>
+    		<choose>
+				<when test="shDelYn == 2"></when>
+				<when test="shDelYn != null and !shDelYn.equals('')">AND CCG.delYn = #{shDelYn}</when>
+				<otherwise></otherwise>
+			</choose>
 		<!-- <if test="shregdate_s != null and !shregdate_s.equals('') and shregdate_e != null and !shregdate_e.equals('')">AND CCG.regdate between #{shregdate_s} and #{shregdate_e}</if> -->
 		<choose>
 			<when test="shOption == 1">AND CCG.groupName_code LIKE CONCAT('%',#{shValue},'%')</when>
