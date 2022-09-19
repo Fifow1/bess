@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -20,7 +21,7 @@ public class MemberController {
 	
 
 	@RequestMapping(value = "memberList")
-	public String memberList(MemberVo vo, Model model) throws Exception {
+	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 
 		List<Member> list = service.selectList(vo);
 		model.addAttribute("list", list);

@@ -225,7 +225,7 @@
 								</select>
 							</div>
 							<div style="width: 300px; float: left; margin-top: 20px; margin-left: 20px;">
-								<input type="text" class="form-control bg-light border-0 small" placeholder="검색어를 입력해주세요." name="shValue" id="shValue"style="width: 250px; float: left;">
+								<input type="text" class="form-control bg-light border-0 small" placeholder="검색어를 입력해주세요." name="shValue" id="shValue"style="width: 250px; float: left;" value="<c:out value="${vo.shValue }"/>">
 								<button class="btn btn-dark" type="submit">
 									<i class="fas fa-search fa-sm"></i>
 								</button>
