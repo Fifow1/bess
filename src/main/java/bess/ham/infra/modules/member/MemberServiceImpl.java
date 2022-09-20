@@ -2,6 +2,7 @@ package bess.ham.infra.modules.member;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,9 @@ public class MemberServiceImpl implements MemberService {
 	public List<Member> selectList(MemberVo vo) throws Exception {
 		return dao.selectList(vo);
 	}
+	
+	
+	
 }
 
 

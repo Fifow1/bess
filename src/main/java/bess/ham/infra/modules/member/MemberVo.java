@@ -1,18 +1,21 @@
 package bess.ham.infra.modules.member;
 
+
 public class MemberVo {
 
-	private String shseq;
+	private String shSeq;
 	private String shId;
 	private String shValue;
 	private Integer shOption;
 	private Integer shDelYn;
+//	for cache
+	
 	
 	public String getShseq() {
-		return shseq;
+		return shSeq;
 	}
 	public void setShseq(String shseq) {
-		this.shseq = shseq;
+		this.shSeq = shseq;
 	}
 	public String getShId() {
 		return shId;

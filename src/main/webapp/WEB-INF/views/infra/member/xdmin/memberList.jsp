@@ -23,6 +23,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- Custom styles for this template-->
     <link href="/resources/css/1.css" rel="stylesheet">
+    <jsp:useBean id="CodeServiceImpl" class="bess.ham.infra.modules.code.CodeServiceImpl"/>
 </head>
 
 <body id="page-top">
@@ -149,6 +150,8 @@
 
 		<div class="container" style="margin-right: 400px;">
 			<form action="/member/memberList" method="GET">
+			<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+			<c:set var="listCodeAuthority" value="${CodeServiceImpl.selectListCachedCode('7')}"/>
 				<div style="height: 500px; width: 1400px">
 					<div style="margin-top: 100px; margin-bottom: 30px;">
 						<h5 class="m-0 font-weight-bold text-dark">회원관리</h5>
@@ -263,8 +266,16 @@
 													<td><c:out value="${list.seq }" /></td>
 													<td><c:out value="${list.id }"/></td>
 													<td><c:out value="${list.pw }"/></td>
-													<td><c:out value="${list.gender }"/></td>
-													<td><c:out value="${list.authority }"/></td>
+													<td>
+													<c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
+														<c:if test="${list.gender eq listGender.CCseq}"><c:out value="${listGender.CCname }"/></c:if>
+													</c:forEach>
+													</td>
+													<td>
+													<c:forEach items="${listCodeAuthority}" var="listAuthority" varStatus="statusAuthority">
+														<c:if test="${list.authority eq listAuthority.CCseq}"><c:out value="${listAuthority.CCname }"/></c:if>
+													</c:forEach>
+													</td>
 													<td><c:out value="${list.email }"/></td>
 													<td><c:out value="${list.number_phone }"/></td>
 													<td><c:out value="${list.regdate }"/></td>

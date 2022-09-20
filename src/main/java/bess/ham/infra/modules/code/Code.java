@@ -1,6 +1,10 @@
 package bess.ham.infra.modules.code;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import bess.ham.infra.modules.member.Member;
 
 public class Code {
 
@@ -10,13 +14,21 @@ public class Code {
 	private String codeName;
 	
 	private String CCseq;
+	private String CCname;
+	private String CCname_code;
+	private Date CCregdate;
+	private Integer CCdelYn;
+	
+	
 	private String CCGseq;
 	private String CCGname;
 	private String CCGname_code;
 	private String CCGname_en;
-	private String CCname;
-	private Date CCregdate;
-	private Integer CCdelYn;
+	
+	
+	
+	public static List<Code> cachedCodeArrayList = new ArrayList<Code>();
+	
 	public String getGroup_seq() {
 		return group_seq;
 	}
@@ -71,6 +83,12 @@ public class Code {
 	public void setCCname(String cCname) {
 		CCname = cCname;
 	}
+	public String getCCname_code() {
+		return CCname_code;
+	}
+	public void setCCname_code(String cCname_code) {
+		CCname_code = cCname_code;
+	}
 	public Date getCCregdate() {
 		return CCregdate;
 	}
@@ -83,7 +101,6 @@ public class Code {
 	public void setCCdelYn(Integer cCdelYn) {
 		CCdelYn = cCdelYn;
 	}
-	
 	
 
 }

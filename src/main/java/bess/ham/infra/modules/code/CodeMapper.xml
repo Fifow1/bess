@@ -8,6 +8,10 @@
 
     <resultMap id="resultMapObj" type="bess.ham.infra.modules.code.Code"></resultMap>
 	
+	
+	
+	
+	
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT 
 			CC.seq AS CCseq
@@ -15,18 +19,34 @@
 			,CCG.groupName AS CCGname
 			,CCG.groupName_code AS CCGname_code
 			,CCG.groupName_en AS CCGname_en
+			,CCG.delYn AS CCGdelYn
 			,CC.seq AS CCseq
+			,CC.codeName_code AS CCname_code			
 			,CC.codeName AS CCname
 			,CC.regdate AS CCregdate
 			,CC.delYn AS CCdelYn
 		FROM codeGroup CCG
 		LEFT JOIN code CC ON CCG.seq = CC.group_seq
 		WHERE 1=1
+			<choose>
+				<when test="shDelYn == 2">AND CC.delYn is not null</when>
+				<when test="shDelYn != null and !shDelYn.equals('')">AND CC.delYn = #{shDelYn}</when>
+			</choose>
+			<choose>
+				<when test="shOption == 1">AND groupName_code Like CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 2">AND groupName Like CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND codeName_code Like CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 4">AND codeName Like CONCAT('%',#{shValue},'%')</when>
+			</choose>
+		ORDER BY CC.seq ASC
+		limit #{rowNumToShow} offset #{startRnumForMysql}
 	</select>
+	
 	
 	<insert id="insert">
 		INSERT INTO code(
 			group_seq
+	    	,codeName_code
 	    	,codeName
 	    	,regdate
 	    	,delYn
@@ -34,6 +54,7 @@
 		
 		VALUES (
 			#{group_seq}
+			,#{CCname_code}
 			,#{CCname}
 			,NOW()
 			,1
@@ -42,6 +63,18 @@
 		SELECT last_insert_id()
 		</selectKey>
 	</insert>
+	<update id="update">
+		UPDATE code
+		SET 
+			group_seq = #{group_seq}
+			,codeName_code = #{CCname_code}
+			,codeName = #{CCname}
+			,useYn = #{useYn}
+			,delYn = #{delYn}
+		WHERE
+			seq = #{seq}
+	
+	</update>
 	
 	<resultMap id="resultMapGroup" type="bess.ham.infra.modules.codegroup.CodeGroup"></resultMap>
 	
@@ -56,11 +89,44 @@
 		
 	</select>
 	
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			seq
+			,codeName as CCname
+			,codeName_code as CCname_code
+			,delYn as CCdelYn
+		FROM code
+		WHERE 1=1
+		AND seq = #{shSeq}
+	</select>
 	
 	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT
+			count(*)
+		FROM codeGroup CCG
+		LEFT JOIN code CC ON CCG.seq = CC.group_seq
+		WHERE 1=1
+			<choose>
+				<when test="shDelYn == 2">AND CC.delYn is not null</when>
+				<when test="shDelYn != null and !shDelYn.equals('')">AND CC.delYn = #{shDelYn}</when>
+			</choose>
+			<choose>
+				<when test="shOption == 1">AND groupName_code Like CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 2">AND groupName Like CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND codeName_code Like CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 4">AND codeName Like CONCAT('%',#{shValue},'%')</when>
+			</choose>
+	</select>
 	
-	
-	
-	
+	<select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
+	SELECT
+		seq as CCseq
+		,codeName as CCname
+		,group_seq as CCGseq
+	FROM code
+	WHERE 1=1
+	AND delYn = 1
+    </select>
 	
 </mapper>	

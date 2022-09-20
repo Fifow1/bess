@@ -6,7 +6,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -150,7 +149,8 @@
 			</div>
 		</ul>
 		<div class="container">
-			<form method="post" action="/code/codeIsrt">
+			<form method="post" id="form" name="form">
+				<%@include file="codeVo.jsp"%>
 				<br><br>
 				<div class="row">
 					<div class="col">
@@ -160,7 +160,7 @@
 				<br> <br>
 				<div class="row">
 					<div class="col">
-						<select class="form-select" aria-label="Default select example" name="group_seq">
+						<select class="form-select" aria-label="Default select example" name="group_seq" id="group_seq">
 							<option selected>Open this select menu</option>
 							<c:forEach items="${groupList}" var="list" varStatus="status">
 								<option value="<c:out value="${list.seq}"></c:out>"><c:out value="${list.groupName}"></c:out></option>
@@ -171,24 +171,23 @@
 				<br>
 				<div class="row">
 					<div class="col">
-						<fieldset disabled>
-							<label for="disabledTextInput" class="form-label">코드</label> <input type="text" id="disabledTextInput" class="form-control" placeholder="자동생성">
-						</fieldset>
+						<label>코드그룹 코드</label>
+						<input type="text" class="form-control" name="CCseq" readonly value="<c:out value="${item.CCseq}"/>">
 					</div>
 					<div class="col">
 						<p class="h6" color="#2E2E2E";>코드(Another)</p>
-						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="영문(대소문자)숫자">
+						<input type="email" class="form-control" placeholder="영문(대소문자)숫자" name="CCname_code" id="CCname_code" value="<c:out value="${item.CCname_code}"/>">
 					</div>
 				</div>
 				<br>
 				<div class="row">
 					<div class="col">
 						<p class="h6" color="#2E2E2E";>코드 이름(한글)</p>
-						<input type="text" class="form-control"placeholder="한글,숫자" name="CCname">
+						<input type="text" class="form-control"placeholder="한글,숫자" name="CCname" id="CCname" value="<c:out value="${item.CCname}"/>">
 					</div>
 					<div class="col">
 						<p class="h6" color="#2E2E2E";>코드 이름(영문)</p>
-						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="영문(대소문자)숫자">
+						<input type="email" class="form-control"placeholder="영문(대소문자)숫자">
 					</div>
 				</div><br>
 				<div class="row">
@@ -220,55 +219,56 @@
 					</div>
 				</div><br>
 				<div class="row">
-					<div class="col">
-						<p class="h6" color="#2E2E2E";>예비1(varchar type)</p>
-						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="영문(대소문자)숫자">
-					</div>
-					<div class="col">
-						<p class="h6" color="#2E2E2E";>예비2(varchar type)</p>
-						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="영문(대소문자)숫자">
-					</div>
-				</div><br>
-				<div class="row">
-					<div class="col">
-						<p class="h6" color="#2E2E2E";>예비3(varchar type)</p>
-						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="영문(대소문자)숫자">
-					</div>
-					<div class="col">
-						<p class="h6" color="#2E2E2E";>예비4(varchar type)</p>
-						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="영문(대소문자)숫자">
-					</div>
-				</div><br>
-				<div class="row">
-					<div class="col">
-						<p class="h6" color="#2E2E2E";>예비1(int type)</p>
-						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="숫자">
-					</div>
-					<div class="col">
-						<p class="h6" color="#2E2E2E";>예비2(int type)</p>
-						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="숫자">
-					</div>
-				</div><br>
-				<div class="row">
-					<div class="col">
-						<p class="h6" color="#2E2E2E";>예비3(int type)</p>
-						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="숫자">
-					</div>
-					<div class="col">
-						<p class="h6" color="#2E2E2E";>예비4(int type)</p>
-						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="숫자">
-					</div>
-				</div><br><br>
-				<div class="row">
 					<div class="col d-flex justify-content-center">
-						<button type="submit" class="btn btn-dark" style="width: 200px;">등록하기</button>
+						<button type="button" class="btn btn-outline-dark" style="width: 200px;" id="btnUelete">삭제</button>
+						<button type="button" id="btnSave" name="btnSave" class="btn btn-dark" style="width: 200px;">등록하기</button>
+						<button type="button" id="btnList" name="btnList" class="btn btn-dark" style="width: 200px;">목록으로</button>
 					</div>
 				</div>
 				<br><br><br><br><br><br>
 			</form>
+			<form name="formVo" id="formVo" method="post">
+				<!-- *Vo.jsp s -->
+				<%@include file="./codeVo.jsp"%>
+				<!-- #-> -->
+				<!-- *Vo.jsp e -->
+			</form>
 		</div>
 	</div>
 	
+	<script type="text/javascript">
+				var goUrlList = "/code/codeList"; /* #-> */
+				var goUrlInst = "/code/codeIsrt"; /* #-> */
+				var goUrlUpdt = "/code/codeUpdt"; /* #-> */
+		//		var goUrlUele = "/codeGroup/codeGroupUele"; /* #-> */
+		//		var goUrlDele = "/codeGroup/codeGroupDele"; /* #-> */
+
+				var seq = $("input:text[name=CCseq]"); /* #-> */
+
+				var form = $("form[name=form]");
+				var formVo = $("form[name=formVo]");
+
+				$("#btnSave").on("click", function() {
+					if (seq.val() == "0" || seq.val() == "") {
+						// insert
+						//if (validationInst() == false)
+						//	return false;
+						form.attr("action", goUrlInst).submit();
+					} else {
+						// update
+						/* keyName.val(atob(keyName.val())); */
+						//if (validationUpdt() == false)
+						//	return false;
+						form.attr("action", goUrlUpdt).submit();
+					}
+				});
+				
+				
+				$("#btnList").on("click", function(){
+					formVo.attr("action", goUrlList).submit();
+				});
+				
+			</script>
 	<!-- Bootstrap core JavaScript-->
 	<script src="/resources/vendor/jquery/jquery.min.js"></script>
 	<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -2,7 +2,10 @@
 
 package bess.ham.infra.modules.member;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,10 +26,15 @@ public class MemberController {
 	@RequestMapping(value = "memberList")
 	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 
+		
+		
 		List<Member> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		return "infra/member/xdmin/memberList";
 	}
+	
+	
+	
 	
 	
 	@RequestMapping(value = "memberLogin")
