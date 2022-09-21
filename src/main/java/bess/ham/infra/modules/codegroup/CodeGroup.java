@@ -15,6 +15,9 @@ public class CodeGroup {
 	private Integer useYn;
 	private Integer delYn;
 	
+	private String CCGseq;
+	private String CCGname;
+	
 	
 	
 // ------------------------------------------------
@@ -71,6 +74,18 @@ public class CodeGroup {
 	}
 	public void setDelYn(Integer delYn) {
 		this.delYn = delYn;
+	}
+	public String getCCGseq() {
+		return CCGseq;
+	}
+	public void setCCGseq(String cCGseq) {
+		CCGseq = cCGseq;
+	}
+	public String getCCGname() {
+		return CCGname;
+	}
+	public void setCCGname(String cCGname) {
+		CCGname = cCGname;
 	}
 	
 	
