@@ -8,21 +8,43 @@
 
     <resultMap id="resultMapObj" type="bess.ham.infra.modules.member.Member"></resultMap>
 	
-	<select id="selectList" resultMap="resultMapObj">
-		SELECT
-			*
+	<sql id = "selectCommon">
 		FROM member
 		WHERE 1=1
-			<choose>
-				<when test="shDelYn == 2">AND delYn is not null</when>
-				<when test="shDelYn != null and !shDelYn.equals('')">AND delYn = #{shDelYn}</when>
-			</choose>
-			<choose>
-				<when test="shOption == 1">AND id Like CONCAT('%',#{shValue},'%')</when>
-				<when test="shOption == 2">AND email Like CONCAT('%',#{shValue},'%')</when>
-				<when test="shOption == 3">AND number_phone Like CONCAT('%',#{shValue},'%')</when>
-			</choose>
+		<choose>
+			<when test="shDelYn == 2">AND delYn is not null</when>
+			<when test="shDelYn != null and !shDelYn.equals('')">AND delYn = #{shDelYn}</when>
+		</choose>
+		<choose>
+			<when test="shOption == 1">AND id Like CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 2">AND email Like CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND number_phone Like CONCAT('%',#{shValue},'%')</when>
+		</choose>
+	</sql>
+	
+	<select id="selectList" resultMap="resultMapObj"> 
+		<include refid="Base.selectListUpperForMysql"/>
+		SELECT
+			seq
+			,id
+			,pw
+			,gender
+			,authority
+			,email
+			,number_phone
+			,regdate
+			,delYn
+		<include refid = "selectCommon"/>
+		ORDER BY seq ASC
+		<include refid ="Base.selectListLowerForMysql"/>
 	</select>
+	
+	<insert id="insert">
+		INSERT INTO member(
+		
+		
+		)
+	</insert>
 	
 	
 

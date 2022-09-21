@@ -13,21 +13,6 @@
     	
     	limit #{rowNumToShow} offset #{startRnumForMysql}
     </sql>
-	<sql id = "code">
-		SELECT
-			CC.seq AS CCseq
-			,CCG.seq AS CCGseq
-			,CCG.groupName AS CCGname
-			,CCG.groupName_code AS CCGname_code
-			,CCG.groupName_en AS CCGname_en
-			,CCG.delYn AS CCGdelYn
-			,CC.seq AS CCseq
-			,CC.codeName_code AS CCname_code			
-			,CC.codeName AS CCname
-			,CC.regdate AS CCregdate
-			,CC.delYn AS CCdelYn
-		FROM codeGroup CCG
-		LEFT JOIN code CC ON CCG.seq = CC.group_seq
-	</sql>
+	
 	
 </mapper>	

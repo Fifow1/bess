@@ -17,8 +17,6 @@ public class CodeServiceImpl implements CodeService{
 	
 	@Override
 	public List<Code> selectList(CodeVo vo) throws Exception {
-		System.out.println("S: " + vo.getShDelYn());
-		System.out.println("S: " + vo.getShOption());
 		List<Code> list = dao.selectList(vo);
 		
 		return list;
@@ -29,7 +27,6 @@ public class CodeServiceImpl implements CodeService{
 	public List<Code> groupList() throws Exception {
 		
 		List<Code> list = dao.groupList();
-		
 		return list;
 	}
 	

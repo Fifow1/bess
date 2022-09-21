@@ -35,7 +35,7 @@ public class CodeDao {
 	
 	public List<Code> groupList(){
 		
-		List<Code> list = sqlSession.selectList(namespace + ".groupList", "");
+		List<Code> list = sqlSession.selectList(namespace + ".groupList");
 		
 		return list;
 	}

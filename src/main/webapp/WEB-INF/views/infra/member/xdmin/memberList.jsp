@@ -279,7 +279,10 @@
 													<td><c:out value="${list.email }"/></td>
 													<td><c:out value="${list.number_phone }"/></td>
 													<td><c:out value="${list.regdate }"/></td>
-													<td>N</td>
+													<td>
+														<c:if test="${list.delYn eq 1}"><c:out value="Yes" /></c:if>
+														<c:if test="${list.delYn eq 0}"><c:out value="No" /></c:if>
+													</td>
 												</tr>
 											</c:forEach>
 										</c:otherwise>

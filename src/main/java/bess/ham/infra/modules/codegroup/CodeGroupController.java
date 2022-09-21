@@ -25,7 +25,7 @@ public class CodeGroupController {
 	public void setSearchAndPaging(CodeGroupVo vo) throws Exception{
 		
 	//	vo.setShOption(vo.getShOption() == 	null ? 2 : vo.getShOption());
-		vo.setShDelYn(vo.getShDelYn() == null ? 1 : vo.getShDelYn());
+		vo.setShDelYn(vo.getShDelYn() == null ? 0 : vo.getShDelYn());
 		
 		
 		vo.setParamsPaging(service.selectOneCount(vo));

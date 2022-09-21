@@ -1,7 +1,8 @@
 package bess.ham.infra.modules.member;
 
+import bess.ham.infra.common.util.PageMakeVo;
 
-public class MemberVo {
+public class MemberVo extends PageMakeVo{
 
 	private String shSeq;
 	private String shId;

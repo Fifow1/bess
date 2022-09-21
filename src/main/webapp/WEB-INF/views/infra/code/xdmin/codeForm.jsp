@@ -25,6 +25,10 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- Custom styles for this template-->
     <link href="/resources/css/1.css" rel="stylesheet">
+    
+    <!-- Jquery CDN -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -162,8 +166,8 @@
 					<div class="col">
 						<select class="form-select" aria-label="Default select example" name="group_seq" id="group_seq">
 							<option selected>Open this select menu</option>
-							<c:forEach items="${groupList}" var="list" varStatus="status">
-								<option value="<c:out value="${list.seq}"></c:out>"><c:out value="${list.groupName}"></c:out></option>
+							<c:forEach items="${list}" var="list" varStatus="status">
+								<option value="<c:out value="${list.CCGseq}"></c:out>"><c:out value="${list.CCGname}"></c:out></option>
 							</c:forEach>
 						</select>
 					</div>

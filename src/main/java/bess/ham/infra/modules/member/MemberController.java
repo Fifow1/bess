@@ -37,6 +37,28 @@ public class MemberController {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value = "memberLogin")
 	public String memberLogin(Model model) throws Exception {
 

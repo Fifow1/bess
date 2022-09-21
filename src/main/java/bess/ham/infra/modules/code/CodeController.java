@@ -24,7 +24,7 @@ public class CodeController {
 	public void setSearchAndPaging(CodeVo vo) throws Exception{
 		
 	//	vo.setShOption(vo.getShOption() == 	null ? 2 : vo.getShOption());
-		vo.setShDelYn(vo.getShDelYn() == null ? 1 : vo.getShDelYn());
+		vo.setShDelYn(vo.getShDelYn() == null ? 0 : vo.getShDelYn());
 		
 		
 		vo.setParamsPaging(service.selectOneCount(vo));
@@ -51,11 +51,15 @@ public class CodeController {
 	@RequestMapping(value = "codeForm")
 	public String codeFrom(@ModelAttribute("vo") CodeVo vo,Model model) throws Exception{
 		
-		List<Code> list1 = service.groupList();
-		List<Code> list = service.selectList(vo);
+		List<Code> groupList = service.groupList();
+		/* List<Code> list = service.selectList(vo); */
 		Code result = service.selectOne(vo);
+		
 		model.addAttribute("item", result);
-		model.addAttribute("list", list);
+		/* model.addAttribute("list", list); */
+		model.addAttribute("list", groupList);
+		System.out.println("CCGseqC: " + vo.getCCGseq());
+		
 		return "infra/code/xdmin/codeForm";
 	}
 	

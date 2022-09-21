@@ -20,7 +20,6 @@
 			,CCG.groupName_code AS CCGname_code
 			,CCG.groupName_en AS CCGname_en
 			,CCG.delYn AS CCGdelYn
-			,CC.seq AS CCseq
 			,CC.codeName_code AS CCname_code			
 			,CC.codeName AS CCname
 			,CC.regdate AS CCregdate
@@ -63,6 +62,7 @@
 		SELECT last_insert_id()
 		</selectKey>
 	</insert>
+	
 	<update id="update">
 		UPDATE code
 		SET 
@@ -81,25 +81,47 @@
 	<select id="groupList" resultMap="resultMapGroup">
 	
 		SELECT 
-			seq
-			,groupName
+			seq as CCGseq
+			,groupName as CCGname
 		FROM codeGroup
 		WHERE 1=1
-		AND	delYn = 1
+
 		
 	</select>
 	
-	<select id="selectOne" resultMap="resultMapObj">
+	<!-- <select id="selectOne" resultMap="resultMapObj">
 		SELECT
-			seq
+			seq as CCseq
 			,codeName as CCname
 			,codeName_code as CCname_code
 			,delYn as CCdelYn
 		FROM code
 		WHERE 1=1
 		AND seq = #{shSeq}
-	</select>
+	</select> -->
 	
+	
+	
+	
+	
+	<select id="selectOne" resultMap="resultMapObj">
+	
+	SELECT 
+			CC.seq AS CCseq
+			,CCG.seq AS CCGseq
+			,CCG.groupName AS CCGname
+			,CCG.groupName_code AS CCGname_code
+			,CCG.groupName_en AS CCGname_en
+			,CCG.delYn AS CCGdelYn
+			,CC.codeName_code AS CCname_code			
+			,CC.codeName AS CCname
+			,CC.regdate AS CCregdate
+			,CC.delYn AS CCdelYn
+		FROM codeGroup CCG
+		LEFT JOIN code CC ON CCG.seq = CC.group_seq
+		WHERE 1=1
+		AND CC.seq = #{shSeq}
+	</select>
 	
 	<select id="selectOneCount" resultType="Integer">
 		SELECT
