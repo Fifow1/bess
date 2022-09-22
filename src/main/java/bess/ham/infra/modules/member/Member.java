@@ -13,6 +13,7 @@ public class Member {
 	private String email;
 	private String number_phone;
 	private Date regdate;
+	private Date moddate;
 	private Integer delYn;
 	
 	
@@ -71,6 +72,12 @@ public class Member {
 	}
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
+	}
+	public Date getModdae() {
+		return moddate;
+	}
+	public void setModdae(Date moddae) {
+		this.moddate = moddae;
 	}
 	public Integer getDelYn() {
 		return delYn;

@@ -12,6 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import bess.ham.infra.modules.codegroup.CodeGroup;
+import bess.ham.infra.modules.codegroup.CodeGroupVo;
 
 
 @Controller
@@ -22,11 +26,20 @@ public class MemberController {
 	@Autowired
 	MemberServiceImpl service;
 	
+	public void setSearchAndPaging(MemberVo vo) throws Exception{
+		
+		//	vo.setShOption(vo.getShOption() == 	null ? 2 : vo.getShOption());
+			vo.setShDelYn(vo.getShDelYn() == null ? 0 : vo.getShDelYn());
+			
+			
+			vo.setParamsPaging(service.selectOneCount(vo));
+		}
+	
 
 	@RequestMapping(value = "memberList")
 	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 
-		
+		setSearchAndPaging(vo);
 		
 		List<Member> list = service.selectList(vo);
 		model.addAttribute("list", list);
@@ -36,27 +49,42 @@ public class MemberController {
 	
 	
 	
+	@RequestMapping(value = "memberForm")
+	public String memberForm(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
+		List<Member> list = service.selectList(vo);
+		Member result = service.selectOne(vo);
+		model.addAttribute("item", result);
+		model.addAttribute("list", list);
+		
+		// viewResolver -> /WEB-INF/views/ + home + .jsp
+		return "infra/member/xdmin/memberForm";
+	}
 	
 	
 	
 	
 	
 	
+	@RequestMapping(value = "memberIsrt")
+	public String memberIsrt(MemberVo vo,Member dto, RedirectAttributes redirectAttributes) throws Exception{
+		
+		service.insert(dto);
+		vo.setShSeq(dto.getSeq());
+		redirectAttributes.addFlashAttribute("vo",vo);
+		return "redirect:/member/memberForm";
+	}
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@RequestMapping(value = "memberUpdt")
+	public String memberUpdt(MemberVo vo,Member dto, RedirectAttributes redirectAttributes) throws Exception{
+		
+		
+		service.update(dto);
+		vo.setShSeq(dto.getSeq());
+		redirectAttributes.addFlashAttribute("vo",vo);
+		return "redirect:/member/memberForm";
+	}
 	
 	
 	@RequestMapping(value = "memberLogin")

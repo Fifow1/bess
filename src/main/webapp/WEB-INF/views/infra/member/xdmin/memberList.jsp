@@ -24,6 +24,10 @@
     <!-- Custom styles for this template-->
     <link href="/resources/css/1.css" rel="stylesheet">
     <jsp:useBean id="CodeServiceImpl" class="bess.ham.infra.modules.code.CodeServiceImpl"/>
+    <!-- Datepicker -->
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -149,9 +153,13 @@
 		</ul>
 
 		<div class="container" style="margin-right: 400px;">
-			<form action="/member/memberList" method="GET">
-			<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
-			<c:set var="listCodeAuthority" value="${CodeServiceImpl.selectListCachedCode('7')}"/>
+			<form method="post" id="formList" name="formList">
+				<input type="hidden" name="shSeq">
+				<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+				<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+				<input type="hidden" name="checkboxSeqArray">
+				<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+				<c:set var="listCodeAuthority" value="${CodeServiceImpl.selectListCachedCode('7')}"/>
 				<div style="height: 500px; width: 1400px">
 					<div style="margin-top: 100px; margin-bottom: 30px;">
 						<h5 class="m-0 font-weight-bold text-dark">회원관리</h5>
@@ -264,7 +272,8 @@
 												<tr>
 													<td style="text-align: center;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
 													<td><c:out value="${list.seq }" /></td>
-													<td><c:out value="${list.id }"/></td>
+													<td><a href="javascript:goForm(<c:out value="${list.seq }"/>)" class="link-dark"><c:out value="${list.id}" /></a></td>
+													<%-- <td><a href="javascript:goForm(<c:out value="${list.seq }"/>)" class="link-dark"><c:out value="${list.groupName}" /></a></td> --%>
 													<td><c:out value="${list.pw }"/></td>
 													<td>
 													<c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
@@ -290,19 +299,11 @@
 								</tbody>
 							</table>
 						</div>
-						<div class="d-flex justify-content-center">
-							<nav aria-label="Page navigation example">
-								<ul class="pagination">
-									<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-									<li class="page-item"><a class="page-link" href="#">1</a></li>
-									<li class="page-item"><a class="page-link" href="#">2</a></li>
-									<li class="page-item"><a class="page-link" href="#">3</a></li>
-									<li class="page-item"><a class="page-link" href="#">Next</a></li>
-								</ul>
-							</nav>
-						</div>
+						<!-- pagination s -->
+						<%@include file="../../base/pagination.jsp"%>
+						<!-- pagination e -->
 						<div class="d-flex justify-content-end">
-							<button type="button" class="btn btn-dark">삭제</button>
+							<button type="button" class="btn btn-dark" id="btnForm">등록</button>	
 						</div>
 					</div>
 				</div>	
@@ -310,6 +311,29 @@
 		</div>
 	</div>
 
+	<script type="text/javascript">
+	
+		var goUrlList = "/member/memberList"; /* #-> */
+		var goUrlForm = "/member/memberForm";
+		
+		var seq = $("input:hidden[name=shSeq]");
+		var form = $("form[name=formList]");
+		
+		goList = function(thisPage) {
+			$("input:hidden[name=thisPage]").val(thisPage);
+			form.attr("action", goUrlList).submit();
+		}
+		
+		$('#btnForm').on("click", function() {
+			goForm(0);                
+		});
+	
+		goForm = function(keyValue) {
+	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+	    	seq.val(keyValue);
+			form.attr("action", goUrlForm).submit();
+		}
+	</script>
     <!-- Bootstrap core JavaScript-->
     <script src="/resources/vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

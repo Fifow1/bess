@@ -69,7 +69,6 @@
 			group_seq = #{group_seq}
 			,codeName_code = #{CCname_code}
 			,codeName = #{CCname}
-			,useYn = #{useYn}
 			,delYn = #{delYn}
 		WHERE
 			seq = #{seq}
@@ -89,7 +88,8 @@
 		
 	</select>
 	
-	<!-- <select id="selectOne" resultMap="resultMapObj">
+<!--
+	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
 			seq as CCseq
 			,codeName as CCname
@@ -106,7 +106,7 @@
 	
 	<select id="selectOne" resultMap="resultMapObj">
 	
-	SELECT 
+		SELECT 
 			CC.seq AS CCseq
 			,CCG.seq AS CCGseq
 			,CCG.groupName AS CCGname

@@ -33,18 +33,82 @@
 			,email
 			,number_phone
 			,regdate
+			,moddate
 			,delYn
 		<include refid = "selectCommon"/>
 		ORDER BY seq ASC
 		<include refid ="Base.selectListLowerForMysql"/>
 	</select>
 	
+	
 	<insert id="insert">
 		INSERT INTO member(
-		
-		
+			id
+	    	,pw
+	    	,gender
+	    	,authority
+	    	,email
+	    	,number_phone
+	    	,regdate
+	    	,delYn
 		)
+		
+		VALUES (
+			#{id}
+			,#{pw}
+			,#{gender}
+			,#{authority}
+			,#{email}
+			,#{number_phone}
+			,NOW()
+			,1
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+		SELECT last_insert_id()
+		</selectKey>
+	</insert>	
+	
+	<insert id="update">
+		UPDATE member
+		SET
+			id = #{id}
+			,pw = #{pw}
+			,gender = #{gender}
+			,authority = #{authority}
+			,email = #{email}
+			,number_phone = #{number_phone}
+			,moddate = #{moddate}
+			,delYn = #{delYn}
+		WHERE
+			seq = #{seq}
 	</insert>
+	
+	
+	<select id="selectOne" resultMap="resultMapObj">
+	
+	SELECT
+		seq
+		,id
+		,pw
+		,gender
+		,authority
+		,email
+		,number_phone
+		,delYn
+	FROM member 
+	WHERE 1=1
+	AND seq = #{shSeq}	
+	
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT
+			count(*)
+		<include refid="selectCommon"/>
+	</select>
+	
+
+	
 	
 	
 

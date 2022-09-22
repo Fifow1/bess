@@ -58,16 +58,17 @@ public class CodeController {
 		model.addAttribute("item", result);
 		/* model.addAttribute("list", list); */
 		model.addAttribute("list", groupList);
-		System.out.println("CCGseqC: " + vo.getCCGseq());
+		
 		
 		return "infra/code/xdmin/codeForm";
 	}
 	
 	@RequestMapping(value = "codeIsrt")
-	public String codeIsrt(CodeGroupVo vo,Code dto, RedirectAttributes redirectAttributes) throws Exception{
+	public String codeIsrt(CodeVo vo,Code dto, RedirectAttributes redirectAttributes) throws Exception{
 		
 		int result = service.insert(dto);
 		System.out.println("result:" + result);
+		System.out.println("CCGseqC: " + vo.getCCseq());
 		return "redirect:/code/codeForm";
 	}
 		

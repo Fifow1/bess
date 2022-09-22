@@ -168,6 +168,14 @@
 					</div>
 				</div>
 			</div>
+			
+			
+			
+			<input type="text" class="form-control" id="y" style="width: 500px; height: 50px; margin-left: 120px; margin-right: 20px;">
+			<input type="text" class="form-control" id="x"  style="width: 500px; height: 50px; margin-left: 120px; margin-right: 20px;">
+			
+			
+			
 			<div class="row loginbtn d-flex justify-content-center">
 				<div class="col mb-3" style="margin-left: 310px;">
 						<div class="form-check">
@@ -265,6 +273,7 @@
 </div>
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1c3e148b9d3b6d9eee46fb31507354ea&libraries=services"></script>
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function sample4_execDaumPostcode() {
@@ -294,32 +303,29 @@
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 document.getElementById('sample4_postcode').value = data.zonecode;
                 document.getElementById("sample4_roadAddress").value = roadAddr;
-                document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
                 
-                // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
-                if(roadAddr !== ''){
-                    document.getElementById("sample4_extraAddress").value = extraRoadAddr;
-                } else {
-                    document.getElementById("sample4_extraAddress").value = '';
-                }
-
-                var guideTextBox = document.getElementById("guide");
-                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-                if(data.autoRoadAddress) {
-                    var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
-                    guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
-                    guideTextBox.style.display = 'block';
-
-                } else if(data.autoJibunAddress) {
-                    var expJibunAddr = data.autoJibunAddress;
-                    guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
-                    guideTextBox.style.display = 'block';
-                } else {
-                    guideTextBox.innerHTML = '';
-                    guideTextBox.style.display = 'none';
-                }
-            }
+				/* lat and lng from address s */
+ 				
+				// 주소-좌표 변환 객체를 생성
+				var geocoder = new daum.maps.services.Geocoder();
+				
+				// 주소로 좌표를 검색
+				geocoder.addressSearch(roadAddr, function(result, status) {
+				 
+					// 정상적으로 검색이 완료됐으면,
+					if (status == daum.maps.services.Status.OK) {
+						
+						document.getElementById("y").value=result[0].y;
+						document.getElementById("x").value=result[0].x;
+					}
+				});
+				/* lat and lng from address e */
+                
+ 				
+          }
+        
         }).open();
+        
     }
 </script>
 

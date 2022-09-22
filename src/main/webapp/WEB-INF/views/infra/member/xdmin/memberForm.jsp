@@ -18,11 +18,15 @@
     <title>회원관리</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- Custom styles for this template-->
-    <link href="css/1.css" rel="stylesheet">
+    <link href="/resources/css/1.css" rel="stylesheet">
+    <!-- Datepicker -->
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -147,97 +151,150 @@
 			</div>
 		</ul>
 		<div class="container">
-			<br><br>
-			<div class="row">
-				<div class="col mb-5">
-					<h5 class="m-0 font-weight-bold text-dark">회원 관리(등록)</h5>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col mb-1">
-					<p style="margin-bottom: 4px;font-weight: 900;">성별</p>
-					<div class="form_radio_btn radio_male" style="float: left;">
-						<input id="radio-1" type="radio" name="userGender" value="male" checked> <label for="radio-1">남자</label>
-					</div>
-					<div class="form_radio_btn" style="float: left;">
-						<input id="radio-2" type="radio" name="userGender" value="female"> <label for="radio-2">여자</label>
-					</div>
-				</div>
-				<div class="col mb-1">
-					<p style="margin-bottom: 4px;font-weight: 900;">권한</p>
-					<div class="form_radio_btn radio_male" style="float: left;">
-						<input id="radio-3" type="radio" name="userA" value="male" checked> <label for="radio-3">관리자</label>
-					</div>
-					<div class="form_radio_btn" style="float: left;">
-						<input id="radio-4" type="radio" name="userA" value="female"> <label for="radio-4">사용자</label>
-					</div>
-				</div>
-			</div>
-			
-	
-			<br>
-			<div class="row">
-				<div class="col">
-					<p class="h6" color="#2E2E2E";>아이디</p>
-					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="한글,숫자">
-				</div>
-				<div class="col">
-					<p class="h6" color="#2E2E2E";>비밀번호</p>
-					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="영문(대소문자)숫자">
-				</div>
-			</div><br>
-			<div class="row">
-				<div class="col">
-					<p class="h6" color="#2E2E2E";>사용여부</p>
-					<select class="form-select" aria-label="Default select example">
-						<option selected>선택해주세요</option>
-						<option value="1">Y</option>
-						<option value="2">N</option>
-					</select>
-				</div>
-				<div class="col">
-					<p class="h6" color="#2E2E2E";>휴대번호</p>
-					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="숫자">
-				</div>
-			</div><br>
-			<div class="row">
-				<div class="col">
-					<p class="h6" color="#2E2E2E";>이메일</p>
-					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="숫자">
-				</div>
-				<div class="col">
-					<p class="h6" color="#2E2E2E";>삭제여부</p>
-					<select class="form-select" aria-label="Default select example">
-						<option selected>선택해주세요</option>
-						<option value="1">Y</option>
-						<option value="2">N</option>
-					</select>
-				</div>
-			</div><br>
+			<form id="form" name="form" method="post" autocomplete="off" enctype="multipart/form-data">
+				<br><br>
+				<%@include file="./memberVo.jsp"%>
 				<div class="row">
-				<div class="col d-flex justify-content-center">
-					<button type="button" class="btn btn-dark" style="width: 200px;"onclick="location.href='codeList.html'">등록하기</button>
+					<div class="col mb-5">
+						<h5 class="m-0 font-weight-bold text-dark">회원 관리(등록)</h5>
+					</div>
 				</div>
+				<div class="row">
+					<div class="col mb-1">
+						<p style="margin-bottom: 4px;font-weight: 900;">성별</p>
+						<div class="form_radio_btn radio_male" style="float: left;">
+							<input id="radio-1" type="radio" name="userGender" value="male" checked> <label for="radio-1">남자</label>
+						</div>
+						<div class="form_radio_btn" style="float: left;">
+							<input id="radio-2" type="radio" name="userGender" value="female"> <label for="radio-2">여자</label>
+						</div>
+					</div>
+					<div class="col mb-1">
+						<p style="margin-bottom: 4px;font-weight: 900;">권한</p>
+						<div class="form_radio_btn radio_male" style="float: left;">
+							<input id="radio-3" type="radio" name="userA" value="male" checked> <label for="radio-3">관리자</label>
+						</div>
+						<div class="form_radio_btn" style="float: left;">
+							<input id="radio-4" type="radio" name="userA" value="female"> <label for="radio-4">사용자</label>
+						</div>
+					</div>
+				</div>
+				
+		
+				<br>
+				<div class="row">
+					<div class="col">
+						<p class="h6" color="#2E2E2E";>아이디</p>
+						<input type="email" class="form-control"placeholder="한글,숫자">
+					</div>
+					<div class="col">
+						<p class="h6" color="#2E2E2E";>비밀번호</p>
+						<input type="email" class="form-control"placeholder="영문(대소문자)숫자">
+					</div>
+				</div><br>
+				<div class="row">
+					<div class="col">
+						<p class="h6" color="#2E2E2E";>사용여부</p>
+						<select class="form-select" aria-label="Default select example">
+							<option selected>선택해주세요</option>
+							<option value="1">Y</option>
+							<option value="2">N</option>
+						</select>
+					</div>
+					<div class="col">
+						<p class="h6" color="#2E2E2E";>휴대번호</p>
+						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="숫자">
+					</div>
+				</div><br>
+				<div class="row">
+					<div class="col">
+						<p class="h6" color="#2E2E2E";>이메일</p>
+						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="숫자">
+					</div>
+					<div class="col">
+						<p class="h6" color="#2E2E2E";>삭제여부</p>
+						<select class="form-select" aria-label="Default select example">
+							<option selected>선택해주세요</option>
+							<option value="1">Y</option>
+							<option value="2">N</option>
+						</select>
+					</div>
+				</div><br>
+				<div class="row">
+					<div class="col d-flex justify-content-center">
+						<button type="button" class="btn btn-outline-dark" style="width: 200px;" id="btnUelete">삭제</button>
+						<button type="button" id="btnSave" name="btnSave" class="btn btn-dark" style="width: 200px;">등록하기</button>
+						<button type="button" id="btnList" name="btnList" class="btn btn-dark" style="width: 200px;">목록으로</button>
+					</div>
+				</div>
+				<br><br><br><br><br><br>
 			</div>
-			<br><br><br><br><br><br>
-		</div>
+		</form>
+		<form name="formVo" id="formVo" method="post">
+			<!-- *Vo.jsp s -->
+			<%@include file="./memberVo.jsp"%>
+			<!-- #-> -->
+			<!-- *Vo.jsp e -->
+		</form>
 	</div>
+	
+	
+	
+	
+	
+	
+	
+	<script type="text/javascript">
+				var goUrlList = "/member/memberList"; /* #-> */
+				var goUrlInst = "/member/memberIsrt"; /* #-> */
+				var goUrlUpdt = "/member/memberUpdt"; /* #-> */
+		//		var goUrlUele = "/codeGroup/codeGroupUele"; /* #-> */
+		//		var goUrlDele = "/codeGroup/codeGroupDele"; /* #-> */
+
+				var seq = $("input:text[name=seq]"); /* #-> */
+
+				var form = $("form[name=form]");
+				var formVo = $("form[name=formVo]");
+
+				$("#btnSave").on("click", function() {
+					if (seq.val() == "0" || seq.val() == "") {
+						// insert
+						//if (validationInst() == false)
+						//	return false;
+						form.attr("action", goUrlInst).submit();
+					} else {
+						// update
+						/* keyName.val(atob(keyName.val())); */
+						//if (validationUpdt() == false)
+						//	return false;
+						form.attr("action", goUrlUpdt).submit();
+					}
+				});
+				
+				
+				$("#btnList").on("click", function(){
+					formVo.attr("action", goUrlList).submit();
+				});
+				
+			</script>
+	
+	
 	<!-- Bootstrap core JavaScript-->
-    <script src="/resources/vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/resources/vendor/jquery/jquery.min.js"></script>
+	<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<!-- Core plugin JavaScript-->
+	<script src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+	<!-- Custom scripts for all pages-->
+	<script src="/resources/js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="/resources/vendor/chart.js/Chart.min.js"></script>
+	<!-- Page level plugins -->
+	<script src="/resources/vendor/chart.js/Chart.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="/resources/js/demo/chart-area-demo.js"></script>
-    <script src="/resources/js/demo/chart-pie-demo.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+	<!-- Page level custom scripts -->
+	<script src="/resources/js/demo/chart-area-demo.js"></script>
+	<script src="/resources/js/demo/chart-pie-demo.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>

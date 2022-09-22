@@ -12,11 +12,11 @@ public class MemberVo extends PageMakeVo{
 //	for cache
 	
 	
-	public String getShseq() {
+	public String getShSeq() {
 		return shSeq;
 	}
-	public void setShseq(String shseq) {
-		this.shSeq = shseq;
+	public void setShSeq(String shSeq) {
+		this.shSeq = shSeq;
 	}
 	public String getShId() {
 		return shId;
