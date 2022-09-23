@@ -87,9 +87,9 @@ public class CodeGroupController {
 	@RequestMapping(value = "codeGroupIsrt")
 	public String codeGroupIsrt(CodeGroupVo vo,CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception{
 		
-		service.insert(dto);
-		vo.setShSeq(dto.getSeq());
-		redirectAttributes.addFlashAttribute("vo",vo);
+		service.insert(dto); //**
+		vo.setShSeq(dto.getSeq()); //**
+		redirectAttributes.addFlashAttribute("vo",vo); //**
 		return "redirect:/codeGroup/codeGroupForm";
 	}
 	

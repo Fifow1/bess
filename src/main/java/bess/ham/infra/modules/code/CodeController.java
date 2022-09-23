@@ -3,6 +3,7 @@ package bess.ham.infra.modules.code;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.support.DaoSupport;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,7 +25,7 @@ public class CodeController {
 	public void setSearchAndPaging(CodeVo vo) throws Exception{
 		
 	//	vo.setShOption(vo.getShOption() == 	null ? 2 : vo.getShOption());
-		vo.setShDelYn(vo.getShDelYn() == null ? 0 : vo.getShDelYn());
+		vo.setShDelYn(vo.getShDelYn() == null ? 2 : vo.getShDelYn());
 		
 		
 		vo.setParamsPaging(service.selectOneCount(vo));
@@ -67,8 +68,8 @@ public class CodeController {
 	public String codeIsrt(CodeVo vo,Code dto, RedirectAttributes redirectAttributes) throws Exception{
 		
 		int result = service.insert(dto);
-		System.out.println("result:" + result);
-		System.out.println("CCGseqC: " + vo.getCCseq());
+		vo.setShSeq(dto.getCCseq());
+		redirectAttributes.addFlashAttribute("vo",vo);
 		return "redirect:/code/codeForm";
 	}
 		

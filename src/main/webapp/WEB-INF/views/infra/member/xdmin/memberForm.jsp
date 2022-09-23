@@ -151,12 +151,18 @@
 			</div>
 		</ul>
 		<div class="container">
-			<form id="form" name="form" method="post" autocomplete="off" enctype="multipart/form-data">
+			<form id="form" name="form" method="post" autocomplete="off">
 				<br><br>
-				<%@include file="./memberVo.jsp"%>
+				<%-- <%@include file="./memberVo.jsp"%> --%>
 				<div class="row">
 					<div class="col mb-5">
 						<h5 class="m-0 font-weight-bold text-dark">회원 관리(등록)</h5>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<p class="h6" color="#2E2E2E";>번호</p>
+						<input type="text" class="form-control"name="seq" id="seq" value="<c:out value="${item.seq}"/>">
 					</div>
 				</div>
 				<div class="row">
@@ -185,11 +191,11 @@
 				<div class="row">
 					<div class="col">
 						<p class="h6" color="#2E2E2E";>아이디</p>
-						<input type="email" class="form-control"placeholder="한글,숫자">
+						<input type="text" class="form-control"placeholder="한글,숫자"name="id" id="id" value="<c:out value="${item.id}"/>">
 					</div>
 					<div class="col">
 						<p class="h6" color="#2E2E2E";>비밀번호</p>
-						<input type="email" class="form-control"placeholder="영문(대소문자)숫자">
+						<input type="text" class="form-control"placeholder="영문(대소문자)숫자" name="pw" id="pw" value="<c:out value="${item.pw}"/>">
 					</div>
 				</div><br>
 				<div class="row">
@@ -203,13 +209,13 @@
 					</div>
 					<div class="col">
 						<p class="h6" color="#2E2E2E";>휴대번호</p>
-						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="숫자">
+						<input type="text" class="form-control" placeholder="숫자"name="number_phone" id="number_phone" value="<c:out value="${item.number_phone}"/>">
 					</div>
 				</div><br>
 				<div class="row">
 					<div class="col">
 						<p class="h6" color="#2E2E2E";>이메일</p>
-						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="숫자">
+						<input type="text" class="form-control" placeholder="숫자" name="email" id="email" value="<c:out value="${item.email}"/>" >
 					</div>
 					<div class="col">
 						<p class="h6" color="#2E2E2E";>삭제여부</p>
@@ -228,8 +234,9 @@
 					</div>
 				</div>
 				<br><br><br><br><br><br>
-			</div>
-		</form>
+			</form>
+		</div>
+			
 		<form name="formVo" id="formVo" method="post">
 			<!-- *Vo.jsp s -->
 			<%@include file="./memberVo.jsp"%>

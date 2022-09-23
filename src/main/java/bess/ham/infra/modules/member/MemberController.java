@@ -2,20 +2,19 @@
 
 package bess.ham.infra.modules.member;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import bess.ham.infra.modules.codegroup.CodeGroup;
-import bess.ham.infra.modules.codegroup.CodeGroupVo;
 
 
 @Controller
@@ -56,12 +55,10 @@ public class MemberController {
 		model.addAttribute("item", result);
 		model.addAttribute("list", list);
 		
+		System.out.println("memberFormControllerShSeq: " + vo.getShSeq());
 		// viewResolver -> /WEB-INF/views/ + home + .jsp
 		return "infra/member/xdmin/memberForm";
 	}
-	
-	
-	
 	
 	
 	
@@ -71,6 +68,10 @@ public class MemberController {
 		service.insert(dto);
 		vo.setShSeq(dto.getSeq());
 		redirectAttributes.addFlashAttribute("vo",vo);
+		System.out.println("memberIsrtControllerEmail: " + dto.getEmail());
+		System.out.println("memberIsrtControllerId: " + dto.getId());
+		System.out.println("memberIsrtControllerPhone: " + dto.getNumber_phone());
+		System.out.println("memberIsrtControllerSeq: " + dto.getSeq());
 		return "redirect:/member/memberForm";
 	}
 	
@@ -84,6 +85,32 @@ public class MemberController {
 		vo.setShSeq(dto.getSeq());
 		redirectAttributes.addFlashAttribute("vo",vo);
 		return "redirect:/member/memberForm";
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value = "checkId")
+	public Map<String, Object> checkId(Member dto) throws Exception {
+
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		int result = service.selectOneIdCheck(dto);
+
+		if (result > 0) {
+			returnMap.put("rt", "fail");
+		} else {
+			returnMap.put("rt", "success");
+		}
+		return returnMap;
+	}
+	
+	
+	
+	@RequestMapping(value = "test")
+	public String test(Model model) throws Exception {
+
+		
+		return "infra/member/user/test";
 	}
 	
 	

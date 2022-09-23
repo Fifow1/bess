@@ -9,6 +9,11 @@
 <head>
 	<meta charset="UTF-8">
   	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	 <!-- Datepicker -->
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+	
  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
  	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,6 +27,8 @@
 	<link rel="stylesheet" href="/resources/css/main.css">
   	<title>member</title>
 	<style type="text/css">
+	
+	
 
 </style>
 </head>
@@ -79,20 +86,23 @@
 	
 	<div style="width: 60%; height:2000px; float:right; padding-top: 200px;">
 		<div class="container">
-			<div class="row loginbtn d-flex justify-content-center">
-				<div class="col mb-3">
-					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">아이디</p>
-					<div class="form-floating d-flex justify-content-center">
-						<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 500px; height: 50px; margin-left: 120px; margin-right: 20px;">
-						<button type="button" class="btn btn-dark" style="width: 100px; padding: 0px; background-color: #2E2E2E;">중복확인</button>
+			<form action="member/checkId" method="post">
+				<div class="row loginbtn d-flex justify-content-center">
+					<div class="col mb-3">
+						<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">아이디</p>
+						<div class="form-floating d-flex justify-content-center">
+							<input type="text" class="form-control" id="id" style="width: 500px; height: 30px; margin-left: 120px; margin-right: 20px;">
+							<button type="button" class="btn btn-dark" style="width: 100px; padding: 0px; background-color: #2E2E2E;">중복확인</button>
+							<div id="idFeedback" class="feedback"></div>
+						</div>
 					</div>
 				</div>
-			</div>
+			</form>
 			<div class="row loginbtn d-flex justify-content-center">
 				<div class="col mb-3">
 					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">비밀번호</p>
 					<div class="form-floating d-flex justify-content-center">
-						<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 500px; height: 50px; margin-left: 20px; margin-right: 20px;">
+						<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 500px; height: 30px; margin-left: 20px; margin-right: 20px;">
 					</div>
 				</div>
 			</div>
@@ -100,7 +110,7 @@
 				<div class="col mb-3">
 					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">비밀번호 확인</p>
 					<div class="form-floating d-flex justify-content-center">
-						<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 500px; height: 50px; margin-left: 20px; margin-right: 20px;">
+						<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 500px; height: 30px; margin-left: 20px; margin-right: 20px;">
 					</div>
 				</div>
 			</div>
@@ -119,7 +129,7 @@
 				<div class="col mb-3">
 					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">생년월일</p>
 					<div class="form-floating d-flex justify-content-center">
-						<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 500px; height: 50px; margin-left: 20px; margin-right: 20px;">
+						<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 500px; height: 30px; margin-left: 20px; margin-right: 20px;">
 					</div>
 				</div>
 			</div>
@@ -127,7 +137,7 @@
 				<div class="col mb-3">
 					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">이메일</p>
 					<div class="form-floating d-flex justify-content-center">
-						<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 500px; height: 50px; margin-left: 120px; margin-right: 20px;">
+						<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 500px; height: 30px; margin-left: 120px; margin-right: 20px;">
 						<button type="button" class="btn btn-dark" style="width: 100px; padding: 0px; background-color: #2E2E2E;">인증</button>
 					</div>
 				</div>
@@ -136,7 +146,7 @@
 				<div class="col mb-3">
 					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">전화번호</p>
 					<div class="form-floating d-flex justify-content-center">
-						<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 500px; height: 50px; margin-left: 120px; margin-right: 20px;">
+						<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 500px; height: 30px; margin-left: 120px; margin-right: 20px;">
 						<button type="button" class="btn btn-dark" style="width: 100px; padding: 0px; background-color: #2E2E2E;">인증</button>
 					</div>
 				</div>
@@ -147,7 +157,7 @@
 				<div class="col mb-3">
 					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">우편번호</p>
 					<div class="form-floating d-flex justify-content-center">
-						<input type="text" class="form-control" id="sample4_postcode" aria-describedby="emailHelp" style="width: 500px; height: 50px; margin-left: 120px; margin-right: 20px;">
+						<input type="text" class="form-control" id="sample4_postcode" aria-describedby="emailHelp" style="width: 500px; height: 30px; margin-left: 120px; margin-right: 20px;">
 						<button type="button" class="btn btn-dark" onclick="sample4_execDaumPostcode()" style="width: 100px; padding: 0px; background-color: #2E2E2E;">인증</button>
 					</div>
 				</div>
@@ -156,7 +166,7 @@
 				<div class="col mb-3">
 					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">주소</p>
 					<div class="form-floating d-flex justify-content-center">
-						<input type="text" class="form-control" id="sample4_roadAddress"  style="width: 500px; height: 50px;">
+						<input type="text" class="form-control" id="sample4_roadAddress"  style="width: 500px; height: 30px;">
 					</div>
 				</div>
 			</div>
@@ -164,7 +174,7 @@
 				<div class="col mb-3">
 					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">상세주소</p>
 					<div class="form-floating d-flex justify-content-center">
-						<input type="text" class="form-control" id="exampleInputEmail1" style="width: 500px; height: 50px; margin-left: 20px; margin-right: 20px;">
+						<input type="text" class="form-control" id="exampleInputEmail1" style="width: 500px; height: 30px; margin-left: 20px; margin-right: 20px;">
 					</div>
 				</div>
 			</div>
@@ -327,7 +337,49 @@
         }).open();
         
     }
+    
+    // keyup
+	$("#id").on("focusout", function(){
+		
+		/* if(!checkId('id', 2, 0, "영대소문자,숫자,특수문자(-_.),4~20자리만 입력 가능합니다")) {
+			return false;
+		} else { */
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				/* ,dataType:"json" */
+				,url: "/member/checkId"
+				/* ,data : $("#formLogin").serialize() */
+				,data : { "id" : $("#id").val() }
+				,success: function(response) {
+					if(response.rt == "success") {
+						document.getElementById("id").classList.add('is-valid');
+	
+						document.getElementById("idFeedback").classList.remove('invalid-feedback');
+						document.getElementById("idFeedback").classList.add('valid-feedback');
+						document.getElementById("idFeedback").innerText = "사용 가능 합니다.";
+						
+						document.getElementById("idAllowedNy").value = 1;
+						
+					} else {
+						document.getElementById("id").classList.add('is-invalid');
+						
+						document.getElementById("idFeedback").classList.remove('valid-feedback');
+						document.getElementById("idFeedback").classList.add('invalid-feedback');
+						document.getElementById("idFeedback").innerText = "사용 불가능 합니다";
+						
+						document.getElementById("idAllowedNy").value = 0;
+					}
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
+		/* } */
+	});
 </script>
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

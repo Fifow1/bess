@@ -25,7 +25,10 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int insert(Member dto) throws Exception{
 		int result = dao.insert(dto);
-		System.out.println("service result"+result);
+		System.out.println("memberIsrtServiceEmail: " + dto.getEmail());
+		System.out.println("memberIsrtServiceId: " + dto.getId());
+		System.out.println("memberIsrtServicePhone: " + dto.getNumber_phone());
+		System.out.println("memberIsrtServiceShSeq: " + dto.getSeq());
 		return result;
 	}
 	
@@ -41,13 +44,19 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member selectOne(MemberVo vo) throws Exception{
 		Member result = dao.selectOne(vo);
-		System.out.println("s:"+result);
+		System.out.println("memberIsrtServiceShSeq: " + vo.getShSeq());
 		return result;
 	}
 	
 	@Override
 	public int selectOneCount(MemberVo vo) throws Exception {
 		return  dao.selectOneCount(vo);
+	}
+	
+	@Override
+	public int selectOneIdCheck(Member dto) throws Exception{
+		int result = dao.selectOneIdCheck(dto);
+		return result;
 	}
 }
 

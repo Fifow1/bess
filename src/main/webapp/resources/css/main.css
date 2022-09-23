@@ -399,10 +399,16 @@ table {
 
 
 
+.invalid-feedback{
+	background-color: green;
+	
+}
 
 
-
-
+.valid-feedback{
+	
+	background-color: red;
+}
 
 
 
