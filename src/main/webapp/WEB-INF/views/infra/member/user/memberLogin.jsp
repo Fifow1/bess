@@ -18,7 +18,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@600&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="/resources/css/main.css">
+	<link rel="stylesheet" href="/resources/css/main2.css">
   	<title>memberLogin</title>
 	<style type="text/css">
 
@@ -59,7 +59,7 @@
 	<div style="width: 40%; height:1000px; float:left; margin-top: 300px;">
 		<div class="row">
 			<div class="col d-flex justify-content-center">
-				<p style="font-family: 'Source Sans Pro', sans-serif; font-size: 80px; margin-right: 50px; ">Customer<br>Login</p>
+				<p style="font-size: 80px; margin-right: 50px;" class="h1">Customer<br>Login</p>
 			</div>
 		</div>
 		<div class="row">
@@ -75,25 +75,25 @@
 	<div class="line"></div>
 
 
-	<div style="width: 60%; height: 800px; float: right; padding-top: 220px;">
+	<div style="width: 60%; height: 800px; float: right; padding-top: 210px;">
 		<div class="container">
-			<p class="h3" style ="margin-bottom: 50px; margin-left: 510px; font-weight: 900;">로그인</p>
+			<p style ="margin-bottom: 50px; margin-left: 510px; font-weight: 900;font-size: 20px;">로그인</p>
 			<p style ="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">아이디</p>
 			<div class="row loginbtn d-flex justify-content-center">
 				<div class="col d-flex justify-content-center">
-					<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 500px; height: 40px;">
+					<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 500px; height: 50px;">
 				</div>
 			</div>
 			<p style ="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">비밀번호</p>
 			<div class="row loginbtn d-flex justify-content-center">
 				<div class="col mb-3 d-flex justify-content-center">
-					<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 500px; height: 40px;">
+					<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 500px; height: 50px;">
 				</div>
 			</div>
 			
 			<div class="row">
 				<div class="col mb-0 d-flex justify-content-center">
-					<button type="button" class="btn btn-dark border" style="width: 500px; height: 50px;">로그인</button>
+					<button type="button" class="btn btn-primary border" style="width: 500px; height: 50px;">로그인</button>
 				</div>
 			</div>
 			<div class="row">
@@ -121,7 +121,7 @@
 					<button type="button" class="btn btn-danger border ms-2" style="width: 120px;">
 						<i class="fa-brands fa-google"></i>
 					</button>
-					<button type="button" class="btn btn-primary border ms-2" style="width: 120px;">
+					<button type="button" class="btn btn-info border ms-2" style="width: 120px;">
 						<i class="fa-brands fa-facebook"></i>
 					</button>
 				</div>

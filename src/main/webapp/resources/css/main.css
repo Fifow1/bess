@@ -373,7 +373,6 @@ table {
 		}
 		.form_radio_btn label {
 			display: block;
-    		border-radius: 10px;
    			margin: 0 auto;
     		text-align: center;
     		height: -webkit-fill-available;

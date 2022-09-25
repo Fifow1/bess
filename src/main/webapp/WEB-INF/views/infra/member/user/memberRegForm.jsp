@@ -24,7 +24,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
 	
-	<link rel="stylesheet" href="/resources/css/main.css">
+	<link rel="stylesheet" href="/resources/css/main2.css">
   	<title>member</title>
 	<style type="text/css">
 	
@@ -64,15 +64,15 @@
 
 <div id="wrapper" style="height: 2700px">
 
-	<div style="width: 40%; height:1000px; float:left; margin-top: 800px;">
-		<div class="row" style="padding-right: 70px;">
+	<div style="width: 40%; height:1000px; float:left; margin-top: 500px;">
+		<div class="row" style="padding-right: 100px;">
 			<div class="col d-flex justify-content-center">
-				<p style="font-family: 'Source Sans Pro', sans-serif; font-size: 80px;">Create<br> Account</p>
+				<p style="font-size: 80px;" class="h1">Create<br> Account</p>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col d-flex justify-content-center">
-				<hr style="border: solid 4px #2E2E2E; width: 350px; opacity: .9; ">
+				<hr style="border: solid 4px #2E2E2E; width: 380px; opacity: .9; "class="h1">
 			</div>
 		</div>
 	</div>
@@ -87,35 +87,36 @@
 	<div style="width: 60%; height:2000px; float:right; padding-top: 200px;">
 		<div class="container">
 			<form action="member/checkId" method="post">
-				<div class="row loginbtn d-flex justify-content-center">
-					<div class="col mb-3">
+				<div class="row mb-0">
+					<div class="col">
 						<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">아이디</p>
 						<div class="form-floating d-flex justify-content-center">
-							<input type="text" class="form-control" id="id" style="width: 500px; height: 30px; margin-left: 120px; margin-right: 20px;">
-							<button type="button" class="btn btn-dark" style="width: 100px; padding: 0px; background-color: #2E2E2E;">중복확인</button>
-							<div id="idFeedback" class="feedback"></div>
+							<input type="text" class="form-control pt-1" id="id" style="width: 500px; height: 50px; margin-left: 120px; margin-right: 20px;">
+							<button type="button" class="btn btn-dark" style="width: 100px; padding: 0px; background-color: #2E2E2E;">중복확인</button><br>
+						<div id="idFeedback" class="feedback"></div>
 						</div>
 					</div>
+					<div id="idFeedback" class="feedback"></div>
 				</div>
 			</form>
-			<div class="row loginbtn d-flex justify-content-center">
-				<div class="col mb-3">
+			<div class="row mb-0">
+				<div class="col">
 					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">비밀번호</p>
 					<div class="form-floating d-flex justify-content-center">
-						<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 500px; height: 30px; margin-left: 20px; margin-right: 20px;">
+						<input type="text" class="form-control pt-1" style="width: 500px; height: 50px; margin-left: 20px; margin-right: 20px;">
 					</div>
 				</div>
 			</div>
-			<div class="row loginbtn d-flex justify-content-center">
-				<div class="col mb-3">
+			<div class="row mb-0">
+				<div class="col">
 					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">비밀번호 확인</p>
 					<div class="form-floating d-flex justify-content-center">
-						<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 500px; height: 30px; margin-left: 20px; margin-right: 20px;">
+						<input type="text" class="form-control pt-1" style="width: 500px; height: 50px; margin-left: 20px; margin-right: 20px;">
 					</div>
 				</div>
 			</div>
-			<div class="row d-flex justify-content-center">
-				<div class="col mb-3">
+			<div class="row mb-0">
+				<div class="col mb-0">
 					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">성별</p>
 					<div class="form_radio_btn radio_male" style="float: left; margin-left: 310px;">
 						<input id="radio-1" type="radio" name="userGender" value="male" checked> <label for="radio-1">남자</label>
@@ -125,64 +126,78 @@
 					</div>
 				</div>
 			</div>'
-			<div class="row loginbtn d-flex justify-content-center">
-				<div class="col mb-3">
+			<div class="row mb-0">
+				<div class="col">
 					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">생년월일</p>
 					<div class="form-floating d-flex justify-content-center">
-						<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 500px; height: 30px; margin-left: 20px; margin-right: 20px;">
+						<input type="text" class="form-control pt-1" style="width: 500px; height: 50px; margin-left: 20px; margin-right: 20px;">
 					</div>
 				</div>
 			</div>
-			<div class="row loginbtn d-flex justify-content-center">
-				<div class="col mb-3">
+			<div class="row mb-0">
+				<div class="col">
 					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">이메일</p>
 					<div class="form-floating d-flex justify-content-center">
-						<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 500px; height: 30px; margin-left: 120px; margin-right: 20px;">
+						<input type="text" class="form-control pt-1" style="width: 500px; height: 50px; margin-left: 120px; margin-right: 20px;">
 						<button type="button" class="btn btn-dark" style="width: 100px; padding: 0px; background-color: #2E2E2E;">인증</button>
 					</div>
 				</div>
 			</div>
-			<div class="row loginbtn d-flex justify-content-center">
-				<div class="col mb-3">
+			<div class="row mb-0">
+				<div class="col">
 					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">전화번호</p>
 					<div class="form-floating d-flex justify-content-center">
-						<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 500px; height: 30px; margin-left: 120px; margin-right: 20px;">
+						<input type="text" class="form-control pt-1" style="width: 500px; height: 50px; margin-left: 120px; margin-right: 20px;">
 						<button type="button" class="btn btn-dark" style="width: 100px; padding: 0px; background-color: #2E2E2E;">인증</button>
 					</div>
 				</div>
 			</div>
-			<div class="row loginbtn d-flex justify-content-center">
+			<div class="row mb-0">
 			</div>
-			<div class="row loginbtn d-flex justify-content-center">
-				<div class="col mb-3">
+			<div class="row mb-0">
+				<div class="col">
 					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">우편번호</p>
 					<div class="form-floating d-flex justify-content-center">
-						<input type="text" class="form-control" id="sample4_postcode" aria-describedby="emailHelp" style="width: 500px; height: 30px; margin-left: 120px; margin-right: 20px;">
+						<input type="text" class="form-control pt-1" id="sample4_postcode" style="width: 500px; height: 50px; margin-left: 120px; margin-right: 20px;">
 						<button type="button" class="btn btn-dark" onclick="sample4_execDaumPostcode()" style="width: 100px; padding: 0px; background-color: #2E2E2E;">인증</button>
 					</div>
 				</div>
 			</div>
-			<div class="row loginbtn d-flex justify-content-center">
-				<div class="col mb-3">
+			<div class="row mb-0">
+				<div class="col">
 					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">주소</p>
 					<div class="form-floating d-flex justify-content-center">
-						<input type="text" class="form-control" id="sample4_roadAddress"  style="width: 500px; height: 30px;">
+						<input type="text" class="form-control pt-1" id="sample4_roadAddress"  style="width: 500px; height: 50px;">
 					</div>
 				</div>
 			</div>
-			<div class="row loginbtn d-flex justify-content-center">
-				<div class="col mb-3">
+			<div class="row mb-0">
+				<div class="col">
 					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">상세주소</p>
 					<div class="form-floating d-flex justify-content-center">
-						<input type="text" class="form-control" id="exampleInputEmail1" style="width: 500px; height: 30px; margin-left: 20px; margin-right: 20px;">
+						<input type="text" class="form-control pt-1" id="exampleInputEmail1" style="width: 500px; height: 50px; margin-left: 20px; margin-right: 20px;">
+					</div>
+				</div>
+			</div>
+			<div class="row mb-0">
+				<div class="col">
+					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">위도</p>
+					<div class="form-floating d-flex justify-content-center">
+						<input type="text" class="form-control pt-1" id="y" style="width: 500px; height: 50px;">
+					</div>
+				</div>
+			</div>
+			<div class="row mb-0">
+				<div class="col">
+					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">경도</p>
+					<div class="form-floating d-flex justify-content-center">
+						<input type="text" class="form-control pt-1" id="x" style="width: 500px; height: 50px;">
 					</div>
 				</div>
 			</div>
 			
 			
 			
-			<input type="text" class="form-control" id="y" style="width: 500px; height: 50px; margin-left: 120px; margin-right: 20px;">
-			<input type="text" class="form-control" id="x"  style="width: 500px; height: 50px; margin-left: 120px; margin-right: 20px;">
 			
 			
 			
@@ -204,7 +219,7 @@
 			</div>
 			<div class="row">
 				<div class="col mb-0 d-flex justify-content-center">
-					<button type="button" class="btn btn-dark textbox">가입하기</button>		
+					<button type="button" class="btn btn-primary textbox">가입하기</button>		
 				</div>
 			</div>
 			<div class="row">
@@ -223,7 +238,7 @@
 					<button type="button" class="btn btn-danger border ms-2" style="width: 120px;">
 						<i class="fa-brands fa-google"></i>
 					</button>
-					<button type="button" class="btn btn-primary border ms-2" style="width: 120px;">
+					<button type="button" class="btn btn-info border ms-2" style="width: 120px;">
 						<i class="fa-brands fa-facebook"></i>
 					</button>
 				</div>
