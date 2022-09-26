@@ -12099,18 +12099,41 @@ table {
 
 
 
-.invalid-feedback{
-	background-color: green;
-	
+
+
+/* 공통 클래스 */
+.hide {
+  display: none;
 }
-
-
-.valid-feedback{
-	
-	background-color: red;
+/* 경고 메세지 */
+.msg {
+  display: block;
+  width: 100%;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 5px;
+  padding-left: 130px;
 }
-
-
+.msg:before {
+  display: inline-block;
+  content: "";
+  clear: both;
+  vertical-align: middle;
+  width: 3px;
+  height: 3px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background: #333;
+}
+.msg.hide {
+  display: none;
+}
+.msg.success {
+  color: green;
+}
+.msg.success:before {
+  background: green;
+}
 
 
 

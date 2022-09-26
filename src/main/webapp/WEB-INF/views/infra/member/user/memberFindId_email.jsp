@@ -16,8 +16,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,600;1,200&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@600&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="/resources/css/main.css">
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/resources/css/main2.css">
   	<title>memberFindid</title>
 	<style type="text/css">
 
@@ -58,19 +58,19 @@
 	<div style="width: 40%; height:1000px; float:left; margin-top: 250px;">
 		<div class="row">
 			<div class="col d-flex justify-content-center">
-				<p style="font-family: 'Source Sans Pro', sans-serif; font-size: 80px; margin-right: 50px;">Find ID<br>email</p>
+				<p style="font-size: 80px; margin-right: 50px;" class="h1">Find ID<br>email</p>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col d-flex justify-content-center">
-				<hr style="border: solid 4px #2E2E2E; width: 300px; opacity: .9; margin-right: 10px;">
+				<hr style="border: solid 4px #2E2E2E; width: 300px; opacity: .9; margin-right: 74px;">
 			</div>
 		</div>
 	</div>
 	
 	<div class="line"></div>
 	
-	<div style="width: 60%; height:1000px; float:right; padding-top: 250px;">
+	<div style="width: 60%; height:1000px; float:right; padding-top: 200px;">
 		<div class="container">
 			<div class="row loginbtn d-flex justify-content-center">
 				<div class="col mb-5">
@@ -82,19 +82,19 @@
 				</div>
 			</div>
 			<div class="row loginbtn d-flex justify-content-center">
-				<div class="col mb-3">
+				<div class="col mb-1">
+					<p style="margin-bottom: 4px; margin-left: 250px; font-weight: 900;">가입시 입력한 이메일 주소</p>
 					<div class="form-floating d-flex justify-content-center">
-					  	<input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" style="width: 500px; margin-left: 0px; margin-right:20px; ">
-					 	<label for="floatingInput" style="margin-left: 250px;">가입 시 입력한 이메일 주소</label>
-						<button type="button" class="btn btn-secondary" style="width: 100px; padding: 0px;">인증</button>		
+						<input type="text" class="form-control" placeholder="Username" style="width: 500px; height: 50px; margin-right: 20px;">
+						<button type="button" class="btn btn-dark" style="width: 100px; padding: 0px; background-color: #2E2E2E;">인증</button>
 					</div>
 				</div>
 			</div>
 			<div class="row loginbtn d-flex justify-content-center">
 				<div class="col mb-3">
+					<p style="margin-bottom: 4px; margin-left: 250px; font-weight: 900;">인증번호</p>
 					<div class="form-floating d-flex justify-content-center">
-					  	<input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" style="width: 620px; margin-left: 20px; margin-right:20px; ">
-					 	<label for="floatingInput" style="margin-left: 250px;">인증번호</label>
+						<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 620px; height: 50px;">
 					</div>
 				</div>
 			</div>

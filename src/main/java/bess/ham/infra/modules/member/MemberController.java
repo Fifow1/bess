@@ -68,10 +68,8 @@ public class MemberController {
 		service.insert(dto);
 		vo.setShSeq(dto.getSeq());
 		redirectAttributes.addFlashAttribute("vo",vo);
-		System.out.println("memberIsrtControllerEmail: " + dto.getEmail());
-		System.out.println("memberIsrtControllerId: " + dto.getId());
-		System.out.println("memberIsrtControllerPhone: " + dto.getNumber_phone());
-		System.out.println("memberIsrtControllerSeq: " + dto.getSeq());
+		
+		
 		return "redirect:/member/memberForm";
 	}
 	

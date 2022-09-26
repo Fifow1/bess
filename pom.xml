@@ -189,6 +189,21 @@
 		<!-- mysql, mariadb log s 2022.02.26 -->
 		
 		
+		<!-- mail library -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
+		<!-- mail 서포트 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		
+		
+		
 		<!-- mysql s 2022.02.25 -->
 		<dependency>
 			<groupId>mysql</groupId>

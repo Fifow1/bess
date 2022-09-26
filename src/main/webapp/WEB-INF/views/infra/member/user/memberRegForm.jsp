@@ -80,40 +80,55 @@
 
 
 
-<div class="line"></div>
+	<div class="line"></div>
 
 	
 	
 	<div style="width: 60%; height:2000px; float:right; padding-top: 200px;">
 		<div class="container">
-			<form action="member/checkId" method="post">
-				<div class="row mb-0">
-					<div class="col">
-						<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">아이디</p>
-						<div class="form-floating d-flex justify-content-center">
-							<input type="text" class="form-control pt-1" id="id" style="width: 500px; height: 50px; margin-left: 120px; margin-right: 20px;">
-							<button type="button" class="btn btn-dark" style="width: 100px; padding: 0px; background-color: #2E2E2E;">중복확인</button><br>
-						<div id="idFeedback" class="feedback"></div>
-						</div>
+			<form action="member/memberIsrt" method="post">
+			<div class="row mb-0">
+				<div class="col">
+					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">아이디</p>
+					<div class="form-floating d-flex justify-content-center">
+						<input type="text" class="form-control pt-1" id="id" name="id" style="width: 500px; height: 50px; margin-left: 120px; margin-right: 20px;">
+						<button type="button" class="btn btn-dark" style="width: 100px; padding: 0px; background-color: #2E2E2E;">중복확인</button>
 					</div>
-					<div id="idFeedback" class="feedback"></div>
 				</div>
-			</form>
+			</div>
+			<div class="row mb-0">
+				<div id="idFeedback" class="feedback"></div>
+			</div>
 			<div class="row mb-0">
 				<div class="col">
 					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">비밀번호</p>
 					<div class="form-floating d-flex justify-content-center">
-						<input type="text" class="form-control pt-1" style="width: 500px; height: 50px; margin-left: 20px; margin-right: 20px;">
+						<input type="text" class="form-control pt-1 " id='password' style="width: 500px; height: 50px; margin-left: 20px; margin-right: 20px;">
 					</div>
 				</div>
+			</div>
+			<div class="row mb-0">
+				<div class='password-message-wrap' style="margin-left: 180px;">
+					<span class='password-failure-length hide msg' >10자 이상 입력</span>
+					<span class='password-failure-comb hide msg'>영문/숫자/특수문자(공백 제외)만 허용하며, 2개 이상 조합</span>
+					<span class='password-failure-contn hide msg'>동일한 숫자 3개 이상 연속 사용 불가</span>
+					<span class='password-failure-upper hide msg'>영어 대문자 하나 이상 포함</span>
+					<span class='password-success-message hide msg success'>사용할 수 있는 비밀번호입니다.</span>
+      			</div>	
 			</div>
 			<div class="row mb-0">
 				<div class="col">
 					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">비밀번호 확인</p>
 					<div class="form-floating d-flex justify-content-center">
-						<input type="text" class="form-control pt-1" style="width: 500px; height: 50px; margin-left: 20px; margin-right: 20px;">
+						<input type="text" class="form-control pt-1" id='password-retype' style="width: 500px; height: 50px; margin-left: 20px; margin-right: 20px;">
 					</div>
 				</div>
+			</div>
+			<div class="row mb-0">
+				<div style="margin-left: 180px;">
+					<div class="mismatch-message hide msg">동일한 비밀번호를 입력해주세요.</div>
+     				<div class="match-message hide msg success">동일한 비밀번호가 입력되었습니다.</div>
+     			</div>
 			</div>
 			<div class="row mb-0">
 				<div class="col mb-0">
@@ -138,7 +153,14 @@
 				<div class="col">
 					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">이메일</p>
 					<div class="form-floating d-flex justify-content-center">
-						<input type="text" class="form-control pt-1" style="width: 500px; height: 50px; margin-left: 120px; margin-right: 20px;">
+						<input type="text" class="form-control pt-1" style="width: 140px; height: 50px; margin-left: 120px; margin-right: 20px;">@
+						<input type="text" class="form-control pt-1" id="domain-txt" style="width: 140px; height: 50px; margin-left: 20px; margin-right: 20px;">
+						<select class="form-select pt-1" id="domain-list" style="width: 140px; height: 50px; margin-right: 20px;">
+							<option value="type">직접 입력</option>
+  							<option value="naver.com">naver.com</option>
+  							<option value="gmail.com">gmail.com</option>
+  							<option value="daum.net">daum.net</option>
+						</select>
 						<button type="button" class="btn btn-dark" style="width: 100px; padding: 0px; background-color: #2E2E2E;">인증</button>
 					</div>
 				</div>
@@ -147,7 +169,7 @@
 				<div class="col">
 					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">전화번호</p>
 					<div class="form-floating d-flex justify-content-center">
-						<input type="text" class="form-control pt-1" style="width: 500px; height: 50px; margin-left: 120px; margin-right: 20px;">
+						<input type="text" name="number_phone" id="number_phone" class="form-control pt-1" style="width: 500px; height: 50px; margin-left: 120px; margin-right: 20px;">
 						<button type="button" class="btn btn-dark" style="width: 100px; padding: 0px; background-color: #2E2E2E;">인증</button>
 					</div>
 				</div>
@@ -196,9 +218,7 @@
 				</div>
 			</div>
 			
-			
-			
-			
+
 			
 			
 			<div class="row loginbtn d-flex justify-content-center">
@@ -219,7 +239,7 @@
 			</div>
 			<div class="row">
 				<div class="col mb-0 d-flex justify-content-center">
-					<button type="button" class="btn btn-primary textbox">가입하기</button>		
+					<button type="submit" class="btn btn-primary textbox">가입하기</button>		
 				</div>
 			</div>
 			<div class="row">
@@ -232,8 +252,10 @@
 					<button type="button" class="btn btn-success border" style="width: 120px;">
 						<i class="fa-sharp fa-solid fa-n"></i>
 					</button>
-					<button type="button" class="btn btn-warning border ms-2" style="width: 120px;">
+					<button type="button" onclick="javascript:loginWithKakao()" class="btn btn-warning border ms-2" style="width: 120px;">
 						<i class="fa-sharp fa-solid fa-comment"></i>
+						<a id="kakao-login-btn" href="javascript:loginWithKakao()"></a>
+						<p id="token-result"></p>
 					</button>
 					<button type="button" class="btn btn-danger border ms-2" style="width: 120px;">
 						<i class="fa-brands fa-google"></i>
@@ -241,8 +263,11 @@
 					<button type="button" class="btn btn-info border ms-2" style="width: 120px;">
 						<i class="fa-brands fa-facebook"></i>
 					</button>
+
 				</div>
+				
 			</div>
+			</form>
 		</div>
 	</div>
 <!------------------------------------------------------------------- footer -------------------------------------------------------------------->
@@ -297,8 +322,9 @@
 	</div>
 </div>
 
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1c3e148b9d3b6d9eee46fb31507354ea&libraries=services"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> <!-- 카카오 API -->
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1c3e148b9d3b6d9eee46fb31507354ea&libraries=services"></script> <!-- 카카오 API -->
+<!-- 카카오API (주소),(위도경도) -->
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function sample4_execDaumPostcode() {
@@ -352,7 +378,7 @@
         }).open();
         
     }
-    
+/* 아이디 중복검사 */
     // keyup
 	$("#id").on("focusout", function(){
 		
@@ -369,22 +395,24 @@
 				,data : { "id" : $("#id").val() }
 				,success: function(response) {
 					if(response.rt == "success") {
+						document.getElementById("id").classList.remove('is-invalid');
 						document.getElementById("id").classList.add('is-valid');
 	
 						document.getElementById("idFeedback").classList.remove('invalid-feedback');
 						document.getElementById("idFeedback").classList.add('valid-feedback');
 						document.getElementById("idFeedback").innerText = "사용 가능 합니다.";
 						
-						document.getElementById("idAllowedNy").value = 1;
+						/* document.getElementById("idAllowedNy").value = 1; */
 						
 					} else {
+						document.getElementById("id").classList.remove('is-valid');
 						document.getElementById("id").classList.add('is-invalid');
 						
 						document.getElementById("idFeedback").classList.remove('valid-feedback');
 						document.getElementById("idFeedback").classList.add('invalid-feedback');
 						document.getElementById("idFeedback").innerText = "사용 불가능 합니다";
 						
-						document.getElementById("idAllowedNy").value = 0;
+						/* document.getElementById("idAllowedNy").value = 0; */
 					}
 				}
 				,error : function(jqXHR, textStatus, errorThrown){
@@ -393,8 +421,343 @@
 			});
 		/* } */
 	});
+    
+    
+    
+    /* 유효성검사 */
+	 /*  const elInputUsername = document.querySelector('#id'); */
+
+	  const elFailureMessage = document.querySelector('.failure-message');
+	  const elSuccessMessage = document.querySelector('.success-message');
+
+	  const elPassword = document.querySelector('#password');
+	  const elPasswordRetype = document.querySelector('#password-retype');
+
+	  const elPWRetypeFailureMsg = document.querySelector('.mismatch-message');
+	  const elPWRetypeSuccessMsg = document.querySelector('.match-message');
+
+	  const elPWFailureLeng = document.querySelector('.password-failure-length');
+	  const elPWFailureComb = document.querySelector('.password-failure-comb');
+	  const elPWFailureContn = document.querySelector('.password-failure-contn');
+	  const elPWFailureUpper = document.querySelector('.password-failure-upper');
+	  const elPWSuccessMessage = document.querySelector('.password-success-message');
+
+	  const elSubmitButton = document.querySelector('#subit-button');
+
+	  //-------- 유효성 검사 ---------//
+
+	  // { 아이디 } input 유효성 검사
+	  /* function usernameFn() {
+
+	    if(isMoreThan4Length(elInputUsername.value) && isUserNameChar(elInputUsername.value) ) {
+	      elSuccessMessage.classList.remove('hide'); 
+	      elFailureMessage.classList.add('hide')
+	    } else {
+	      elFailureMessage.classList	.remove('hide'); 
+	      elSuccessMessage.classList.add('hide'); 
+	    }
+
+	    isSubmitButton();
+	  }
+
+	  elInputUsername.addEventListener('click', usernameFn);
+	  elInputUsername.addEventListener('keyup', usernameFn); */
+
+	  // { 비밀번호 } input 유효성 검사  
+	  function passwordFn () {
+		// 비밀번호 자리수
+	    if( isMoreThan10Length(elPassword.value) ) {
+	      elPWFailureLeng.classList.add('hide');
+	    } else {
+	      elPWFailureLeng.classList.remove('hide');
+	    }
+		// 
+
+	    if( (isPasswordEng(elPassword.value) + isPasswordNum(elPassword.value) + isPasswordSpeci(elPassword.value) >= 2) &&
+	        (isPasswordBlank(elPassword.value)) &&
+	        (isPasswordChar(elPassword.value)) 
+	      ) {
+	      elPWFailureComb.classList.add('hide');
+	    } else {
+	      elPWFailureComb.classList.remove('hide');
+	    }
+
+	    if( isPasswordRepeat(elPassword.value) ) {
+	      elPWFailureContn.classList.remove('hide');
+	    } else {
+	      elPWFailureContn.classList.add('hide');
+	    }
+
+	    if( (isPasswordUpper(elPassword.value)) ) {
+	      elPWFailureUpper.classList.add('hide');
+	    } else {
+	      elPWFailureUpper.classList.remove('hide');
+	    }
+
+	    if( (isMoreThan10Length(elPassword.value)) && 
+	        (isPasswordEng(elPassword.value) + isPasswordNum(elPassword.value) + isPasswordSpeci(elPassword.value) >= 2) && 
+	        (isPasswordChar(elPassword.value)) && 
+	        (isPasswordBlank(elPassword.value)) && 
+	        (!isPasswordRepeat(elPassword.value)) && 
+	        ((isPasswordUpper(elPassword.value)))
+	      ) {
+	      elPWSuccessMessage.classList.remove('hide');
+	    } else {
+	      elPWSuccessMessage.classList.add('hide');
+	    }
+
+	  }
+
+	  elPassword.addEventListener('click', passwordFn)
+	  elPassword.addEventListener('keyup', passwordFn)
+	  elPassword.addEventListener('keyup', passwordRetypeFn)
+
+	  // { 비밀번호 확인 } input 유효성 검사
+	  function passwordRetypeFn() {
+	    if( isMatch(elPassword.value, elPasswordRetype.value) && isPasswordBlank(elPasswordRetype.value) ) {
+	      //console.log('두 비밀번호가 동일하다..');
+	      elPWRetypeFailureMsg.classList.add('hide');
+	      elPWRetypeSuccessMsg.classList.remove('hide');
+	    } else {
+	      //console.log('두 비밀번호가 다르다...!!!');
+	      elPWRetypeFailureMsg.classList.remove('hide');
+	      elPWRetypeSuccessMsg.classList.add('hide');
+	    }
+
+	  }
+
+	  elPasswordRetype.onclick = passwordRetypeFn;
+	  elPasswordRetype.onkeyup = passwordRetypeFn;
+
+	  //-------- 최종 유효성 검사에서 사용하는 함수다 ---------//
+
+	  // 모든 조건이 충족되었는지 확인하는 함수
+	  function isAllCheck() {
+	    if( isMoreThan4Length(elInputUsername.value) && isUserNameChar(elInputUsername.value) ) { // 아이디
+	      if( (isMoreThan10Length(elPassword.value)) && 
+	          (isPasswordEng(elPassword.value) + isPasswordNum(elPassword.value) + isPasswordSpeci(elPassword.value) >= 2) &&
+	          (isPasswordChar(elPassword.value)) &&
+	          (isPasswordBlank(elPassword.value)) && 
+	          (!isPasswordRepeat(elPassword.value)) && 
+	          ((isPasswordUpper(elPassword.value)))
+	        ) { // 비밀번호
+	        if( isMatch(elPassword.value, elPasswordRetype.value) ) { // 비밀번호 확인
+	          //console.log('true!!');
+	          return true;
+	        }
+	      }
+	    } else {
+	      //console.log('false!!');
+	      return false;
+	    }
+	  }
+
+	  /* // [회원가입 버튼] 배경 활성화 함수
+	  function isSubmitButton() {
+	    if( isAllCheck() ) {
+	      elSubmitButton.classList.add('allCheck');
+	    }
+	    else {
+	      elSubmitButton.classList.remove('allCheck');
+	    }
+	  }
+
+	  // [회원가입 버튼] 클릭 이벤트 함수
+	  elSubmitButton.onclick = function() {
+	    if( isAllCheck() ) {
+	      alert('회원가입이 완료되었습니다!');
+	      elInputUsername.value = '';
+	      elPassword.value = '';
+	      elPasswordRetype.value = '';
+	      elSuccessMessage.classList.add('hide');
+	      elPWRetypeSuccessMsg.classList.add('hide');
+	      elPWSuccessMessage.classList.add('hide');
+	      elSubmitButton.classList.remove('allCheck');
+	    }
+	    else {
+	      alert('모든 조건이 충족되어야합니다.');
+	    }
+	  }; */
+
+	  //-------- 유효성 검사에서 사용하는 함수다 ---------//
+
+	  // [아이디] 길이가 4자 이상이면 true를 리턴하는 함수
+	  function isMoreThan4Length(value) {
+	    // 아이디 입력창에 사용자가 입력을 할 때 
+	    // 글자 수가 4개이상인지 판단한다.
+	    // 글자가 4개 이상이면 success메세지가 보여야 한다.
+	    return value.length >= 7;
+	  }
+
+	  // [아이디] '영문, 숫자'만 있으면 true를 리턴하는 함수
+	  function isUserNameChar(username) {
+	    var letters = /^[A-Za-z0-9]+$/;
+
+	    if( username.match(letters) ) {
+	      return true;
+	    } else {   
+	      return false;
+	    }
+	  }
+
+	  // [비밀번호] 길이가 10자 이상이면 true를 리턴하는 함수
+	  function isMoreThan10Length (password) {
+	    return password.length >= 7;
+	  }
+
+	  // [비밀번호] 영문이 있으면 true를 리턴하는 함수
+	  function isPasswordEng (password) {
+	    var letters = /[A-Za-z]/; // 잘 모르겠지만 이것은 정규표현식으로 AZ - az 모든 알파벳을 담고 있다.
+	    
+	    if( letters.test(password) ) {  // 정규표현식에 영어문자가 모두 들었고. 정규표현식의 메소드인 test()로 비밀번호 문자에 영어가 있는지 판단한다.
+	      return true;
+	    } else {
+	      return false;
+	    }
+	  }
+
+	  // [비밀번호] 숫자가 있으면 true를 리턴하는 함수
+	  function isPasswordNum (password) {
+	    var letters = /[0-9]/;
+	    
+	    if( letters.test(password) ) {
+	      return true;
+	    } else {
+	      return false;
+	    }
+	  }
+
+	  // [비밀번호] 특수문자가 있으면 true를 리턴하는 함수
+	  function isPasswordSpeci (password) {
+	    var letters = /[~!@#$%^&*()\-_=+\\\|\[\]{};:\'",.<>\/?]/;
+	    
+	    if( letters.test(password) ) {
+	      return true;
+	    } else {
+	      return false;
+	    }
+	  }
+
+	  // [비밀번호][비밀번호 확인] 스페이스가 없을 경우 true를 리턴하는 함수
+	  function isPasswordBlank (password) {
+	    if( password.search(/\s/) === -1 ) {
+	      return true;
+	    } else {
+	      return false;
+	    }
+	  }
+
+	  // [비밀번호] '영문, 숫자, 특수문자'만 있으면 true를 리턴하는 함수
+	  function isPasswordChar(password) {
+	    var letters = /^[A-Za-z0-9~!@#$%^&*()\-_=+\\\|\[\]{};:\'",.<>\/?]+$/;
+
+	    if( password.match(letters) ) {
+	      //console.log('가능한 것만 있네!');
+	      return true;
+	    } else {
+	      //console.log('안되는 것도 있네?');
+	      return false;
+	    }
+	  }
+
+	  // [비밀번호] 동일한 숫자 3개 이상 연속 사용하면 true를 리턴하는 함수
+	  function isPasswordRepeat (password) {
+	    // password의 길이만큼 반복되는 반복문이 있어야 한다.
+	    // 문자 하나와 나 자신+1과 나자신 +2와 비교한다.
+	    // 숫자인지 아닌지 판단한다.숫자이면 true 아니면 false
+	    for( let i=0; i<password.length-2; i++ ) {
+	      if( password[i]===password[i+1] && password[i]===password[i+2] ) {
+	        if( !isNaN(Number(password[i])) ) {
+	          return true;
+	        }
+	      }
+	    }
+	    return false;
+	  }
+
+	  // [비밀번호] 영문자 중에 대문자 하나이상 포함되면 true를 리턴하는 함수
+	  function isPasswordUpper (password) {
+	    var letters = /[A-Z]/; 
+	    
+	    if( letters.test(password) ) { 
+	      return true;
+	    } else {
+	      return false;
+	    }
+	  }
+
+	  // [비밀번호 확인] 매치가 동일하면 true를 리턴하는 함수
+	  function isMatch (password1, password2) {
+	    if( password1 && password2 ) {
+	      if(password1 === password2) {
+	        return true;
+	      }
+	    } else {
+	      return false;
+	    }
+	  }
+	   
+</script>
+<script type="text/javascript">
+
+	//도메인 직접 입력 or domain option 선택
+	const domainListEl = document.querySelector('#domain-list')
+	const domainInputEl = document.querySelector('#domain-txt')
+	// select 옵션 변경 시
+	domainListEl.addEventListener('change', (event) => {
+	  // option에 있는 도메인 선택 시
+	  if(event.target.value !== "type") {
+	    // 선택한 도메인을 input에 입력하고 disabled
+	    domainInputEl.value = event.target.value
+	    domainInputEl.disabled = true
+	  } else { // 직접 입력 시
+	    // input 내용 초기화 & 입력 가능하도록 변경
+	    domainInputEl.value = ""
+	    domainInputEl.disabled = false
+	  }
+	});
+	
 </script>
 
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.0/kakao.min.js"
+  integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL" crossorigin="anonymous"></script>
+<script>
+  Kakao.init('1c3e148b9d3b6d9eee46fb31507354ea'); // 사용하려는 앱의 JavaScript 키 입력
+</script>
+<script>
+  function loginWithKakao() {
+    Kakao.Auth.authorize({
+      redirectUri: 'https://developers.kakao.com/tool/demo/oauth',
+    });
+  }
+
+  // 아래는 데모를 위한 UI 코드입니다.
+  displayToken()
+  function displayToken() {
+    var token = getCookie('authorize-access-token');
+
+    if(token) {
+      Kakao.Auth.setAccessToken(token);
+      Kakao.Auth.getStatusInfo()
+        .then(function(res) {
+          if (res.status === 'connected') {
+            document.getElementById('token-result').innerText
+              = 'login success, token: ' + Kakao.Auth.getAccessToken();
+          }
+        })
+        .catch(function(err) {
+          Kakao.Auth.setAccessToken(null);
+        });
+    }
+  }
+
+  function getCookie(name) {
+    var parts = document.cookie.split(name + '=');
+    if (parts.length === 2) { return parts[1].split(';')[0]; }
+  }
+  
+		
+</script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
