@@ -55,4 +55,19 @@ public class MemberDao {
 		return sqlSession.selectOne(namespace + ".selectOneIdCheck", dto);
 				
 	}
+	
+	public int insertUser(Member dto) {
+		int result = sqlSession.insert(namespace + ".insertUser", dto);
+		return result;
+	}
+	
+	public Member selectOneId(Member dto) {
+		return sqlSession.selectOne(namespace + ".selectOneId", dto);
+	}
+	
+	public Member selectOneLogin(Member dto) {
+		return sqlSession.selectOne(namespace + ".selectOneLogin", dto);
+	}
+	
+	
 }

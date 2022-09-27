@@ -113,10 +113,55 @@
 		FROM member 
 		WHERE 1=1 
 		AND id = #{id}
-
+	</select>
+	
+	<!-- _______________user________________ -->
+	
+	<insert id="insertUser">
+		INSERT INTO member(
+			id
+	    	,pw
+	    	,gender
+	    	,authority
+	    	,email
+	    	,number_phone
+	    	,regdate
+	    	,delYn
+		)
+		
+		VALUES (
+			#{id}
+			,#{pw}
+			,#{gender}
+			,23
+			,#{email}
+			,#{number_phone}
+			,NOW()
+			,0
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+		SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<select id="selectOneId" resultMap="resultMapObj">
+		SELECT *
+		FROM member 
+		WHERE 1=1 
+		AND id = #{id}
 	</select>
 	
 	
-	
+	<select id="selectOneLogin" resultMap="resultMapObj">
+	SELECT seq
+		,id
+ 	FROM member 
+	where 1=1
+		AND id = #{id}
+		<if test="pw != null and !pw.equals('')">AND pw = #{pw}</if>
+	</select>
 
 </mapper>	
+
+
+

@@ -86,10 +86,10 @@
 	
 	<div style="width: 60%; height:2000px; float:right; padding-top: 200px;">
 		<div class="container">
-			<form action="member/memberIsrt" method="post">
+			<form action="/member/userIsrt" method="post">
 			<div class="row mb-0">
 				<div class="col">
-					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">아이디</p>
+					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">아이디&nbsp;&nbsp;(필수)</p>
 					<div class="form-floating d-flex justify-content-center">
 						<input type="text" class="form-control pt-1" id="id" name="id" style="width: 500px; height: 50px; margin-left: 120px; margin-right: 20px;">
 						<button type="button" class="btn btn-dark" style="width: 100px; padding: 0px; background-color: #2E2E2E;">중복확인</button>
@@ -101,9 +101,9 @@
 			</div>
 			<div class="row mb-0">
 				<div class="col">
-					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">비밀번호</p>
+					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">비밀번호&nbsp;&nbsp;(필수)</p>
 					<div class="form-floating d-flex justify-content-center">
-						<input type="text" class="form-control pt-1 " id='password' style="width: 500px; height: 50px; margin-left: 20px; margin-right: 20px;">
+						<input type="text" class="form-control pt-1 " id='pw' name='pw' style="width: 500px; height: 50px; margin-left: 20px; margin-right: 20px;">
 					</div>
 				</div>
 			</div>
@@ -118,9 +118,9 @@
 			</div>
 			<div class="row mb-0">
 				<div class="col">
-					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">비밀번호 확인</p>
+					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">비밀번호 확인&nbsp;&nbsp;(필수)</p>
 					<div class="form-floating d-flex justify-content-center">
-						<input type="text" class="form-control pt-1" id='password-retype' style="width: 500px; height: 50px; margin-left: 20px; margin-right: 20px;">
+						<input type="text" class="form-control pt-1" id='pw-retype' style="width: 500px; height: 50px; margin-left: 20px; margin-right: 20px;">
 					</div>
 				</div>
 			</div>
@@ -132,12 +132,12 @@
 			</div>
 			<div class="row mb-0">
 				<div class="col mb-0">
-					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">성별</p>
+					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">성별&nbsp;&nbsp;(필수)</p>
 					<div class="form_radio_btn radio_male" style="float: left; margin-left: 310px;">
-						<input id="radio-1" type="radio" name="userGender" value="male" checked> <label for="radio-1">남자</label>
+						<input id="radio-1" type="radio" name="gender" value="4" checked> <label for="radio-1">남자</label>
 					</div>
 					<div class="form_radio_btn" style="float: left;">
-						<input id="radio-2" type="radio" name="userGender" value="female"> <label for="radio-2">여자</label>
+						<input id="radio-2" type="radio" name="gender" value="5"> <label for="radio-2">여자</label>
 					</div>
 				</div>
 			</div>'
@@ -151,23 +151,24 @@
 			</div>
 			<div class="row mb-0">
 				<div class="col">
-					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">이메일</p>
+					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">이메일&nbsp;&nbsp;(필수)</p>
 					<div class="form-floating d-flex justify-content-center">
-						<input type="text" class="form-control pt-1" style="width: 140px; height: 50px; margin-left: 120px; margin-right: 20px;">@
-						<input type="text" class="form-control pt-1" id="domain-txt" style="width: 140px; height: 50px; margin-left: 20px; margin-right: 20px;">
+						<input type="text" class="form-control pt-1" id="user_email" style="width: 140px; height: 50px; margin-left: 120px; margin-right: 20px;">@
+						<input type="text" class="form-control pt-1" id="email_address" style="width: 140px; height: 50px; margin-left: 20px; margin-right: 20px;">
 						<select class="form-select pt-1" id="domain-list" style="width: 140px; height: 50px; margin-right: 20px;">
 							<option value="type">직접 입력</option>
   							<option value="naver.com">naver.com</option>
   							<option value="gmail.com">gmail.com</option>
   							<option value="daum.net">daum.net</option>
 						</select>
-						<button type="button" class="btn btn-dark" style="width: 100px; padding: 0px; background-color: #2E2E2E;">인증</button>
+						<input type="text" class="form-control pt-1" id="email" name="email" style="width: 140px; height: 50px; margin-left: 20px; margin-right: 20px;">
+						<button type="button" class="btn btn-dark" id="checkEmail"style="width: 100px; padding: 0px; background-color: #2E2E2E;">인증</button>
 					</div>
 				</div>
 			</div>
 			<div class="row mb-0">
 				<div class="col">
-					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">전화번호</p>
+					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">전화번호&nbsp;&nbsp;(필수)</p>
 					<div class="form-floating d-flex justify-content-center">
 						<input type="text" name="number_phone" id="number_phone" class="form-control pt-1" style="width: 500px; height: 50px; margin-left: 120px; margin-right: 20px;">
 						<button type="button" class="btn btn-dark" style="width: 100px; padding: 0px; background-color: #2E2E2E;">인증</button>
@@ -181,7 +182,7 @@
 					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">우편번호</p>
 					<div class="form-floating d-flex justify-content-center">
 						<input type="text" class="form-control pt-1" id="sample4_postcode" style="width: 500px; height: 50px; margin-left: 120px; margin-right: 20px;">
-						<button type="button" class="btn btn-dark" onclick="sample4_execDaumPostcode()" style="width: 100px; padding: 0px; background-color: #2E2E2E;">인증</button>
+							<button type="button" class="btn btn-dark" onclick="sample4_execDaumPostcode()" style="width: 100px; padding: 0px; background-color: #2E2E2E;">인증</button>
 					</div>
 				</div>
 			</div>
@@ -239,11 +240,11 @@
 			</div>
 			<div class="row">
 				<div class="col mb-0 d-flex justify-content-center">
-					<button type="submit" class="btn btn-primary textbox">가입하기</button>		
+					<button class="btn btn-primary textbox" id="subit-button" onclick="email()">가입하기</button>		
 				</div>
 			</div>
 			<div class="row">
-				<div class="col d-flex justify-content-center" style="margin-bottom: 10px; margin-top: 10px;	">
+				<div class="col d-flex justify-content-center" style="margin-bottom: 10px; margin-top: 10px;">
 					<hr style="width: 212px; color:black; float:left;"><p style="float: left; padding-left:20px; padding-right:20px;">또는</p><hr style="width: 212px; color:black;">
 				</div>
 			</div>
@@ -421,8 +422,45 @@
 			});
 		/* } */
 	});
-    
-    
+	
+	// 이메일 합치기
+	
+	$("#checkEmail").click(function email() {
+		const email = $("#user_email").val();
+		const address = $("#email_address").val();
+		if(email != "" && address != "") {
+		$("#email").val(email+'@'+address);
+		}
+	 });
+	
+	
+	
+	
+/* 	 //이메일주소 가져오기eeeee
+	$("#user_email").blur(function(){
+		email();		
+	});
+	
+	$("#email_address").change(function(){
+		 email(); 
+	});
+
+	function email() {
+		const email = $("#user_email").val();
+		const address = $("#email_address").val();
+		if(email != "" && address != "") {
+			$("#email").val(email+'@'+address);
+		}
+	};  */
+	
+
+	 
+	
+	
+	
+	
+    </script>	
+	<script type="text/javascript">    
     
     /* 유효성검사 */
 	 /*  const elInputUsername = document.querySelector('#id'); */
@@ -430,8 +468,8 @@
 	  const elFailureMessage = document.querySelector('.failure-message');
 	  const elSuccessMessage = document.querySelector('.success-message');
 
-	  const elPassword = document.querySelector('#password');
-	  const elPasswordRetype = document.querySelector('#password-retype');
+	  const elPassword = document.querySelector('#pw');
+	  const elPasswordRetype = document.querySelector('#pw-retype');
 
 	  const elPWRetypeFailureMsg = document.querySelector('.mismatch-message');
 	  const elPWRetypeSuccessMsg = document.querySelector('.match-message');
@@ -533,7 +571,8 @@
 
 	  // 모든 조건이 충족되었는지 확인하는 함수
 	  function isAllCheck() {
-	    if( isMoreThan4Length(elInputUsername.value) && isUserNameChar(elInputUsername.value) ) { // 아이디
+	//  if( isMoreThan4Length(elInputUsername.value) && isUserNameChar(elInputUsername.value) ) 
+	    if(response.rt == "success") { // 아이디 
 	      if( (isMoreThan10Length(elPassword.value)) && 
 	          (isPasswordEng(elPassword.value) + isPasswordNum(elPassword.value) + isPasswordSpeci(elPassword.value) >= 2) &&
 	          (isPasswordChar(elPassword.value)) &&
@@ -542,25 +581,17 @@
 	          ((isPasswordUpper(elPassword.value)))
 	        ) { // 비밀번호
 	        if( isMatch(elPassword.value, elPasswordRetype.value) ) { // 비밀번호 확인
-	          //console.log('true!!');
+	          console.log('true!!');
 	          return true;
 	        }
 	      }
 	    } else {
-	      //console.log('false!!');
+	      console.log('false!!');
 	      return false;
 	    }
-	  }
+	   } 
 
-	  /* // [회원가입 버튼] 배경 활성화 함수
-	  function isSubmitButton() {
-	    if( isAllCheck() ) {
-	      elSubmitButton.classList.add('allCheck');
-	    }
-	    else {
-	      elSubmitButton.classList.remove('allCheck');
-	    }
-	  }
+
 
 	  // [회원가입 버튼] 클릭 이벤트 함수
 	  elSubmitButton.onclick = function() {
@@ -577,7 +608,7 @@
 	    else {
 	      alert('모든 조건이 충족되어야합니다.');
 	    }
-	  }; */
+	  }; 
 
 	  //-------- 유효성 검사에서 사용하는 함수다 ---------//
 
@@ -702,7 +733,7 @@
 
 	//도메인 직접 입력 or domain option 선택
 	const domainListEl = document.querySelector('#domain-list')
-	const domainInputEl = document.querySelector('#domain-txt')
+	const domainInputEl = document.querySelector('#email_address')
 	// select 옵션 변경 시
 	domainListEl.addEventListener('change', (event) => {
 	  // option에 있는 도메인 선택 시
@@ -716,8 +747,8 @@
 	    domainInputEl.disabled = false
 	  }
 	});
-	
 </script>
+
 
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.0/kakao.min.js"
   integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL" crossorigin="anonymous"></script>

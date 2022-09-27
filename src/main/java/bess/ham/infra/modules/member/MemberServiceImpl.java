@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import bess.ham.infra.common.util.UtilSecurity;
 import bess.ham.infra.modules.codegroup.CodeGroup;
 import bess.ham.infra.modules.codegroup.CodeGroupVo;
 
@@ -58,6 +59,26 @@ public class MemberServiceImpl implements MemberService {
 		int result = dao.selectOneIdCheck(dto);
 		return result;
 	}
+	
+	@Override
+	public int insertUser(Member dto) throws Exception{
+		dto.setId(dto.getId());
+		dto.setPw(UtilSecurity.encryptSha256(dto.getPw()));
+		int result = dao.insertUser(dto);
+		return result;
+	} 
+	
+	@Override
+	public Member selectOneId(Member dto) throws Exception{
+		return dao.selectOneId(dto);
+	} 
+	
+	@Override
+	public Member selectOneLogin(Member dto) throws Exception{
+		dto.setId(dto.getId());
+		dto.setPw(UtilSecurity.encryptSha256(dto.getPw()));
+		return dao.selectOneLogin(dto);
+	} 
 }
 
 

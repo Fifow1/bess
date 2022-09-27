@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
+ <%@ page session="true" %>
 
 <!Doctype html>
 <html>
@@ -18,6 +19,12 @@
 	<link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@600&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
+	
+	 <!-- Datepicker -->
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+	
 	<link rel="stylesheet" href="/resources/css/main2.css">
   	<title>memberLogin</title>
 	<style type="text/css">
@@ -81,24 +88,24 @@
 			<p style ="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">아이디</p>
 			<div class="row loginbtn d-flex justify-content-center">
 				<div class="col d-flex justify-content-center">
-					<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 500px; height: 50px;">
+					<input type="text" class="form-control" id="id" aria-describedby="emailHelp" style="width: 500px; height: 50px;">
 				</div>
 			</div>
 			<p style ="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">비밀번호</p>
 			<div class="row loginbtn d-flex justify-content-center">
 				<div class="col mb-3 d-flex justify-content-center">
-					<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 500px; height: 50px;">
+					<input type="password	" class="form-control" id="pw" aria-describedby="emailHelp" style="width: 500px; height: 50px;">
 				</div>
 			</div>
 			
 			<div class="row">
 				<div class="col mb-0 d-flex justify-content-center">
-					<button type="button" class="btn btn-primary border" style="width: 500px; height: 50px;">로그인</button>
+					<button type="button" class="btn btn-primary border" id="btnLogin" style="width: 500px; height: 50px;">로그인</button>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col mb-0 d-flex justify-content-center">
-					<button type="button" class="btn btn-secondary border" style="width: 500px; height: 50px;" onclick="location.href='./memberRegForm.html'">회원가입</button>
+					<button type="button" class="btn btn-secondary border" style="width: 500px; height: 50px;" id="btnLogin">회원가입</button>
 				</div>
 			</div>
 			<div class="row">
@@ -126,6 +133,9 @@
 					</button>
 				</div>
 			</div>
+			
+			<button type="button" class="btn btn-danger border ms-2" id="btnLogout" style="width: 120px;">나가기</button>
+			
 			<div class="row">
 				<div class="col mb-2 mt-2 d-flex justify-content-center" style="padding-right: 370px;" onclick="location.href='./memberFindid_phone.html'">
 					<a href="#" class="link-dark ps-5">아이디를 잊어버리셨나요?</a>
@@ -138,6 +148,9 @@
 			</div>
 		</div>
 	</div>
+sessSeq: <c:out value="${sessSeq }"/><br>
+sessName: <c:out value="${sessName }"/><br>
+sessId: <c:out value="${sessId }"/><br>
 
 
 		<!------------------------------------------------------------------- footer -------------------------------------------------------------------->
@@ -191,9 +204,65 @@
 		</div>
 	</div>
 </div>
+<script>
+$("#btnLogin").on("click", function(){
+		/* if(validation() == false) return false; */
+		
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			/* ,dataType:"json" */
+			,url: "/member/loginProc"
+			/* ,data : $("#formLogin").serialize() */
+			,data : { "id" : $("#id").val(), "pw" : $("#pw").val()
+				/* , "autoLogin" : $("#autoLogin").is(":checked") */
+				}
+			,success: function(response) {
+				if(response.rt == "success") {
+					/* if(response.changePwd == "true") {
+						location.href = URL_CHANGE_PWD_FORM;
+					} else {
+						location.href = URL_INDEX_ADMIN;
+					} */
+					alert("로그인 성공");
+				} else {
+					alert("회원없음");
+				}
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+	});
+	
+$("#btnLogout").on("click", function(){
+	/* if(validation() == false) return false; */
+	
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		/* ,dataType:"json" */
+		,url: "/member/logoutProc"
+		/* ,data : $("#formLogin").serialize() */
+		,success: function(response) {
+			if(response.rt == "success") {
+				location.href = "/member/userLogin";
+			} else {
+				alert("회원없음");
+			}
+		}
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});
+});
 
 
 
+
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/50704cc15b.js" crossorigin="anonymous"></script>
 </body>

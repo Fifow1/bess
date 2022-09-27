@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,9 +22,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping(value = "/member") //*********
 public class MemberController {
 
-		
+// xdimn
 	@Autowired
 	MemberServiceImpl service;
+	private Member dto;
 	
 	public void setSearchAndPaging(MemberVo vo) throws Exception{
 		
@@ -84,7 +86,9 @@ public class MemberController {
 		redirectAttributes.addFlashAttribute("vo",vo);
 		return "redirect:/member/memberForm";
 	}
+
 	
+// user
 	
 	@ResponseBody
 	@RequestMapping(value = "checkId")
@@ -104,27 +108,101 @@ public class MemberController {
 	
 	
 	
-	@RequestMapping(value = "test")
-	public String test(Model model) throws Exception {
-
-		
-		return "infra/member/user/test";
-	}
-	
-	
-	@RequestMapping(value = "memberLogin")
+	@RequestMapping(value = "userLogin")
 	public String memberLogin(Model model) throws Exception {
 
 		
 		return "infra/member/user/memberLogin";
 	}
 	
-	@RequestMapping(value = "memberRegForm")
-	public String memberRegForm(Model model) throws Exception {
+	@ResponseBody
+	@RequestMapping(value = "logoutProc")
+	public Map<String, Object> logoutProc(HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		/* UtilCookie.deleteCookie(); */
+		httpSession.invalidate();
+		returnMap.put("rt", "success");
+		return returnMap;
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value = "loginProc")
+	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
 
+		Member rtMember = service.selectOneId(dto);
+
+		if (rtMember != null) {
+			Member rtMember2 = service.selectOneLogin(dto);
+
+			if (rtMember2 != null) {
+				
+				/*
+				 * if(dto.getAutoLogin() == true) {
+				 * UtilCookie.createCookie(Constants.COOKIE_NAME_SEQ, rtMember2.getIfmmSeq(),
+				 * Constants.COOKIE_DOMAIN, Constants.COOKIE_PATH, Constants.COOKIE_MAXAGE); }
+				 * else { // by pass }
+				 */
+				
+				/* httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); */ // 60second * 30 = 30minute
+				httpSession.setAttribute("sessSeq", rtMember2.getSeq());
+				httpSession.setAttribute("sessId", rtMember2.getId());
+				/* httpSession.setAttribute("sessName", rtMember2.getIfmame()); */
+
+				
+				 rtMember2.setIflgResultNy(1);
+				 
+
+				/*
+				 * Date date = rtMember2.getIfmmPwdModDate(); LocalDateTime
+				 * ifmmPwdModDateLocalDateTime = LocalDateTime.ofInstant(date.toInstant(),
+				 * ZoneId.systemDefault());
+				 */
+				/*
+				 * if (ChronoUnit.DAYS.between(ifmmPwdModDateLocalDateTime,
+				 * UtilDateTime.nowLocalDateTime()) > Constants.PASSWOPRD_CHANGE_INTERVAL) {
+				 * returnMap.put("changePwd", "true"); }
+				 */
+
+				returnMap.put("rt", "success");
+			} else {
+				/*
+				 * dto.setIfmmSeq(rtMember.getIfmmSeq()); dto.setIflgResultNy(0);
+				 * service.insertLogLogin(dto);
+				 */
+
+				returnMap.put("rt", "fail");
+			}
+		} else {
+			/*
+			 * dto.setIflgResultNy(0); service.insertLogLogin(dto);
+			 */
+
+			returnMap.put("rt", "fail");
+		}
+		return returnMap;
+	}
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value = "userRegForm")
+	public String memberRegForm(Member dto,Model model) throws Exception {
 		
 		return "infra/member/user/memberRegForm";
 	}
+	
+	@RequestMapping(value = "userIsrt")
+	public String userIsrt(Member dto,Model model) throws Exception {
+		service.insertUser(dto);
+		
+		return "redirect:/member/userLogin";
+	}
+		
+	
 // ----------------------------------------아이디 찾기-----------------------------------------------------
 	
 	@RequestMapping(value = "memberFindId_email")

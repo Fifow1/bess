@@ -14,10 +14,32 @@ public class Member {
 	private String number_phone;
 	private Date regdate;
 	private Date moddate;
+	
+	private String sessSeq;
+	private String sessId;
+	
 	private Integer delYn;
 	
+	private Integer IflgResultNy;
 	
 	
+	
+
+	public String getSessSeq() {
+		return sessSeq;
+	}
+
+	public void setSessSeq(String sessSeq) {
+		this.sessSeq = sessSeq;
+	}
+
+	public String getSessId() {
+		return sessId;
+	}
+
+	public void setSessId(String sessId) {
+		this.sessId = sessId;
+	}
 
 	public String getSeq() {
 		return seq;
@@ -106,6 +128,16 @@ public class Member {
 	public void setDelYn(Integer delYn) {
 		this.delYn = delYn;
 	}
+
+	public Integer getIflgResultNy() {
+		return IflgResultNy;
+	}
+
+	public void setIflgResultNy(Integer iflgResultNy) {
+		IflgResultNy = iflgResultNy;
+	}
+
+	
 
 	
 	
