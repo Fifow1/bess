@@ -86,18 +86,22 @@
 	
 	<div style="width: 60%; height:2000px; float:right; padding-top: 200px;">
 		<div class="container">
-			<form action="/member/userIsrt" method="post">
+			<form method="post" name="form"> 
 			<div class="row mb-0">
 				<div class="col">
 					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">아이디&nbsp;&nbsp;(필수)</p>
 					<div class="form-floating d-flex justify-content-center">
 						<input type="text" class="form-control pt-1" id="id" name="id" style="width: 500px; height: 50px; margin-left: 120px; margin-right: 20px;">
-						<button type="button" class="btn btn-dark" style="width: 100px; padding: 0px; background-color: #2E2E2E;">중복확인</button>
+						<button type="button" class="btn btn-dark" id="good"style="width: 100px; padding: 0px; background-color: #2E2E2E;">중복확인</button>
+						<input type="hidden" id="idAllowedNy" name="idAllowedNy">
 					</div>
 				</div>
 			</div>
 			<div class="row mb-0">
-				<div id="idFeedback" class="feedback"></div>
+				<div style="margin-left: 180px;">
+					<div class='failure-message hide msg'>4자 이상의 영문 혹은 영문과 숫자를 조합</div>
+      				<div class='success-message hide msg success'>사용할 수 있는 아이디입니다.</div>
+      			</div>
 			</div>
 			<div class="row mb-0">
 				<div class="col">
@@ -240,7 +244,7 @@
 			</div>
 			<div class="row">
 				<div class="col mb-0 d-flex justify-content-center">
-					<button class="btn btn-primary textbox" id="subit-button" onclick="email()">가입하기</button>		
+					<button type="button" class="btn btn-primary textbox" id="subit-button">가입하기</button>		
 				</div>
 			</div>
 			<div class="row">
@@ -381,11 +385,10 @@
     }
 /* 아이디 중복검사 */
     // keyup
-	$("#id").on("focusout", function(){
+	$("#good").on("click", function(){
 		
-		/* if(!checkId('id', 2, 0, "영대소문자,숫자,특수문자(-_.),4~20자리만 입력 가능합니다")) {
-			return false;
-		} else { */
+		if(isMoreThan4Length(elInputUsername.value) && isUserNameChar(elInputUsername.value)) {
+			
 			$.ajax({
 				async: true 
 				,cache: false
@@ -399,28 +402,33 @@
 						document.getElementById("id").classList.remove('is-invalid');
 						document.getElementById("id").classList.add('is-valid');
 	
-						document.getElementById("idFeedback").classList.remove('invalid-feedback');
+						/* document.getElementById("idFeedback").classList.remove('invalid-feedback');
 						document.getElementById("idFeedback").classList.add('valid-feedback');
-						document.getElementById("idFeedback").innerText = "사용 가능 합니다.";
+						document.getElementById("idFeedback").innerText = "사용 가능 합니다."; */
 						
-						/* document.getElementById("idAllowedNy").value = 1; */
+						document.getElementById("idAllowedNy").value = 1;
 						
 					} else {
 						document.getElementById("id").classList.remove('is-valid');
 						document.getElementById("id").classList.add('is-invalid');
 						
-						document.getElementById("idFeedback").classList.remove('valid-feedback');
+						/* document.getElementById("idFeedback").classList.remove('valid-feedback');
 						document.getElementById("idFeedback").classList.add('invalid-feedback');
-						document.getElementById("idFeedback").innerText = "사용 불가능 합니다";
+						document.getElementById("idFeedback").innerText = "사용 불가능 합니다"; */
 						
-						/* document.getElementById("idAllowedNy").value = 0; */
+						document.getElementById("idAllowedNy").value = 0;
 					}
 				}
 				,error : function(jqXHR, textStatus, errorThrown){
 					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 				}
 			});
-		/* } */
+		} else{
+			document.getElementById("id").classList.remove('is-valid');
+			document.getElementById("id").classList.add('is-invalid');
+			
+			alert("아이디를 4자 이상의 영문 혹은 영문과 숫자를 조합으로 설정해주세요")
+		}
 	});
 	
 	// 이메일 합치기
@@ -463,7 +471,7 @@
 	<script type="text/javascript">    
     
     /* 유효성검사 */
-	 /*  const elInputUsername = document.querySelector('#id'); */
+	  const elInputUsername = document.querySelector('#id');
 
 	  const elFailureMessage = document.querySelector('.failure-message');
 	  const elSuccessMessage = document.querySelector('.success-message');
@@ -481,25 +489,26 @@
 	  const elPWSuccessMessage = document.querySelector('.password-success-message');
 
 	  const elSubmitButton = document.querySelector('#subit-button');
+	  
 
 	  //-------- 유효성 검사 ---------//
 
 	  // { 아이디 } input 유효성 검사
-	  /* function usernameFn() {
+	  function usernameFn() {
 
-	    if(isMoreThan4Length(elInputUsername.value) && isUserNameChar(elInputUsername.value) ) {
-	      elSuccessMessage.classList.remove('hide'); 
-	      elFailureMessage.classList.add('hide')
+	    if(isMoreThan4Length(elInputUsername.value) && isUserNameChar(elInputUsername.value)) {
+	      /* elSuccessMessage.classList.remove('hide'); */
+	      elFailureMessage.classList.add('hide');
 	    } else {
-	      elFailureMessage.classList	.remove('hide'); 
-	      elSuccessMessage.classList.add('hide'); 
+	      elFailureMessage.classList.remove('hide');
+	      /* elSuccessMessage.classList.add('hide');   */
 	    }
-
-	    isSubmitButton();
 	  }
 
 	  elInputUsername.addEventListener('click', usernameFn);
-	  elInputUsername.addEventListener('keyup', usernameFn); */
+	  elInputUsername.addEventListener('keyup', usernameFn);
+	  
+	  
 
 	  // { 비밀번호 } input 유효성 검사  
 	  function passwordFn () {
@@ -571,32 +580,36 @@
 
 	  // 모든 조건이 충족되었는지 확인하는 함수
 	  function isAllCheck() {
-	//  if( isMoreThan4Length(elInputUsername.value) && isUserNameChar(elInputUsername.value) ) 
-	    if(response.rt == "success") { // 아이디 
-	      if( (isMoreThan10Length(elPassword.value)) && 
-	          (isPasswordEng(elPassword.value) + isPasswordNum(elPassword.value) + isPasswordSpeci(elPassword.value) >= 2) &&
-	          (isPasswordChar(elPassword.value)) &&
-	          (isPasswordBlank(elPassword.value)) && 
-	          (!isPasswordRepeat(elPassword.value)) && 
-	          ((isPasswordUpper(elPassword.value)))
-	        ) { // 비밀번호
-	        if( isMatch(elPassword.value, elPasswordRetype.value) ) { // 비밀번호 확인
-	          console.log('true!!');
-	          return true;
-	        }
-	      }
-	    } else {
-	      console.log('false!!');
-	      return false;
-	    }
-	   } 
+	if(document.getElementById("idAllowedNy").value == 1 && isMoreThan4Length(elInputUsername.value) && isUserNameChar(elInputUsername.value)){
+      if( (isMoreThan10Length(elPassword.value)) && 
+          (isPasswordEng(elPassword.value) + isPasswordNum(elPassword.value) + isPasswordSpeci(elPassword.value) >= 2) &&
+          (isPasswordChar(elPassword.value)) &&
+          (isPasswordBlank(elPassword.value)) && 
+          (!isPasswordRepeat(elPassword.value)) && 
+          ((isPasswordUpper(elPassword.value)))
+        ) { // 비밀번호
+        if( isMatch(elPassword.value, elPasswordRetype.value) ) { // 비밀번호 확인
+          console.log('true!!');
+          return true;
+        }
+      }
+      
+      }  else {
+      	console.log('false!!');
+      return false;
+    }
+  }
 
-
-
+	  var goUrlInst = "/member/userIsrt"; /* #-> */
+	  var form = $("form[name=form]");
 	  // [회원가입 버튼] 클릭 이벤트 함수
 	  elSubmitButton.onclick = function() {
-	    if( isAllCheck() ) {
+	    if( isAllCheck() == true ) {
 	      alert('회원가입이 완료되었습니다!');
+	      form.attr("action", goUrlInst).submit();
+	    }
+	    else {
+	      alert('모든 조건이 충족되어야합니다.');
 	      elInputUsername.value = '';
 	      elPassword.value = '';
 	      elPasswordRetype.value = '';
@@ -604,9 +617,6 @@
 	      elPWRetypeSuccessMsg.classList.add('hide');
 	      elPWSuccessMessage.classList.add('hide');
 	      elSubmitButton.classList.remove('allCheck');
-	    }
-	    else {
-	      alert('모든 조건이 충족되어야합니다.');
 	    }
 	  }; 
 
@@ -617,7 +627,7 @@
 	    // 아이디 입력창에 사용자가 입력을 할 때 
 	    // 글자 수가 4개이상인지 판단한다.
 	    // 글자가 4개 이상이면 success메세지가 보여야 한다.
-	    return value.length >= 7;
+	    return value.length >= 4;
 	  }
 
 	  // [아이디] '영문, 숫자'만 있으면 true를 리턴하는 함수
@@ -787,6 +797,10 @@
     if (parts.length === 2) { return parts[1].split(';')[0]; }
   }
   
+  
+	
+	
+	
 		
 </script>
 

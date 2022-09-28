@@ -100,7 +100,7 @@
 			
 			<div class="row">
 				<div class="col mb-0 d-flex justify-content-center">
-					<button type="button" class="btn btn-primary border" id="btnLogin" style="width: 500px; height: 50px;">로그인</button>
+					<button type="button" class="btn btn-primary border" id="btnLogin" style="width: 500px; height: 50px;">로그인</button>	
 				</div>
 			</div>
 			<div class="row">
@@ -205,6 +205,9 @@ sessId: <c:out value="${sessId }"/><br>
 	</div>
 </div>
 <script>
+var goUrlMain = "/a";
+var form = $("form[name=form]");
+
 $("#btnLogin").on("click", function(){
 		/* if(validation() == false) return false; */
 		
@@ -226,6 +229,9 @@ $("#btnLogin").on("click", function(){
 						location.href = URL_INDEX_ADMIN;
 					} */
 					alert("로그인 성공");
+					location.href = '/a';	
+					
+					
 				} else {
 					alert("회원없음");
 				}
