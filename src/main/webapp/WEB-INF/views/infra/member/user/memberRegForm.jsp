@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
+<%@ page session="true" %>
 
 <!Doctype html>
 <html>
@@ -86,7 +87,7 @@
 	
 	<div style="width: 60%; height:2000px; float:right; padding-top: 200px;">
 		<div class="container">
-			<form method="post" name="form"> 
+			<!-- <form method="post" name="form">  -->
 			<div class="row mb-0">
 				<div class="col">
 					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">아이디&nbsp;&nbsp;(필수)</p>
@@ -272,7 +273,7 @@
 				</div>
 				
 			</div>
-			</form>
+			<!-- </form> -->
 		</div>
 	</div>
 <!------------------------------------------------------------------- footer -------------------------------------------------------------------->
@@ -385,51 +386,7 @@
     }
 /* 아이디 중복검사 */
     // keyup
-	$("#good").on("click", function(){
-		
-		if(isMoreThan4Length(elInputUsername.value) && isUserNameChar(elInputUsername.value)) {
-			
-			$.ajax({
-				async: true 
-				,cache: false
-				,type: "post"
-				/* ,dataType:"json" */
-				,url: "/member/checkId"
-				/* ,data : $("#formLogin").serialize() */
-				,data : { "id" : $("#id").val() }
-				,success: function(response) {
-					if(response.rt == "success") {
-						document.getElementById("id").classList.remove('is-invalid');
-						document.getElementById("id").classList.add('is-valid');
 	
-						/* document.getElementById("idFeedback").classList.remove('invalid-feedback');
-						document.getElementById("idFeedback").classList.add('valid-feedback');
-						document.getElementById("idFeedback").innerText = "사용 가능 합니다."; */
-						
-						document.getElementById("idAllowedNy").value = 1;
-						
-					} else {
-						document.getElementById("id").classList.remove('is-valid');
-						document.getElementById("id").classList.add('is-invalid');
-						
-						/* document.getElementById("idFeedback").classList.remove('valid-feedback');
-						document.getElementById("idFeedback").classList.add('invalid-feedback');
-						document.getElementById("idFeedback").innerText = "사용 불가능 합니다"; */
-						
-						document.getElementById("idAllowedNy").value = 0;
-					}
-				}
-				,error : function(jqXHR, textStatus, errorThrown){
-					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-				}
-			});
-		} else{
-			document.getElementById("id").classList.remove('is-valid');
-			document.getElementById("id").classList.add('is-invalid');
-			
-			alert("아이디를 4자 이상의 영문 혹은 영문과 숫자를 조합으로 설정해주세요")
-		}
-	});
 	
 	// 이메일 합치기
 	
@@ -595,7 +552,7 @@
       }
       
       }  else {
-      	console.log('false!!');
+      	alert("id")
       return false;
     }
   }
@@ -737,6 +694,53 @@
 	      return false;
 	    }
 	  }
+	  
+	  
+	  $("#good").on("click", function(){
+			/* if(isMoreThan4Length(elInputUsername.value) && isUserNameChar(elInputUsername.value)) { */
+					$.ajax({
+						async: true 
+						,cache: false
+						,type: "post"
+						/* ,dataType:"json" */
+						,url: "/member/checkId"
+						/* ,data : $("#formLogin").serialize() */
+						,data : { "id" : $("#id").val() }
+						,success: function(response) {
+							if(response.rt == "success") {
+								alert("1")
+								document.getElementById("id").classList.remove('is-invalid');
+								document.getElementById("id").classList.add('is-valid');
+			
+								/* document.getElementById("idFeedback").classList.remove('invalid-feedback');
+								document.getElementById("idFeedback").classList.add('valid-feedback');
+								document.getElementById("idFeedback").innerText = "사용 가능 합니다."; */
+								
+								document.getElementById("idAllowedNy").value = 1;
+								
+							} else {
+								alert("2")
+								document.getElementById("id").classList.remove('is-valid');
+								document.getElementById("id").classList.add('is-invalid');
+								
+								/* document.getElementById("idFeedback").classList.remove('valid-feedback');
+								document.getElementById("idFeedback").classList.add('invalid-feedback');
+								document.getElementById("idFeedback").innerText = "사용 불가능 합니다"; */
+								
+								document.getElementById("idAllowedNy").value = 0;
+							}
+						}
+						,error : function(jqXHR, textStatus, errorThrown){
+							alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+						}
+					});
+				/* }  *//* else{
+					document.getElementById("id").classList.remove('is-valid');
+					document.getElementById("id").classList.add('is-invalid');
+					
+					alert("아이디를 4자 이상의 영문 혹은 영문과 숫자를 조합으로 설정해주세요")
+				} */
+			});
 	   
 </script>
 <script type="text/javascript">
