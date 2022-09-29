@@ -15,7 +15,19 @@ public class CheckLoginSessionInterception extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		if (request.getSession().getAttribute("sessSeq") != null) {
-			// by pass
+
+			/*
+			 * if(request.getSession().getAttribute("sessAuthority") == "23") {
+			 * 
+			 * response.sendRedirect(Constants.URL_LOGINFORM);
+			 * 
+			 * } else if(request.getSession().getAttribute("sessAuthority") == "24") {
+			 * 
+			 * 
+			 * }
+			 */
+			
+			
 		} else {
 			response.sendRedirect(Constants.URL_LOGINFORM);
             return false;

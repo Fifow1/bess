@@ -1,174 +1,194 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="true" %>
-<html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="true"%>
+<!doctype html>
+<html lang="en">
+
 <head>
-	<title>Home</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>main</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,600;1,200&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/resources/css/main.css">
 <style type="text/css">
-
-
-* {
-  box-sizing: border-box;
-}
-body {
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-h1 {
-  margin: 0;
-  padding: 35px;
-  background: lightgoldenrodyellow;
-}
-
-/* 공통 클래스 */
-.hide {
-  display: none;
-}
-
-/* 회원가입 */
-#form-container {
-  max-width: 480px;
-  margin: 0 auto;
-  padding-bottom:100px;
-}
-#form-container h2 {
-  font-size: 30px;
-  color: #333;
-  font-weight: 600;
-  text-align: center;
-  padding: 60px 0 30px;
-  margin: 0 0 40px 0;
-  border-bottom: 2px solid #333;
-}
-
-#form-container fieldset {
-  text-align: left;
-  margin: 0;
-  padding: 0 0 10px 0;
-  border: 0;
-  vertical-align: middle;
-}
-#form-container fieldset label {
-  display: inline-block;
-  width: 120px;
-  line-height: 45px;
-  font-size: 14px;
-  color: #333;
-  font-weight: 500;
-}
-#form-container fieldset label span {
-  display: inline-block;
-  color: tomato;
-  padding-left: 5px;
-}
-#form-container fieldset input {
-  display: inline-block;
-  width: calc(100% - 125px);
-  height: 45px;
-  padding: 10px 15px;
-  margin-bottom: 15px;
-  border: 1px solid #eee;
-  border-radius: 2.5px;
-}
-#form-container #subit-button {
-  font-size: 20px;
-  font-weight: 500;
-  margin-top: 30px;
-  padding: 15px 80px;
-  border-radius: 5px;
-  color:#888;
-  border:2px solid #888;
-  background:#ddd;
-}
-#form-container #subit-button.allCheck {
-  color: #fff;
-  border: 2px solid #5f0081;
-  background: #5f0081;
-  cursor: pointer;
-}
-
-/* 경고 메세지 */
-.msg {
-  display: block;
-  width: 100%;
-  font-size: 12px;
-  color: #666;
-  margin-bottom: 5px;
-  padding-left: 130px;
-}
-.msg:before {
-  display: inline-block;
-  content: "";
-  clear: both;
-  vertical-align: middle;
-  width: 3px;
-  height: 3px;
-  margin-right: 5px;
-  border-radius: 50%;
-  background: #333;
-}
-.msg.hide {
-  display: none;
-}
-.msg.success {
-  color: green;
-}
-.msg.success:before {
-  background: green;
-}
 </style>
-<!-- Datepicker -->
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 </head>
 <body>
-  <h1>유효성 검사</h1>
-  <div id='form-container'>
-    <h2>회원가입</h2>
 
-    <fieldset>
-      <label>아이디<span>*</span></label>
-      <input type="text" id='id' placeholder="아이디를 입력해주세요.">
-      <div class='failure-message hide msg'>4자 이상의 영문 혹은 영문과 숫자를 조합</div>
-      <div class='success-message hide msg success'>사용할 수 있는 아이디입니다.</div> -->
-      <div class="feedback" id="idFeedback"></div>
-      <input type="text" id='idAllowedNy' placeholder="아이디를 입력해주세요.">
-    </fieldset>
 
-    <fieldset>
-      <label>비밀번호<span>*</span></label>
-      <input type="text" id='password' placeholder="비밀번호를 입력해주세요.">
-      <div class='password-message-wrap'>
-        <span class='password-failure-length hide msg'>10자 이상 입력</span>
-        <span class='password-failure-comb hide msg'>영문/숫자/특수문자(공백 제외)만 허용하며, 2개 이상 조합</span>
-        <span class='password-failure-contn hide msg'>동일한 숫자 3개 이상 연속 사용 불가</span>
-        <span class='password-failure-upper hide msg'>영어 대문자 하나 이상 포함</span>
-        <span class='password-success-message hide msg success'>사용할 수 있는 비밀번호입니다.</span>
-      </div>
-    </fieldset>
 
-    <fieldset>
-      <label>비밀번호 확인<span>*</span></label>
-      <input type="text" id='password-retype' placeholder="비밀번호를 한번 더 입력해주세요.">
-      <div class="mismatch-message hide msg">동일한 비밀번호를 입력해주세요.</div>
-      <div class="match-message hide msg success">동일한 비밀번호가 입력되었습니다.</div>
-    </fieldset>
-    sessSeq: <c:out value="${sessSeq }"/><br>
+	<!------------------------------------------------------------ header ------------------------------------------------------------------------>
+	<nav class="navbar navbar-expand-lg header">
+		<div class="container">
+			<div style="margin-top: 30px; margin-right: 70px;">
+				<a class="navbar-brand" href="#"><h1 style="color: #FFFFFF; font-family: 'Edu VIC WA NT Beginner', cursive;">Ham</h1></a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav" style="font-family: 'Kanit', sans-serif;">
+					<li class="nav-item" style="margin-right: 40px;"><a class="nav-link active" aria-current="page" style="color: #FFFFFF;">Home</a></li>
+					<li class="nav-item" style="margin-right: 40px;"><a class="nav-link" aria-current="page" style="color: #FFFFFF;" href="./product/productList_deskmat.html">shop</a></li>
+					<li class="nav-item" style="margin-right: 40px;"><a class="nav-link" aria-current="page" style="color: #FFFFFF;" href="#">community</a></li>
+				</ul>
+			</div>
+			<div id="headerR" class="d-grid gap-2 d-md-flex justify-content-md-end">
+				<button class="btn btn-outline" type="button" onclick="location.href='/member/userLogin'" style="color: #FFFFFF">
+					<i class="fa-solid fa-user"></i>
+				</button>
+				<button class="btn btn-outline me-md-2" type="button" style="color: #FFFFFF">
+					<i class="fa-solid fa-cart-shopping"></i>
+				</button>
+			</div>
+		</div>
+	</nav>
+
+	<!---------------------------------------------------------------------- body(keyboard) ----------------------------------------------------------->
+	<div id="back" style="height: 900px; width: 100%; background: url(/resources/images/green4.png); background-size: cover; background-attachment: scroll;"></div>
+	<br>
+	<br>
+	<!-- body -->
+	<div class="container">
+		<div class="row">
+			<div class="col" style="margin-left: 70px;">
+				<br>
+				<p style="text-align: left; font-size: 24px; font-family: 'Edu NSW ACT Foundation', cursive;">
+				<p>Keyboard</p>
+				<hr style="width: 400px; color: black;">
+				<br>
+			</div>
+		</div>
+		sessSeq: <c:out value="${sessSeq }"/><br>
 sessName: <c:out value="${sessName }"/><br>
 sessId: <c:out value="${sessId }"/><br>
-    <button type="button" class="btn btn-danger border ms-2" id="btnLogout" style="width: 120px;">나가기</button>
-	
-    <button id="subit-button">회원가입</button>
-  </div>
-  
-  <script type="text/javascript">
-  
-  
-  $("#btnLogout").on("click", function(){
+		<button type="button" class="btn btn-danger border ms-2" id="btnLogout" style="width: 120px;">나가기</button>
+		<div class="row" style="display: flex; justify-content: center; margin-bottom: 15px;">
+			<div class="col-6 product_blue"></div>
+			<div class="col-6 ms-4 product_pink"></div>
+		</div>
+		<div class="row" style="display: flex; justify-content: center; margin-bottom: 10px;">
+			<div class="col-6 left_div">
+				<h5>MELGEEK MG WAHTSY</h5>
+			</div>
+			<div class="col-6 ms-5 right_div">
+				<h5>DOMIKEY VILLANELLA</h5>
+			</div>
+		</div>
+		<div class="row" style="display: flex; justify-content: center; margin-bottom: 100px;">
+			<div class="col-6 d flex center left_div">
+				<h6>20000원</h6>
+			</div>
+			<div class="col-6 ms-5 right_div">
+				<h6>20000원</h6>
+			</div>
+		</div>
+		<div class="row" style="display: flex; justify-content: center; margin-bottom: 15px;">
+			<div class="col-6 product_lime"></div>
+			<div class="col-6 ms-4 product_brown"></div>
+		</div>
+		<div class="row" style="display: flex; justify-content: center; margin-bottom: 10px;">
+			<div class="col-6 left_div">
+				<h5>MELGEEK MG LIME</h5>
+			</div>
+			<div class="col-6 ms-5 right_div">
+				<h5>MELGEEK MDA VISION</h5>
+			</div>
+		</div>
+		<div class="row" style="display: flex; justify-content: center; margin-bottom: 100px;">
+			<div class="col-6 d flex center left_div">
+				<h6>20000원</h6>
+			</div>
+			<div class="col-6 ms-5 right_div">
+				<h6>20000원</h6>
+			</div>
+		</div>
+		<div class="row" style="display: flex; justify-content: center; margin-bottom: 15px;">
+			<div class="col product_blue2"></div>
+		</div>
+	</div>
+	<!---------------------------------------------------------------------- body(desk mat) ----------------------------------------------------------->
+
+	<div style="width: 100%; height: 500px; background: url(/resources/images/desk.jpg); background-size: cover; background-attachment: fixed;"></div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col" style="margin-left: 70px;">
+				<br>
+				<p style="text-align: left; font-size: 24px; font-family: 'Edu NSW ACT Foundation', cursive;" <p>Desk mat</p>
+					<hr style="width: 400px; color: black;">
+			<br>
+		</div>
+		<div class="row" style="display: flex; justify-content: center; margin-bottom: 15px;">
+			<div class="col-9 blue_mat"></div>
+			<div class="col-3" style="margin-left: 100px; float: right;">
+				<div class="green_mat"></div>
+				<div class="black_mat"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!---------------------------------------------------------------------- footer ----------------------------------------------------------->
+<div class="container-fluid footermain">	
+	<div class="row" style="padding-top: 40px;">
+		<div class="col d-flex justify-content-center" style="padding-left: 90px; padding-bottom: 10px; padding-right:0px; ">
+			<div>
+				<a href="#" class="link-light ps-5" style="text-decoration: none;">Ham소개</a>
+				<a href="#" class="link-light ps-5" style="text-decoration: none;">자주묻는질문</a>
+				<a href="#" class="link-light ps-5" style="text-decoration: none;">이용약관</a>
+				<a href="#" class="link-light ps-5"  style="text-decoration: none;">개인정보처리방침</a>	
+				<a href="#" class="link-light ps-5" style="text-decoration: none;">사업자정보확인</a>
+			</div>
+		</div>
+		<div class="col d-flex justify-content-center" style="padding-right: 137px; padding-left: 0px;">
+			<div class="">
+				<a href="#" class="link-light ps-5 instagram" style="text-decoration: none;">인스타그램</a>
+				<a href="#" class="link-light ps-5" style="text-decoration: none;">페이스북</a>
+				<a href="#" class="link-light ps-5" style="text-decoration: none;">이용약관</a>
+				<a href="#" class="link-light ps-5" style="text-decoration: none;">개인정보처리방침</a>
+				<a href="#" class="link-light ps-5" style="text-decoration: none;">사업자정보확인</a>
+			</div>
+		</div>
+	</div>
+	<hr style="color: white; margin-top: 0px;">
+	<div class="row" style="padding-left: 40px;">
+		<div class="col" style="padding-left: 145px;">
+			<h1 style="color: white; font-family: 'Edu VIC WA NT Beginner', cursive;">Ham</h1>
+		</div>
+		<div class="col"style="padding-right:20px;">
+			<h1 style="color: white;">고객센터</h1>
+		</div>
+	</div>
+	<div class="row" style="padding-left: 40px;">
+		<div class="col" style="padding-left: 145px;">
+			<p style="color: white; text-align: left;">대표이사 : 서정민 사업자등록번호 : 220-88-93187 통신판매업신고 : 2016-서울강남-00359<br><br>
+				호스팅사업자 : (주)브랜디 주소 : 서울 강남구 테헤란로38길 12 (역삼동)<br><br>
+				개인정보관리책임자 : 주현주(privacy@brandi.co.kr)<br><br>
+				(주)브랜디가 제공하는 하이버 서비스는 통신판매중개자로서 통신판매 당사자가 아니며,<br><br>
+				판매자가 등록한 상품정보 및 거래에 하이버는 책임지지 않습니다.<br><br>
+				100% 정품<br><br>
+				하이버에서 판매되는 모든 브랜드 제품은 정식제조, 정식수입원을 통해 유통되는 100% 정품입니다.<br><br>
+				안전거래센터신고하기</p>
+		</div>
+		<div class="col">
+			<p style="color: white; text-align: left;">영업시간 AM 10:00 ~ PM 17:00 (주말 및 공휴일 ㅣ휴뮤)<br><br>
+
+				점심시간 AM 12:00 ~ PM 13:30</p>
+		
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+$("#btnLogout").on("click", function(){
 		/* if(validation() == false) return false; */
 		
 		$.ajax({
@@ -190,340 +210,15 @@ sessId: <c:out value="${sessId }"/><br>
 			}
 		});
 	});
-  
-  $("#id").on("focusout", function(){
-		
-		/* if(!checkId('id', 2, 0, "영대소문자,숫자,특수문자(-_.),4~20자리만 입력 가능합니다")) {
-			return false;
-		} else { */
-			$.ajax({
-				async: true 
-				,cache: false
-				,type: "post"
-				/* ,dataType:"json" */
-				,url: "/member/checkId"
-				/* ,data : $("#formLogin").serialize() */
-				,data : { "id" : $("#id").val() }
-				,success: function(response) {
-					if(response.rt == "success") {
-						document.getElementById("id").classList.remove('is-invalid');
-						document.getElementById("id").classList.add('is-valid');
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/50704cc15b.js" crossorigin="anonymous"></script>	
+
 	
-						document.getElementById("idFeedback").classList.remove('invalid-feedback');
-						document.getElementById("idFeedback").classList.add('valid-feedback');
-						document.getElementById("idFeedback").innerText = "사용 가능 합니다.";
-						
-						document.getElementById("idAllowedNy").value = 1;
-						
-					} else {
-						document.getElementById("id").classList.remove('is-valid');
-						document.getElementById("id").classList.add('is-invalid');
-						
-						document.getElementById("idFeedback").classList.remove('valid-feedback');
-						document.getElementById("idFeedback").classList.add('invalid-feedback');
-						document.getElementById("idFeedback").innerText = "사용 불가능 합니다";
-						
-						document.getElementById("idAllowedNy").value = 0;
-					}
-				}
-				,error : function(jqXHR, textStatus, errorThrown){
-					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-				}
-			});
-		/* } */
-	});
-
-  
-  
-  const elInputUsername = document.querySelector('#id');
-
-  const elFailureMessage = document.querySelector('.failure-message');
-  const elSuccessMessage = document.querySelector('.success-message');
-
-  const elPassword = document.querySelector('#password');
-  const elPasswordRetype = document.querySelector('#password-retype');
-
-  const elPWRetypeFailureMsg = document.querySelector('.mismatch-message');
-  const elPWRetypeSuccessMsg = document.querySelector('.match-message');
-
-  const elPWFailureLeng = document.querySelector('.password-failure-length');
-  const elPWFailureComb = document.querySelector('.password-failure-comb');
-  const elPWFailureContn = document.querySelector('.password-failure-contn');
-  const elPWFailureUpper = document.querySelector('.password-failure-upper');
-  const elPWSuccessMessage = document.querySelector('.password-success-message');
-
-  const elSubmitButton = document.querySelector('#subit-button');
-
-
-  // { 비밀번호 } input 유효성 검사  
-  function passwordFn () {
-
-    if( isMoreThan10Length(elPassword.value) ) {
-      elPWFailureLeng.classList.add('hide');
-    } else {
-      elPWFailureLeng.classList.remove('hide');
-    }
-
-    
-    /* if( isPasswordEng(elPassword.value) ) {
-      console.log('영어가 있다..');
-    } else {
-      console.log('영어가 없다...!!!');
-    }
-    
-    if( isPasswordNum(elPassword.value) ) {
-      console.log('숫자가 있다..');
-    } else {
-      console.log('숫자가 없다...!!!');
-    }
-    if( isPasswordSpeci(elPassword.value) ) {
-      console.log('특수문자가 있다..');
-    } else {
-      console.log('특수문자가 없다...!!!');
-    }
-    if( isPasswordBlank(elPassword.value) ) {
-      console.log('공백이 없다..');
-    } else {
-      console.log('공백이 있다...!!!');
-    } */
-    
-
-    if( (isPasswordEng(elPassword.value) + isPasswordNum(elPassword.value) + isPasswordSpeci(elPassword.value) >= 2) &&
-        (isPasswordBlank(elPassword.value)) &&
-        (isPasswordChar(elPassword.value)) 
-      ) {
-      elPWFailureComb.classList.add('hide');
-    } else {
-      elPWFailureComb.classList.remove('hide');
-    }
-
-    if( isPasswordRepeat(elPassword.value) ) {
-      elPWFailureContn.classList.remove('hide');
-    } else {
-      elPWFailureContn.classList.add('hide');
-    }
-
-    if( (isPasswordUpper(elPassword.value)) ) {
-      elPWFailureUpper.classList.add('hide');
-    } else {
-      elPWFailureUpper.classList.remove('hide');
-    }
-
-    if( (isMoreThan10Length(elPassword.value)) && 
-        (isPasswordEng(elPassword.value) + isPasswordNum(elPassword.value) + isPasswordSpeci(elPassword.value) >= 2) && 
-        (isPasswordChar(elPassword.value)) && 
-        (isPasswordBlank(elPassword.value)) && 
-        (!isPasswordRepeat(elPassword.value)) && 
-        ((isPasswordUpper(elPassword.value)))
-      ) {
-      elPWSuccessMessage.classList.remove('hide');
-    } else {
-      elPWSuccessMessage.classList.add('hide');
-    }
-
-    isSubmitButton();
-  }
-
-  elPassword.addEventListener('click', passwordFn)
-  elPassword.addEventListener('keyup', passwordFn)
-  elPassword.addEventListener('keyup', passwordRetypeFn)
-
-  // { 비밀번호 확인 } input 유효성 검사
-  function passwordRetypeFn() {
-    if( isMatch(elPassword.value, elPasswordRetype.value) && isPasswordBlank(elPasswordRetype.value) ) {
-      //console.log('두 비밀번호가 동일하다..');
-      elPWRetypeFailureMsg.classList.add('hide');
-      elPWRetypeSuccessMsg.classList.remove('hide');
-    } else {
-      //console.log('두 비밀번호가 다르다...!!!');
-      elPWRetypeFailureMsg.classList.remove('hide');
-      elPWRetypeSuccessMsg.classList.add('hide');
-    }
-
-    isSubmitButton();
-  }
-
-  elPasswordRetype.onclick = passwordRetypeFn;
-  elPasswordRetype.onkeyup = passwordRetypeFn;
-
-  //-------- 최종 유효성 검사에서 사용하는 함수다 ---------//
-
-  // 모든 조건이 충족되었는지 확인하는 함수
-  function isAllCheck() {
-	if(document.getElementById("idAllowedNy").value == 1 && isMoreThan4Length(elInputUsername.value) && isUserNameChar(elInputUsername.value)){
-      if( (isMoreThan10Length(elPassword.value)) && 
-          (isPasswordEng(elPassword.value) + isPasswordNum(elPassword.value) + isPasswordSpeci(elPassword.value) >= 2) &&
-          (isPasswordChar(elPassword.value)) &&
-          (isPasswordBlank(elPassword.value)) && 
-          (!isPasswordRepeat(elPassword.value)) && 
-          ((isPasswordUpper(elPassword.value)))
-        ) { // 비밀번호
-        if( isMatch(elPassword.value, elPasswordRetype.value) ) { // 비밀번호 확인
-          console.log('true!!');
-          return true;
-        }
-      }
-      
-      }  else {
-      console.log('false!!');
-      document.getElementById("idAllowedNy").value = 0;
-      return false;
-    }
-  }
-  
-  
-
-  // [회원가입 버튼] 배경 활성화 함수
-  function isSubmitButton() {
-    if( isAllCheck() ) {
-      elSubmitButton.classList.add('allCheck');
-    }
-    else {
-      elSubmitButton.classList.remove('allCheck');
-    }
-  }
-
-  // [회원가입 버튼] 클릭 이벤트 함수
-  elSubmitButton.onclick = function() {
-    if( isAllCheck() ) {
-      alert('회원가입이 완료되었습니다!');
-      elInputUsername.value = '';
-      document.getElementById("idAllowedNy").value = '';
-      elPassword.value = '';
-      elPasswordRetype.value = '';
-      elSuccessMessage.classList.add('hide');
-      elPWRetypeSuccessMsg.classList.add('hide');
-      elPWSuccessMessage.classList.add('hide');
-      elSubmitButton.classList.remove('allCheck');
-    }
-    else {
-      alert('모든 조건이 충족되어야합니다.');
-    }
-  };
-
-  //-------- 유효성 검사에서 사용하는 함수다 ---------//
-
-  // [아이디] 길이가 4자 이상이면 true를 리턴하는 함수
-  function isMoreThan4Length(value) {
-    // 아이디 입력창에 사용자가 입력을 할 때 
-    // 글자 수가 4개이상인지 판단한다.
-    // 글자가 4개 이상이면 success메세지가 보여야 한다.
-    return value.length >= 4;
-  }
-
-  // [아이디] '영문, 숫자'만 있으면 true를 리턴하는 함수
-  function isUserNameChar(username) {
-    var letters = /^[A-Za-z0-9]+$/;
-
-    if( username.match(letters) ) {
-      return true;
-    } else {   
-      return false;
-    }
-  }
-
-  // [비밀번호] 길이가 10자 이상이면 true를 리턴하는 함수
-  function isMoreThan10Length (password) {
-    return password.length >= 10;
-  }
-
-  // [비밀번호] 영문이 있으면 true를 리턴하는 함수
-  function isPasswordEng (password) {
-    var letters = /[A-Za-z]/; // 잘 모르겠지만 이것은 정규표현식으로 AZ - az 모든 알파벳을 담고 있다.
-    
-    if( letters.test(password) ) {  // 정규표현식에 영어문자가 모두 들었고. 정규표현식의 메소드인 test()로 비밀번호 문자에 영어가 있는지 판단한다.
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  // [비밀번호] 숫자가 있으면 true를 리턴하는 함수
-  function isPasswordNum (password) {
-    var letters = /[0-9]/;
-    
-    if( letters.test(password) ) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  // [비밀번호] 특수문자가 있으면 true를 리턴하는 함수
-  function isPasswordSpeci (password) {
-    var letters = /[~!@#$%^&*()\-_=+\\\|\[\]{};:\'",.<>\/?]/;
-    
-    if( letters.test(password) ) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  // [비밀번호][비밀번호 확인] 스페이스가 없을 경우 true를 리턴하는 함수
-  function isPasswordBlank (password) {
-    if( password.search(/\s/) === -1 ) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  // [비밀번호] '영문, 숫자, 특수문자'만 있으면 true를 리턴하는 함수
-  function isPasswordChar(password) {
-    var letters = /^[A-Za-z0-9~!@#$%^&*()\-_=+\\\|\[\]{};:\'",.<>\/?]+$/;
-
-    if( password.match(letters) ) {
-      //console.log('가능한 것만 있네!');
-      return true;
-    } else {
-      //console.log('안되는 것도 있네?');
-      return false;
-    }
-  }
-
-  // [비밀번호] 동일한 숫자 3개 이상 연속 사용하면 true를 리턴하는 함수
-  function isPasswordRepeat (password) {
-    // password의 길이만큼 반복되는 반복문이 있어야 한다.
-    // 문자 하나와 나 자신+1과 나자신 +2와 비교한다.
-    // 숫자인지 아닌지 판단한다.숫자이면 true 아니면 false
-    for( let i=0; i<password.length-2; i++ ) {
-      if( password[i]===password[i+1] && password[i]===password[i+2] ) {
-        if( !isNaN(Number(password[i])) ) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-
-  // [비밀번호] 영문자 중에 대문자 하나이상 포함되면 true를 리턴하는 함수
-  function isPasswordUpper (password) {
-    var letters = /[A-Z]/; 
-    
-    if( letters.test(password) ) { 
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  // [비밀번호 확인] 매치가 동일하면 true를 리턴하는 함수
-  function isMatch (password1, password2) {
-    if( password1 && password2 ) {
-      if(password1 === password2) {
-        return true;
-      }
-    } else {
-      return false;
-    }
-  }
-  
-  
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+	
+	<!-- end -->
 </body>
-  
-  
-  
 </html>
+				

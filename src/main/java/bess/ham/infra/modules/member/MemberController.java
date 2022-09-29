@@ -149,6 +149,8 @@ public class MemberController {
 				/* httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); */ // 60second * 30 = 30minute
 				httpSession.setAttribute("sessSeq", rtMember2.getSeq());
 				httpSession.setAttribute("sessId", rtMember2.getId());
+				
+				httpSession.setAttribute("sessAutgiruty", rtMember2.getAuthority());
 				/* httpSession.setAttribute("sessName", rtMember2.getIfmame()); */
 
 				

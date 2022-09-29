@@ -29,7 +29,10 @@
 		<interceptor>
 			<mapping path="/**"/>
 			<exclude-mapping path="/resources/**" />
+			<exclude-mapping path="/a" />
 			<exclude-mapping path="/member/loginProc" />
+			<exclude-mapping path="/member/userIsrt" />
+			<exclude-mapping path="/member/checkId" />
 			<exclude-mapping path="/member/userLogin" />
 			<exclude-mapping path="/member/userRegForm" />
 			<!-- <exclude-mapping path="/member/findIdPwdForm" /> -->
