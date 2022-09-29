@@ -17,7 +17,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@600&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="/resources/css/main.css">
+	<link rel="stylesheet" href="/resources/css/main2.css">
   	<title>memberFindid</title>
 	<style type="text/css">
 
@@ -58,7 +58,7 @@
 	<div style="width: 40%; height:1000px; float:left; margin-top: 250px;">
 		<div class="row">
 			<div class="col d-flex justify-content-center">
-				<p style="font-family: 'Source Sans Pro', sans-serif; font-size: 80px; ">Find ID<br> phone</p>
+				<p style="font-size: 80px;" class="h1">Find ID<br> phone</p>
 			</div>
 		</div>
 		<div class="row">
@@ -86,7 +86,7 @@
 					<div class="form-floating d-flex justify-content-center">
 					  	<input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" style="width: 500px; margin-left: 0px; margin-right:20px; ">
 					 	<label for="floatingInput" style="margin-left: 250px;">가입 시 입력한 휴대번호</label>
-						<button type="button" class="btn btn-secondary" style="width: 100px; padding: 0px;">인증</button>		
+						<button type="button" class="btn btn-primary" style="width: 100px; padding: 0px;">인증</button>		
 					</div>
 				</div>
 			</div>
@@ -100,7 +100,7 @@
 			</div>
 			<div class="row">
 				<div class="col mb-4 d-flex justify-content-center">
-					<button type="button" class="btn btn-dark" style="width: 620px;">아이디 확인</button>		
+					<button type="button" class="btn btn-primary" style="width: 620px;">아이디 확인</button>		
 				</div>
 			</div>
 			<div class="row">

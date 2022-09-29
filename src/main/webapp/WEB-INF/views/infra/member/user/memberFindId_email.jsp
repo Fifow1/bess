@@ -58,12 +58,12 @@
 	<div style="width: 40%; height:1000px; float:left; margin-top: 250px;">
 		<div class="row">
 			<div class="col d-flex justify-content-center">
-				<p style="font-size: 80px; margin-right: 50px;" class="h1">Find ID<br>email</p>
+				<p style="font-size: 80px; margin-right: 70px;" class="h1">Find ID<br>email</p>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col d-flex justify-content-center">
-				<hr style="border: solid 4px #2E2E2E; width: 300px; opacity: .9; margin-right: 74px;">
+				<hr style="border: solid 4px #2E2E2E; width: 280px; opacity: .9; margin-right: 74px;">
 			</div>
 		</div>
 	</div>
@@ -86,7 +86,7 @@
 					<p style="margin-bottom: 4px; margin-left: 250px; font-weight: 900;">가입시 입력한 이메일 주소</p>
 					<div class="form-floating d-flex justify-content-center">
 						<input type="text" class="form-control" placeholder="Username" style="width: 500px; height: 50px; margin-right: 20px;">
-						<button type="button" class="btn btn-dark" style="width: 100px; padding: 0px; background-color: #2E2E2E;">인증</button>
+						<button type="button" class="btn btn-primary" style="width: 100px; padding: 0px; background-color: #2E2E2E;">인증</button>
 					</div>
 				</div>
 			</div>
@@ -100,7 +100,7 @@
 			</div>
 			<div class="row">
 				<div class="col mb-4 d-flex justify-content-center">
-					<button type="button" class="btn btn-dark" style="width: 620px;">아이디 확인</button>		
+					<button type="button" class="btn btn-primary" style="width: 620px;">아이디 확인</button>		
 				</div>
 			</div>
 			<div class="row">
