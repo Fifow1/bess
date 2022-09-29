@@ -201,7 +201,7 @@
 			</div>
 			<div class="row mb-0">
 				<div class="col">
-					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">상세주소</p>
+					<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">상세주소s</p>
 					<div class="form-floating d-flex justify-content-center">
 						<input type="text" class="form-control pt-1" id="exampleInputEmail1" style="width: 500px; height: 50px; margin-left: 20px; margin-right: 20px;">
 					</div>
