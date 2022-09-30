@@ -30,10 +30,14 @@
 			<mapping path="/**"/>
 			<exclude-mapping path="/resources/**" />
 			<exclude-mapping path="/a" />
+			<exclude-mapping path="/product/productList_deskmat" />
+			<exclude-mapping path="/product/productView" />
 			<exclude-mapping path="/member/loginProc" />
+			<exclude-mapping path="/member/ll" />
 			<exclude-mapping path="/member/userIsrt" />
 			<exclude-mapping path="/member/checkId" />
 			<exclude-mapping path="/member/userLogin" />
+			<exclude-mapping path="/member/userRegFormSub" />
 			<exclude-mapping path="/member/userRegForm" />
 			<!-- <exclude-mapping path="/member/findIdPwdForm" /> -->
 			<beans:bean id="checkLoginSessionInterception" class="bess.ham.infra.common.interceptor.CheckLoginSessionInterception"/>

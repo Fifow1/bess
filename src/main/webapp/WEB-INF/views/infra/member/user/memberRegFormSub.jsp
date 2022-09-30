@@ -3,7 +3,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
-<%@ page session="true" %>
+<%@ page session="true"%>
+
 
 <!Doctype html>
 <html>
@@ -19,17 +20,17 @@
 	<link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@600&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
-	
-	 <!-- Datepicker -->
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-	
 	<link rel="stylesheet" href="/resources/css/main2.css">
-  	<title>memberLogin</title>
+	
+	<!-- Datepicker -->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+  	<title>member</title>
 	<style type="text/css">
 
 </style>
+
 </head>
 
 <body>
@@ -61,17 +62,17 @@
 </nav>
 <!------------------------------------------------------------------------------------------------------------------------------------------------->
 
-<div id="wrapper"style=" height: 1600px;">
+<div id="wrapper" style="height: 1500px">
 
-	<div style="width: 40%; height:1000px; float:left; margin-top: 300px;">
-		<div class="row">
+	<div style="width: 40%; height:600px; float:left; margin-top: 290px;">
+		<div class="row" style="padding-right: 100px;">
 			<div class="col d-flex justify-content-center">
-				<p style="font-size: 80px; margin-right: 50px;" class="h1">Customer<br>Login</p>
+				<p style="font-size: 80px;" class="h1">Create<br> Account</p>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col d-flex justify-content-center">
-				<hr style="border: solid 4px #2E2E2E; width:340px; opacity: .9; margin-right: 50px;">
+				<hr style="border: solid 4px #2E2E2E; width: 380px; opacity: .9; "class="h1">
 			</div>
 		</div>
 	</div>
@@ -79,81 +80,69 @@
 
 
 
-	<div class="line"></div>
+<div class="line"></div>
 
-
-	<div style="width: 60%; height: 800px; float: right; padding-top: 210px;">
+	
+	
+	<div style="width: 60%; height:600px; float:right; padding-top: 250px;">
 		<div class="container">
-			<p style ="margin-bottom: 50px; margin-left: 510px; font-weight: 900;font-size: 20px;">로그인</p>
-			<p style ="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">아이디</p>
-			<div class="row loginbtn d-flex justify-content-center">
-				<div class="col d-flex justify-content-center">
-					<input type="text" class="form-control" id="id" aria-describedby="emailHelp" style="width: 500px; height: 50px;">
-				</div>
-			</div>
-			<p style ="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">비밀번호</p>
-			<div class="row loginbtn d-flex justify-content-center">
-				<div class="col mb-3 d-flex justify-content-center">
-					<input type="password	" class="form-control" id="pw" aria-describedby="emailHelp" style="width: 500px; height: 50px;">
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col mb-0 d-flex justify-content-center">
-					<button type="button" class="btn btn-primary border" id="btnLogin" style="width: 500px; height: 50px;">로그인</button>	
-				</div>
-			</div>
-			<div class="row">
-				<div class="col mb-0 d-flex justify-content-center">
-					<button type="button" class="btn btn-secondary border" style="width: 500px; height: 50px;" id="btnLogin" onclick="location.href='/member/userRegFormSub'">회원가입</button>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col d-flex justify-content-center" style="margin-bottom: 0px; margin-top: 10px;">
-					<hr style="width: 212px; color: black; float: left;">
-					<p style="float: left; padding-left: 20px; padding-right: 20px;">또는</p>
-					<hr style="width: 212px; color: black;">
-				</div>
-			</div>
-
-
-			<div class="row">
-				<div class="col mb-0 d-flex justify-content-center">
-					<button type="button" class="btn btn-success border" style="width: 120px;">
-						<i class="fa-sharp fa-solid fa-n"></i>
-					</button>
-					<button type="button" class="btn btn-warning border ms-2" style="width: 120px;">
-						<i class="fa-sharp fa-solid fa-comment"></i>
-					</button>
-					<button type="button" class="btn btn-danger border ms-2" style="width: 120px;">
-						<i class="fa-brands fa-google"></i>
-					</button>
-					<button type="button" class="btn btn-info border ms-2" style="width: 120px;">
-						<i class="fa-brands fa-facebook"></i>
-					</button>
-				</div>
-			</div>
-			
-			<button type="button" class="btn btn-danger border ms-2" id="btnLogout" style="width: 120px;">나가기</button>
-			
-			<div class="row">
-				<div class="col mb-2 mt-2 d-flex justify-content-center" style="padding-right: 370px;" onclick="location.href='./memberFindid_phone.html'">
-					<a href="#" class="link-dark ps-5">아이디를 잊어버리셨나요?</a>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col mb-0 d-flex justify-content-center" style="padding-right: 355px;" onclick="location.href='./memberFindpwd_phone.html'">
-					<a href="#" class="link-dark ps-5">비밀번호를 잊어버리셨나요?</a>
+			<div class="row mb-0">
+				<div class="col">
+					<div class="form-floating d-flex justify-content-center mb-0">
+						<div class="border mb-0 border-bottom-0" style="width: 430px; height: 80px;">
+							<div style="margin-left: 20px; margin-top: 20px;">
+								<input class="form-check-input float-start" type="checkbox" value="" id="cbx_chkAll">
+								<label class="form-check-label ms-4" for="cbx_chkAll">모두 동의합니다</label>
+								<p class="ms-4" style="font-size: 12px;">이용약관, 개인정보 수집 및 이용, 처리 위탁에 모두 동의합니다.</p>
+								<!-- <p style="font-size: 15px;">모두 동의합니다</p>
+								<p style="font-size: 12px;">이용약관, 개인정보 수집 및 이용, 처리 위탁에 모두 동의합니다.</p> -->
+							</div>
+						</div>
+					</div>
+					<div class="form-floating d-flex justify-content-center mb-0">
+						<div class="border mb-0 border-bottom-0" style="width: 430px; height: 60px;">
+							<div style="margin-left: 20px; margin-top: 15px; float: left;">
+								<input class="form-check-input float-start" type="checkbox" value="1" id="ch1" name="essentialChk">
+								<label class="form-check-label ms-4" for="ch1">이용 약관 동의(필수)</label>
+							</div>
+							<div style="float: right; margin-top: 10px; margin-right: 15px;">
+								<button type="button" class="btn btn-primary">보기</button>
+							</div>
+						</div>
+					</div>
+					<div class="form-floating d-flex justify-content-center mb-0">
+						<div class="border mb-0 border-bottom-0" style="width: 430px; height: 60px;">
+							<div style="margin-left: 20px; margin-top: 15px; float: left;">
+								<input class="form-check-input float-start" type="checkbox" value="1" id="ch2" name="essentialChk">
+								<label class="form-check-label ms-4" for="ch2">개인정보 수집 및 이용 동의(필수)</label>
+							</div>
+								<div style="float: right; margin-top: 10px;margin-right: 15px;">
+								<button type="button" class="btn btn-primary">보기</button>
+							</div>
+						</div>
+					</div>
+					<div class="form-floating d-flex justify-content-center mb-0">
+						<div class="border mb-0" style="width: 430px; height: 60px;">
+							<div style="margin-left: 20px; margin-top: 15px; float: left;">
+								<input class="form-check-input float-start" type="checkbox" value="1" id="ch3" name="essentialChk">
+								<label class="form-check-label ms-4" for="ch3">개인정보 처리 위탁 동의(필수)</label>
+							</div>
+								<div style="float: right; margin-top: 10px;margin-right: 15px;">
+								<button type="button" class="btn btn-primary">보기</button>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-5">
+						<div class="col mb-0 d-flex justify-content-center">
+							<button type="button" class="btn btn-outline-primary textbox" style="width: 220px;">취소</button>		
+							<button type="button" class="btn btn-primary textbox" onclick="isAllCheck()" style="width: 220px;">다음</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-sessSeq: <c:out value="${sessSeq }"/><br>
-sessName: <c:out value="${sessName }"/><br>
-sessId: <c:out value="${sessId }"/><br>
-
-
-		<!------------------------------------------------------------------- footer -------------------------------------------------------------------->
+<!------------------------------------------------------------------- footer -------------------------------------------------------------------->
 
 	<div class="container-fluid footer">	
 		<div class="row" style="padding-top: 40px;">
@@ -196,7 +185,7 @@ sessId: <c:out value="${sessId }"/><br>
 					하이버에서 판매되는 모든 브랜드 제품은 정식제조, 정식수입원을 통해 유통되는 100% 정품입니다.<br><br>
 					안전거래센터신고하기</p>
 			</div>
-			<div class="col">	
+			<div class="col">
 				<p style="color: white; text-align: left;">영업시간 AM 10:00 ~ PM 17:00 (주말 및 공휴일 ㅣ휴뮤)<br><br>
 	
 					점심시간 AM 12:00 ~ PM 13:30</p>
@@ -204,71 +193,64 @@ sessId: <c:out value="${sessId }"/><br>
 		</div>
 	</div>
 </div>
-<script>
-var goUrlMain = "/a";
-var form = $("form[name=form]");
-
-$("#btnLogin").on("click", function(){
-		/* if(validation() == false) return false; */
-		
-		$.ajax({
-			async: true 
-			,cache: false
-			,type: "post"
-			/* ,dataType:"json" */
-			,url: "/member/loginProc"
-			/* ,data : $("#formLogin").serialize() */
-			,data : { "id" : $("#id").val(), "pw" : $("#pw").val()
-				/* , "autoLogin" : $("#autoLogin").is(":checked") */
-				}
-			,success: function(response) {
-				if(response.rt == "success") {
-					/* if(response.changePwd == "true") {
-						location.href = URL_CHANGE_PWD_FORM;
-					} else {
-						location.href = URL_INDEX_ADMIN;
-					} */
-					alert("로그인 성공");
-					location.href = '/a';	
-					
-					
-				} else {
-					alert("회원없음");
-				}
-			}
-			,error : function(jqXHR, textStatus, errorThrown){
-				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-			}
-		});
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#cbx_chkAll").click(function() {
+		if($("#cbx_chkAll").is(":checked")) $("input[name=essentialChk]").prop("checked", true);
+		else $("input[name=essentialChk]").prop("checked", false);
 	});
-	
-$("#btnLogout").on("click", function(){
-	/* if(validation() == false) return false; */
-	
-	$.ajax({
-		async: true 
-		,cache: false
-		,type: "post"
-		/* ,dataType:"json" */
-		,url: "/member/logoutProc"
-		/* ,data : $("#formLogin").serialize() */
-		,success: function(response) {
-			if(response.rt == "success") {
-				location.href = "/member/userLogin";
-			} else {
-				alert("회원없음");
-			}
-		}
-		,error : function(jqXHR, textStatus, errorThrown){
-			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-		}
+
+	$("input[name=essentialChk]").click(function() {
+		var total = $("input[name=essentialChk]").length;
+		var checked = $("input[name=essentialChk]:checked").length;
+
+		if(total != checked) $("#cbx_chkAll").prop("checked", false);
+		else $("#cbx_chkAll").prop("checked", true); 
 	});
 });
-
-
-
-
+	
+	
+	var goUrlRegForm = "/member/userRegForm";
+	
+	/*  function isAllCheck() {  
+		
+		if ($("input:checked[Name='essentialChk']").is(":checked")){ 
+			alert('x');
+			attr("action", goUrlRegForm).submit();
+		}else{
+			alert('o');
+		}
+	}  */
+	
+	
+	
+	 function isAllCheck() {  
+		 /* while(checkbtn) { */	 
+			if($("input:checked[id='ch1']").is(":checked")
+				&& $("input:checked[id='ch2']").is(":checked") 
+				&& $("input:checked[id='ch3']").is(":checked")){
+				alert('hi');
+				location.href = goUrlRegForm
+				/* checkbtn = false; */
+			} else{
+				alert("필수항목을 체크해주세요");
+				/* break;
+				checkbtn = true; */
+			}
+	/* 	}  */
+	}
+	
+	
+		/* if(document.getElementsByName("essentialChk").checked) {
+			alert('0')
+		    attr("action", goUrlRegForm).submit();
+		} */
+		    
+		
 </script>
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/50704cc15b.js" crossorigin="anonymous"></script>
 </body>

@@ -133,7 +133,7 @@
 			#{id}
 			,#{pw}
 			,#{gender}
-			,23
+			,#{authority}
 			,#{email}
 			,#{number_phone}
 			,NOW()
@@ -143,6 +143,28 @@
 		SELECT last_insert_id()
 		</selectKey>
 	</insert>
+	
+	<!-- <insert id="insertUserAdress">
+		INSERT INTO member_address(
+			member_seq
+			,address_zipcode
+	    	,address_zip
+	    	,address_detail
+	    	,memo
+		)
+		
+		VALUES (
+			member_seq
+			,#{address_zipcode}
+			,#{address_zip}
+			,#{address_detail}
+			,#{memo}
+		
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+		SELECT last_insert_id()
+		</selectKey>
+	</insert> -->
 	
 	<select id="selectOneId" resultMap="resultMapObj">
 		SELECT *

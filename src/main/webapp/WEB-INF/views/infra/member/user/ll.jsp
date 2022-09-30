@@ -93,7 +93,7 @@
 						<div class="form-floating d-flex justify-content-center">
 							<input type="text" class="form-control pt-1" id="id" name="id" style="width: 500px; height: 50px; margin-left: 120px; margin-right: 20px;">
 							<button type="button" class="btn btn-dark" id="good" style="width: 100px; padding: 0px; background-color: #2E2E2E;">중복확인</button>
-							<input type="hidden" id="idAllowedNy" name="idAllowedNy">
+							<input type="text" id="idAllowedNy" name="idAllowedNy">
 						</div>
 					</div>
 				</div>
@@ -172,7 +172,7 @@
 								<option value="daum.net">daum.net</option>
 							</select> 
 							<input type="text" class="form-control pt-1" id="email" name="email" style="width: 140px; height: 50px; margin-left: 20px; margin-right: 20px;">
-							<input type="hidden" id="emailAllowedNy" name="emailAllowedNy">
+							<input type="text" id="emailAllowedNy" name="emailAllowedNy">
 							<button type="button" class="btn btn-dark" id="checkEmail" style="width: 100px; padding: 0px; background-color: #2E2E2E;">인증</button>
 						</div>
 					</div>
@@ -183,7 +183,7 @@
 						<div class="form-floating d-flex justify-content-center">
 							<input type="text" name="number_phone" id="number_phone" name="number_phone"class="form-control pt-1" style="width: 500px; height: 50px; margin-left: 120px; margin-right: 20px;">
 							<button type="button" class="btn btn-dark" id="checkPhone" style="width: 100px; padding: 0px; background-color: #2E2E2E;">인증</button>
-							<input type="hidden" id="phoneAllowedNy" name="phoneAllowedNy">
+							<input type="text" id="phoneAllowedNy" name="phoneAllowedNy">
 						</div>
 					</div>
 				</div>
@@ -460,11 +460,10 @@
 		  	alert("이메일을 입력해주세요.");
 			document.getElementById("emailAllowedNy").value = 0
 		  } else{
-			$("#email").val(emailF+'@'+address);
-			if(!email_check($("#email").val())){
+			  $("#email").val(emailF+'@'+address);
+			  if(!email_check($("#email").val())){
 					alert("이메일 형식에 맞게 입력해주세요");
-					document.getElementById("email").value = ""
-					document.getElementById("emailAllowedNy").value = 0
+					 document.getElementById("emailAllowedNy").value = 0
 				 } 
 			else{
 				  alert("굿");
@@ -485,7 +484,7 @@
 		  	
 		  } else{
 			  
-			  alert("인증완료");
+			  alert("rnt.");
 			  document.getElementById("phoneAllowedNy").value = 1
 		  }
 		

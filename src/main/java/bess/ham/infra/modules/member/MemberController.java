@@ -187,7 +187,11 @@ public class MemberController {
 		return returnMap;
 	}
 	
-	
+	@RequestMapping(value = "ll")
+	public String ll(Member dto,Model model) throws Exception {
+		
+		return "infra/member/user/ll";
+	}
 	
 	
 	
@@ -198,10 +202,16 @@ public class MemberController {
 		return "infra/member/user/memberRegForm";
 	}
 	
+	@RequestMapping(value = "userRegFormSub")
+	public String memberRegFormSub(Member dto,Model model) throws Exception {
+		
+		return "infra/member/user/memberRegFormSub";
+	}
+	
 	@RequestMapping(value = "userIsrt")
 	public String userIsrt(Member dto,Model model) throws Exception {
 		service.insertUser(dto);
-		
+		/* service.insertUserAdress(dto); */
 		return "redirect:/member/userLogin";
 	}
 		

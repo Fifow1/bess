@@ -79,6 +79,11 @@ public class MemberServiceImpl implements MemberService {
 		dto.setPw(UtilSecurity.encryptSha256(dto.getPw()));
 		return dao.selectOneLogin(dto);
 	} 
+	
+	/*
+	 * @Override public int insertUserAdress(Member dto) throws Exception{ return
+	 * dao.insertUserAdress(dto); }
+	 */
 }
 
 

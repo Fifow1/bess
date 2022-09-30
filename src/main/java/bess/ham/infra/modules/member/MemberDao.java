@@ -69,5 +69,9 @@ public class MemberDao {
 		return sqlSession.selectOne(namespace + ".selectOneLogin", dto);
 	}
 	
+	public int insertUserAdress(Member dto) {
+		return sqlSession.insert(namespace + ".insertUserAdress", dto);
+	}
+	
 	
 }

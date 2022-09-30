@@ -15,6 +15,11 @@ public class Member {
 	private Date regdate;
 	private Date moddate;
 	
+	private Integer address_zipcode;
+	private String address_zip;
+	private String address_detail;
+	private String memo;
+	
 	private String sessSeq;
 	private String sessId;
 	
@@ -135,6 +140,38 @@ public class Member {
 
 	public void setIflgResultNy(Integer iflgResultNy) {
 		IflgResultNy = iflgResultNy;
+	}
+
+	public Integer getAddress_zipcode() {
+		return address_zipcode;
+	}
+
+	public void setAddress_zipcode(Integer address_zipcode) {
+		this.address_zipcode = address_zipcode;
+	}
+
+	public String getAddress_zip() {
+		return address_zip;
+	}
+
+	public void setAddress_zip(String address_zip) {
+		this.address_zip = address_zip;
+	}
+
+	public String getAddress_detail() {
+		return address_detail;
+	}
+
+	public void setAddress_detail(String address_detail) {
+		this.address_detail = address_detail;
+	}
+
+	public String getMemo() {
+		return memo;
+	}
+
+	public void setMemo(String memo) {
+		this.memo = memo;
 	}
 
 	
