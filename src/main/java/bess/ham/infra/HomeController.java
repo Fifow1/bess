@@ -56,6 +56,10 @@ public class HomeController {
 			return "b";
 		}
 		
+		@RequestMapping (value = "/d", method = RequestMethod.GET)
+		public String d(Locale locale, Model model) {
+			return "d";
+		}
 		
 		
 		
