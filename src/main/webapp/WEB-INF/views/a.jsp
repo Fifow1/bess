@@ -65,7 +65,7 @@
 				<br>
 			</div>
 		</div>
-		<c:out value="${list.ifprName }"/>
+		<c:out value="${list.ifprTitle }"/>
 		sessSeq: <c:out value="${sessSeq }"/><br>
 		sessName: <c:out value="${sessName }"/><br>
 		sessId: <c:out value="${sessId }"/><br>

@@ -5,13 +5,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import bess.ham.infra.modules.member.MemberServiceImpl;
+
 
 @Controller
 @RequestMapping (value="/product")
 public class ProductControllre {
 	
 	
-	
+	@Autowired
+	ProductServiceImpl service;
 	
 
 	// user

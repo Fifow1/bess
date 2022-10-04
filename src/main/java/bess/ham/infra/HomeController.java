@@ -17,6 +17,8 @@ import bess.ham.infra.modules.product.ProductServiceImpl;
 @Controller
 @RequestMapping(value = "/")
 public class HomeController {
+	@Autowired
+	ProductServiceImpl service;
 
 		
 		private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -38,14 +40,14 @@ public class HomeController {
 		 * 
 		 * return "home"; }
 		 */
-		@Autowired
-		ProductServiceImpl service;
 		
 		@RequestMapping (value = "/a", method = RequestMethod.GET)
-		public String a(Locale locale, Model model) throws Exception {
+		public String a(Product dto, Model model) throws Exception {
 			
 			List<Product> list = service.selectList();
 			model.addAttribute("list", list);
+			
+			System.out.println("aaaaaaa: " + dto.getIfprTitle());
 			return "a";
 		}
 		
