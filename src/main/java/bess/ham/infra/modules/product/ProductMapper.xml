@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bess.ham.infra.modules.product.ProductMapper">
+
+    <resultMap id="resultMapObj" type="bess.ham.infra.modules.product.Product"></resultMap>
+    
+    
+	
+	<select id="selectList" resultMap="resultMapObj"> 
+		SELECT 
+			pro.seq AS ifpoSeq
+			,pr.title AS ifprTitle
+			,pro.option AS ifpoOption
+			,pro.optionSub AS ifpoOptionSub
+			,pr.price AS ifprPrice
+			,pr.stock AS ifprStock
+			,pr.mainYn AS ifprMainYn
+		FROM product pr
+		LEFT JOIN productOption pro ON pr.seq = pro.product_seq
+		WHERE 1=1
+		AND mainYN = 1;
+	</select>
+	
+	
+
+</mapper>	
+
+
+

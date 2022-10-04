@@ -65,9 +65,10 @@
 				<br>
 			</div>
 		</div>
+		<c:out value="${list.ifprName }"/>
 		sessSeq: <c:out value="${sessSeq }"/><br>
-sessName: <c:out value="${sessName }"/><br>
-sessId: <c:out value="${sessId }"/><br>
+		sessName: <c:out value="${sessName }"/><br>
+		sessId: <c:out value="${sessId }"/><br>
 		<button type="button" class="btn btn-danger border ms-2" id="btnLogout" style="width: 120px;">나가기</button>
 		<div class="row" style="display: flex; justify-content: center; margin-bottom: 15px;">
 			<div class="col-6 product_blue"></div>

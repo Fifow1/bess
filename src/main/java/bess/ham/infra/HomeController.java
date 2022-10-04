@@ -1,17 +1,21 @@
 package bess.ham.infra;
 
-import java.text.DateFormat;
-import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import bess.ham.infra.modules.product.Product;
+import bess.ham.infra.modules.product.ProductServiceImpl;
+
 @Controller
+@RequestMapping(value = "/")
 public class HomeController {
 
 		
@@ -20,23 +24,28 @@ public class HomeController {
 		/**
 		 * Simply selects the home view to render by returning its name.
 		 */
-		@RequestMapping(value = "/", method = RequestMethod.GET)
-		public String home(Locale locale, Model model) {
-			logger.info("Welcome home! The client locale is {}.", locale);
-			
-			Date date = new Date();
-			DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-			
-			String formattedDate = dateFormat.format(date);
-			
-			model.addAttribute("serverTime", formattedDate );
-			
-			return "home";
-		}
-		
+		/*
+		 * @RequestMapping(value = "/", method = RequestMethod.GET) public String
+		 * home(Locale locale, Model model) {
+		 * logger.info("Welcome home! The client locale is {}.", locale);
+		 * 
+		 * Date date = new Date(); DateFormat dateFormat =
+		 * DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		 * 
+		 * String formattedDate = dateFormat.format(date);
+		 * 
+		 * model.addAttribute("serverTime", formattedDate );
+		 * 
+		 * return "home"; }
+		 */
+		@Autowired
+		ProductServiceImpl service;
 		
 		@RequestMapping (value = "/a", method = RequestMethod.GET)
-		public String a(Locale locale, Model model) {
+		public String a(Locale locale, Model model) throws Exception {
+			
+			List<Product> list = service.selectList();
+			model.addAttribute("list", list);
 			return "a";
 		}
 		
@@ -45,20 +54,7 @@ public class HomeController {
 			return "b";
 		}
 		
-		@RequestMapping (value = "/c", method = RequestMethod.GET)
-		public String c(Locale locale, Model model) {
-			return "c";
-		}
 		
-		@RequestMapping (value = "/d", method = RequestMethod.GET)
-		public String d(Locale locale, Model model) {
-			return "d";
-		}
-		
-		@RequestMapping (value = "/e", method = RequestMethod.GET)
-		public String e(Locale locale, Model model) {
-			return "e";
-		}
 		
 		
 		

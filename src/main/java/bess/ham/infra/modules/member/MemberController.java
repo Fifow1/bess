@@ -25,7 +25,6 @@ public class MemberController {
 // xdimn
 	@Autowired
 	MemberServiceImpl service;
-	private Member dto;
 	
 	public void setSearchAndPaging(MemberVo vo) throws Exception{
 		
