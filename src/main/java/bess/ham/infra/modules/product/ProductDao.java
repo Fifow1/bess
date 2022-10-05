@@ -9,8 +9,6 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import bess.ham.infra.modules.member.Member;
-import bess.ham.infra.modules.member.MemberVo;
 
 @Repository
 public class ProductDao {
@@ -21,8 +19,8 @@ public class ProductDao {
 	
 	private static String namespace = "bess.ham.infra.modules.product.ProductMapper";
 	
-	public List<Product> selectList(){
-		List<Product> list = sqlSession.selectList(namespace + ".selectList");
+	public List<Product> selectListMain(ProductVo vo){
+		List<Product> list = sqlSession.selectList(namespace + ".selectListMain",vo);
 		return list;
 	}
 	

@@ -30,6 +30,8 @@
 			<mapping path="/**"/>
 			<exclude-mapping path="/resources/**" />
 			<exclude-mapping path="/a" />
+			<exclude-mapping path="/" />
+			<exclude-mapping path="/main" />
 			<exclude-mapping path="/product/productList_deskmat" />
 			<exclude-mapping path="/product/productView" />
 			<exclude-mapping path="/member/loginProc" />

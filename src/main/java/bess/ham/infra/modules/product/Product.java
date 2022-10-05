@@ -3,17 +3,27 @@ package bess.ham.infra.modules.product;
 public class Product {
 	
 	private String ifpoSeq;
+	private String ifprCategory;
 	private String ifprTitle;
 	private Integer ifpoOption;
 	private Integer ifpoOptionSub;
 	private Integer ifprPrice;
 	private Integer ifprStock;
+	private Integer ifprMainYn;
 	
 	public String getIfpoSeq() {
 		return ifpoSeq;
 	}
 	public void setIfpoSeq(String ifpoSeq) {
 		this.ifpoSeq = ifpoSeq;
+	}
+	
+		
+	public String getIfprCategory() {
+		return ifprCategory;
+	}
+	public void setIfprCategory(String ifprCategory) {
+		this.ifprCategory = ifprCategory;
 	}
 	public String getIfprTitle() {
 		return ifprTitle;
@@ -45,5 +55,13 @@ public class Product {
 	public void setIfprStock(Integer ifprStock) {
 		this.ifprStock = ifprStock;
 	}
+	public Integer getIfprMainYn() {
+		return ifprMainYn;
+	}
+	public void setIfprMainYn(Integer ifprMainYn) {
+		this.ifprMainYn = ifprMainYn;
+	}
+	
+	
 	
 }

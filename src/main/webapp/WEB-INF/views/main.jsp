@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="false"%>
+
 <!doctype html>
 <html lang="en">
 
@@ -17,6 +17,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,600;1,200&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/resources/css/main.css">
+<!-- Datepicker -->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <style type="text/css">
 </style>
 </head>
@@ -52,35 +56,67 @@
 	</nav>
 
 	<!---------------------------------------------------------------------- body(keyboard) ----------------------------------------------------------->
-	<div id="back" style="height: 900px; width: 100%; background: url(/resources/images/green4.png); background-size: cover; background-attachment: scroll;"></div>
+	<div id="back" style="height: 500px; width: 100%; background: url(/resources/images/green4.png); background-size: cover; background-attachment: scroll;"></div>
 	<br>
 	<br>
 	<!-- body -->
+	<input type="radio">
 	<div class="container">
-		<div class="row">
-			<div class="col" style="margin-left: 70px;">
+		
+		<div class="row" style="padding-right: 0px;">
+			<div class="col" style="margin-left: 70px; width: 400px;">
 				<br>
-				<p style="text-align: left; font-size: 24px; font-family: 'Edu NSW ACT Foundation', cursive;">
-				<p>Keyboard</p>
+				<p style="text-align: left; font-size: 24px; font-family: 'Edu NSW ACT Foundation', cursive;">Keyboard</p>
 				<hr style="width: 400px; color: black;">
 				<br>
 			</div>
-		</div>
-		<div style="width:90%; height:1500px; background-color: blue; margin-left: 63px;">
-			<div style="width: 550px; height: 400px; background-color: red; display: inline-block; margin-bottom: 100px; margin-right: 60px;">
-				<div style="width: 550px; height: 350px; background-color: gray;"></div>
-			</div>
-			<div style="width: 550px; height: 400px; background-color: red; display: inline-block; margin-bottom: 100px;">
-				<div style="width: 550px; height: 350px; background-color: gray;"></div>
-			</div>
-			<div style="width: 550px; height: 400px; background-color: red; display: inline-block; margin-bottom: 100px; margin-right: 60px;">
-				<div style="width: 550px; height: 350px; background-color: gray;"></div>
-			</div>
-			<div style="width: 550px; height: 400px; background-color: red; display: inline-block; margin-bottom: 100px;">
-				<div style="width: 550px; height: 350px; background-color: gray;"></div>
+			<div class="col ms-5">
+				<div class="form_radio_btn radio_male" style="display: inline-block;">
+					<input id="radio-1" type="radio" name="ifprCategory" value="34" checked> <label for="radio-1">Keyboard</label>
+				</div>
+				<div class="form_radio_btn" style="display: inline-block;">
+					<input id="radio-2" type="radio" name="ifprCategory" value="35"> <label for="radio-2">DeskMat</label>
+				</div>
 			</div>
 		</div>
 		
+		
+		<div style="width: 90%; height: 1300px; background-color: blue; margin-left: 63px;">
+			<c:forEach items="${list}" var="list" varStatus="status">
+				<div style="width: 550px; height: 450px; background-color: red; display: inline-block; margin-bottom: 100px; margin-right: 60px;">
+					<div style="width: 550px; height: 350px; background-color: gray;"></div>
+					<div style="margin-left: 175px;">
+						<div style="width: 200px; height: 40px; background-color: gray;">
+							<c:out value="${list.ifprTitle }" />
+						</div>
+						<div style="width: 200px; height: 40px; background-color: gray;"></div>
+					</div>
+				</div>
+			</c:forEach>
+		 	<%-- <div style="width: 550px; height: 450px; background-color: red; display: inline-block; margin-bottom: 100px;">
+				<div style="width: 550px; height: 350px; background-color: gray;"></div>
+				<div style="margin-left: 175px;">
+					<div style="width: 200px; height: 40px; background-color: gray;">
+						<c:out value="${list.ifprTitle }" />
+					</div>
+					<div style="width: 200px; height: 40px; background-color: gray;	"></div>
+				</div>
+			</div>
+			<div style="width: 550px; height: 450px; background-color: red; display: inline-block; margin-bottom: 100px; margin-right: 60px;">
+				<div style="width: 550px; height: 350px; background-color: gray;"></div>
+				<div style="margin-left: 175px;">
+					<div style="width: 200px; height: 40px; background-color: gray;"></div>
+					<div style="width: 200px; height: 40px; background-color: gray;	"></div>
+				</div>
+			</div>
+			<div style="width: 550px; height: 450px; background-color: red; display: inline-block; margin-bottom: 100px;">
+				<div style="width: 550px; height: 350px; background-color:gray;"></div>
+				<div style="margin-left: 175px;">
+					<div style="width: 200px; height: 40px; background-color: gray;"></div>
+					<div style="width: 200px; height: 40px; background-color: gray;	"></div>
+				</div>
+			</div> --%>
+		</div>
 		<div class="row" style="display: flex; justify-content: center; margin-bottom: 15px;">
 			<div class="col product_blue2"></div>
 		</div>
@@ -93,8 +129,9 @@
 		<div class="row">
 			<div class="col" style="margin-left: 70px;">
 				<br>
-				<p style="text-align: left; font-size: 24px; font-family: 'Edu NSW ACT Foundation', cursive;" <p>Desk mat</p>
+				<p style="text-align: left; font-size: 24px; font-family: 'Edu NSW ACT Foundation', cursive;">Desk mat</p>
 				<hr style="width: 400px; color: black;">
+			</div>
 			<br>
 		</div>
 		<div class="row" style="display: flex; justify-content: center; margin-bottom: 15px;">
@@ -151,44 +188,55 @@
 		</div>
 		<div class="col">
 			<p style="color: white; text-align: left;">영업시간 AM 10:00 ~ PM 17:00 (주말 및 공휴일 ㅣ휴뮤)<br><br>
-
 				점심시간 AM 12:00 ~ PM 13:30</p>
-		
 		</div>
 	</div>
 </div>
+</div>
 
-
+<script src="http://code.jquery.com/jquery-latest.js"></script>   
+ 
 <script type="text/javascript">
-$("#btnLogout").on("click", function(){
-		/* if(validation() == false) return false; */
-		
-		$.ajax({
-			async: true 
-			,cache: false
-			,type: "post"
-			/* ,dataType:"json" */
-			,url: "/member/logoutProc"
-			/* ,data : $("#formLogin").serialize() */
-			,success: function(response) {
-				if(response.rt == "success") {
-					location.href = "/member/userLogin";
-				} else {
-					alert("회원없음");
-				}
-			}
-			,error : function(jqXHR, textStatus, errorThrown){
-				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-			}
-		});
-	});
+    $("input:radio[name='ifprCategory']").on('change',function(){
+        var kind = $(this).val();       //버튼이 클릭 되었을 시, 개별 버튼의 값이 kind 변수에 담겨집니다.
+        $.ajax({
+        	async: true 
+            ,url : "/main"
+            ,type : "post"
+            ,cache : false
+            ,data : {
+                /*  id : $(this).val() */
+                "kind":kind,    // 버튼의 value값에 따라 작동합니다.
+                /* 중요  */
+                ifprCategory : kind 
+                
+            },
+            success: function(response) {
+            	if(response.rt == "success"){
+            		
+            		alert(kind)
+            		
+            	}
+            	
+    			/* $("input:radio[name='ifprCategory']").html(data); */
+    		},
+            
+            error : function(){
+                alert('error');
+            }//error
+        })//ajax
+    });//button click
+    
+
+    $('#id').setValue('test');
+ 
 </script>
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/50704cc15b.js" crossorigin="anonymous"></script>	
 
-	
 	
 	<!-- end -->
 </body>

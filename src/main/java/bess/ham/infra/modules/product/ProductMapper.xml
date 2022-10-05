@@ -10,9 +10,10 @@
     
     
 	
-	<select id="selectList" resultMap="resultMapObj"> 
+	<select id="selectListMain" resultMap="resultMapObj"> 
 		SELECT 
 			pro.seq AS ifpoSeq
+			,pr.category AS ifprCategory
 			,pr.title AS ifprTitle
 			,pro.option AS ifpoOption
 			,pro.optionSub AS ifpoOptionSub
@@ -22,9 +23,20 @@
 		FROM product pr
 		LEFT JOIN productOption pro ON pr.seq = pro.product_seq
 		WHERE 1=1
-		AND mainYN = 1;
+		AND mainYN = 1
+		<if test="ifprCategory != null and !ifprCategory.equals('')">AND pr.category = #{ifprCategory}</if>
+		;
 	</select>
 	
+<!-- 	<select id="selectListMain" resultMap="resultMapObj"> 
+		SELECT 
+			pr.seq AS ifprSeq
+			pr.title AS ifprTitle 
+			pr.price AS ifprPrice
+		FROM product pr
+		WHERE 1=1
+		AND mainYN = 1;
+	</select> -->
 	
 
 </mapper>	
