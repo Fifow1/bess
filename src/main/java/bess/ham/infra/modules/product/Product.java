@@ -11,6 +11,13 @@ public class Product {
 	private Integer ifprStock;
 	private Integer ifprMainYn;
 	
+	
+	private String seq;
+	private String category;
+	private String title;
+	private Integer price;
+	private Integer stock;
+	
 	public String getIfpoSeq() {
 		return ifpoSeq;
 	}
@@ -61,6 +68,39 @@ public class Product {
 	public void setIfprMainYn(Integer ifprMainYn) {
 		this.ifprMainYn = ifprMainYn;
 	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public Integer getPrice() {
+		return price;
+	}
+	public void setPrice(Integer price) {
+		this.price = price;
+	}
+	public Integer getStock() {
+		return stock;
+	}
+	public void setStock(Integer stock) {
+		this.stock = stock;
+	}
+	public String getSeq() {
+		return seq;
+	}
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
+	
+	
+	
 	
 	
 	

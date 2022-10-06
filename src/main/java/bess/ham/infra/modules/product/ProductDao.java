@@ -9,6 +9,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import bess.ham.infra.modules.member.Member;
+
 
 @Repository
 public class ProductDao {
@@ -24,7 +26,10 @@ public class ProductDao {
 		return list;
 	}
 	
-	
+	public int insert(Product dto) {
+		int result = sqlSession.insert(namespace + ".insert", dto);
+		return result;
+	}
 
 	
 }

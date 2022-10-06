@@ -12,14 +12,14 @@
 	
 	<select id="selectListMain" resultMap="resultMapObj"> 
 		SELECT 
-			pro.seq AS ifpoSeq
-			,pr.category AS ifprCategory
-			,pr.title AS ifprTitle
-			,pro.option AS ifpoOption
-			,pro.optionSub AS ifpoOptionSub
-			,pr.price AS ifprPrice
-			,pr.stock AS ifprStock
-			,pr.mainYn AS ifprMainYn
+			pro.seq as ifpoSeq
+			,pr.category as ifprCategory
+			,pr.title as ifprTitle
+			,pro.option as ifpoOption
+			,pro.optionSub as ifpoOptionSub
+			,pr.price as ifprPrice
+			,pr.stock as ifprStock
+			,pr.mainYn as ifprMainYn
 		FROM product pr
 		LEFT JOIN productOption pro ON pr.seq = pro.product_seq
 		WHERE 1=1
@@ -27,6 +27,26 @@
 		<if test="ifprCategory != null and !ifprCategory.equals('')">AND pr.category = #{ifprCategory}</if>
 		;
 	</select>
+	
+	<insert id="insert">
+		INSERT INTO product(
+	    	category
+	    	,title
+	    	,price
+	    	,stock
+		)
+		
+		VALUES (
+			#{category}
+			,#{title}
+			,#{price}
+			,#{stock}
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+		SELECT last_insert_id()
+		</selectKey>
+	
+	</insert>
 	
 <!-- 	<select id="selectListMain" resultMap="resultMapObj"> 
 		SELECT 

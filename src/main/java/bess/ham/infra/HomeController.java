@@ -67,36 +67,39 @@ public class HomeController {
 		}
 		
 		
+		@RequestMapping (value = "/main") 
+		public String home(ProductVo vo, Model model) throws Exception {
+			  
+		vo.setIfprCategory(vo.getIfprCategory() == null ? 34 : vo.getIfprCategory());
+				  
+		List<Product> list = service.selectListMain(vo);
+		model.addAttribute("list", list); 
+		System.out.println("/C :" + vo.getIfprCategory());
+		System.out.println("/");
+		return "main"; 
+		 }
+		
+		
 		/* 중요  */
 		@ResponseBody
-		@RequestMapping(value = "main")
+		@RequestMapping(value = "mainSelectList")
 		public Map<String, Object> main(ProductVo vo,Model model) throws Exception {
-			
 			/* 중요  */
 			Map<String, Object> returnMap = new HashMap<String, Object>(); 
-			System.out.println(vo.getIfprCategory());
+			System.out.println("mainC: "+ vo.getIfprCategory());
+			
 			List<Product> list = service.selectListMain(vo);
 			
-			/* returnMap.put("list", list); */
+			returnMap.put("list", list);
 			returnMap.put("rt", "success");
+			
+			System.out.println("mainC :" + vo.getIfprCategory());
 			System.out.println("main");
+			
 			return returnMap;
 		}
 		
-		  @RequestMapping (value = "/") 
-		  public String home(ProductVo vo, Model model) throws Exception {
-			  
-				
-				/*
-				 * vo.setIfprCategory(vo.getIfprCategory() == null ? 34 : vo.getIfprCategory());
-				 */
-				 
-			  
-		  List<Product> list = service.selectListMain(vo);
-		  model.addAttribute("list", list); 
-		  System.out.println("/");
-		  return "main"; 
-		  }
+		 
 		 
 		
 		

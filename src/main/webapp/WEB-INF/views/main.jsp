@@ -81,13 +81,13 @@
 		</div>
 		
 		
-		<div style="width: 90%; height: 1300px; background-color: blue; margin-left: 63px;">
+		<div style="width: 90%; height: 1300px; background-color: blue; margin-left: 63px;" id="good" >
 			<c:forEach items="${list}" var="list" varStatus="status">
 				<div style="width: 550px; height: 450px; background-color: red; display: inline-block; margin-bottom: 100px; margin-right: 60px;">
 					<div style="width: 550px; height: 350px; background-color: gray;"></div>
 					<div style="margin-left: 175px;">
 						<div style="width: 200px; height: 40px; background-color: gray;">
-							<c:out value="${list.ifprTitle }" />
+							<c:out value="${list.ifprTitle }"/>
 						</div>
 						<div style="width: 200px; height: 40px; background-color: gray;"></div>
 					</div>
@@ -198,10 +198,11 @@
  
 <script type="text/javascript">
     $("input:radio[name='ifprCategory']").on('change',function(){
-        var kind = $(this).val();       //버튼이 클릭 되었을 시, 개별 버튼의 값이 kind 변수에 담겨집니다.
+        var kind = $(this).val(); 
+        //버튼이 클릭 되었을 시, 개별 버튼의 값이 kind 변수에 담겨집니다.
         $.ajax({
         	async: true 
-            ,url : "/main"
+            ,url : "/mainSelectList"
             ,type : "post"
             ,cache : false
             ,data : {
@@ -210,25 +211,40 @@
                 /* 중요  */
                 ifprCategory : kind 
                 
-            },
-            success: function(response) {
-            	if(response.rt == "success"){
+            }
+            ,success: function(data) {
+            		alert(data.list[0].ifprTitle);
+            		var ifprTitle = '${ifprTitle}';
+            		var tmp ="";
+            		for(var i=0; i < data.list.length; i++){
+	            		if( i%2 == 0){
+	            			tmp += '<div style="width: 550px; height: 450px; background-color: red; display: inline-block; margin-bottom: 100px;">';
+	            		} else{
+	            			tmp += '<div style="width: 550px; height: 450px; background-color: red; display: inline-block; margin-bottom: 100px; margin-right: 65px;">';
+	            		}
+		            	tmp += '	<div style="width: 550px; height: 350px; background-color: gray;"></div>';
+	            		tmp += '		<div style="margin-left: 175px;">';
+	            		tmp += '			<div style="width: 200px; height: 40px; background-color: gray;">';
+	            		tmp += ifprTitle;
+						tmp += '			</div>';	
+						tmp += '			<div style="width: 200px; height: 40px; background-color: gray;"></div>';
+						tmp += '		</div>';
+						tmp += '	</div>';
+						tmp += '</div>';
+	            		$('#good').html(tmp);
             		
-            		alert(kind)
-            		
-            	}
+            		}
             	
     			/* $("input:radio[name='ifprCategory']").html(data); */
-    		},
+    		}
             
-            error : function(){
+            ,error : function(){
                 alert('error');
             }//error
         })//ajax
     });//button click
     
 
-    $('#id').setValue('test');
  
 </script>
 
