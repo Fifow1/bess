@@ -12641,3 +12641,75 @@ body.sidebar-toggled footer.sticky-footer {
 			background: #F9FAFC;
 			color: #666;
 		}
+		
+.inputFile,
+#Preview,
+#Preview li{
+    float:left
+}
+.inputFile{
+    margin-bottom: 10px;
+}
+.addImgBtn{
+    width: 80px !important;
+    height: 80px !important;
+    line-height: 71px !important;
+    background-color: #fff !important;
+    color: #b7b7b7 !important;
+    border: 2px solid #b7b7b7;
+    font-size: 35px !important;
+    padding: 0 !important;
+}
+
+#Preview{
+    margin-left: 20px;
+    width: 650px;
+}
+#Preview li{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    border: 1px solid #ececec;
+    cursor:move
+}
+.delBtn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 13px;
+    background-color: #000;
+    color: #fff;
+    width: 18px;
+    height: 18px;
+    line-height: 16px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+
+.insert {
+    padding: 20px 30px;
+    display: block;
+    width: 600px;
+    margin: 5vh auto;
+    height: 300px;
+    border: 1px solid #dbdbdb;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.insert .file-list {
+    height: 200px;
+    overflow: auto;
+    border: 1px solid #989898;
+    padding: 10px;
+}
+.insert .file-list .filebox p {
+    font-size: 14px;
+    margin-top: 10px;
+    display: inline-block;
+}
+.insert .file-list .filebox .delete i{
+    color: #ff5353;
+    margin-left: 5px;
+}

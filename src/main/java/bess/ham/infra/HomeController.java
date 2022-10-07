@@ -66,6 +66,12 @@ public class HomeController {
 			return "b";
 		}
 		
+		@RequestMapping (value = "/") 
+		public String Choose() throws Exception {
+			  
+		return "Choose"; 
+		 }
+		
 		
 		@RequestMapping (value = "/main") 
 		public String home(ProductVo vo, Model model) throws Exception {
