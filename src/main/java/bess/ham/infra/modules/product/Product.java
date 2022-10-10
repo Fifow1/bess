@@ -1,77 +1,23 @@
 package bess.ham.infra.modules.product;
 
+import java.sql.Date;
+
 public class Product {
-	
-	private String ifpoSeq;
-	private String ifprCategory;
-	private String ifprTitle;
-	private Integer ifpoOption;
-	private Integer ifpoOptionSub;
-	private Integer ifprPrice;
-	private Integer ifprStock;
-	private Integer ifprMainYn;
 	
 	
 	private String seq;
-	private String category;
+	private Integer category;
 	private String title;
 	private Integer price;
 	private Integer stock;
+	private Date UploadDate;
+	private Integer ifprDelYn;
+	private Integer mainYn;
 	
-	public String getIfpoSeq() {
-		return ifpoSeq;
-	}
-	public void setIfpoSeq(String ifpoSeq) {
-		this.ifpoSeq = ifpoSeq;
-	}
-	
-		
-	public String getIfprCategory() {
-		return ifprCategory;
-	}
-	public void setIfprCategory(String ifprCategory) {
-		this.ifprCategory = ifprCategory;
-	}
-	public String getIfprTitle() {
-		return ifprTitle;
-	}
-	public void setIfprTitle(String ifprTitle) {
-		this.ifprTitle = ifprTitle;
-	}
-	public Integer getIfpoOption() {
-		return ifpoOption;
-	}
-	public void setIfpoOption(Integer ifpoOption) {
-		this.ifpoOption = ifpoOption;
-	}
-	public Integer getIfpoOptionSub() {
-		return ifpoOptionSub;
-	}
-	public void setIfpoOptionSub(Integer ifpoOptionSub) {
-		this.ifpoOptionSub = ifpoOptionSub;
-	}
-	public Integer getIfprPrice() {
-		return ifprPrice;
-	}
-	public void setIfprPrice(Integer ifprPrice) {
-		this.ifprPrice = ifprPrice;
-	}
-	public Integer getIfprStock() {
-		return ifprStock;
-	}
-	public void setIfprStock(Integer ifprStock) {
-		this.ifprStock = ifprStock;
-	}
-	public Integer getIfprMainYn() {
-		return ifprMainYn;
-	}
-	public void setIfprMainYn(Integer ifprMainYn) {
-		this.ifprMainYn = ifprMainYn;
-	}
-	public String getCategory() {
+	public Integer getCategory() {
 		return category;
 	}
-	public void setCategory(String category) {
+	public void setCategory(Integer category) {
 		this.category = category;
 	}
 	public String getTitle() {
@@ -97,6 +43,24 @@ public class Product {
 	}
 	public void setSeq(String seq) {
 		this.seq = seq;
+	}
+	public Date getUploadDate() {
+		return UploadDate;
+	}
+	public void setUploadDate(Date uploadDate) {
+		UploadDate = uploadDate;
+	}
+	public Integer getIfprDelYn() {
+		return ifprDelYn;
+	}
+	public void setIfprDelYn(Integer ifprDelYn) {
+		this.ifprDelYn = ifprDelYn;
+	}
+	public Integer getMainYn() {
+		return mainYn;
+	}
+	public void setMainYn(Integer mainYn) {
+		this.mainYn = mainYn;
 	}
 	
 	

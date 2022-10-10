@@ -87,7 +87,7 @@
 					<div style="width: 550px; height: 350px; background-color: gray;"></div>
 					<div style="margin-left: 175px;">
 						<div style="width: 200px; height: 40px; background-color: gray;">
-							<c:out value="${list.ifprTitle }"/>
+							<c:out value="${list.title}"/>
 						</div>
 						<div style="width: 200px; height: 40px; background-color: gray;"></div>
 					</div>

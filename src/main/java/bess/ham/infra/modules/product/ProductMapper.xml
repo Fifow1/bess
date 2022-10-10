@@ -12,19 +12,19 @@
 	
 	<select id="selectListMain" resultMap="resultMapObj"> 
 		SELECT 
-			pro.seq as ifpoSeq
-			,pr.category as ifprCategory
-			,pr.title as ifprTitle
-			,pro.option as ifpoOption
-			,pro.optionSub as ifpoOptionSub
-			,pr.price as ifprPrice
-			,pr.stock as ifprStock
-			,pr.mainYn as ifprMainYn
+			pro.seq
+			,pr.category
+			,pr.title
+			,pro.option
+			,pro.optionSub
+			,pr.price
+			,pr.stock
+			,pr.mainYn
 		FROM product pr
 		LEFT JOIN productOption pro ON pr.seq = pro.product_seq
 		WHERE 1=1
 		AND mainYN = 1
-		<if test="ifprCategory != null and !ifprCategory.equals('')">AND pr.category = #{ifprCategory}</if>
+		<if test="ifprCategory != null and !ifprCategory.equals('')">AND pr.category = #{category}</if>
 		;
 	</select>
 	

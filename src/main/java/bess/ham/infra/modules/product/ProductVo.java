@@ -2,14 +2,14 @@ package bess.ham.infra.modules.product;
 
 public class ProductVo {
 	
-	private Integer ifprCategory;
+	private Integer category;
 
 	public Integer getIfprCategory() {
-		return ifprCategory;
+		return category;
 	}
 
 	public void setIfprCategory(Integer ifprCategory) {
-		this.ifprCategory = ifprCategory;
+		this.category = ifprCategory;
 	}
 
 

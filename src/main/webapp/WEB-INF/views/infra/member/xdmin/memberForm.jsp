@@ -250,9 +250,9 @@
 	
 	
 	<script type="text/javascript">
-				var goUrlList = "/member/memberList"; /* #-> */
-				var goUrlInst = "/member/memberIsrt"; /* #-> */
-				var goUrlUpdt = "/member/memberUpdt"; /* #-> */
+				var goUrlList = "/member/memberXdminList"; /* #-> */
+				var goUrlInst = "/member/memberXdminIsrt"; /* #-> */
+				var goUrlUpdt = "/member/memberXdminUpdt"; /* #-> */
 		//		var goUrlUele = "/codeGroup/codeGroupUele"; /* #-> */
 		//		var goUrlDele = "/codeGroup/codeGroupDele"; /* #-> */
 

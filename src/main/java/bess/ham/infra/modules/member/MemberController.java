@@ -36,7 +36,7 @@ public class MemberController {
 		}
 	
 
-	@RequestMapping(value = "memberList")
+	@RequestMapping(value = "memberXdminList")
 	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 
 		setSearchAndPaging(vo);
@@ -49,7 +49,7 @@ public class MemberController {
 	
 	
 	
-	@RequestMapping(value = "memberForm")
+	@RequestMapping(value = "memberXdminForm")
 	public String memberForm(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 		List<Member> list = service.selectList(vo);
 		Member result = service.selectOne(vo);
@@ -63,7 +63,7 @@ public class MemberController {
 	
 	
 	
-	@RequestMapping(value = "memberIsrt")
+	@RequestMapping(value = "memberXdminIsrt")
 	public String memberIsrt(MemberVo vo,Member dto, RedirectAttributes redirectAttributes) throws Exception{
 		
 		service.insert(dto);
@@ -76,7 +76,7 @@ public class MemberController {
 	
 	
 	
-	@RequestMapping(value = "memberUpdt")
+	@RequestMapping(value = "memberXdminUpdt")
 	public String memberUpdt(MemberVo vo,Member dto, RedirectAttributes redirectAttributes) throws Exception{
 		
 		

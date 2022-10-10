@@ -57,7 +57,6 @@ public class HomeController {
 			List<Product> list = service.selectListMain(vo);
 			model.addAttribute("list", list);
 			
-			System.out.println("aaaaaaa: " + dto.getIfprTitle());
 			return "a";
 		}
 		
@@ -74,14 +73,14 @@ public class HomeController {
 		
 		
 		@RequestMapping (value = "/main") 
-		public String home(ProductVo vo, Model model) throws Exception {
+		public String home(ProductVo vo,Product dto,Model model) throws Exception {
 			  
+		System.out.println(dto.getTitle());
 		vo.setIfprCategory(vo.getIfprCategory() == null ? 34 : vo.getIfprCategory());
-				  
 		List<Product> list = service.selectListMain(vo);
 		model.addAttribute("list", list); 
-		System.out.println("/C :" + vo.getIfprCategory());
-		System.out.println("/");
+		
+		
 		return "main"; 
 		 }
 		
