@@ -76,7 +76,7 @@ public class HomeController {
 		public String home(ProductVo vo,Product dto,Model model) throws Exception {
 			  
 		System.out.println(dto.getTitle());
-		vo.setIfprCategory(vo.getIfprCategory() == null ? 34 : vo.getIfprCategory());
+		vo.setCategory(vo.getCategory() == null ? 34 : vo.getCategory());
 		List<Product> list = service.selectListMain(vo);
 		model.addAttribute("list", list); 
 		
@@ -91,15 +91,12 @@ public class HomeController {
 		public Map<String, Object> main(ProductVo vo,Model model) throws Exception {
 			/* 중요  */
 			Map<String, Object> returnMap = new HashMap<String, Object>(); 
-			System.out.println("mainC: "+ vo.getIfprCategory());
 			
 			List<Product> list = service.selectListMain(vo);
 			
 			returnMap.put("list", list);
 			returnMap.put("rt", "success");
 			
-			System.out.println("mainC :" + vo.getIfprCategory());
-			System.out.println("main");
 			
 			return returnMap;
 		}

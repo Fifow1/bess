@@ -187,7 +187,7 @@
   			<input class="form-control" type="file" multiple="multiple" id="img2" name="img2">
 			<br>
 			
-			<div class="row">
+			<div class="row">	
 				<div class="col">
 					<p class="h6" color="#2E2E2E";>상품이름</p>
 					<input type="text" class="form-control" id="title" name="title" placeholder="한글,숫자">

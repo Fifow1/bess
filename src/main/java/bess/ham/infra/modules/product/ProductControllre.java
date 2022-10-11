@@ -1,8 +1,11 @@
 package bess.ham.infra.modules.product;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -34,9 +37,14 @@ public class ProductControllre {
 	
 	
 	// user
-	@RequestMapping(value="productList_deskmat")
-	public String productList_deskmat(Model model) throws Exception{
-		return "infra/product/user/productList_deskmat";
+	@RequestMapping(value="productListShop")
+	public String productList_deskmat(ProductVo vo,Product dto,Model model) throws Exception{
+		
+		List<Product> list = service.selectListShop(vo);
+		model.addAttribute("list", list);
+		
+		System.out.println("C : " + vo.getCategory());
+		return "infra/product/user/productListShop";
 	}
 	
 	@RequestMapping(value="productView")

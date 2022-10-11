@@ -259,7 +259,7 @@ z<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 						</div>
 						<div class="col">
 							<div class="dropdown" style="float: left; margin-right: 10px; margin-top: 20px;">
-								<select class="form-select" id="shOption" name="shOption">
+								<select class="form-select" name="shOption">
 									<option value="" <c:if test = "${empty vo.shOption }"> selected</c:if>>검색구분</option>
 									<option value="1" <c:if test = "${ vo.shOption eq 1 }"> selected</c:if>>코드그룹 코드</option>
 									<option value="2" <c:if test = "${ vo.shOption eq 2}"> selected</c:if>>코드그룹 이름 (한글)</option>

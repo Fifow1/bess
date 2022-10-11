@@ -19,7 +19,11 @@ public class ProductServiceImpl implements ProductService {
 		public List<Product> selectListMain(ProductVo vo) throws Exception {
 			return dao.selectListMain(vo);
 		}
-		
+		@Override
+		public List<Product> selectListShop(ProductVo vo) throws Exception {
+			System.out.println("S : " + vo.getCategory());
+			return dao.selectListShop(vo);
+		}
 		@Override
 		public int insert(Product dto) throws Exception{
 			int result = dao.insert(dto);

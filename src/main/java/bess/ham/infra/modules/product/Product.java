@@ -13,6 +13,9 @@ public class Product {
 	private Date UploadDate;
 	private Integer ifprDelYn;
 	private Integer mainYn;
+	private Integer option;
+	private String optionSub;
+	
 	
 	public Integer getCategory() {
 		return category;
@@ -61,6 +64,18 @@ public class Product {
 	}
 	public void setMainYn(Integer mainYn) {
 		this.mainYn = mainYn;
+	}
+	public Integer getOption() {
+		return option;
+	}
+	public void setOption(Integer option) {
+		this.option = option;
+	}
+	public String getOptionSub() {
+		return optionSub;
+	}
+	public void setOptionSub(String optionSub) {
+		this.optionSub = optionSub;
 	}
 	
 	

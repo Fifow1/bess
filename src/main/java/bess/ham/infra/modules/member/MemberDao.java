@@ -30,7 +30,6 @@ public class MemberDao {
 		System.out.println("dao result:" +result);
 		System.out.println("memberIsrtDaoEmail: " + dto.getEmail());
 		System.out.println("memberIsrtDaoId: " + dto.getId());
-		System.out.println("memberIsrtDaoPhone: " + dto.getNumber_phone());
 		System.out.println("memberIsrtDaoSeq: " + dto.getSeq());
 		return result;
 	}
