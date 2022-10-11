@@ -4,13 +4,14 @@ public class ProductVo {
 	
 	private Integer category;
 
-	public Integer getIfprCategory() {
+	public Integer getCategory() {
 		return category;
 	}
 
-	public void setIfprCategory(Integer ifprCategory) {
-		this.category = ifprCategory;
+	public void setCategory(Integer category) {
+		this.category = category;
 	}
+
 
 
 

@@ -11,7 +11,7 @@ public class Member {
 	private Date dob;
 	private Integer authority;
 	private String email;
-	private String number_phone;
+	private String numPhone;
 	private Date regdate;
 	private Date moddate;
 	
@@ -102,12 +102,12 @@ public class Member {
 		this.email = email;
 	}
 
-	public String getNumber_phone() {
-		return number_phone;
+	public String getNumPhone() {
+		return numPhone;
 	}
 
-	public void setNumber_phone(String number_phone) {
-		this.number_phone = number_phone;
+	public void setNumPhone(String numPhone) {
+		this.numPhone = numPhone;
 	}
 
 	public Date getRegdate() {

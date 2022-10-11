@@ -28,7 +28,6 @@ public class MemberServiceImpl implements MemberService {
 		int result = dao.insert(dto);
 		System.out.println("memberIsrtServiceEmail: " + dto.getEmail());
 		System.out.println("memberIsrtServiceId: " + dto.getId());
-		System.out.println("memberIsrtServicePhone: " + dto.getNumber_phone());
 		System.out.println("memberIsrtServiceShSeq: " + dto.getSeq());
 		return result;
 	}

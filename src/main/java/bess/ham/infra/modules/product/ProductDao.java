@@ -25,6 +25,12 @@ public class ProductDao {
 		return list;
 	}
 	
+	public List<Product> selectListShop(ProductVo vo){
+		List<Product> list = sqlSession.selectList(namespace + ".selectListShop",vo);
+		System.out.println("D : " + vo.getCategory());
+		return list;
+	}
+	
 	public int insert(Product dto) {
 		int result = sqlSession.insert(namespace + ".insert", dto);
 		return result;

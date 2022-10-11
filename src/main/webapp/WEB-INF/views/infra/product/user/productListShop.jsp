@@ -18,9 +18,15 @@
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="/resources/css/main.css">
+	<!-- Datepicker -->
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+	<!-- 공통코드 -->
+	<jsp:useBean id="CodeServiceImpl" class="bess.ham.infra.modules.code.CodeServiceImpl"/>
   	<title>productList</title>
 	<style type="text/css">
-
+	
 </style>
 </head>
 
@@ -53,6 +59,8 @@
 </nav>
 <!------------------------------------------------------------------------------------------------------------------------------------------------->
 <div id="wrapper"style=" height: 2000px;">
+	<form id="formList" name="formList" method="post">
+	<c:set var="listCodeCategory" value="${CodeServiceImpl.selectListCachedCode('8')}"/>
 	<div style="width: 13%; float: left; margin-top: 200px; margin-left: 10%;">
 		<div class="accordion" id="accordionPanelsStayOpenExample">
 			<div class="accordion-item border-0 border-bottom mb-1">
@@ -63,15 +71,15 @@
 				</h2>
 				<div id="panelsStayOpen-collapse1" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading1">
 					<div class="accordion-body ps-1">
-						<div>
-							<a href="#" class="link-dark" style="text-decoration: none;">키보드(Keyboard)</a>
-						</div>
-						<div>
-							<a href="#" class="link-dark" style="text-decoration: none;">마우스패드(Desk mat)</a>
-						</div>
-						<div>
-							<a href="#" class="link-dark" style="text-decoration: none;">자주묻는질문</a>
-						</div>
+						<ul name="category" id="trendGroupList">
+						<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">
+								<li id="<c:out value="${listCategory.CCseq }"/>" value="<c:out value="${listCategory.CCseq }"/>" 
+									onclick="submit(<c:out value="${listCategory.CCseq }"/>)"
+									name="category">
+									<c:out value="${listCategory.CCname }"/>
+								</li>
+						</c:forEach>
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -139,48 +147,31 @@
 	</div>
 	<div style="width: 77%; float: right; margin-top: 200px;">
 		<div style="width: 100%; height: 300px; padding-left:100px; padding-right:100px; ">
+		<c:forEach items="${list}" var="list" varStatus="status">
 			<div style="width:350px; float:left; height: 100%; margin-right: 30px;">
 				<div class="black_mat2" style="width: 350px;height: 200px;" onclick="location.href='./productView.html';"></div>
 				<div>
-					<p class="h5" style="float: left; margin-bottom: 5px; margin-right: 40px;">CAT'S EYE DESK MAT</p>
+					<p class="h5" style="float: left; margin-bottom: 5px; margin-right: 40px;"><c:out value="${list.title}" /></p>
 					<div style="float: right; margin-bottom: 0px;">
 						<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
 					</div>
 					<div style="float: left; margin-right: 100px;">
-						<p style="margin-top: 5px;">30000원</p>
+						<p style="margin-top: 5px;"><c:out value="${list.price}" /></p>
 					</div>
 					<div style="float: right;">
-						<button type="button" class="btn btn" style="height: 25px; width: 20px; border-radius: 100%; background-color: black;"></button>
-						<button type="button" class="btn btn" style="height: 25px; width: 20px; border-radius: 100%; background-color: #889F47;"></button>
+						<p style="margin-top: 5px;"><c:out value="${list.optionSub}" /></p>
+						<!-- <button type="button" class="btn btn" style="height: 25px; width: 20px; border-radius: 100%; background-color: black;"></button>
+						<button type="button" class="btn btn" style="height: 25px; width: 20px; border-radius: 100%; background-color: #889F47;"></button> -->
 					</div>
 				</div>	
 			</div>
-			<div style="width:350px; float:left; height: 100%; margin-right: 30px;">
-				<div class="black_mat2" style="width: 350px;height: 200px;"></div>
-				<div>
-					<p class="h5" style="float: left; margin-bottom: 5px; margin-right: 40px;">CAT'S EYE DESK MAT</p>
-					<div style="float: right;">
-						<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-					</div>
-					<p>30000원</p>
-				</div>
-			</div>
-			<div style="width:350px; float:left; height: 100%">
-				<div class="black_mat2" style="width: 350px;height: 200px;"></div>
-				<div>
-					<p class="h5" style="float: left; margin-bottom: 5px; margin-right: 40px;">CAT'S EYE DESK MAT</p>
-					<div style="float: right;">
-						<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-					</div>
-					<p>30000원</p>
-				</div>
-			</div>
+		</c:forEach>
 		</div>
 	</div>
 
 
 
-		<!------------------------------------------------------------------- footer -------------------------------------------------------------------->
+	<!------------------------------------------------------------------- footer -------------------------------------------------------------------->
 
 	<div class="container-fluid footer">	
 		<div class="row" style="padding-top: 40px;">
@@ -230,8 +221,20 @@
 			</div>
 		</div>
 	</div>
+	</form>
 </div>
+<script type="text/javascript">
 
+	var goUrlPrList="productListShop";
+	var form = $("form[name=formList]");
+	
+	 function submit(num) {
+		var li_val = $('#' + num).attr("value");
+		alert(li_val);
+		form.attr("action", goUrlPrList).submit();
+	}  
+	
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/50704cc15b.js" crossorigin="anonymous"></script>

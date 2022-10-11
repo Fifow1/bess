@@ -148,7 +148,6 @@
 		,group_seq as CCGseq
 	FROM code
 	WHERE 1=1
-	AND delYn = 1
     </select>
 	
 </mapper>	
