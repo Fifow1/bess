@@ -61,6 +61,7 @@
 <div id="wrapper"style=" height: 2000px;">
 	<form id="formList" name="formList" method="post">
 	<c:set var="listCodeCategory" value="${CodeServiceImpl.selectListCachedCode('8')}"/>
+	<c:set var="listCodeColor" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
 	<div style="width: 13%; float: left; margin-top: 200px; margin-left: 10%;">
 		<div class="accordion" id="accordionPanelsStayOpenExample">
 			<div class="accordion-item border-0 border-bottom mb-1">
@@ -76,6 +77,7 @@
 								<li id="<c:out value="${listCategory.CCseq }"/>" value="<c:out value="${listCategory.CCseq }"/>" 
 									onclick="submit(<c:out value="${listCategory.CCseq }"/>)"
 									name="category">
+									<input id="test" type="hidden" class="inputbox" name="category" size="100" />
 									<c:out value="${listCategory.CCname }"/>
 								</li>
 						</c:forEach>
@@ -151,7 +153,12 @@
 			<div style="width:350px; float:left; height: 100%; margin-right: 30px;">
 				<div class="black_mat2" style="width: 350px;height: 200px;" onclick="location.href='./productView.html';"></div>
 				<div>
-					<p class="h5" style="float: left; margin-bottom: 5px; margin-right: 40px;"><c:out value="${list.title}" /></p>
+				<%-- 	<p class="h5" style="float: left; margin-bottom: 5px; margin-right: 40px;">
+						<c:out value="${list.title}" />
+					</p> --%>
+					<a onclick="location.href='/product/productView?seq=<c:out value="${list.seq}"/>'"class="link-dark">
+						<c:out value="${list.title}" />
+					</a>
 					<div style="float: right; margin-bottom: 0px;">
 						<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
 					</div>
@@ -159,7 +166,9 @@
 						<p style="margin-top: 5px;"><c:out value="${list.price}" /></p>
 					</div>
 					<div style="float: right;">
-						<p style="margin-top: 5px;"><c:out value="${list.optionSub}" /></p>
+							<p style="margin-top: 5px;"><c:out value="${list.optionSub}" /></p>
+						
+						<button type="button" class="btn btn" style="height: 25px; width: 20px; border-radius: 100%; background-color: ;"></button>
 						<!-- <button type="button" class="btn btn" style="height: 25px; width: 20px; border-radius: 100%; background-color: black;"></button>
 						<button type="button" class="btn btn" style="height: 25px; width: 20px; border-radius: 100%; background-color: #889F47;"></button> -->
 					</div>
@@ -231,8 +240,11 @@
 	 function submit(num) {
 		var li_val = $('#' + num).attr("value");
 		alert(li_val);
+		$('#test').val(li_val);
 		form.attr("action", goUrlPrList).submit();
 	}  
+	 
+	 
 	
 </script>
 

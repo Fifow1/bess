@@ -72,10 +72,10 @@
 			</div>
 			<div class="col ms-5">
 				<div class="form_radio_btn radio_male" style="display: inline-block;">
-					<input id="radio-1" type="radio" name="ifprCategory" value="34" checked> <label for="radio-1">Keyboard</label>
+					<input id="radio-1" type="radio" name="category" value="34" checked> <label for="radio-1">Keyboard</label>
 				</div>
 				<div class="form_radio_btn" style="display: inline-block;">
-					<input id="radio-2" type="radio" name="ifprCategory" value="35"> <label for="radio-2">DeskMat</label>
+					<input id="radio-2" type="radio" name="category" value="35"> <label for="radio-2">DeskMat</label>
 				</div>
 			</div>
 		</div>
@@ -197,7 +197,7 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>   
  
 <script type="text/javascript">
-    $("input:radio[name='ifprCategory']").on('change',function(){
+    $("input:radio[name='category']").on('change',function(){
         var kind = $(this).val(); 
         //버튼이 클릭 되었을 시, 개별 버튼의 값이 kind 변수에 담겨집니다.
         $.ajax({
@@ -209,15 +209,15 @@
                 /*  id : $(this).val() */
                 "kind":kind,    // 버튼의 value값에 따라 작동합니다.
                 /* 중요  */
-                ifprCategory : kind 
+                category : kind 
                 
             }
+        
             ,success: function(data) {
-            		alert(data.list[0].ifprTitle);
-            		var ifprTitle = '${ifprTitle}';
+            		alert(data.list[0].title)
             		var tmp ="";
             		for(var i=0; i < data.list.length; i++){
-	            		if( i%2 == 0){
+	            		if( i%2 == 1){
 	            			tmp += '<div style="width: 550px; height: 450px; background-color: red; display: inline-block; margin-bottom: 100px;">';
 	            		} else{
 	            			tmp += '<div style="width: 550px; height: 450px; background-color: red; display: inline-block; margin-bottom: 100px; margin-right: 65px;">';
@@ -225,7 +225,7 @@
 		            	tmp += '	<div style="width: 550px; height: 350px; background-color: gray;"></div>';
 	            		tmp += '		<div style="margin-left: 175px;">';
 	            		tmp += '			<div style="width: 200px; height: 40px; background-color: gray;">';
-	            		tmp += ifprTitle;
+	            		tmp += data.list[i].title
 						tmp += '			</div>';	
 						tmp += '			<div style="width: 200px; height: 40px; background-color: gray;"></div>';
 						tmp += '		</div>';

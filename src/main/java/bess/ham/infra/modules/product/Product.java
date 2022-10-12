@@ -17,6 +17,7 @@ public class Product {
 	private String optionSub;
 	
 	
+	
 	public Integer getCategory() {
 		return category;
 	}
@@ -77,7 +78,6 @@ public class Product {
 	public void setOptionSub(String optionSub) {
 		this.optionSub = optionSub;
 	}
-	
 	
 	
 	
