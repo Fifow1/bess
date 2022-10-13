@@ -33,6 +33,11 @@ public class ProductDao {
 		return list;
 	}
 	
+	public List<Product> optionList(ProductVo vo){
+		List<Product> list = sqlSession.selectList(namespace + ".optionList",vo);
+		return list;
+	}
+	
 	public int insert(Product dto) {
 		int result = sqlSession.insert(namespace + ".insert", dto);
 		return result;

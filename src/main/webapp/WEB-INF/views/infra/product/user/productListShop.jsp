@@ -53,7 +53,7 @@
 			</button>
 			<button class="btn btn-outline me-md-2" type="button" style="color: #FFFFFF">
 				<i class="fa-solid fa-cart-shopping"></i>
-			</button>
+			</button> 
 		</div>
 	</div>
 </nav>
@@ -166,8 +166,9 @@
 						<p style="margin-top: 5px;"><c:out value="${list.price}" /></p>
 					</div>
 					<div style="float: right;">
-							<p style="margin-top: 5px;"><c:out value="${list.optionSub}" /></p>
 						
+					
+						<p style="margin-top: 5px;"><c:out value="${list.optionSub}" /></p>
 						<button type="button" class="btn btn" style="height: 25px; width: 20px; border-radius: 100%; background-color: ;"></button>
 						<!-- <button type="button" class="btn btn" style="height: 25px; width: 20px; border-radius: 100%; background-color: black;"></button>
 						<button type="button" class="btn btn" style="height: 25px; width: 20px; border-radius: 100%; background-color: #889F47;"></button> -->

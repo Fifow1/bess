@@ -167,7 +167,7 @@
 						<select class="form-select" aria-label="Default select example" name="group_seq" id="group_seq">
 							<option selected>Open this select menu</option>
 							<c:forEach items="${list}" var="list" varStatus="status">
-								<option value="<c:out value="${list.CCGseq}"></c:out>"><c:out value="${list.CCGname}"></c:out></option>
+								<option value="<c:out value="${list.CCGseq}"></c:out>"><c:out value="${list.CCGname}"/></option>
 							</c:forEach>
 						</select>
 					</div>

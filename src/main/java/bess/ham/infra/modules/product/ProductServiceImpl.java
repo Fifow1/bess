@@ -39,7 +39,11 @@ public class ProductServiceImpl implements ProductService {
 			System.out.println("s:"+result);
 			return result;
 		}
-
+		
+		@Override
+		public List<Product> optionList(ProductVo vo) throws Exception {
+			return dao.selectListMain(vo);
+		}
 		
 	
 }

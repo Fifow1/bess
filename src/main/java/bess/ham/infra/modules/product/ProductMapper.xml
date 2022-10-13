@@ -103,7 +103,7 @@
 		;
 	</select>
 
-	<select id="groupList" resultMap="resultMapObj"> 
+	<select id="optionList" resultMap="resultMapObj"> 
 		SELECT 
 			pr.seq
             ,pr.category
@@ -113,7 +113,6 @@
             ,pr.stock
 		FROM product pr
 		WHERE 1=1
-		AND pr.seq = #{seq}
 		;
 	</select>
 
