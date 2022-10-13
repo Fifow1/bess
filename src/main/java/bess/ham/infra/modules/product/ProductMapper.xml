@@ -12,18 +12,15 @@
 	
 	<select id="selectListMain" resultMap="resultMapObj"> 
 		SELECT 
-			pro.seq
-			,pr.category
-			,pr.title
-			,pro.option
-			,pro.optionSub
-			,pr.price
-			,pr.stock
-			,pr.mainYn
+			pr.seq
+            ,pr.category
+            ,pr.title
+            ,pr.star
+            ,pr.price
+            ,pr.stock
 		FROM product pr
-		LEFT JOIN productOption pro ON pr.seq = pro.product_seq
-		WHERE 1=1
-		AND mainYN = 1
+		WHERE 1=1 
+		AND mainYn = 1
 		<if test="category != null and !category.equals('')">AND pr.category = #{category}</if>
 		;
 	</select>
@@ -77,8 +74,48 @@
 	
 	</insert>
 	
+	<select id="selectOne" resultMap="resultMapObj"> 
+		SELECT 
+			pr.seq
+            ,pr.category
+            ,pr.title
+            ,pr.star
+            ,pr.price
+            ,pr.stock
+            ,pro.option
+		    ,group_concat(pro .optionSub separator ',') AS 'optionSub'
+		from(
+			select
+		    pr.seq
+            ,pr.category
+            ,pr.title
+            ,pr.star
+            ,pr.price
+            ,pr.stock
+		    from product pr
+			order by pr.seq DESC 
+		    ) pr
+		LEFT JOIN productOption pro 
+		ON pr.seq = pro.product_seq
+		WHERE 1=1 
+		AND pr.seq = #{seq}
+		group by product_seq
+		;
+	</select>
 
-	
+	<select id="groupList" resultMap="resultMapObj"> 
+		SELECT 
+			pr.seq
+            ,pr.category
+            ,pr.title
+            ,pr.star
+            ,pr.price
+            ,pr.stock
+		FROM product pr
+		WHERE 1=1
+		AND pr.seq = #{seq}
+		;
+	</select>
 
 </mapper>	
 

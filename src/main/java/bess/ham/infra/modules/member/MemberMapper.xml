@@ -43,7 +43,7 @@
 	    	,gender
 	    	,authority
 	    	,email
-	    	,number_phone
+	    	,numPhone
 	    	,regdate
 	    	,delYn
 		)
@@ -54,7 +54,7 @@
 			,#{gender}
 			,#{authority}
 			,#{email}
-			,#{number_phone}
+			,#{numPhone}
 			,NOW()
 			,0
 		)
@@ -71,7 +71,7 @@
 			,gender = #{gender}
 			,authority = #{authority}
 			,email = #{email}
-			,number_phone = #{number_phone}
+			,numPhone = #{numPhone}
 			,moddate = #{moddate}
 			,delYn = #{delYn}
 		WHERE
@@ -119,7 +119,7 @@
 	    	,gender
 	    	,authority
 	    	,email
-	    	,number_phone
+	    	,numPhone
 	    	,regdate
 	    	,delYn
 		)
@@ -130,7 +130,7 @@
 			,#{gender}
 			,#{authority}
 			,#{email}
-			,#{number_phone}
+			,#{numPhone}
 			,NOW()
 			,0
 		)

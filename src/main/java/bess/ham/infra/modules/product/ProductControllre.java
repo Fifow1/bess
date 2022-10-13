@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import bess.ham.infra.modules.member.Member;
+
 
 @Controller
 @RequestMapping (value="/product")
@@ -48,7 +50,11 @@ public class ProductControllre {
 	}
 	
 	@RequestMapping(value="productView")
-	public String productView(Model model) throws Exception{
+	public String productView(ProductVo vo,Model model) throws Exception{
+		
+		
+		Product result = service.selectOne(vo);
+		model.addAttribute("item", result);
 		
 		return "infra/product/user/productView";
 	}

@@ -313,8 +313,8 @@
 
 	<script type="text/javascript">
 	
-		var goUrlList = "/member/memberList"; /* #-> */
-		var goUrlForm = "/member/memberForm";
+		var goUrlList = "/member/memberXdminList"; /* #-> */
+		var goUrlForm = "/member/memberXdminForm";
 		
 		var seq = $("input:hidden[name=shSeq]");
 		var form = $("form[name=formList]");

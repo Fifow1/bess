@@ -55,8 +55,8 @@
 <!------------------------------------------------------------------------------------------------------------------------------------------------->
 <div id="wrapper"style=" height: 4300px;">
 
-	<div style="height: 1200px;">
-		<div style="width: 50%; height:1200px; float: left;">
+	<div style="height: 900px;">
+		<div style="width: 50%; height:900px; float: left;">
 			<div style="margin-left: 400px; margin-top: 200px;">
 				<div class="black_mat2" style="width: 550px; height: 320px;"></div>
 				<div>
@@ -65,10 +65,10 @@
 				</div>
 			</div>
 		</div>
-		<div style="width: 45%; height:1200px; float: right; margin-left: 50px;">
+		<div style="width: 45%; height:900px; float: right; margin-left: 50px;">
 			<div style="margin-right: 300px; margin-top: 200px;">
 				<div style="margin-bottom: 30px;">
-					<h2>CAT’S EYE DESK MAT</h2>
+					<h2><c:out value="${item.title }"/></h2>
 				</div>
 				<div style="margin-bottom: 30px;">
 					<div style="float: left;">
@@ -76,36 +76,18 @@
 					</div>
 					<p style="color: gray; padding-top: 2px; padding-left: 100px;" class="h6">(7 review)</p>
 				</div>
-				<div style="margin-bottom: 30px;">
-					<h5 style="color: gray;">30000원</h5>
+				<div style="display: inline-block;">
+					<h5 style="color: gray;"><c:out value="${item.price }"/></h5>
 				</div>
-				<div style="margin-bottom: 30px;">
+				<div style="padding-left: 10px; display: inline-block;">
 					<h6 style="text-align: left;">(7.4sold)</h6>
 				</div>
-				<div>
-				<p>* 본 GB상품은 배송 기간 문제로 인해<br>
-					   &nbsp;&nbsp;네이버페이 결제가 불가능합니다.<br><br>
-					  * 본 GB상품은 제조사에 선지급되는 주문제작 <br>&nbsp;
-					   상품으로 에스크로 결제가 불가능합니다.<br><br>
-				      * 본 GB상품은 100,000이상 구매시 <br>&nbsp;
-				      무료배송됩니다.<br><br>
-						
-					  * 해당 상품은 주문 제작 상품으로<br>&nbsp;
-					   주문 취소/반품이 불가합니다.<br><br>
-						
-					  * 결제 완료 후 주문 신청을 완료하신 경우 마이페이지<br>&nbsp;
-					   에서 [배송준비] 주문 건을 확인하실 수 있습니다.</p>
-				</div>
 				<div style=" margin-top: 40px;">
-					<div style="float: left;margin-right: 20px;">
-						<p style="margin: 5px;">종류</p>
+					<div class="form_radio_btn radio_male" style="height:30px; width:100px; display: inline-block;">
+						<input id="radio-1" type="radio" name="gender" value="4" checked><label for="radio-1" style="line-height: 30px;">green</label>
 					</div>
-					<div class="btn-group">
- 						<button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">선택하세요</button>
- 						<ul class="dropdown-menu">
-						    <li><a class="dropdown-item" href="#">green</a></li>
-						    <li><a class="dropdown-item" href="#">black</a></li>
-						</ul>
+					<div class="form_radio_btn" style="height:30px; width:100px; display:inline-block;">
+						<input id="radio-2" type="radio" name="gender" value="5"><label for="radio-2" style="line-height: 30px;">black</label>
 					</div>
 				</div>
 				<div>
@@ -131,7 +113,7 @@
 			</div>	
 		</div>
 	</div>
-	<div class="main">
+	<div class="main" style="margin-right: 450px;">
 		<input id="tab1" type="radio" name="tabs" checked><label for="tab1"class="label_tab" style="padding-left:95px;padding-right: 95px;">상품정보</label> 
 		<input id="tab2" type="radio" name="tabs"><label for="tab2"class="label_tab" style="padding-left:95px;padding-right: 95px;">리뷰</label>
 		<input id="tab3" type="radio" name="tabs"><label for="tab3"class="label_tab" style="padding-left:95px;padding-right: 95px;">Q & A</label>
