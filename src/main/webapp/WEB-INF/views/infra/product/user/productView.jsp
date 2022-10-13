@@ -68,7 +68,7 @@
 		<div style="width: 45%; height:900px; float: right; margin-left: 50px;">
 			<div style="margin-right: 300px; margin-top: 200px;">
 				<div style="margin-bottom: 30px;">
-					<h2>CAT’S EYE DESK MAT</h2>
+					<h2><c:out value="${item.title }"/></h2>
 				</div>
 				<div style="margin-bottom: 30px;">
 					<div style="float: left;">
@@ -77,23 +77,17 @@
 					<p style="color: gray; padding-top: 2px; padding-left: 100px;" class="h6">(7 review)</p>
 				</div>
 				<div style="display: inline-block;">
-					<h5 style="color: gray;">30000원</h5>
+					<h5 style="color: gray;"><c:out value="${item.price }"/></h5>
 				</div>
 				<div style="padding-left: 10px; display: inline-block;">
 					<h6 style="text-align: left;">(7.4sold)</h6>
 				</div>
-				<div>
-				</div>
 				<div style=" margin-top: 40px;">
-					<div style="float: left;margin-right: 20px;">
-						<p style="margin: 5px;">종류</p>
+					<div class="form_radio_btn radio_male" style="height:30px; width:100px; display: inline-block;">
+						<input id="radio-1" type="radio" name="gender" value="4" checked><label for="radio-1" style="line-height: 30px;">green</label>
 					</div>
-					<div class="btn-group">
- 						<button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">선택하세요</button>
- 						<ul class="dropdown-menu">
-						    <li><a class="dropdown-item" href="#">green</a></li>
-						    <li><a class="dropdown-item" href="#">black</a></li>
-						</ul>
+					<div class="form_radio_btn" style="height:30px; width:100px; display:inline-block;">
+						<input id="radio-2" type="radio" name="gender" value="5"><label for="radio-2" style="line-height: 30px;">black</label>
 					</div>
 				</div>
 				<div>

@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import bess.ham.infra.modules.code.Code;
+import bess.ham.infra.modules.codegroup.CodeGroup;
+import bess.ham.infra.modules.codegroup.CodeGroupVo;
 import bess.ham.infra.modules.member.Member;
 
 
@@ -29,6 +32,14 @@ public class ProductServiceImpl implements ProductService {
 			int result = dao.insert(dto);
 			return result;
 		}
+		
+		@Override
+		public Product selectOne(ProductVo vo) throws Exception{
+			Product result = dao.selectOne(vo);
+			System.out.println("s:"+result);
+			return result;
+		}
+
 		
 	
 }

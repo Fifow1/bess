@@ -9,6 +9,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import bess.ham.infra.modules.codegroup.CodeGroup;
+
 
 
 @Repository
@@ -36,5 +38,9 @@ public class ProductDao {
 		return result;
 	}
 
+	public Product selectOne(ProductVo vo) {
+		Product result = sqlSession.selectOne(namespace +".selectOne", vo);
+		return result;
+	}
 	
 }
