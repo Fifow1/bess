@@ -156,7 +156,7 @@
 				<%-- 	<p class="h5" style="float: left; margin-bottom: 5px; margin-right: 40px;">
 						<c:out value="${list.title}" />
 					</p> --%>
-					<a onclick="location.href='/product/productView?seq=<c:out value="${list.seq}"/>'"class="link-dark">
+					<a onclick="location.href='/product/productView?ifprSeq=<c:out value="${list.ifprSeq}"/>'"class="link-dark">
 						<c:out value="${list.title}" />
 					</a>
 					<div style="float: right; margin-bottom: 0px;">
@@ -166,12 +166,13 @@
 						<p style="margin-top: 5px;"><c:out value="${list.price}" /></p>
 					</div>
 					<div style="float: right;">
-						
-					
-						<p style="margin-top: 5px;"><c:out value="${list.optionSub}" /></p>
-						<button type="button" class="btn btn" style="height: 25px; width: 20px; border-radius: 100%; background-color: ;"></button>
-						<!-- <button type="button" class="btn btn" style="height: 25px; width: 20px; border-radius: 100%; background-color: black;"></button>
-						<button type="button" class="btn btn" style="height: 25px; width: 20px; border-radius: 100%; background-color: #889F47;"></button> -->
+						<c:set var="data" value="${list.optionSub}" />
+						<c:set var="citiesArray" value="${fn:split(data, ',') }" />
+						<c:forEach var="tempCity" items="${citiesArray }">
+						<button></button>
+						<input type="text" value="${tempCity }">
+						</c:forEach>
+						<button></button>
 					</div>
 				</div>	
 			</div>

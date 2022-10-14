@@ -43,19 +43,20 @@ public class ProductControllre {
 	public String productList_deskmat(ProductVo vo,Product dto,Model model) throws Exception{
 		
 		List<Product> list = service.selectListShop(vo);
+		List<Product> listSub = service.optionList(vo);
 		model.addAttribute("list", list);
-		
-		System.out.println("C : " + vo.getCategory());
+		model.addAttribute("listSub", listSub);
 		return "infra/product/user/productListShop";
 	}
 	
 	@RequestMapping(value="productView")
-	public String productView(ProductVo vo,Model model) throws Exception{
+	public String productView(Product dto,ProductVo vo,Model model) throws Exception{
 		
 		
 		Product result = service.selectOne(vo);
+		Product itemSub = service.optionOne(vo);
 		model.addAttribute("item", result);
-		
+		model.addAttribute("itemSub", itemSub);
 		return "infra/product/user/productView";
 	}
 	

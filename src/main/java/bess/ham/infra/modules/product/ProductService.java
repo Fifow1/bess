@@ -12,6 +12,8 @@ public interface ProductService {
 	public List<Product> selectListShop(ProductVo vo) throws Exception;
 	public Product selectOne(ProductVo vo) throws Exception;
 	
+	public Product optionOne(ProductVo vo) throws Exception;
+	
 	public int insert(Product dto) throws Exception; 
 
 }

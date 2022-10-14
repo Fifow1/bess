@@ -5,7 +5,6 @@ import java.sql.Date;
 public class Product {
 	
 	
-	private String seq;
 	private Integer category;
 	private String title;
 	private Integer price;
@@ -13,8 +12,14 @@ public class Product {
 	private Date UploadDate;
 	private Integer ifprDelYn;
 	private Integer mainYn;
+	
+	private String ifprSeq;
+	private String ifpoSeq;
+	
+	
 	private Integer option;
 	private String optionSub;
+	private Integer product_seq;
 	
 	
 	
@@ -41,12 +46,6 @@ public class Product {
 	}
 	public void setStock(Integer stock) {
 		this.stock = stock;
-	}
-	public String getSeq() {
-		return seq;
-	}
-	public void setSeq(String seq) {
-		this.seq = seq;
 	}
 	public Date getUploadDate() {
 		return UploadDate;
@@ -77,6 +76,24 @@ public class Product {
 	}
 	public void setOptionSub(String optionSub) {
 		this.optionSub = optionSub;
+	}
+	public Integer getProduct_seq() {
+		return product_seq;
+	}
+	public void setProduct_seq(Integer product_seq) {
+		this.product_seq = product_seq;
+	}
+	public String getIfprSeq() {
+		return ifprSeq;
+	}
+	public void setIfprSeq(String ifprSeq) {
+		this.ifprSeq = ifprSeq;
+	}
+	public String getIfpoSeq() {
+		return ifpoSeq;
+	}
+	public void setIfpoSeq(String ifpoSeq) {
+		this.ifpoSeq = ifpoSeq;
 	}
 	
 	

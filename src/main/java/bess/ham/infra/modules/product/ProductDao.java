@@ -48,4 +48,9 @@ public class ProductDao {
 		return result;
 	}
 	
+	public Product optionOne(ProductVo vo) {
+		Product result = sqlSession.selectOne(namespace +".optionOne", vo);
+		return result;
+	}
+	
 }

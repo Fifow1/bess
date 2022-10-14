@@ -3,23 +3,22 @@ package bess.ham.infra.modules.product;
 public class ProductVo {
 	
 	private Integer category;
-	private String seq;
-
+	private String ifprSeq;
+	
 	public Integer getCategory() {
 		return category;
 	}
-
 	public void setCategory(Integer category) {
 		this.category = category;
 	}
-
-	public String getSeq() {
-		return seq;
+	public String getIfprSeq() {
+		return ifprSeq;
+	}
+	public void setIfprSeq(String ifprSeq) {
+		this.ifprSeq = ifprSeq;
 	}
 
-	public void setSeq(String seq) {
-		this.seq = seq;
-	}
+
 
 
 
