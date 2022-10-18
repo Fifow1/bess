@@ -5,10 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import bess.ham.infra.modules.code.Code;
-import bess.ham.infra.modules.codegroup.CodeGroup;
-import bess.ham.infra.modules.codegroup.CodeGroupVo;
-import bess.ham.infra.modules.member.Member;
 
 
 

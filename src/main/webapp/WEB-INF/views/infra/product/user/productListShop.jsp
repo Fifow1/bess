@@ -166,13 +166,27 @@
 						<p style="margin-top: 5px;"><c:out value="${list.price}" /></p>
 					</div>
 					<div style="float: right;">
+						
+						
+						
+						
 						<c:set var="data" value="${list.optionSub}" />
-						<c:set var="citiesArray" value="${fn:split(data, ',') }" />
-						<c:forEach var="tempCity" items="${citiesArray }">
-						<button></button>
-						<input type="text" value="${tempCity }">
+						<c:set var="colorArray" value="${fn:split(data, ',') }" />
+						<c:forEach var="color" items="${colorArray }">
+								<c:forEach items="${listCodeColor}" var="listColor" varStatus="statusColor">
+									<c:if test="${color eq listColor.CCseq}">
+										<input type="text" value="${listColor.CCname}"/>
+										
+										<button type="button" value="${listColor.CCname}" name="${listColor.CCname}"class="btn btn" onchange="colorCh(<c:out value="${listColor.CCname}"/>)"
+												style="height: 25px; width: 20px; border-radius: 100%; ">
+										</button>
+									</c:if>
+								</c:forEach>
 						</c:forEach>
-						<button></button>
+						
+						
+						
+						
 					</div>
 				</div>	
 			</div>
@@ -238,6 +252,7 @@
 
 	var goUrlPrList="productListShop";
 	var form = $("form[name=formList]");
+	var colorBtnName = ${CCname};
 	
 	 function submit(num) {
 		var li_val = $('#' + num).attr("value");
@@ -246,8 +261,13 @@
 		form.attr("action", goUrlPrList).submit();
 	}  
 	 
-	 
-	
+	 function colorCh(){
+		var colorBtn = $('#' + color) 
+		document.colorBtnName = color;
+		 
+	 }
+		/*  var colorBtn = <c:out value="${color}"/>
+			 document.getElementById('(optionColor)').style.backgroundColor = "(colorBtn)"; */
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

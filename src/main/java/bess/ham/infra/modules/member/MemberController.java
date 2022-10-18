@@ -186,10 +186,10 @@ public class MemberController {
 		return returnMap;
 	}
 	
-	@RequestMapping(value = "ll")
+	@RequestMapping(value = "test")
 	public String ll(Member dto,Model model) throws Exception {
 		
-		return "infra/member/user/ll";
+		return "infra/member/user/test";
 	}
 	
 	
