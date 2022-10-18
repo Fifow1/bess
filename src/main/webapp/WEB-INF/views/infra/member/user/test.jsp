@@ -17,7 +17,8 @@
 <input type="text" class="form-control pt-1" id="x" name="address_zip" style="width: 500px; height: 50px;">
 <input type="text" class="form-control pt-1" id="y" name="address_zip" style="width: 500px; height: 50px;">
 <button type="button" class="btn btn-dark" onclick="sample4_execDaumPostcode()" style="width: 100px; padding: 0px; background-color: #2E2E2E;">인증</button>
-<button type="button" class="btn btn-dark" id="good" style="width: 100px; padding: 0px; background-color: #2E2E2E;">검색</button>
+<button type="button" class="btn btn-dark" id="check" style="width: 100px;background-color:white;">체크</button>
+<button type="button" class="btn btn-dark" id="line" style="width: 100px;background-color:white;">선</button>
 <div id="map" style="width:100%;height:350px;"></div>
 
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1c3e148b9d3b6d9eee46fb31507354ea&libraries=services"></script>
@@ -29,6 +30,15 @@
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
 <script>
+var arr = new Array(); 
+for (var i = 0; i < arr.length; i++) {
+	arr[i] = new Array(2);
+}
+
+
+console.log(arr);
+var x = document.getElementById("x").value
+var y = document.getElementById("y").value
 
 var place = document.getElementById("sample4_roadAddress").value
 function sample4_execDaumPostcode() {
@@ -85,7 +95,7 @@ function sample4_execDaumPostcode() {
 
 
 
-var place = document.getElementById("sample4_roadAddress").value
+
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 mapOption = {
     center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -98,8 +108,10 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 //주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
 
-document.getElementById("good").onclick = function(){
-//주소로 좌표를 검색합니다
+document.getElementById("check").onclick = function(){
+//주소로 좌표를 검색합니다	
+var place = document.getElementById("sample4_roadAddress").value
+
 geocoder.addressSearch(place, function(result, status) {
 
 // 정상적으로 검색이 완료됐으면 
@@ -111,6 +123,7 @@ geocoder.addressSearch(place, function(result, status) {
     var marker = new kakao.maps.Marker({
         map: map,
         position: coords
+        
     });
 
     // 인포윈도우로 장소에 대한 설명을 표시합니다
@@ -125,7 +138,24 @@ geocoder.addressSearch(place, function(result, status) {
 }) 
 };
 
-
+document.getElementById("line").onclick = function(){
+	
+	// 선을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 선을 표시합니다
+var linePath = [
+	new kakao.maps.LatLng(x, y),
+];
+	
+	
+	
+	var polyline = new kakao.maps.Polyline({
+	    path: linePath, // 선을 구성하는 좌표배열 입니다
+	    strokeWeight: 5, // 선의 두께 입니다
+	    strokeColor: '#FFAE00', // 선의 색깔입니다
+	    strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+	    strokeStyle: 'solid' // 선의 스타일입니다
+	});
+	polyline.setMap(map);
+};
 </script>
 </body>
 </html>

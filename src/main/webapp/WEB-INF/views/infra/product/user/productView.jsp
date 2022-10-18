@@ -130,7 +130,7 @@
 <!---------------------------------------------------------------------리뷰---------------------------------------------------------------------------->
 		<section id="content2">
 			<div style="margin-bottom: 60px; margin-top: 10px;">
-				<div style="float: left;"><h5>상품리뷰</h5></div>
+				<div style="float: left;">상품리뷰</div>
 				<div  class="d-flex justify-content-end" style="float: right; width: 400px; height: 40px;"><button type="button" class="btn btn-dark">리뷰 작성하기</button></div>
 			</div>
 			<div style="border-bottom: 1px solid black; border-top:1px solid black; margin-top:20px; width: 100%;height: 300px;">

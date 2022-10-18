@@ -27,7 +27,7 @@
 	
 	<select id="selectListShop" resultMap="resultMapObj"> 
 		SELECT 
-			pr.seq
+			pr.seq as ifprSeq
             ,(select DISTINCT category ) as category
             ,pr.title
             ,pr.star
@@ -93,42 +93,35 @@
 	
 	<select id="selectOne" resultMap="resultMapObj"> 
 		SELECT 
-			pr.seq AS ifprSeq
+			pr.seq as ifprSeq
             ,pr.category
             ,pr.title
             ,pr.star
             ,pr.price
             ,pr.stock
-		FROM product pr
+            ,pr.uploadDate
+		    ,group_concat(pro .optionSub separator ',') AS 'optionSub'
+		from(
+			select
+		    pr.seq 
+            ,pr.category
+            ,pr.title
+            ,pr.star
+            ,pr.price
+            ,pr.stock
+            ,pr.uploadDate
+		    from product pr
+			order by pr.seq DESC 
+		    ) pr
+		LEFT JOIN productOption pro 
+		ON pr.seq = pro.product_seq
 		WHERE 1=1 
 		AND pr.seq = #{ifprSeq}
-		<if test="category != null and !category.equals('')">AND pr.category = #{category}</if>
+		group by product_seq
 		;
 	</select>
 
-	<select id="optionList" resultMap="resultMapObj"> 
-		SELECT 
-			po.seq AS ifpoSeq
-            ,po.product_seq
-            ,po.option
-            ,po.optionSub
-		FROM productOption po
-		WHERE 1=1
-		AND product_seq = #{ifprSeq}
-		;
-	</select>
-	
-	<select id="optionOne" resultMap="resultMapObj"> 
-		SELECT 
-			po.seq AS ifpoSeq
-            ,po.product_seq
-            ,po.option
-            ,po.optionSub
-		FROM productOption po
-		WHERE 1=1
-		AND po.product_seq = #{ifprSeq}
-		;
-	</select>
+
 
 </mapper>	
 

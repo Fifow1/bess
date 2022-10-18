@@ -59,7 +59,7 @@
 </nav>
 <!------------------------------------------------------------------------------------------------------------------------------------------------->
 <div id="wrapper"style=" height: 2000px;">
-	<form id="formList" name="formList" method="post">
+	<form method="post" action="/product/productView/">
 	<c:set var="listCodeCategory" value="${CodeServiceImpl.selectListCachedCode('8')}"/>
 	<c:set var="listCodeColor" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
 	<div style="width: 13%; float: left; margin-top: 200px; margin-left: 10%;">
@@ -75,8 +75,7 @@
 						<ul name="category" id="trendGroupList">
 						<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">
 								<li id="<c:out value="${listCategory.CCseq }"/>" value="<c:out value="${listCategory.CCseq }"/>" 
-									onclick="submit(<c:out value="${listCategory.CCseq }"/>)"
-									name="category">
+									onclick="submit(<c:out value="${listCategory.CCseq }"/>)">
 									<input id="test" type="hidden" class="inputbox" name="category" size="100" />
 									<c:out value="${listCategory.CCname }"/>
 								</li>
@@ -151,13 +150,14 @@
 		<div style="width: 100%; height: 300px; padding-left:100px; padding-right:100px; ">
 		<c:forEach items="${list}" var="list" varStatus="status">
 			<div style="width:350px; float:left; height: 100%; margin-right: 30px;">
-				<div class="black_mat2" style="width: 350px;height: 200px;" onclick="location.href='./productView.html';"></div>
+				<div class="black_mat2" style="width: 350px;height: 200px;" onclick="location.href='/product/productView?ifprSeq=<c:out value="${list.ifprSeq}"/>'"></div>
 				<div>
 				<%-- 	<p class="h5" style="float: left; margin-bottom: 5px; margin-right: 40px;">
 						<c:out value="${list.title}" />
 					</p> --%>
+					<input type="hidden" value="<c:out value="${list.ifprSeq}"/>">
 					<a onclick="location.href='/product/productView?ifprSeq=<c:out value="${list.ifprSeq}"/>'"class="link-dark">
-						<c:out value="${list.title}" />
+						<c:out value="${list.title}" /> 
 					</a>
 					<div style="float: right; margin-bottom: 0px;">
 						<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -166,7 +166,6 @@
 						<p style="margin-top: 5px;"><c:out value="${list.price}" /></p>
 					</div>
 					<div style="float: right;">
-						
 						<c:set var="data" value="${list.optionSub}" />
 						<c:set var="colorArray" value="${fn:split(data, ',') }" />
 						<c:forEach var="color" items="${colorArray }">
@@ -180,7 +179,6 @@
 									</c:if>
 								</c:forEach>
 						</c:forEach>
-						
 					</div>
 				</div>	
 			</div>
@@ -246,7 +244,6 @@
 
 	var goUrlPrList="productListShop";
 	var form = $("form[name=formList]");
-	var colorBtnName = ${CCname};
 	
 	 function submit(num) {
 		var li_val = $('#' + num).attr("value");
@@ -255,11 +252,6 @@
 		form.attr("action", goUrlPrList).submit();
 	}  
 	 
-	 function colorCh(){
-		var colorBtn = $('#' + color) 
-		document.colorBtnName = color;
-		 
-	 }
 		/*  var colorBtn = <c:out value="${color}"/>
 			 document.getElementById('(optionColor)').style.backgroundColor = "(colorBtn)"; */
 </script>
