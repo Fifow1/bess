@@ -167,9 +167,6 @@
 					</div>
 					<div style="float: right;">
 						
-						
-						
-						
 						<c:set var="data" value="${list.optionSub}" />
 						<c:set var="colorArray" value="${fn:split(data, ',') }" />
 						<c:forEach var="color" items="${colorArray }">
@@ -183,9 +180,6 @@
 									</c:if>
 								</c:forEach>
 						</c:forEach>
-						
-						
-						
 						
 					</div>
 				</div>	

@@ -85,7 +85,7 @@ function sample4_execDaumPostcode() {
 
 
 
-
+var place = document.getElementById("sample4_roadAddress").value
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 mapOption = {
     center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -100,7 +100,6 @@ var geocoder = new kakao.maps.services.Geocoder();
 
 document.getElementById("good").onclick = function(){
 //주소로 좌표를 검색합니다
-var place = document.getElementById("sample4_roadAddress").value
 geocoder.addressSearch(place, function(result, status) {
 
 // 정상적으로 검색이 완료됐으면 
