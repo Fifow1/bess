@@ -53,4 +53,14 @@ public class ProductDao {
 		return result;
 	}
 	
+	public List<Product> selectListReview(ProductVo vo){
+		List<Product> list = sqlSession.selectList(namespace + ".selectListReview",vo);
+		return list;
+	}
+	
+	public List<Product> selectListQa(ProductVo vo){
+		List<Product> list = sqlSession.selectList(namespace + ".selectListQa",vo);
+		return list;
+	}
+	
 }

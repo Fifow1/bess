@@ -50,10 +50,12 @@ public class ProductControllre {
 	@RequestMapping(value="productView")
 	public String productView(Product dto,ProductVo vo,Model model) throws Exception{
 		
-		System.out.println(dto.getIfprSeq());
 		Product result = service.selectOne(vo);
+		List<Product> reviewList = service.selectListReview(vo);
+		List<Product> qaList = service.selectListQa(vo);
 		model.addAttribute("item", result);
-		System.out.println(dto.getIfprSeq());
+		model.addAttribute("reviewList", reviewList);
+		model.addAttribute("qaList", qaList);
 		return "infra/product/user/productView";
 	}
 	

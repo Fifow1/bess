@@ -21,6 +21,7 @@
 </style>
 </head>
 <body>
+<%@include file="base/header.jsp"%>
 <div style="margin-left: 550px; margin-top: 300px;">
 	<div style="width: 400px; height: 400px;display: inline-block;">
 		<div style="text-align: center;">

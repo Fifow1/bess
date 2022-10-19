@@ -18,6 +18,7 @@ public class Code {
 	private String CCname_code;
 	private Date CCregdate;
 	private Integer CCdelYn;
+	private String CCnameEn;
 	
 	
 	private String CCGseq;
@@ -100,6 +101,18 @@ public class Code {
 	}
 	public void setCCdelYn(Integer cCdelYn) {
 		CCdelYn = cCdelYn;
+	}
+	public String getCCnameEn() {
+		return CCnameEn;
+	}
+	public void setCCnameEn(String cCnameEn) {
+		CCnameEn = cCnameEn;
+	}
+	public static List<Code> getCachedCodeArrayList() {
+		return cachedCodeArrayList;
+	}
+	public static void setCachedCodeArrayList(List<Code> cachedCodeArrayList) {
+		Code.cachedCodeArrayList = cachedCodeArrayList;
 	}
 	
 

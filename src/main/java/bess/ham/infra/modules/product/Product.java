@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Product {
 	
-	
+	//product
 	private Integer category;
 	private String title;
 	private Integer price;
@@ -13,16 +13,25 @@ public class Product {
 	private Integer ifprDelYn;
 	private Integer mainYn;
 	
+	// review
+	private String ifprReviewContent;
+	private String ifprReviewSeq;
+	private String id;
+	private Date ifprReviewRegDate;
+	
+	// qa
+	private String ifprQaSeq;
+	private String ifprQaContent;
+	private Date ifprQaRegDate;
+	private Integer answerYn;
+	
+	
+	//productOption
 	private String ifprSeq;
 	private String ifpoSeq;
-	
-	
 	private Integer option;
 	private String optionSub;
 	private Integer product_seq;
-	
-	
-	
 	public Integer getCategory() {
 		return category;
 	}
@@ -65,6 +74,60 @@ public class Product {
 	public void setMainYn(Integer mainYn) {
 		this.mainYn = mainYn;
 	}
+	public String getIfprReviewContent() {
+		return ifprReviewContent;
+	}
+	public void setIfprReviewContent(String ifprReviewContent) {
+		this.ifprReviewContent = ifprReviewContent;
+	}
+	public String getIfprReviewSeq() {
+		return ifprReviewSeq;
+	}
+	public void setIfprReviewSeq(String ifprReviewSeq) {
+		this.ifprReviewSeq = ifprReviewSeq;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public Date getIfprReviewRegDate() {
+		return ifprReviewRegDate;
+	}
+	public void setIfprReviewRegDate(Date ifprReviewRegDate) {
+		this.ifprReviewRegDate = ifprReviewRegDate;
+	}
+	public String getIfprQaSeq() {
+		return ifprQaSeq;
+	}
+	public void setIfprQaSeq(String ifprQaSeq) {
+		this.ifprQaSeq = ifprQaSeq;
+	}
+	public String getIfprQaContent() {
+		return ifprQaContent;
+	}
+	public void setIfprQaContent(String ifprQaContent) {
+		this.ifprQaContent = ifprQaContent;
+	}
+	public Date getIfprQaRegDate() {
+		return ifprQaRegDate;
+	}
+	public void setIfprQaRegDate(Date ifprQaRegDate) {
+		this.ifprQaRegDate = ifprQaRegDate;
+	}
+	public String getIfprSeq() {
+		return ifprSeq;
+	}
+	public void setIfprSeq(String ifprSeq) {
+		this.ifprSeq = ifprSeq;
+	}
+	public String getIfpoSeq() {
+		return ifpoSeq;
+	}
+	public void setIfpoSeq(String ifpoSeq) {
+		this.ifpoSeq = ifpoSeq;
+	}
 	public Integer getOption() {
 		return option;
 	}
@@ -83,18 +146,16 @@ public class Product {
 	public void setProduct_seq(Integer product_seq) {
 		this.product_seq = product_seq;
 	}
-	public String getIfprSeq() {
-		return ifprSeq;
+	public Integer getAnswerYn() {
+		return answerYn;
 	}
-	public void setIfprSeq(String ifprSeq) {
-		this.ifprSeq = ifprSeq;
+	public void setAnswerYn(Integer answerYn) {
+		this.answerYn = answerYn;
 	}
-	public String getIfpoSeq() {
-		return ifpoSeq;
-	}
-	public void setIfpoSeq(String ifpoSeq) {
-		this.ifpoSeq = ifpoSeq;
-	}
+	
+	
+	
+	
 	
 	
 	

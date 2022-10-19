@@ -88,7 +88,6 @@
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 		SELECT last_insert_id()
 		</selectKey>
-	
 	</insert>
 	
 	<select id="selectOne" resultMap="resultMapObj"> 
@@ -121,7 +120,56 @@
 		;
 	</select>
 
-
+	<select id="selectListReview" resultMap="resultMapObj"> 
+		SELECT 
+			re.seq as ifprReviewSeq
+    		,mm.id
+    		,pr.title
+   		 	,re.content as ifprReviewContent
+   		 	,re.regDate as ifprReviewRegDate
+		from review re
+		left join product pr ON pr.seq = re.product_seq
+		inner JOIN member mm ON mm.seq = re.member_seq
+		where 1=1
+		AND product_seq = #{ifprSeq}
+		;
+	</select>
+	
+	<select id="selectListQa" resultMap="resultMapObj"> 
+		SELECT 
+			qa.seq as ifprQaSeq
+			,qa.answerYn
+    		,mm.id
+   	 		,qa.product_seq
+   	 		,qa.content as ifprQaContent
+    		,qa.regdate as ifprQaRegDate
+		from qa qa
+		inner JOIN member mm ON mm.seq = qa.member_seq
+		where 1=1
+		AND product_seq = #{ifprSeq}
+		;
+	</select>
+	
+	<insert id="insertQa">
+		INSERT INTO qa qa
+		inner JOIN member mm ON mm.seq = qa.member_seq
+		(
+    		mm.id
+   	 		,qa.product_seq
+   	 		,qa.content as ifprQaContent
+    		,qa.regdate as ifprQaRegDate
+		)
+		
+		VALUES (
+			#{id}
+			,#{ifprSeq}
+			,#{ifprQaContent}
+			,NOW()
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+		SELECT last_insert_id()
+		</selectKey>
+	</insert>
 
 </mapper>	
 

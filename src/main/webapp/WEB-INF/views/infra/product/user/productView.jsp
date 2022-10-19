@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -19,6 +19,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="/resources/css/main2.css" type="text/css">
+	<jsp:useBean id="CodeServiceImpl" class="bess.ham.infra.modules.code.CodeServiceImpl"/>
   	<title>productList</title>
 	<style type="text/css">
 
@@ -27,34 +28,10 @@
 
 <body>
 <!-------------------------------------------------------------------header -------------------------------------------------------------------->
-<nav class="navbar navbar-expand-lg header">
-	<div class="container" style="height: 0px;">
-		<div style="margin-top: 30px; margin-right: 70px;">
-			<a class="navbar-brand" href="#"><h1 style="color: #FFFFFF; font-family: 'Edu VIC WA NT Beginner', cursive;">Ham</h1></a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-		</div>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav" style="font-family: 'Kanit', sans-serif;">
-				<li class="nav-item" style="margin-right: 40px;"><a class="nav-link active" aria-current="page" style="color: #FFFFFF;" href="../main.html">Home</a></li>
-				<li class="nav-item" style="margin-right: 40px;"><a class="nav-link" aria-current="page" style="color: #FFFFFF;" href="./productList_deskmat.html">shop</a></li>
-				<li class="nav-item" style="margin-right: 40px;"><a class="nav-link" aria-current="page" style="color: #FFFFFF;" href="#">community</a></li>
-			</ul>
-		</div>
-		<div id="headerR" class="d-grid gap-2 d-md-flex justify-content-md-end">
-			<button class="btn btn-outline" type="button" onclick="location.href='../member/memberLogin.html'" style="color: #FFFFFF">
-				<i class="fa-solid fa-user"></i>
-			</button>
-			<button class="btn btn-outline me-md-2" type="button" style="color: #FFFFFF">
-				<i class="fa-solid fa-cart-shopping"></i>
-			</button>
-		</div>
-	</div>
-</nav>
+<%@include file="../../base/header.jsp"%>
 <!------------------------------------------------------------------------------------------------------------------------------------------------->
 <div id="wrapper"style=" height: 4300px;">
-
+<c:set var="listCodeColor" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
 	<div style="height: 900px;">
 		<div style="width: 50%; height:900px; float: left;">
 			<div style="margin-left: 400px; margin-top: 200px;">
@@ -83,12 +60,21 @@
 					<h6 style="text-align: left;">(7.4sold)</h6>
 				</div>
 				<div style=" margin-top: 40px;">
-					<div class="form_radio_btn radio_male" style="height:30px; width:100px; display: inline-block;">
-						<input id="radio-1" type="radio" name="gender" value="4" checked><label for="radio-1" style="line-height: 30px;">green</label>
-					</div>
-					<div class="form_radio_btn" style="height:30px; width:100px; display:inline-block;">
-						<input id="radio-2" type="radio" name="gender" value="5"><label for="radio-2" style="line-height: 30px;">black</label>
-					</div>
+					<div>색상</div>
+					<%-- <c:forEach items="${item}" var="item" varStatus="status"> --%>
+						<c:set var="data" value="${item.optionSub}" />
+						<c:set var="colorArray" value="${fn:split(data, ',') }" />
+						<c:forEach var="color" items="${colorArray }">
+								<c:forEach items="${listCodeColor}" var="listColor" varStatus="statusColor">
+									<c:if test="${color eq listColor.CCseq}">
+										<div class="form_radio_btn" style="height:30px; width:100px; display:inline-block;">
+											<input id="${listColor.CCnameEn}" type="radio" name="optionColor" value="5"><label for="${listColor.CCnameEn}" style="line-height: 30px;"><c:out value="${listColor.CCnameEn}"/></label>
+										</div>
+									</c:if>
+								</c:forEach>
+						<%-- </c:forEach> --%>
+					</c:forEach>
+					
 				</div>
 				<div>
 					<hr style="width: 400px;"> 
@@ -131,28 +117,82 @@
 		<section id="content2">
 			<div style="margin-bottom: 60px; margin-top: 10px;">
 				<div style="float: left;">상품리뷰</div>
-				<div  class="d-flex justify-content-end" style="float: right; width: 400px; height: 40px;"><button type="button" class="btn btn-dark">리뷰 작성하기</button></div>
+				<div class="d-flex justify-content-end" style="float: right; width: 400px; height: 40px;"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">리뷰 작성하기</button></div>
+
+				<!-- Modal -->
+				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				      </div>
+				      <div class="modal-body">
+				        ...
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				        <button type="button" class="btn btn-primary">Save changes</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
 			</div>
-			<div style="border-bottom: 1px solid black; border-top:1px solid black; margin-top:20px; width: 100%;height: 300px;">
-				<div style="width: 400px;">
-					<div style="margin-top: 20px; padding-bottom: 1px;">
-						<div style="float: left;"><i class="fa-solid fa-circle-user fa-4x"></i></div>
-						<div style="padding-top: 5px; padding-left: 80px;">
-							<div><h6 style="color: black; text-align: left; font-weight: bold; margin-bottom: 0px;">lasldjf</h6></div>
-							<div><h6 style="color: black; text-align: left; font-weight: bold;">2022.06.23</h6></div>
+			<c:forEach items="${reviewList}" var="reviewList" varStatus="status">
+				<div style="border-top:1px solid black; width: 100%;height: 250px; margin-bottom:0px;">
+					<div style="width: 100%;">	
+						<div style="margin-top: 20px; padding-bottom: 1px;">
+							<div style="float: left;"><i class="fa-solid fa-circle-user fa-4x"></i></div>
+							<div style="padding-top: 5px; padding-left: 80px;">
+								<div>
+									<h6 style="color: black; text-align: left; font-weight: bold; margin-bottom: 0px;"><c:out value="${reviewList.id}" /></h6>
+								</div>
+								<div><h6 style="color: black; text-align: left; font-weight: bold;"><c:out value="${reviewList.ifprReviewRegDate}" /></h6></div>
+							</div>
 						</div>
 					</div>
+					<div style="width: 100%; height: 100px;">
+						<div class="black_mat2" style="width: 170px; height: 100px;"></div>
+						<div><p style="padding-left: 200px;"><c:out value="${reviewList.ifprReviewContent}" /></p></div>				
+					</div>	
+					<div>			
+						<div><h6 style="text-align: left; font-size: 13px;"><c:out value="${reviewList.title}" /></h6></div>
+					</div>
 				</div>
-				<div><h6 style="text-align: left; font-size: 13px;">CAT’S EYE DESK MAT(green)</h6></div>				
-				<div><p>너무 좋습니다.</p></div>
-				<div class="black_mat2" style="width: 170px; height: 100px;"></div>				
-			</div>
+			</c:forEach>
 		</section>
 <!------------------------------------------------------------------------Q&A------------------------------------------------------------------------>
 		<section id="content3">
 			<div style="margin-bottom: 10px; margin-top: 10px;">
 				<div style="float: left;"><h5>Q&A</h5></div>
-				<div class="d-flex justify-content-end" style="float: right; width: 400px; height: 40px;"><button type="button" class="btn btn-dark">Q%A 작성하기</button></div>
+				<div class="d-flex justify-content-end" style="float: right; width: 400px; height: 40px;"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#qaModal">Q&A 작성하기</button></div>
+				<!-- Modal -->
+				<div class="modal fade" id="qaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h1 class="modal-title fs-5" id="exampleModalLabel">Q&A</h1>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+								<div class="mb-3">
+				        			<label for="recipient-name" class="col-form-label">제목</label>
+				         			<input type="text" class="form-control" id="recipient-name">
+				        		</div>
+						      	<div class="mb-3">
+									<label for="message-text" class="col-form-label">내용</label>
+									<textarea class="form-control" id="message-text"></textarea>
+   								</div>
+   								<label for="recipient-name" class="col-form-label">등록날짜</label>
+				         		<input type="text" class="form-control" id="recipient-name">
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						        <button type="button" class="btn btn-primary">Save changes</button>
+						    </div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<table class=""style="width: 100%; margin-top: 20px; border-top: 1px solid black;">
 				<thead>
@@ -163,26 +203,16 @@
 						<th class="table_head" style="width: 150px;"><p>작성일</p></th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr>
-						<th class="table_body">답변완료</th>
-						<td class="table_body">비밀글입니다.</td>
-						<td class="table_body">함승윤</td>
-						<td class="table_body">2022.06.23</td>
-					</tr>
-					<tr>
-						<th class="table_body">답변완료</th>
-						<td class="table_body">비밀글입니다.</td>
-						<td class="table_body">함승윤</td>
-						<td class="table_body">2022.06.23</td>
-					</tr>
-					<tr>
-						<th class="table_body">답변대기</th>
-						<td class="table_body">비밀글입니다.</td>
-						<td class="table_body">승윤</td>
-						<td class="table_body">2022.06.23</td>
-					</tr>
-				</tbody>
+				<c:forEach items="${qaList}" var="qaList" varStatus="status">
+					<tbody>
+						<tr>
+							<th class="table_head" style="width: 120px;"><p style="font-weight: bolder;"><c:out value="${qaList.answerYn}" /></p></th>
+							<th class="table_head" style="width: 400px;"><p><c:out value="${qaList.ifprQaContent}" /></p></th>
+							<th class="table_head" style="width: 100px;"><p><c:out value="${qaList.id}" /></p></th>
+							<th class="table_head" style="width: 150px;"><p><c:out value="${qaList.ifprQaRegDate}" /></p></th>
+						</tr>
+					</tbody>
+				</c:forEach>
 			</table>
 		</section>
 <!-------------------------------------------------------------------주문정보------------------------------------------------------------------------------>

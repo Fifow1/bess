@@ -145,6 +145,7 @@
 	SELECT
 		seq as CCseq
 		,codeName as CCname
+		,codeNameEn as CCnameEn
 		,group_seq as CCGseq
 	FROM code
 	WHERE 1=1
