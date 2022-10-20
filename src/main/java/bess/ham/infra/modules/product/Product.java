@@ -21,17 +21,19 @@ public class Product {
 	
 	// qa
 	private String ifprQaSeq;
+	private String ifprQaTitle;
 	private String ifprQaContent;
 	private Date ifprQaRegDate;
 	private Integer answerYn;
-	
+	private String member_seq;
 	
 	//productOption
 	private String ifprSeq;
 	private String ifpoSeq;
 	private Integer option;
 	private String optionSub;
-	private Integer product_seq;
+	private String product_seq;
+	
 	public Integer getCategory() {
 		return category;
 	}
@@ -140,10 +142,11 @@ public class Product {
 	public void setOptionSub(String optionSub) {
 		this.optionSub = optionSub;
 	}
-	public Integer getProduct_seq() {
+	
+	public String getProduct_seq() {
 		return product_seq;
 	}
-	public void setProduct_seq(Integer product_seq) {
+	public void setProduct_seq(String product_seq) {
 		this.product_seq = product_seq;
 	}
 	public Integer getAnswerYn() {
@@ -151,6 +154,18 @@ public class Product {
 	}
 	public void setAnswerYn(Integer answerYn) {
 		this.answerYn = answerYn;
+	}
+	public String getIfprQaTitle() {
+		return ifprQaTitle;
+	}
+	public void setIfprQaTitle(String ifprQaTitle) {
+		this.ifprQaTitle = ifprQaTitle;
+	}
+	public String getMember_seq() {
+		return member_seq;
+	}
+	public void setMember_seq(String member_seq) {
+		this.member_seq = member_seq;
 	}
 	
 	

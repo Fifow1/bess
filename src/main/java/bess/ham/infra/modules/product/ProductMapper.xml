@@ -28,7 +28,7 @@
 	<select id="selectListShop" resultMap="resultMapObj"> 
 		SELECT 
 			pr.seq as ifprSeq
-            ,(select DISTINCT category ) as category
+            ,pr.category
             ,pr.title
             ,pr.star
             ,pr.price
@@ -141,6 +141,7 @@
 			,qa.answerYn
     		,mm.id
    	 		,qa.product_seq
+   	 		,qa.title as ifprQaTitle
    	 		,qa.content as ifprQaContent
     		,qa.regdate as ifprQaRegDate
 		from qa qa
@@ -151,22 +152,26 @@
 	</select>
 	
 	<insert id="insertQa">
-		INSERT INTO qa qa
-		inner JOIN member mm ON mm.seq = qa.member_seq
+		INSERT INTO qa
 		(
-    		mm.id
-   	 		,qa.product_seq
-   	 		,qa.content as ifprQaContent
-    		,qa.regdate as ifprQaRegDate
+			member_seq
+   	 		,product_seq
+   	 		,answerYn
+   	 		,title 
+   	 		,content 
+    		,regdate 
 		)
 		
 		VALUES (
-			#{id}
-			,#{ifprSeq}
+			#{member_seq}
+			,#{product_seq}
+			,0
+			,#{ifprQaTitle}
 			,#{ifprQaContent}
 			,NOW()
 		)
-		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+		<!-- keyProperty = dto컬럼이름 -->
+		<selectKey resultType="String" keyProperty="ifprQaSeq" order="AFTER">
 		SELECT last_insert_id()
 		</selectKey>
 	</insert>

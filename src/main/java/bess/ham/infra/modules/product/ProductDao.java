@@ -63,4 +63,10 @@ public class ProductDao {
 		return list;
 	}
 	
+	
+	public int insertQa(Product dto) {
+		int result = sqlSession.insert(namespace + ".insertQa", dto);
+		return result;
+	}
+	
 }

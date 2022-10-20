@@ -35,7 +35,7 @@
 <%@include file="../../base/header.jsp"%>
 <!------------------------------------------------------------------------------------------------------------------------------------------------->
 <div id="wrapper"style=" height: 2000px;">
-	<form method="post" action="/product/productView/">
+	<form method="get" name="formList" id="formList">
 	<c:set var="listCodeCategory" value="${CodeServiceImpl.selectListCachedCode('8')}"/>
 	<c:set var="listCodeColor" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
 	<div style="width: 13%; float: left; margin-top: 200px; margin-left: 10%;">
@@ -123,7 +123,7 @@
 		</div>
 	</div>
 	<div style="width: 77%; float: right; margin-top: 200px;">
-		<div style="width: 100%; height: 300px; padding-left:100px; padding-right:100px; ">
+		<div style="width: 100%; height: 300px; padding-left:100px; padding-right:100px;">
 		<c:forEach items="${list}" var="list" varStatus="status">
 			<div style="width:350px; float:left; height: 100%; margin-right: 30px;">
 				<div class="black_mat2" style="width: 350px;height: 200px;" onclick="location.href='/product/productView?ifprSeq=<c:out value="${list.ifprSeq}"/>'"></div>
@@ -131,10 +131,11 @@
 				<%-- 	<p class="h5" style="float: left; margin-bottom: 5px; margin-right: 40px;">
 						<c:out value="${list.title}" />
 					</p> --%>
-					<input type="hidden" value="<c:out value="${list.ifprSeq}"/>">
-					<a onclick="location.href='/product/productView?ifprSeq=<c:out value="${list.ifprSeq}"/>'"class="link-dark">
+					<input type="hidden" name="ifprSeq"/>
+					<%-- <a onclick="location.href='/product/productView?ifprSeq=<c:out value="${list.ifprSeq}"/>'"class="link-dark">
 						<c:out value="${list.title}" /> 
-					</a>
+					</a> --%>
+					<a href="javascript:goForm(<c:out value="${list.ifprSeq }"/>)" class="link-dark"><c:out value="${list.title}" /></a>
 					<div style="float: right; margin-bottom: 0px;">
 						<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
 					</div>
@@ -161,7 +162,10 @@
 		</c:forEach>
 		</div>
 	</div>
-
+</form>
+<form name="formVo">
+	<%@include file="productVo.jsp"%>
+</form>
 
 
 	<!------------------------------------------------------------------- footer -------------------------------------------------------------------->
@@ -214,12 +218,12 @@
 			</div>
 		</div>
 	</div>
-	</form>
 </div>
 <script type="text/javascript">
-
-	var goUrlPrList="productListShop";
+	var goUrlPrList = "productListShop"
+	var goUrlPrView="productView";
 	var form = $("form[name=formList]");
+	var seq = $("input:hidden[name=ifprSeq]");
 	
 	 function submit(num) {
 		var li_val = $('#' + num).attr("value");
@@ -227,6 +231,13 @@
 		$('#test').val(li_val);
 		form.attr("action", goUrlPrList).submit();
 	}  
+	 
+ goForm = function(keyValue) {
+    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+    	seq.val(keyValue);
+		form.attr("action", goUrlPrView).submit();
+	}
+	 
 	 
 		/*  var colorBtn = <c:out value="${color}"/>
 			 document.getElementById('(optionColor)').style.backgroundColor = "(colorBtn)"; */

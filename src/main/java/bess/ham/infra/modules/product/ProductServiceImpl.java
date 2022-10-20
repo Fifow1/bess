@@ -57,5 +57,11 @@ public class ProductServiceImpl implements ProductService {
 			return dao.selectListQa(vo);
 		}
 		
+		@Override
+		public int insertQa(Product dto) throws Exception{
+			int result = dao.insertQa(dto);
+			return result;
+		}
+		
 	
 }

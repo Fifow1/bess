@@ -20,6 +20,10 @@
 	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="/resources/css/main2.css" type="text/css">
 	<jsp:useBean id="CodeServiceImpl" class="bess.ham.infra.modules.code.CodeServiceImpl"/>
+	<!-- Datepicker -->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
   	<title>productList</title>
 	<style type="text/css">
 
@@ -30,6 +34,7 @@
 <!-------------------------------------------------------------------header -------------------------------------------------------------------->
 <%@include file="../../base/header.jsp"%>
 <!------------------------------------------------------------------------------------------------------------------------------------------------->
+
 <div id="wrapper"style=" height: 4300px;">
 <c:set var="listCodeColor" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
 	<div style="height: 900px;">
@@ -115,105 +120,118 @@
 		</section>
 <!---------------------------------------------------------------------리뷰---------------------------------------------------------------------------->
 		<section id="content2">
-			<div style="margin-bottom: 60px; margin-top: 10px;">
-				<div style="float: left;">상품리뷰</div>
-				<div class="d-flex justify-content-end" style="float: right; width: 400px; height: 40px;"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">리뷰 작성하기</button></div>
-
-				<!-- Modal -->
-				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				  <div class="modal-dialog">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				      </div>
-				      <div class="modal-body">
-				        ...
-				      </div>
-				      <div class="modal-footer">
-				        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-				        <button type="button" class="btn btn-primary">Save changes</button>
-				      </div>
-				    </div>
-				  </div>
+				<div style="margin-bottom: 60px; margin-top: 10px;">
+					<div style="float: left;">상품리뷰</div>
+					<div class="d-flex justify-content-end" style="float: right; width: 400px; height: 40px;"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">리뷰 작성하기</button></div>
+	
+					<!-- Modal -->
+					<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					  <div class="modal-dialog">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+					        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					      </div>
+					      <div class="modal-body">
+					        ...
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					        <button type="button" class="btn btn-primary">Save changes</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
 				</div>
-			</div>
-			<c:forEach items="${reviewList}" var="reviewList" varStatus="status">
-				<div style="border-top:1px solid black; width: 100%;height: 250px; margin-bottom:0px;">
-					<div style="width: 100%;">	
-						<div style="margin-top: 20px; padding-bottom: 1px;">
-							<div style="float: left;"><i class="fa-solid fa-circle-user fa-4x"></i></div>
-							<div style="padding-top: 5px; padding-left: 80px;">
-								<div>
-									<h6 style="color: black; text-align: left; font-weight: bold; margin-bottom: 0px;"><c:out value="${reviewList.id}" /></h6>
+				<c:forEach items="${reviewList}" var="reviewList" varStatus="status">
+					<div style="border-top:1px solid black; width: 100%;height: 250px; margin-bottom:0px;">
+						<div style="width: 100%;">	
+							<div style="margin-top: 20px; padding-bottom: 1px;">
+								<div style="float: left;"><i class="fa-solid fa-circle-user fa-4x"></i></div>
+								<div style="padding-top: 5px; padding-left: 80px;">
+									<div>
+										<h6 style="color: black; text-align: left; font-weight: bold; margin-bottom: 0px;"><c:out value="${reviewList.id}" /></h6>
+									</div>
+									<div><h6 style="color: black; text-align: left; font-weight: bold;"><c:out value="${reviewList.ifprReviewRegDate}" /></h6></div>
 								</div>
-								<div><h6 style="color: black; text-align: left; font-weight: bold;"><c:out value="${reviewList.ifprReviewRegDate}" /></h6></div>
 							</div>
 						</div>
+						<div style="width: 100%; height: 100px;">
+							<div class="black_mat2" style="width: 170px; height: 100px;"></div>
+							<div><p style="padding-left: 200px;"><c:out value="${reviewList.ifprReviewContent}" /></p></div>				
+						</div>	
+						<div>			
+							<div><h6 style="text-align: left; font-size: 13px;"><c:out value="${reviewList.title}" /></h6></div>
+						</div>
 					</div>
-					<div style="width: 100%; height: 100px;">
-						<div class="black_mat2" style="width: 170px; height: 100px;"></div>
-						<div><p style="padding-left: 200px;"><c:out value="${reviewList.ifprReviewContent}" /></p></div>				
-					</div>	
-					<div>			
-						<div><h6 style="text-align: left; font-size: 13px;"><c:out value="${reviewList.title}" /></h6></div>
-					</div>
-				</div>
-			</c:forEach>
+				</c:forEach>
 		</section>
 <!------------------------------------------------------------------------Q&A------------------------------------------------------------------------>
 		<section id="content3">
-			<div style="margin-bottom: 10px; margin-top: 10px;">
-				<div style="float: left;"><h5>Q&A</h5></div>
-				<div class="d-flex justify-content-end" style="float: right; width: 400px; height: 40px;"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#qaModal">Q&A 작성하기</button></div>
-				<!-- Modal -->
-				<div class="modal fade" id="qaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h1 class="modal-title fs-5" id="exampleModalLabel">Q&A</h1>
-								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			<form name="formVo">
+				<%@include file="productVo.jsp"%>
+			</form>
+			<form name=formQa method="get">
+				<input type="text" value="${item.ifprSeq}">
+				<input type="text" name="ifprSeq" value="${vo.ifprSeq}">
+				<!-- <input type="hidden" name=""/> -->
+				<div style="margin-bottom: 10px; margin-top: 10px;">
+					<div style="float: left;"><h5>Q&A</h5></div>
+					<div class="d-flex justify-content-end" style="float: right; width: 400px; height: 40px;"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#qaModal">Q&A 작성하기</button></div>
+					<!-- Modal -->
+					<div class="modal fade" id="qaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h1 class="modal-title fs-5" id="exampleModalLabel">Q&A</h1>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+									<div class="mb-3">
+					        			<label for="recipient-name" class="col-form-label">제목</label>
+					         			<input type="text" class="form-control" id="recipient-name" name="ifprQaTitle">
+					        		</div>
+							      	<div class="mb-3">
+										<label for="message-text" class="col-form-label">내용</label>
+										<textarea class="form-control" id="message-text" name="ifprQaContent"></textarea>
+	   								</div>
+	   								<div class="mb-3">
+	   									<input type="text" class="form-control" id="recipient-name"style="width: 40%; display: inline-block;"
+	   										name="member_seq" value="<c:out value="${sessSeq }"/>"
+	   									>
+	   									<input type="text" class="form-control" id="recipient-name"style="width: 40%; display: inline-block;"
+	   										name="product_seq" value="<c:out value="${item.ifprSeq}"/>">
+	   								</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+							        <button type="button" class="btn btn-primary" id="submitQa">Save changes</button>
+							    </div>
 							</div>
-							<div class="modal-body">
-								<div class="mb-3">
-				        			<label for="recipient-name" class="col-form-label">제목</label>
-				         			<input type="text" class="form-control" id="recipient-name">
-				        		</div>
-						      	<div class="mb-3">
-									<label for="message-text" class="col-form-label">내용</label>
-									<textarea class="form-control" id="message-text"></textarea>
-   								</div>
-   								<label for="recipient-name" class="col-form-label">등록날짜</label>
-				         		<input type="text" class="form-control" id="recipient-name">
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-						        <button type="button" class="btn btn-primary">Save changes</button>
-						    </div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<table class=""style="width: 100%; margin-top: 20px; border-top: 1px solid black;">
-				<thead>
-					<tr>
-						<th class="table_head" style="width: 120px;"><p style="font-weight: bolder;">답변상태</p></th>
-						<th class="table_head" style="width: 400px;"><p>내용</p></th>
-						<th class="table_head" style="width: 100px;"><p>작성자</p></th>
-						<th class="table_head" style="width: 150px;"><p>작성일</p></th>
-					</tr>
-				</thead>
-				<c:forEach items="${qaList}" var="qaList" varStatus="status">
-					<tbody>
+				<table class=""style="width: 100%; margin-top: 20px; border-top: 1px solid black;">
+					<thead>
 						<tr>
-							<th class="table_head" style="width: 120px;"><p style="font-weight: bolder;"><c:out value="${qaList.answerYn}" /></p></th>
-							<th class="table_head" style="width: 400px;"><p><c:out value="${qaList.ifprQaContent}" /></p></th>
-							<th class="table_head" style="width: 100px;"><p><c:out value="${qaList.id}" /></p></th>
-							<th class="table_head" style="width: 150px;"><p><c:out value="${qaList.ifprQaRegDate}" /></p></th>
+							<th class="table_head" style="width: 120px;"><p style="font-weight: bolder;">답변상태</p></th>
+							<th class="table_head" style="width: 400px;"><p>제목</p></th>
+							<th class="table_head" style="width: 100px;"><p>작성자</p></th>
+							<th class="table_head" style="width: 150px;"><p>작성일</p></th>
 						</tr>
-					</tbody>
-				</c:forEach>
-			</table>
+					</thead>
+					<c:forEach items="${qaList}" var="qaList" varStatus="status">
+						<tbody>
+							<tr>
+								<th class="table_head" style="width: 120px;"><p style="font-weight: bolder;"><c:out value="${qaList.answerYn}" /></p></th>
+								<th class="table_head" style="width: 400px;"><p><c:out value="${qaList.ifprQaTitle}" /></p></th>
+								<th class="table_head" style="width: 100px;"><p><c:out value="${qaList.id}" /></p></th>
+								<th class="table_head" style="width: 150px;"><p><c:out value="${qaList.ifprQaRegDate}" /></p></th>
+							</tr>
+						</tbody>
+					</c:forEach>
+				</table>
+			</form>
 		</section>
 <!-------------------------------------------------------------------주문정보------------------------------------------------------------------------------>
 		<section id="content4">
@@ -298,6 +316,17 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	var goUrlQaIsrt = "/product/productIsrtQa";
+	var form = $("form[name=formQa]");
+	
+	var seq = $("input:text[name=ifprSeq]");
+	
+	$("#submitQa").on("click", function() {
+		form.attr("action", goUrlQaIsrt).submit();
+	});
+
+</script>
 
 
 

@@ -110,7 +110,7 @@
 				</div>
 			</div>
 			
-			<button type="button" class="btn btn-danger border ms-2" id="btnLogout" style="width: 120px;">나가기</button>
+			<!-- <button type="button" class="btn btn-danger border ms-2" id="btnLogout" style="width: 120px;">나가기</button> -->
 			
 			<div class="row">
 				<div class="col mb-2 mt-2 d-flex justify-content-center" style="padding-right: 370px;" onclick="location.href='./memberFindid_phone.html'">
@@ -124,9 +124,9 @@
 			</div>
 		</div>
 	</div>
-sessSeq: <c:out value="${sessSeq }"/><br>
+<%-- sessSeq: <c:out value="${sessSeq }"/><br>
 sessName: <c:out value="${sessName }"/><br>
-sessId: <c:out value="${sessId }"/><br>
+sessId: <c:out value="${sessId }"/><br> --%>
 
 
 		<!------------------------------------------------------------------- footer -------------------------------------------------------------------->

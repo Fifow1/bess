@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import bess.ham.infra.modules.member.Member;
 
@@ -40,7 +41,7 @@ public class ProductControllre {
 	
 	// user
 	@RequestMapping(value="productListShop")
-	public String productList_deskmat(ProductVo vo,Product dto,Model model) throws Exception{
+	public String productList_deskmat(@ModelAttribute("vo") ProductVo vo,Product dto,Model model) throws Exception{
 		
 		List<Product> list = service.selectListShop(vo);
 		model.addAttribute("list", list);
@@ -48,7 +49,11 @@ public class ProductControllre {
 	}
 	
 	@RequestMapping(value="productView")
-	public String productView(Product dto,ProductVo vo,Model model) throws Exception{
+	public String productView(@ModelAttribute("vo") ProductVo vo,Product dto,Model model) throws Exception{
+		
+		
+		System.out.println("vo.getIfprSeq(): "+vo.getIfprSeq());
+		System.out.println("dto.getIfprSeq(): "+dto.getIfprSeq());
 		
 		Product result = service.selectOne(vo);
 		List<Product> reviewList = service.selectListReview(vo);
@@ -57,6 +62,15 @@ public class ProductControllre {
 		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("qaList", qaList);
 		return "infra/product/user/productView";
+	}
+	
+	@RequestMapping(value = "productIsrtQa")
+	public String ProductIsrtQa(@ModelAttribute("vo") ProductVo vo,Product dto) throws Exception{
+		service.insertQa(dto); 
+		System.out.println("vo.getIfprSeq()2: "+vo.getIfprSeq());
+		System.out.println("dto.getIfprSeq()2: "+dto.getIfprSeq());
+		
+		return "redirect:/product/productView";
 	}
 	
 	@RequestMapping(value="productBuy")
