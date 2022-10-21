@@ -42,7 +42,7 @@ public class ProductControllre {
 	// user
 	@RequestMapping(value="productListShop")
 	public String productList_deskmat(@ModelAttribute("vo") ProductVo vo,Product dto,Model model) throws Exception{
-		
+		vo.setCategory(vo.getCategory() == null ? 34 : vo.getCategory());
 		List<Product> list = service.selectListShop(vo);
 		model.addAttribute("list", list);
 		return "infra/product/user/productListShop";
@@ -50,10 +50,6 @@ public class ProductControllre {
 	
 	@RequestMapping(value="productView")
 	public String productView(@ModelAttribute("vo") ProductVo vo,Product dto,Model model) throws Exception{
-		
-		
-		System.out.println("vo.getIfprSeq(): "+vo.getIfprSeq());
-		System.out.println("dto.getIfprSeq(): "+dto.getIfprSeq());
 		
 		Product result = service.selectOne(vo);
 		List<Product> reviewList = service.selectListReview(vo);
@@ -65,10 +61,12 @@ public class ProductControllre {
 	}
 	
 	@RequestMapping(value = "productIsrtQa")
-	public String ProductIsrtQa(@ModelAttribute("vo") ProductVo vo,Product dto) throws Exception{
+	public String ProductIsrtQa(ProductVo vo,Product dto,RedirectAttributes redirectAttributes) throws Exception{
+		System.out.println("vo.getIfprSeq()1: "+vo.getIfprSeq());
 		service.insertQa(dto); 
+		vo.setIfprSeq(vo.getIfprSeq());
+		redirectAttributes.addFlashAttribute("vo",vo);
 		System.out.println("vo.getIfprSeq()2: "+vo.getIfprSeq());
-		System.out.println("dto.getIfprSeq()2: "+dto.getIfprSeq());
 		
 		return "redirect:/product/productView";
 	}

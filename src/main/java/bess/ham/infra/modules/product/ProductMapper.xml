@@ -35,18 +35,7 @@
             ,pr.stock
             ,pr.uploadDate
 		    ,group_concat(pro .optionSub separator ',') AS 'optionSub'
-		from(
-			select
-		    pr.seq
-            ,pr.category
-            ,pr.title
-            ,pr.star
-            ,pr.price
-            ,pr.stock
-            ,pr.uploadDate
-		    from product pr
-			order by pr.seq DESC 
-		    ) pr
+		from product pr
 		LEFT JOIN productOption pro 
 		ON pr.seq = pro.product_seq
 		WHERE 1=1 
@@ -100,18 +89,7 @@
             ,pr.stock
             ,pr.uploadDate
 		    ,group_concat(pro .optionSub separator ',') AS 'optionSub'
-		from(
-			select
-		    pr.seq 
-            ,pr.category
-            ,pr.title
-            ,pr.star
-            ,pr.price
-            ,pr.stock
-            ,pr.uploadDate
-		    from product pr
-			order by pr.seq DESC 
-		    ) pr
+		from product pr
 		LEFT JOIN productOption pro 
 		ON pr.seq = pro.product_seq
 		WHERE 1=1 
@@ -164,7 +142,7 @@
 		
 		VALUES (
 			#{member_seq}
-			,#{product_seq}
+			,#{ifprSeq}
 			,0
 			,#{ifprQaTitle}
 			,#{ifprQaContent}

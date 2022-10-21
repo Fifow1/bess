@@ -52,7 +52,7 @@
 						<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">
 								<li id="<c:out value="${listCategory.CCseq }"/>" value="<c:out value="${listCategory.CCseq }"/>" 
 									onclick="submit(<c:out value="${listCategory.CCseq }"/>)">
-									<input id="test" type="hidden" class="inputbox" name="category" size="100" />
+									<input id="valueC" type="hidden" class="inputbox" name="category" size="100" />
 									<c:out value="${listCategory.CCname }"/>
 								</li>
 						</c:forEach>
@@ -124,6 +124,7 @@
 	</div>
 	<div style="width: 77%; float: right; margin-top: 200px;">
 		<div style="width: 100%; height: 300px; padding-left:100px; padding-right:100px;">
+		<input type="hidden" name="ifprSeq"/>
 		<c:forEach items="${list}" var="list" varStatus="status">
 			<div style="width:350px; float:left; height: 100%; margin-right: 30px;">
 				<div class="black_mat2" style="width: 350px;height: 200px;" onclick="location.href='/product/productView?ifprSeq=<c:out value="${list.ifprSeq}"/>'"></div>
@@ -131,11 +132,10 @@
 				<%-- 	<p class="h5" style="float: left; margin-bottom: 5px; margin-right: 40px;">
 						<c:out value="${list.title}" />
 					</p> --%>
-					<input type="hidden" name="ifprSeq"/>
 					<%-- <a onclick="location.href='/product/productView?ifprSeq=<c:out value="${list.ifprSeq}"/>'"class="link-dark">
 						<c:out value="${list.title}" /> 
 					</a> --%>
-					<a href="javascript:goForm(<c:out value="${list.ifprSeq }"/>)" class="link-dark"><c:out value="${list.title}" /></a>
+					<a href="javascript:goForm(<c:out value="${list.ifprSeq}"/>)" class="link-dark"><c:out value="${list.title}" /></a>
 					<div style="float: right; margin-bottom: 0px;">
 						<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
 					</div>
@@ -221,14 +221,14 @@
 </div>
 <script type="text/javascript">
 	var goUrlPrList = "productListShop"
-	var goUrlPrView="productView";
 	var form = $("form[name=formList]");
 	var seq = $("input:hidden[name=ifprSeq]");
+	var goUrlPrView="productView";
 	
 	 function submit(num) {
-		var li_val = $('#' + num).attr("value");
+	 	var li_val = $('#' + num).attr("value"); 
 		alert(li_val);
-		$('#test').val(li_val);
+		$('#valueC').val(li_val);
 		form.attr("action", goUrlPrList).submit();
 	}  
 	 

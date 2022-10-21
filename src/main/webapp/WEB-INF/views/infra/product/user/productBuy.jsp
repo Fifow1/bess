@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
-	<!Doctype html>
+		<!Doctype html>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -14,57 +14,85 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@700&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,600;1,200&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@600&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="/resources/css/main.css">
   	<title>productList</title>
 	<style type="text/css">
-
+	h5,h6,p{
+	font-family: 'Gowun Dodum', sans-serif;
+}
 </style>
 </head>
 
 <body>
 <!-------------------------------------------------------------------header -------------------------------------------------------------------->
-<%@include file="../../base/header.jsp"%>
+<nav class="navbar navbar-expand-lg header">
+	<div class="container" style="height: 0px;">
+		<div style="margin-top: 30px; margin-right: 70px;">
+			<a class="navbar-brand" href="#"><h1 style="color: #FFFFFF; font-family: 'Edu VIC WA NT Beginner', cursive;">Ham</h1></a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav" style="font-family: 'Kanit', sans-serif;">
+				<li class="nav-item" style="margin-right: 40px;"><a class="nav-link active" aria-current="page" style="color: #FFFFFF;" href="../main.html">Home</a></li>
+				<li class="nav-item" style="margin-right: 40px;"><a class="nav-link" aria-current="page" style="color: #FFFFFF;" href="./productList_deskmat.html">shop</a></li>
+				<li class="nav-item" style="margin-right: 40px;"><a class="nav-link" aria-current="page" style="color: #FFFFFF;" href="#">community</a></li>
+			</ul>
+		</div>
+		<div id="headerR" class="d-grid gap-2 d-md-flex justify-content-md-end">
+			<button class="btn btn-outline" type="button" onclick="location.href='../member/memberLogin.html'" style="color: #FFFFFF">
+				<i class="fa-solid fa-user"></i>
+			</button>
+			<button class="btn btn-outline me-md-2" type="button" style="color: #FFFFFF">
+				<i class="fa-solid fa-cart-shopping"></i>
+			</button>
+		</div>
+	</div>
+</nav>
 <!------------------------------------------------------------------------------------------------------------------------------------------------->
 <div id="wrapper"style=" height: 3400px;">
-		<div class="container" style="margin-top: 150px;">
-			<div class="row mb-0 ps-0"><h5 style="padding-left: 0px;font-size: 17px;">주문 상품 정보</h5></div>
-			<div class="row" style="border-top:1px solid black;">
-				<div class="col-2 d-flex justify-content-center"><h5 style="padding-left: 0px; margin-top: 20px; margin-bottom: 0px; font-size: 20px; font-weight: 700;">logo</h5></div>
+		<div class="container" style="margin-top: 150px; width: 1000px;">
+			<div class="row mb-2 ps-0"><h5 style="padding-left: 0px;font-size: 17px;">주문 상품 정보</h5></div>
+			<div class="row border-bottom pb-2" style="border-top:1px solid black;">
+				<div class="col-2 d-flex justify-content-center"><h5 style="padding-left: 0px; margin-top: 20px; margin-bottom: 0px; font-size: 17px; font-weight: 700;">사진</h5></div>
 				<div class="col d-flex justify-content-center"><h5 style="padding-left: 0px; margin-top: 20px; margin-bottom: 0px; font-size: 17px; font-weight: 700;">상품정보</h5></div>
-				<div class="col d-flex justify-content-center"><h5 style="padding-left: 0px; margin-top: 20px; margin-bottom: 0px; font-size: 17px; font-weight: 700;">쿠폰적용</h5></div>
+				<div class="col d-flex justify-content-center"><h5 style="padding-left: 0px; margin-top: 20px; margin-bottom: 0px; font-size: 17px; font-weight: 700;">옵션</h5></div>
 				<div class="col d-flex justify-content-center"><h5 style="padding-left: 0px; margin-top: 20px; margin-bottom: 0px; font-size: 17px; font-weight: 700;">주문금액</h5></div>
 			</div>
-			<div class="row border-top border-bottom">
+			<div class="row border-bottom">
 				<div class="col-2 d-flex justify-content-center"><h5 style="padding-left: 0px; margin-top: 20px;  font-size: 17px; ">
 					<div class="black_mat2" style="width: 170px; height: 100px;"></div></h5>
 				</div>
-				<div class="col">
-					<h5 style="padding-left: 0px; margin-top: 30px; font-size: 17px; text-align: center;">CAT’S EYE DESK MAT</h5>
-					<h5 style="padding-left: 0px; margin-top: 10px; font-size: 17px; color: gray;text-align: center;">black</h5>
-					<h5 style="padding-left: 0px; margin-top: 10px; font-size: 17px; color: gray; text-align: center;">30000원</h5>
+				<div class="col d-flex justify-content-center d-flex align-items-center">
+					<h5 style="padding-left: 0px;font-size: 17px; text-align: center; font-weight: 600;">CAT’S EYE DESK MAT</h5>
 				</div>
-				<div class="col d-flex justify-content-center d-flex align-items-center"><h5 style="padding-left: 0px; margin-top: 20px; margin-bottom: 13px; font-size: 17px; ">적용 가능한 쿠폰이 없습니다</h5></div>
-				<div class="col d-flex justify-content-center d-flex align-items-center"><h5 style="padding-left: 0px; margin-top: 20px; margin-bottom: 13px; font-size: 17px; ">30000원</h5></div>
+				<!-- <div class="col d-flex justify-content-center d-flex align-items-center"><h5 style="padding-left: 0px; margin-top: 20px; margin-bottom: 13px; font-size: 17px; ">적용 가능한 쿠폰이 없습니다</h5></div> -->
+				<div class="col d-flex justify-content-center d-flex align-items-center">
+					<h5 style="padding-left: 0px; font-size: 17px; text-align: center; font-weight: 600;">black</h5>
+				</div>
+				<div class="col d-flex justify-content-center d-flex align-items-center">
+					<h5 style="padding-left: 0px; margin-bottom: 13px; font-size: 17px; font-weight: 600;">30000원</h5>
+				</div>
 			</div>
+			
+			
 			<div class="row" style="border-bottom:1px solid black;">
-				<div class="col d-flex justify-content-end">
+				<div class="col d-flex justify-content-end pt-2">
 					<h6>상품</h6>&nbsp;
-					<h6 style="color: black;">30000</h6>
+					<h6 style="color: black; font-weight: 600;">30000</h6>
 					<h6>원</h6>&nbsp;
 					<h6 style="color: black;">+</h6>&nbsp;
 					<h6>배송</h6>&nbsp;
-					<h6 style="color: black;">0</h6>
+					<h6 style="color: black; font-weight: 600;">0</h6>
 					<h6>원</h6>
-					<h6 style="color: black; margin-left: 30px;">주문금액 30000원</h6>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col d-flex justify-content-end">
 					<h6 style="font-size: 17px; font-weight: 700; color: black;">총 주문금액</h6>
-					<h6 style="color: #FFBF00; margin-left: 30px; ">30000</h6>
+					<h6 style="color: #FFBF00; margin-left: 30px; font-weight: 600;">30000</h6>
 					<h6 style="font-size: 17px; font-weight: 700; color: black;">원</h6>
 				</div>
 			</div>
@@ -75,7 +103,6 @@
 				<h5 style="font-size: 17px;padding-left: 0px;">주문자 정보</h5>
 				</div>
 				<div class="col  d-flex justify-content-end">
-				<a href="#" class="link-warnning ps-5" style="text-decoration: none;"><h6 style="color: #FFBF00">변경하기</h6></a>
 				</div>
 			</div>
 			<div class="row mb-0" style="border-top:1px solid black;">
@@ -95,9 +122,9 @@
 			<div class="row mb-0" style="border-bottom:1px solid black;">
 				<div class="col-2  mb-0d-flex justify-content-center d-flex align-items-center"><h5 style="padding-left: 0px; margin-top: 20px; margin-bottom: 20px; font-size: 17px; font-weight: 700;">이메일</h5></div>
 				<div class="col mb-0 d-flex align-items-center">
-					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="lasldjf123" style="width: 300px;"> &nbsp;&nbsp;&nbsp;@&nbsp;&nbsp;&nbsp;
-					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="naver.com" style="width: 300px;">&nbsp;&nbsp;&nbsp;
-					<select class="form-select" id="inputGroupSelect01" style="width: 300px;">
+					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="lasldjf123" style="width: 220px;"> &nbsp;&nbsp;&nbsp;@&nbsp;&nbsp;&nbsp;
+					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="naver.com" style="width: 220px;">&nbsp;&nbsp;&nbsp;
+					<select class="form-select" id="inputGroupSelect01" style="width: 220px;">
 						<option selected>Choose...</option>
 						<option value="1">naver.com</option>
 						<option value="2">daum.net</option>
@@ -113,7 +140,7 @@
 					<h5 style="font-size: 17px;padding-left: 0px; margin-bottom: 0px;">배송지 정보</h5>
 				</div>
 				<div class="col d-flex justify-content-end">
-				<a href="#" class="link-warnning ps-5" style="text-decoration: none;"><h6 style="color: #FFBF00">변경하기</h6></a>
+				<a href="#" class="link-warnning ps-5" style="text-decoration: none;"><h6 style="color: #FFBF00; font-weight: 600;">변경하기</h6></a>
 				</div>
 			</div>
 			<div class="row mb-0" style="border-top:1px solid black;">
@@ -150,7 +177,7 @@
 			</div>
 <!------------------------------------------------------------------- 쿠폰 -------------------------------------------------------------------->
 			<br><br><br><br>
-			<div class="row mb-0 ps-0">
+			<!-- <div class="row mb-0 ps-0">
 				<div class="col" style="padding-left: 0px;">
 					<h5 style="font-size: 17px;padding-left: 0px;">쿠폰</h5>
 				</div>
@@ -168,7 +195,7 @@
 					<button type="button" class="btn btn-dark" style="margin-left: 10px;width: 100px;">사용</button>
 				</div>
 			</div>
-			<br><br><br><br>
+			<br><br><br><br> -->
 <!------------------------------------------------------------------- 최종 금액 -------------------------------------------------------------------->
 			<div class="row mb-0 ps-0">
 				<div class="col" style="padding-left: 0px;">
@@ -181,10 +208,6 @@
 			</div>
 			<div class="row">
 				<div class="col-2"><h5 style="padding-left: 0px; margin-top: 20px; margin-bottom: 20px; font-size: 17px; font-weight: 700; text-align: center;">배송비</h5></div>
-				<div class="col d-flex justify-content-end"><h5 style="padding-left: 0px; margin-top: 20px; margin-bottom: 20px; font-size: 17px; font-weight: 700; text-align: center;">0원</h5></div>
-			</div>
-			<div class="row">
-				<div class="col-2"><h5 style="padding-left: 0px; margin-top: 20px; margin-bottom: 20px; font-size: 17px; font-weight: 700; text-align: center;">쿠폰할인</h5></div>
 				<div class="col d-flex justify-content-end"><h5 style="padding-left: 0px; margin-top: 20px; margin-bottom: 20px; font-size: 17px; font-weight: 700; text-align: center;">0원</h5></div>
 			</div>
 			<div class="row" style="border-bottom: 1px solid black;">
@@ -206,20 +229,18 @@
 					<button type="button" class="btn btn-light" style="width: 200px; height: 100px; margin-top: 10px;"><h5 style="font-weight: 700; font-size: 13px;">카드 등록하기</h5></button>
 				</div>
 			</div>
-			<div class="row" style="border-bottom: 1px solid black;">
+			<div class="row mb-5" style="border-bottom: 1px solid black;">
 				<div class="col-2"><h5 style="padding-left: 0px; margin-top: 20px; margin-bottom: 20px; font-size: 17px; font-weight: 700; text-align: center;">일반결제</h5></div>
 				<div class="col d-flex align-items-center">
-					<a href="#" class="link ps-5" style="text-decoration: none;"><p style="color: #2EFE2E;">naver pay</p></a>
-					<a href="#" class="link-warning ps-5" style="text-decoration: none;"><p>kakao pay</p></a>
-					<a href="#" class="link ps-5" style="text-decoration: none;"><p>toss pay</p></a>
-					<a href="#" class="link-dark ps-5" style="text-decoration: none;"><p>신용/체크카드</p></a>
-					<a href="#" class="link-dark ps-5" style="text-decoration: none;"><p>무통장 입금(에스크로)</p></a>
-					<a href="#" class="link-dark ps-5" style="text-decoration: none;"><p>휴대폰결제</p></a>
+					<a href="#" class="link ps-5 pt-3" style="text-decoration: none;"><p style="color:#04B404">naver pay</p></a>
+					<a href="#" class="link-warning ps-5 pt-3" style="text-decoration: none;"><p>kakao pay</p></a>
+					<a href="#" class="link ps-5 pt-3" style="text-decoration: none;"><p>toss pay</p></a>
+					<a href="#" class="link-dark ps-5 pt-4" style="text-decoration: none;"><p>신용/체크카드</p></a>
 				
 				</div>
-			</div>
+			</div><br><br>
 <!------------------------------------------------------------------- 이용동의 -------------------------------------------------------------------->
-			<br><br><br>
+			<!-- <br><br><br>
 			<div class="row mb-0 ps-0">
 				<div class="col" style="padding-left: 0px;">
 					<h5 style="font-size: 17px; padding-left: 0px;">구매조건/약관 및 개인정보 이용 동의	</h5>
@@ -238,10 +259,10 @@
 					<h5 style="font-size: 16px;">위 상품의 구매조건읠 확인하였으며, 경제 및 개인정보 제 3자 제공에 모두 동의합니다.</h5>
 				</div>
 			</div>
-			<br><br><br><br><br><br>
+			<br><br><br><br><br><br> -->
 			<div class="row" >
-				<div class="col d-flex justify-content-center">
-					<button type="button" class="btn btn-dark" style="width: 300px;" onclick="location.href='./productbuy_result.html'">가입하기</button>
+				<div class="col d-flex justify-content-center mt-5">
+					<button type="button" class="btn btn-dark" style="width: 300px;" onclick="location.href='./productbuy_result.html'">결제하기</button>
 				</div>
 			</div>
 		</div>

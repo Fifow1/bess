@@ -36,9 +36,9 @@
 	<%@include file="../../base/header.jsp"%>
 	<!------------------------------------------------------------------------------------------------------------------------------------------------->
 
-	<div id="wrapper" style="height: 2700px">
+	<div id="wrapper" style="height: 1900px">
 
-		<div style="width: 40%; height: 1000px; float: left; margin-top: 500px;">
+		<div style="width: 40%; height: 1400px; float: left; margin-top: 500px;">
 			<div class="row" style="padding-right: 100px;">
 				<div class="col d-flex justify-content-center">
 					<p style="font-size: 80px;" class="h1">
@@ -60,7 +60,7 @@
 
 
 
-		<div style="width: 60%; height: 2000px; float: right; padding-top: 200px;">
+		<div style="width: 60%; height: 1700px; float: right; padding-top: 200px;">
 			<div class="container">
 				<form method="post" name="form">
 				<div class="row mb-0">
@@ -117,7 +117,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="row mb-0">
+				<!-- <div class="row mb-0">
 					<div class="col mb-0">
 						<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">필수&nbsp;&nbsp;(필수)</p>
 						<div class="form_radio_btn radio_male" style="float: left; margin-left: 310px;">
@@ -127,16 +127,16 @@
 							<input id="radio-22" type="radio" name="authority" value="25"> <label for="radio-22">판매자</label>
 						</div>
 					</div>
-				</div>
-				<div class="row mb-0">
+				</div> -->
+				<!-- <div class="row mb-0">
 					<div class="col">
 						<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">생년월일</p>
 						<div class="form-floating d-flex justify-content-center">
 							<input type="text" class="form-control pt-1" style="width: 500px; height: 50px; margin-left: 20px; margin-right: 20px;">
 						</div>
 					</div>
-				</div>
-				<div class="row mb-0">
+				</div> -->
+				<!-- <div class="row mb-0">
 					<div class="col">
 						<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">이메일&nbsp;&nbsp;(필수)</p>
 						<div class="form-floating d-flex justify-content-center">
@@ -152,6 +152,16 @@
 							<button type="button" class="btn btn-dark" id="checkEmail" style="width: 100px; padding: 0px; background-color: #2E2E2E;">인증</button>
 						</div>
 					</div>
+				</div> -->
+				<div class="row mb-0">
+					<div class="col">
+						<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">이메일&nbsp;&nbsp;(필수)</p>
+						<div class="form-floating d-flex justify-content-center">
+							<input type="text" name="email" id="email"class="form-control pt-1" style="width: 500px; height: 50px; margin-left: 120px; margin-right: 20px;">
+							<button type="button" class="btn btn-dark" id="checkEmail" style="width: 100px; padding: 0px; background-color: #2E2E2E;">인증</button>
+							<input type="hidden" id="emailAllowedNy" name="emailAllowedNy">
+						</div>
+					</div>
 				</div>
 				<div class="row mb-0">
 					<div class="col">
@@ -163,7 +173,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="row mb-0"></div>
+				<br><br><br>
+				<!-- <div class="row mb-0"></div>
 				<div class="row mb-0">
 					<div class="col">
 						<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">우편번호</p>
@@ -204,12 +215,12 @@
 							<input type="text" class="form-control pt-1" id="x" style="width: 500px; height: 50px;">
 						</div>
 					</div>
-				</div>
+				</div> -->
 
 
 
 
-				<div class="row loginbtn d-flex justify-content-center">
+				<!-- <div class="row loginbtn d-flex justify-content-center">
 					<div class="col mb-3" style="margin-left: 310px;">
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -232,7 +243,7 @@
 							</p>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<div class="row">
 					<div class="col mb-0 d-flex justify-content-center">
 						<button type="button" class="btn btn-primary textbox" id="subit-button" onclick="isAllCheck()">가입하기</button>
@@ -427,7 +438,7 @@
 	
 	// 이메일 합치기
 	
-	$("#checkEmail").click(function email() {
+/* 	$("#checkEmail").click(function email() {
 		
 		const emailF = $("#user_email").val();
 		const address = $("#email_address").val();
@@ -449,20 +460,40 @@
 				}
 		  }
 		
-		});
+		}); */
+		$("#checkEmail").click(function email() {
+			if(!email_check($("#email").val())){
+				alert("이메일 형식에 맞게 입력해주세요");
+				document.getElementById("email").classList.remove('is-valid');
+				document.getElementById("email").classList.add('is-invalid');
+				document.getElementById("email").value = ""
+				document.getElementById("emailAllowedNy").value = 0
+				
+			 } else{
+				alert("인증이 완료되었습니다");
+				document.getElementById("email").classList.remove('is-invalid');
+				document.getElementById("email").classList.add('is-valid');
+				document.getElementById("emailAllowedNy").value = 1
+			}
+		});	
+		
 		
 	 
 	 
 	 
 	$("#checkPhone").click(function phone() {
-		if($("#number_phone").val() == ""){
-		  	alert("전화번호를 입력해주세요.");
-		  	 document.getElementById("phoneAllowedNy").value = 0
+		if(!numberPhone_check($("#number_phone").val())){
+		  	alert("전화번호 형식에 맞게 입력해주세요.");
+		  	document.getElementById("number_phone").classList.remove('is-valid');
+			document.getElementById("number_phone").classList.add('is-invalid');
+			document.getElementById("number_phone").value = ""
+			document.getElementById("phoneAllowedNy").value = 0
 		  	
 		  } else{
-			  
-			  alert("인증완료");
-			  document.getElementById("phoneAllowedNy").value = 1
+			alert("인증이 완료되었습니다");
+			document.getElementById("number_phone").classList.remove('is-invalid');
+			document.getElementById("number_phone").classList.add('is-valid');
+			document.getElementById("phoneAllowedNy").value = 1
 		  }
 		
 	 });
@@ -472,22 +503,17 @@
     
     /* 유효성검사 */
 	  const elInputUsername = document.querySelector('#id');
-
 	  const elFailureMessage = document.querySelector('.failure-message');
 	  const elSuccessMessage = document.querySelector('.success-message');
-
 	  const elPassword = document.querySelector('#pw');
 	  const elPasswordRetype = document.querySelector('#pw-retype');
-
 	  const elPWRetypeFailureMsg = document.querySelector('.mismatch-message');
 	  const elPWRetypeSuccessMsg = document.querySelector('.match-message');
-
 	  const elPWFailureLeng = document.querySelector('.password-failure-length');
 	  const elPWFailureComb = document.querySelector('.password-failure-comb');
 	  const elPWFailureContn = document.querySelector('.password-failure-contn');
 	  const elPWFailureUpper = document.querySelector('.password-failure-upper');
 	  const elPWSuccessMessage = document.querySelector('.password-success-message');
-
 	  const elSubmitButton = document.querySelector('#subit-button');
 	  
 
@@ -549,9 +575,11 @@
 	        (!isPasswordRepeat(elPassword.value)) && 
 	        ((isPasswordUpper(elPassword.value)))
 	      ) {
-	      elPWSuccessMessage.classList.remove('hide');
+	    	document.getElementById("pw").classList.add('is-valid');
+	      /* elPWSuccessMessage.classList.remove('hide'); */
 	    } else {
-	      elPWSuccessMessage.classList.add('hide');
+	    	
+	      	elPWSuccessMessage.classList.add('hide');
 	    }
 
 	  }
@@ -562,16 +590,23 @@
 		
 	  // { 비밀번호 확인 } input 유효성 검사
 	  function passwordRetypeFn() {
-	    if( isMatch(elPassword.value, elPasswordRetype.value) && isPasswordBlank(elPasswordRetype.value) ) {
-	      //console.log('두 비밀번호가 동일하다..');
-	      elPWRetypeFailureMsg.classList.add('hide');
-	      elPWRetypeSuccessMsg.classList.remove('hide');
-	    } else {
-	      //console.log('두 비밀번호가 다르다...!!!');
-	      elPWRetypeFailureMsg.classList.remove('hide');
-	      elPWRetypeSuccessMsg.classList.add('hide');
-	    }
-
+		  if(document.getElementById("pw").value == null && document.getElementById("pw").value == ""){
+		  } else{
+			  if( isMatch(elPassword.value, elPasswordRetype.value) && isPasswordBlank(elPasswordRetype.value) ) {
+			      //console.log('두 비밀번호가 동일하다..');
+			      document.getElementById("pw-retype").classList.remove('is-invalid');
+			      document.getElementById("pw-retype").classList.add('is-valid');
+			      elPWRetypeFailureMsg.classList.add('hide');
+			     /*  elPWRetypeSuccessMsg.classList.remove('hide'); */
+			    } else {
+			      //console.log('두 비밀번호가 다르다...!!!');
+			      elPWRetypeFailureMsg.classList.remove('hide');
+			      /* elPWRetypeSuccessMsg.classList.add('hide'); */
+			      
+			      document.getElementById("pw-retype").classList.remove('is-valid');
+					document.getElementById("pw-retype").classList.add('is-invalid');
+			    }
+		  }
 	  }
 
 	  elPasswordRetype.onclick = passwordRetypeFn;
@@ -711,12 +746,14 @@
 	  
 	  
 	  function email_check(email) {
-
 			var reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-
 			return reg.test(email);
-
 		}
+	  
+	  function numberPhone_check(numberPhone){
+		  var regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+		  return regPhone.test(numberPhone);
+	  }
 	  
 	   
 </script>
@@ -758,6 +795,7 @@
 			} else{
 				alert("id중복체크를 해주세요");
 				idCh1 = true;
+				break;
 				}
 		    if( (isMoreThan10Length(elPassword.value)) && 
 		        (isPasswordEng(elPassword.value) + isPasswordNum(elPassword.value) + isPasswordSpeci(elPassword.value) >= 2) &&
@@ -770,12 +808,14 @@
 		   	} else{
 		    	alert("pw조건을 맞추시오");
 			   	pw1 = true;
+			   	break;
 		   	}
 		   	if( isMatch(elPassword.value, elPasswordRetype.value) ) { // 비밀번호 확인
 		    	pwCh1 = false;
 			} else{
 				alert("pw가 서로 다름");
 				pwCh1 = true;
+				break;
 			   }
 		   	
 		   	
@@ -784,14 +824,15 @@
 			  }else{
 				alert("이메일 인증을 해주세요");
 				emailCh = true;
+				break;
 			  } 
 		   	
 		   	if(document.getElementById("phoneAllowedNy").value == 1){
-		   		alert("p굿");
 		   		numPhoneCh = false;
 			  } else{
 				alert("전화번호 인증을 해주세요");
 				numPhoneCh = true;
+				break;
 			  }
 		   	
 		    if(idCh1 || pw1 || pwCh1 || emailCh || numPhoneCh ) {
