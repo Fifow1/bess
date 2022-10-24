@@ -114,6 +114,7 @@
 							<button type="button" class="btn btn-primary textbox" onclick="isAllCheck()" style="width: 220px;">다음</button>
 						</div>
 					</div>
+					
 				</div>
 			</div>
 		</div>

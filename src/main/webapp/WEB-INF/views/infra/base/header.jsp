@@ -22,7 +22,7 @@
 						</button>
 					</c:when>
 					<c:otherwise>
-						<button type="button" class="btn btn" style="height: 25px; width: 20px; border-radius: 100%; background-color: #2C63AF"></button>
+						<button type="button" class="btn btn" style="height: 25px; width: 20px; border-radius: 100%; background-color: #2C63AF" onclick="location.href='/member/memberMypage_order'"></button>
 					</c:otherwise>
 				</c:choose>
 				<!-- <button class="btn btn-outline me-md-2" type="button" style="color: #FFFFFF">

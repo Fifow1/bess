@@ -15,9 +15,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,600;1,200&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/resources/css/main2.css" type="text/css">
 <jsp:useBean id="CodeServiceImpl" class="bess.ham.infra.modules.code.CodeServiceImpl" />
 <!-- Datepicker -->
@@ -58,15 +55,13 @@
 							<div style="float: left;">
 								<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
 							</div>
-							<p style="color: gray; padding-top: 2px; padding-left: 100px;" class="h6">(7 review)</p>
+							<p style="color: gray; padding-top: 2px; padding-left: 100px;">(7 review)</p>
 						</div>
 						<div style="display: inline-block;">
-							<h5 style="color: gray;">
-								<c:out value="${item.price }" />
-							</h5>
+							<c:out value="${item.price }"/>원
 						</div>
 						<div style="padding-left: 10px; display: inline-block;">
-							<h6 style="text-align: left;">(7.4sold)</h6>
+							<p style="text-align: left; color: gray;">(7.4sold)</p>
 						</div>
 						<div style="margin-top: 40px;">
 							<div>색상</div>
