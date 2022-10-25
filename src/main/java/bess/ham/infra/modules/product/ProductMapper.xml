@@ -112,6 +112,26 @@
 		AND product_seq = #{ifprSeq}
 		;
 	</select>
+	<insert id="insertReview">
+		INSERT INTO review
+		(
+			,member_seq
+			,product_seq
+			,content as ifprReviewContent
+			,regDate as ifprReviewRegDate
+			,star
+		)
+		VALUES(
+			,#{member_seq}
+			,#{ifprSeq}
+			,#{ifprReviewContent}
+			,NOW()
+			,#{star}
+		)
+		<selectKey resultType="String" keyProperty="ifprReviewSeq" order="AFTER">
+		SELECT last_insert_id()
+		</selectKey>
+	</insert>
 	
 	<select id="selectListQa" resultMap="resultMapObj">
 		SELECT 

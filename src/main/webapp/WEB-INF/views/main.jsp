@@ -31,7 +31,9 @@
 	<%@include file="infra/base/header.jsp"%>
 	<!---------------------------------------------------------------------- body(keyboard) ----------------------------------------------------------->
 	<div id="wrapper"style=" height: 4200px;">
-	<div id="back" style="height: 500px; width: 100%; background: url(/resources/images/green4.png); background-size: cover; background-attachment: scroll;"></div>
+	<div id="back" style="height: 1100px; width: 100%; background: url(/resources/images/main.png); background-size: cover; background-attachment: scroll; z-index: 1; postiion : relative;">	
+		<!-- <button type="button" class="btn btn-primary" style="margin-top: 450px; margin-left:200px; width:400px; height:200px; postiion : absolute;">구매하러가기</button> -->
+	</div>
 	<br>
 	<br>
 	<!-- body -->

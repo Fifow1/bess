@@ -135,20 +135,33 @@
 			<!---------------------------------------------------------------------리뷰---------------------------------------------------------------------------->
 			<section id="content2">
 				<div style="margin-bottom: 60px; margin-top: 10px;">
+				<form name="formReview" method="get">
 					<div style="float: left;">상품리뷰</div>
 					<div class="d-flex justify-content-end" style="float: right; width: 400px; height: 40px;">
 						<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">리뷰 작성하기</button>
 					</div>
-
 					<!-- Modal -->
 					<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
-									<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+									<p style="text-align: center; font-size: 20px;">리뷰작성하기</p>
 									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 								</div>
-								<div class="modal-body">...</div>
+								<div class="modal-body">
+									<div class="mb-3">
+										<label for="recipient-name" class="col-form-label">이미지 추가</label>
+									</div>
+									<div class="mb-3">
+										<label for="message-text" class="col-form-label">내용</label>
+										<textarea class="form-control" id="message-text" name="ifprQaContent"></textarea>
+									</div>
+									<div class="mb-3">
+										<input type="text" class="form-control" id="recipient-name" style="width: 40%; display: inline-block;" name="member_seq" value="<c:out value="${sessSeq }"/>">
+											<%-- <input type="text" class="form-control" id="recipient-name"style="width: 40%; display: inline-block;"
+	   										name="product_seq" value="<c:out value="${item.ifprSeq}"/>"> --%>
+									</div>
+								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 									<button type="button" class="btn btn-primary">Save changes</button>
@@ -156,6 +169,7 @@
 							</div>
 						</div>
 					</div>
+				</form>
 				</div>
 				<c:forEach items="${reviewList}" var="reviewList" varStatus="status">
 					<div style="border-top: 1px solid black; width: 100%; height: 250px; margin-bottom: 0px;">
@@ -358,6 +372,38 @@
 		$("#submitBuy").on("click", function() {
 			formPro.attr("action", goUrlBuy).submit();
 		});
+		
+		/* var userScore = $('#makeStar');
+		userScore.change(function(){
+			var userScoreNum = $(this).val();
+			console.log(userScoreNum);
+			$('.make_star svg').css({color:'#000'});
+			$('.make_star svg:nth-child(-n+'+ userScoreNum +')').css({color:'#F05522'});
+		});
+		
+		$('.make_star svg').click(function(){
+			var targetNum = $(this).index() +1;
+			$('.make_star svg').css({color:'#000'});
+			$('.make_star svg:nth-child(-n+'+ userScoreNum +')').css({color:'#F05522'});
+		}) */
+		function checkStar(){
+            $('.stars span').on('click', function(){
+                const arrNum = Array($(this).data().value).fill().map((v,i)=> i+1); // 클릭한 star까지 채워질 index array
+                if( $(this).attr('check') === 'true' ){ // 만약 같은 위치의 별을 클릭하면 모두 비움.
+                    for(let num of arrNum){
+                        $('.star_'+num).children('img').attr('src', 'img/test/star.png');
+                    }
+                    $('.stars span').attr('check', ''); // 같은 위치가 아니므로 기존 check가 true된 별은 모두 check 해제함.
+                }else{  // 같은 위치가 아니라면 해당 클릭 위치까지 별을 채움.
+                    $('.stars span').attr('check', '')
+                                    .children('img').attr('src', 'img/test/star.png' );
+                    for(let num of arrNum){
+                        $('.star_'+num).children('img').attr('src', 'img/test/star_active.png' );
+                    }
+                    $(this).attr('check', 'true');
+                }
+            });
+        }
 	</script>
 
 
