@@ -72,5 +72,13 @@ public class MemberDao {
 		return sqlSession.insert(namespace + ".insertUserAdress", dto);
 	}
 	
+	public List<Member> selectListAdress(MemberVo vo) {
+		
+		List<Member> result = sqlSession.selectList(namespace +".selectListAdress", vo);
+		
+		return result;
+		
+	}
+	
 	
 }

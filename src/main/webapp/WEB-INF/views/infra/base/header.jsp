@@ -2,7 +2,7 @@
 	<nav class="navbar navbar-expand-lg header">
 		<div class="container">
 			<div style="margin-top: 30px; margin-right: 70px;">
-				<a class="navbar-brand" href="#"><h1 style="color: #FFFFFF; font-family: 'Edu VIC WA NT Beginner', cursive;">Ham</h1></a>
+				<a class="navbar-brand" href="#"><h1 style="color: #FFFFFF;">Ham</h1></a>
 				<button onclick="href='/main'" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -22,12 +22,10 @@
 						</button>
 					</c:when>
 					<c:otherwise>
-						<button type="button" class="btn btn" style="height: 25px; width: 20px; border-radius: 100%; background-color: #2C63AF" onclick="location.href='/member/memberMypage_order'"></button>
+						<button type="submit" class="btn btn" style="height: 25px; width: 20px; border-radius: 100%; background-color: #2C63AF" onclick="location.href='/member/memberMypage_myinfo?shSeq=<c:out value="${sessSeq}"/>'"></button>
+						<button onclick="location.href='/member/logoutProc'"><i class="fa-solid fa-right-from-bracket"></i></button>
 					</c:otherwise>
 				</c:choose>
-				<!-- <button class="btn btn-outline me-md-2" type="button" style="color: #FFFFFF">
-					<i class="fa-solid fa-cart-shopping"></i>
-				</button> -->
 			</div>
 		</div>
 	</nav>

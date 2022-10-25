@@ -17,7 +17,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@600&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="../css/main.css">
+	<link rel="stylesheet" href="/resources/css/main.css">
   	<title>member</title>
 	<style type="text/css">
 

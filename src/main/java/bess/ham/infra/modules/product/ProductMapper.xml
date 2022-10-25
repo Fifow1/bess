@@ -113,19 +113,23 @@
 		;
 	</select>
 	
-	<select id="selectListQa" resultMap="resultMapObj"> 
+	<select id="selectListQa" resultMap="resultMapObj">
 		SELECT 
 			qa.seq as ifprQaSeq
 			,qa.answerYn
     		,mm.id
+    		,qa.member_seq
+    		,pr.title
    	 		,qa.product_seq
-   	 		,qa.title as ifprQaTitle
+   	 		,qa.ifprQaTitle
    	 		,qa.content as ifprQaContent
     		,qa.regdate as ifprQaRegDate
 		from qa qa
 		inner JOIN member mm ON mm.seq = qa.member_seq
+		INNER JOIN product pr ON pr.seq = qa.product_seq
 		where 1=1
-		AND product_seq = #{ifprSeq}
+		<if test="ifprSeq != null and !ifprSeq.equals('')">AND product_seq = #{ifprSeq}</if>
+		<if test="shSeq != null and !shSeq.equals('')">AND member_seq = #{shSeq}</if>
 		;
 	</select>
 	

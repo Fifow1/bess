@@ -12,6 +12,7 @@
     
 </head>
 <body>
+<input type="text" class="form-control pt-1" id="name" name="name" style="width: 500px; height: 50px;">
 <input type="text" class="form-control pt-1" id="sample4_postcode" name="address_zip" style="width: 500px; height: 50px;">
 <input type="text" class="form-control pt-1" id="sample4_roadAddress" name="address_zip" style="width: 500px; height: 50px;">
 <input type="text" class="form-control pt-1" id="x" name="address_zip" style="width: 500px; height: 50px;">
@@ -128,9 +129,11 @@ geocoder.addressSearch(place, function(result, status) {
 
     // 인포윈도우로 장소에 대한 설명을 표시합니다
     var infowindow = new kakao.maps.InfoWindow({
-        content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+        content: '<div style="width:150px;text-align:center;padding:6px 0;">z</div>'
     });
     infowindow.open(map, marker);
+    
+    
 
     // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
     map.setCenter(coords);

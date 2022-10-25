@@ -4,6 +4,7 @@ public class ProductVo {
 	
 	private Integer category;
 	private String ifprSeq;
+	private String shSeq;
 	
 	public Integer getCategory() {
 		return category;
@@ -16,6 +17,12 @@ public class ProductVo {
 	}
 	public void setIfprSeq(String ifprSeq) {
 		this.ifprSeq = ifprSeq;
+	}
+	public String getShSeq() {
+		return shSeq;
+	}
+	public void setShSeq(String shSeq) {
+		this.shSeq = shSeq;
 	}
 
 

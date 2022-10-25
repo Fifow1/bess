@@ -26,6 +26,8 @@ public interface MemberService {
 	
 	public Member selectOneLogin(Member dto) throws Exception;
 	
+	public List<Member> selectListAdress(MemberVo vo) throws Exception;
+	
 	/* public int insertUserAdress(Member dto) throws Exception; */
 	
 }

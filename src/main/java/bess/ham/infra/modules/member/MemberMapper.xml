@@ -35,6 +35,20 @@
 		<include refid ="Base.selectListLowerForMysql"/>
 	</select>
 	
+	<select id="selectListAdress" resultMap="resultMapObj"> 
+		SELECT
+			seq as ifmmAdressSeq
+    		,member_seq
+    		,adressZipCode
+    		,adressZip
+    		,adressZipDetail
+    		,memo
+    		,mainYn
+    		,useYn
+		FROM memberAdress
+		WHERE member_seq = #{shSeq} 
+		;
+	</select>
 	
 	<insert id="insert">
 		INSERT INTO member(

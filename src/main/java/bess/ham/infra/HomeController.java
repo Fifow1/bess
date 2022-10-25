@@ -75,7 +75,6 @@ public class HomeController {
 		@RequestMapping (value = "/main") 
 		public String home(ProductVo vo,Product dto,Model model) throws Exception {
 			  
-		System.out.println(dto.getTitle());
 		vo.setCategory(vo.getCategory() == null ? 34 : vo.getCategory());
 		List<Product> list = service.selectListMain(vo);
 		model.addAttribute("list", list); 

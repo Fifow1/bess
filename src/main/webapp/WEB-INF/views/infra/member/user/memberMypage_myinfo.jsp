@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
+<%@ page session="true" %>
 <!Doctype html>
 <html>
 <head>
@@ -17,11 +18,16 @@
 	<link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@600&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="/resources/css/main2.css">
   	<title>member</title>
 	<style type="text/css">
-
-</style>
+	
+	/* p{
+	 font-family: 'Jua', sans-serif;
+	 font-weight: 100;
+	} */
+	</style>
 </head>
 
 <body>
@@ -36,93 +42,64 @@
 		<div class="container">
 			<div class="row d-flex justify-content-center">
 				<div class="col mb-3 d-flex justify-content-center">
-					<h3 style="font-weight: bold; font-size: 30px;">마이페이지</h3>
+					<p style="font-weight: bold; font-size: 30px;">마이페이지</p>
 				</div>
 			</div>
 			<div class="row d-flex justify-content-center">
 				<div class="col mb-3 d-flex justify-content-center">
-					<button type="button" class="btn btn-light" style="width: 120px; height: 50px; margin-right: 10px;" onclick="location.href='./memberMypage_order.html'">주문/배송</button>
-					<button type="button" class="btn btn-light" style="width: 120px; height: 50px; margin-right: 10px;" onclick="location.href='./memberMypage_myinfo.html'">내정보</button>
-					<button type="button" class="btn btn-light" style="width: 120px; height: 50px; margin-right: 10px;">쿠폰</button>
-					<button type="button" class="btn btn-light" style="width: 120px; height: 50px;" onclick="location.href='./memberMypage_qa.html'">Q&A</button>
+					<!-- <button type="button" class="btn btn-light" style="width: 120px; height: 50px; margin-right: 10px;" onclick="location.href='./memberMypage_order.html'">주문/배송</button> -->
+					<button type="submit" class="btn btn-light" style="width: 120px; height: 50px; margin-right: 10px;" onclick="location.href='/member/memberMypage_myinfo?shSeq=<c:out value="${sessSeq}"/>'">내정보</button>
+					<!-- <button type="button" class="btn btn-light" style="width: 120px; height: 50px; margin-right: 10px;">쿠폰</button> -->
+					<button type="submit" class="btn btn-light" style="width: 120px; height: 50px;" onclick="location.href='/member/memberMypage_qa?shSeq=<c:out value="${sessSeq}"/>'">Q&A</button>
 				</div>
 			</div>
-			<div class="row d-flex justify-content-center">
-				<div class="col mb-3">
-					<div class="form-floating d-flex justify-content-center">
-					  	<input type="text" class="form-control btnline" id="floatingInput" placeholder="name@example.com" value="lasldjf">
-					 	<label for="floatingInput" style="margin-left: 400px;">아이디</label>
-						<button type="button" class="btn btn-secondary" style="width: 100px; padding: 0px;">중복확인</button>		
+			<div style="width: 48%; height: 100%;display: inline-block;">
+				<div class="row d-flex justify-content-center">
+					<div class="border" style="width: 80%;">
+						<p style="text-align: center; margin-top: 15px;">내 정보</p>
+					</div>
+					<div style="margin-left: 300px">
+						<input type="text" style="width: 50%; height:40px;" name="id" value="${sessSeq}"></input>
+						<div>
+							<p style="margin-bottom: 10px;">아이디</p>
+							<input type="text" style="width: 50%; height:40px;" name="id" value="${item.id}"></input>
+							<button type="button" class="btn btn-primary">중복</button>
+						</div>
+						<div>
+							<p style="margin-bottom: 10px;">비밀번호</p>
+							<input type="text" style="width: 50%; height:40px;" name="pw" value="${item.pw}"></input>
+						</div>
+						<div>
+							<p style="margin-bottom: 10px;">이메일</p>
+							<input type="text" style="width: 50%; height:40px;" name="email" value="${item.email}"></input>
+							<button type="button" class="btn btn-primary">인증</button>
+						</div>
+						<div>
+							<p style="margin-bottom: 10px;">전화번호</p>
+							<input type="text" style="width: 50%; height:40px;" value="${item.numPhone}"></input>
+							<button type="button" class="btn btn-primary">인증</button>
+						</div>
 					</div>
 				</div>
 			</div>
-			
-			<div class="row loginbtn d-flex justify-content-center">
-				<div class="col mb-3">
-					<div class="form-floating d-flex justify-content-center">
-					  	<input type="password" class="form-control textbox" id="floatingInput"  placeholder="name@example.com" value="sy****">
-					 	<label for="floatingInput" style="margin-left: 400px;">비밀번호</label>
+			<div style="width: 48%; height: 100%;display: inline-block;">
+				<div class="row d-flex justify-content-center">
+					<div class="border" style="width: 80%;">
+						<p style="text-align: center; margin-top: 15px;">내 배송지</p>
 					</div>
-				</div>
-			</div>
-			<div class="row loginbtn d-flex justify-content-center">
-				<div class="col mb-3">
-					<div class="form-floating d-flex justify-content-center">
-					  	<input type="password" class="form-control textbox" id="floatingInput"  placeholder="name@example.com" value="sy****">
-					 	<label for="floatingInput" style="margin-left: 400px;">비밀번호 확인</label>
-					</div>
-				</div>
-			</div>
-			<div class="row loginbtn d-flex justify-content-center">
-				<div class="col mb-3">
-					<div class="form-floating d-flex justify-content-center">
-					  	<input type="text" class="form-control textbox" id="floatingInput" placeholder="name@example.com" value="2022-6-23">
-					 	<label for="floatingInput" style="margin-left: 400px;">아이디</label>
-					</div>
-				</div>
-			</div>
-			<div class="row loginbtn d-flex justify-content-center">
-				<div class="col mb-3">
-					<div class="form-floating d-flex justify-content-center">
-					  	<input type="text" class="form-control btnline" id="floatingInput" placeholder="name@example.com" value="lasldjf123@naver.com">
-					 	<label for="floatingInput" style="margin-left: 400px;">이메일</label>
-						<button type="button" class="btn btn-secondary" style="width: 100px; padding: 0px;">인증</button>		
-					</div>
-				</div>
-			</div>
-			<div class="row loginbtn d-flex justify-content-center">
-				<div class="col mb-3">
-					<div class="form-floating d-flex justify-content-center">
-					  	<input type="text" class="form-control btnline" id="floatingInput" placeholder="name@example.com" value="010-6477-5721">
-					 	<label for="floatingInput" style="margin-left: 400px;">전화번호</label>
-						<button type="button" class="btn btn-secondary" style="width: 100px; padding: 0px;">인증</button>		
-					</div>
-				</div>
-			</div>
-			<div class="row loginbtn d-flex justify-content-center">
-				<div class="col mb-3">
-					<div class="form-floating d-flex justify-content-center">
-					  	<input type="text" class="form-control btnline" id="floatingInput" placeholder="name@example.com" value="02850">
-					 	<label for="floatingInput" style="margin-left: 400px;">우편번호</label>
-						<button type="button" class="btn btn-secondary" style="width: 100px; padding: 0px;">찾기</button>		
-					</div>
-				</div>
-			</div>
-			<div class="row loginbtn d-flex justify-content-center">
-				<div class="col mb-3">
-					<div class="form-floating d-flex justify-content-center">
-					  	<input type="text" class="form-control btnline" id="floatingInput" placeholder="name@example.com" value="서울특별시 성북구">
-					 	<label for="floatingInput" style="margin-left: 400px;">주소</label>
-						<button type="button" class="btn btn-secondary" style="width: 100px; padding: 0px;">찾기</button>		
-					</div>
-				</div>
-			</div>
-			<div class="row loginbtn d-flex justify-content-center">
-				<div class="col mb-3">
-					<div class="form-floating d-flex justify-content-center">
-					  	<input type="text" class="form-control textbox" id="floatingInput" placeholder="name@example.com" value="2층">
-					 	<label for="floatingInput" style="margin-left: 400px;">상세주소</label>
-					</div>
+					<div class="row loginbtn d-flex justify-content-center mb-1" style="overflow:scroll; height: 350px;">
+						<div class="col">
+							<c:forEach items="${list}" var="list" varStatus="status">
+								<div class="form-floating d-flex justify-content-center">
+									<button type="button" class="btn btn-outline-primary textbox" style="height: 100px;">
+									<p><c:out value="${list.memo}" /></p>
+									<p style="color: #6A737B; display: inline-block;"><c:out value="${list.adressZip}" /></p>
+									<p style="color: #6A737B; display: inline-block;"><c:out value="${list.adressZipDetail}" /></p>
+									</button>
+								</div>
+							</c:forEach>
+						</div>
+					</div>			
 				</div>
 			</div>
 			<div class="row">

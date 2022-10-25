@@ -33,7 +33,6 @@ public class Product {
 	private Integer option;
 	private String optionSub;
 	private String product_seq;
-	
 	public Integer getCategory() {
 		return category;
 	}
@@ -106,6 +105,12 @@ public class Product {
 	public void setIfprQaSeq(String ifprQaSeq) {
 		this.ifprQaSeq = ifprQaSeq;
 	}
+	public String getIfprQaTitle() {
+		return ifprQaTitle;
+	}
+	public void setIfprQaTitle(String ifprQaTitle) {
+		this.ifprQaTitle = ifprQaTitle;
+	}
 	public String getIfprQaContent() {
 		return ifprQaContent;
 	}
@@ -117,6 +122,18 @@ public class Product {
 	}
 	public void setIfprQaRegDate(Date ifprQaRegDate) {
 		this.ifprQaRegDate = ifprQaRegDate;
+	}
+	public Integer getAnswerYn() {
+		return answerYn;
+	}
+	public void setAnswerYn(Integer answerYn) {
+		this.answerYn = answerYn;
+	}
+	public String getMember_seq() {
+		return member_seq;
+	}
+	public void setMember_seq(String member_seq) {
+		this.member_seq = member_seq;
 	}
 	public String getIfprSeq() {
 		return ifprSeq;
@@ -142,37 +159,12 @@ public class Product {
 	public void setOptionSub(String optionSub) {
 		this.optionSub = optionSub;
 	}
-	
 	public String getProduct_seq() {
 		return product_seq;
 	}
 	public void setProduct_seq(String product_seq) {
 		this.product_seq = product_seq;
 	}
-	public Integer getAnswerYn() {
-		return answerYn;
-	}
-	public void setAnswerYn(Integer answerYn) {
-		this.answerYn = answerYn;
-	}
-	public String getIfprQaTitle() {
-		return ifprQaTitle;
-	}
-	public void setIfprQaTitle(String ifprQaTitle) {
-		this.ifprQaTitle = ifprQaTitle;
-	}
-	public String getMember_seq() {
-		return member_seq;
-	}
-	public void setMember_seq(String member_seq) {
-		this.member_seq = member_seq;
-	}
-	
-	
-	
-	
-	
-	
 	
 	
 	

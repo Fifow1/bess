@@ -79,6 +79,11 @@ public class MemberServiceImpl implements MemberService {
 		return dao.selectOneLogin(dto);
 	} 
 	
+	
+	public List<Member> selectListAdress(MemberVo vo) throws Exception {
+		return dao.selectListAdress(vo);
+	}
+	
 	/*
 	 * @Override public int insertUserAdress(Member dto) throws Exception{ return
 	 * dao.insertUserAdress(dto); }
