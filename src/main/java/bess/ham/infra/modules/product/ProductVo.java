@@ -5,6 +5,7 @@ public class ProductVo {
 	private Integer category;
 	private String ifprSeq;
 	private String shSeq;
+	private Integer shQaOption;
 	
 	public Integer getCategory() {
 		return category;
@@ -23,6 +24,12 @@ public class ProductVo {
 	}
 	public void setShSeq(String shSeq) {
 		this.shSeq = shSeq;
+	}
+	public Integer getShQaOption() {
+		return shQaOption;
+	}
+	public void setShQaOption(Integer shQaOption) {
+		this.shQaOption = shQaOption;
 	}
 
 

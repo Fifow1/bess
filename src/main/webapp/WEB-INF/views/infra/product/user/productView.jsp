@@ -16,14 +16,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,600;1,200&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/resources/css/main2.css" type="text/css">
+<link rel="stylesheet" href="/resources/css/all.css" type="text/css">
 <jsp:useBean id="CodeServiceImpl" class="bess.ham.infra.modules.code.CodeServiceImpl" />
 <!-- Datepicker -->
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<script src="https://kit.fontawesome.com/50704cc15b.js" crossorigin="anonymous"></script>
 <title>productList</title>
-<style type="text/css">
-</style>
 </head>
 
 <body>
@@ -53,7 +53,11 @@
 						</div>
 						<div style="margin-bottom: 30px;">
 							<div style="float: left;">
-								<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
 							</div>
 							<p style="color: gray; padding-top: 2px; padding-left: 100px;">(7 review)</p>
 						</div>
@@ -72,7 +76,8 @@
 								<c:forEach items="${listCodeColor}" var="listColor" varStatus="statusColor">
 									<c:if test="${color eq listColor.CCseq}">
 										<div class="form_radio_btn" style="height: 30px; width: 100px; display: inline-block;">
-											<input id="${listColor.CCnameEn}" type="radio" name="optionColor" value="5"><label for="${listColor.CCnameEn}" style="line-height: 30px;"><c:out value="${listColor.CCnameEn}" /></label>
+											<input id="${listColor.CCnameEn}" type="radio" name="optionColor" value="5">
+											<label for="${listColor.CCnameEn}" style="line-height: 30px;"><c:out value="${listColor.CCnameEn}" /></label>
 										</div>
 									</c:if>
 								</c:forEach>
@@ -132,6 +137,7 @@
 					</p>
 				</div>
 			</section>
+			
 			<!---------------------------------------------------------------------리뷰---------------------------------------------------------------------------->
 			<section id="content2">
 				<div style="margin-bottom: 60px; margin-top: 10px;">
@@ -268,17 +274,17 @@
 							<tbody>
 								<tr>
 									<th class="table_head" style="width: 120px;"><p style="font-weight: bolder;">
-											<c:out value="${qaList.answerYn}" />
-										</p></th>
+										<c:out value="${qaList.answerYn}" />
+									</p></th>
 									<th class="table_head" style="width: 400px;"><p>
-											<c:out value="${qaList.ifprQaTitle}" />
-										</p></th>
+										<c:out value="${qaList.ifprQaTitle}" />
+									</p></th>
 									<th class="table_head" style="width: 100px;"><p>
-											<c:out value="${qaList.id}" />
-										</p></th>
+										<c:out value="${qaList.id}" />
+									</p></th>
 									<th class="table_head" style="width: 150px;"><p>
-											<c:out value="${qaList.ifprQaRegDate}" />
-										</p></th>
+										<c:out value="${qaList.ifprQaRegDate}" />
+									</p></th>
 								</tr>
 							</tbody>
 						</c:forEach>
@@ -385,31 +391,40 @@
 			var targetNum = $(this).index() +1;
 			$('.make_star svg').css({color:'#000'});
 			$('.make_star svg:nth-child(-n+'+ userScoreNum +')').css({color:'#F05522'});
-		}) */
-		function checkStar(){
-            $('.stars span').on('click', function(){
-                const arrNum = Array($(this).data().value).fill().map((v,i)=> i+1); // 클릭한 star까지 채워질 index array
-                if( $(this).attr('check') === 'true' ){ // 만약 같은 위치의 별을 클릭하면 모두 비움.
-                    for(let num of arrNum){
-                        $('.star_'+num).children('img').attr('src', 'img/test/star.png');
-                    }
-                    $('.stars span').attr('check', ''); // 같은 위치가 아니므로 기존 check가 true된 별은 모두 check 해제함.
-                }else{  // 같은 위치가 아니라면 해당 클릭 위치까지 별을 채움.
-                    $('.stars span').attr('check', '')
-                                    .children('img').attr('src', 'img/test/star.png' );
-                    for(let num of arrNum){
-                        $('.star_'+num).children('img').attr('src', 'img/test/star_active.png' );
-                    }
-                    $(this).attr('check', 'true');
-                }
-            });
-        }
+		})  */
+		
+	/* 	var rating =$('.rating');
+		
+		rating.each(function({
+			var $this = $(this);
+			//data-rate값 저장
+			var targetScore = $this.attr('data-rate');
+			//.으로 분리해서 배열저장
+			// firstdigit = 3.5 = ['3','5']
+			var firstdigit = targetScore.split('.')
+			if(firstdigit.length > 1){
+				for(var i = 0, i<firstdigit[0]; i++){
+					$this.find('.star').eq(i).css({width:'100%'});
+				}
+				$this.find('.star').eq(firstdigit[0]).css({width:firstdigit[1] + '0%'})
+			}else{
+				for(var i = 0, i<targetScore; i++){
+					$this.find('.star').eq(i).css({width:'100%'});
+				}
+			}
+		})) */
+		
+		$('.js-star-rating').on('change','input', function() {
+			  $('.js-current-rating')
+			    .removeClass()
+			    .addClass('current-rating js-current-rating current-rating--' + this.value);
+			});
+		
 	</script>
 
 
-
+	<script src="/resources/js/all.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-	<script src="https://kit.fontawesome.com/50704cc15b.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

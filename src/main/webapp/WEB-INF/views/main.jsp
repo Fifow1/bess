@@ -144,7 +144,7 @@
             }
         
             ,success: function(data) {
-            		alert(data.list[0].title)
+            		/* alert(data.list[0].title) */
             		var tmp ="";
             		for(var i=0; i < data.list.length; i++){
 	            		if( i%2 == 1){

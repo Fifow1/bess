@@ -85,7 +85,13 @@
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
-				
+		<!-- fileupload s 2022.03.30 -->
+		<dependency>
+		<groupId>commons-fileupload</groupId>
+		<artifactId>commons-fileupload</artifactId>
+		<version>1.4</version>
+		</dependency>
+		<!-- fileupload e 2022.03.30 -->
 		<!-- Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>

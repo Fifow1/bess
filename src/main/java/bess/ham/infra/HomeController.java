@@ -66,13 +66,13 @@ public class HomeController {
 		}
 		
 		@RequestMapping (value = "/") 
-		public String Choose() throws Exception {
+		public String choose(Model model) throws Exception {
 			  
-		return "Choose"; 
+		return "choose"; 
 		 }
 		
 		
-		@RequestMapping (value = "/main") 
+		@RequestMapping (value = "main") 
 		public String home(ProductVo vo,Product dto,Model model) throws Exception {
 			  
 		vo.setCategory(vo.getCategory() == null ? 34 : vo.getCategory());

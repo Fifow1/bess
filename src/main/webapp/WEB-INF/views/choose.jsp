@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
 <!doctype html>
@@ -14,18 +14,17 @@
 	<link href="https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@700&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,600;1,200&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@600&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="./css/main2.css">
+	<link rel="stylesheet" href="/resources/css/main2.css">
 	<style type="text/css">
 
 
 </style>
 </head>
 <body>
-<%@include file="base/header.jsp"%>
 <div style="margin-left: 550px; margin-top: 300px;">
 	<div style="width: 400px; height: 400px;display: inline-block;">
 		<div style="text-align: center;">
-			<button type="button" class="btn btn-outline-primary" style="width: 100%; height: 200px;"><h1>user</h1></button>
+			<button type="button" class="btn btn-outline-primary" style="width: 100%; height: 200px;" onclick="location.href='/main'"><h1>user</h1></button>
 		</div>
 	</div>
 	<div style="width: 400px; height: 400px;display: inline-block;">

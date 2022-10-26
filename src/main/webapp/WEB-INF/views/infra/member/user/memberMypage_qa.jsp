@@ -30,10 +30,7 @@
 <!------------------------------------------------------------------------------------------------------------------------------------------------->
 
 <div id="wrapper" style="height: 2000px">
-
-	
 	<div style="width: 100%; height:2000px; float:right;">
-		<form>
 			<div class="container">
 				<div class="row d-flex justify-content-center">
 					<div class="col mb-3 d-flex justify-content-center">
@@ -49,20 +46,21 @@
 					</div>
 				</div>
 				<div style="margin-top: 10px;">
+			<form name="formQa">
 					<div style="float: left;">
 						<h5>Q&A</h5>
 					</div>
 					<div class="d-flex justify-content-end mb-0" style="float: right; width: 400px; height: 40px;">
 						<div class="form-check">
-							<input type="radio" name="flexRadioDefault" id="flexRadioDefault1" onclick="submit()" name="shQaOption" value="2" style="accent-color: black;margin-right: 20px; margin-bottom:10px;">
+							<input type="radio" id="flexRadioDefault1" onclick="submit()" name="shQaOption" value="2" style="accent-color: black;margin-right: 20px; margin-bottom:10px;">
 							<label class="form-check-label" for="flexRadioDefault1">전체</label>
 						</div>
 						<div class="form-check ms-0">
-							<input type="radio" name="flexRadioDefault" id="flexRadioDefault2" onclick="submit()" name="shQaOption" value="1" style="accent-color: black;margin-right: 20px; margin-bottom:10px;">
+							<input type="radio" id="flexRadioDefault2" onclick="submit()" name="shQaOption" value="1" style="accent-color: black;margin-right: 20px; margin-bottom:10px;">
 							<label class="form-check-label" for="flexRadioDefault2">답변</label>
 						</div>
 						<div class="form-check ms-0">
-							<input type="radio" name="flexRadioDefault" id="flexRadioDefault3" onclick="submit()" name="shQaOption" value="0"style="accent-color: black;margin-right: 20px; margin-bottom:10px;">
+							<input type="radio" id="flexRadioDefault3" onclick="submit()" name="shQaOption" value="0"style="accent-color: black;margin-right: 20px; margin-bottom:10px;">
 							<label class="form-check-label" for="flexRadioDefault3">미답변</label>
 						</div>
 					</div>
@@ -101,7 +99,7 @@
 </div>
 <script type="text/javascript">
 	var goUrlMyQaList = "member/memberMypage_qa"
-
+	var form="form[name=formQa]"
 	function submit() {
 		var val = $('input[name=shQaOption]').val();
 		alert(val)

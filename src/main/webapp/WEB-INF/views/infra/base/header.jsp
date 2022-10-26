@@ -11,7 +11,7 @@
 				<ul class="navbar-nav" style="font-family: 'Kanit', sans-serif;">
 					<li class="nav-item" style="margin-right: 40px;"><a class="nav-link active" aria-current="page" style="color: #FFFFFF;" onclick="href='/main'">Home</a></li>
 					<li class="nav-item" style="margin-right: 40px;"><a class="nav-link" aria-current="page" style="color: #FFFFFF;" onclick="href='/product/productListShop'">shop</a></li>
-					<li class="nav-item" style="margin-right: 40px;"><a class="nav-link" aria-current="page" style="color: #FFFFFF;" href="#">community</a></li>
+					<!-- <li class="nav-item" style="margin-right: 40px;"><a class="nav-link" aria-current="page" style="color: #FFFFFF;" href="#">community</a></li> -->
 				</ul>
 			</div>
 			<div id="headerR" class="d-grid gap-2 d-md-flex justify-content-md-end">

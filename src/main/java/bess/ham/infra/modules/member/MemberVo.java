@@ -9,6 +9,7 @@ public class MemberVo extends PageMakeVo{
 	private String shValue;
 	private Integer shOption;
 	private Integer shDelYn;
+	private Integer shQaOption;
 //	for cache
 	
 	
@@ -41,6 +42,12 @@ public class MemberVo extends PageMakeVo{
 	}
 	public void setShDelYn(Integer shDelYn) {
 		this.shDelYn = shDelYn;
+	}
+	public Integer getShQaOption() {
+		return shQaOption;
+	}
+	public void setShQaOption(Integer shQaOption) {
+		this.shQaOption = shQaOption;
 	}
 	
 }

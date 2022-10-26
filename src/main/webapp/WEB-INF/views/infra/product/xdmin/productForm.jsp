@@ -29,7 +29,23 @@
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <!-- test -->
 <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
-    
+    <style type="text/css">
+    	.addScroll{
+		overflow-y:auto;
+		height: 200px;
+		background-color:#E9ECEF;
+		padding-top:5px; 
+		padding-left:5px;
+	}
+ 	
+	.input-file-button{
+		padding: 4px 25px;
+		background-color:#FF6600;
+		border-radius: 4px;
+		color: white;
+		cursor: pointer;
+	}
+    </style>
 </head>
 
 <body id="page-top">
@@ -37,134 +53,36 @@
     <!-- Page Wrapper -->
 	<div id="wrapper">
 
-		<!-- Sidebar -->	
-		<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-			<!-- Sidebar - Brand -->
-			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-				<div class="sidebar-brand-icon rotate-n-15">
-					<i class="fas fa-laugh-wink"></i>
-				</div>
-				<div class="sidebar-brand-text mx-3">
-					SB Admin <sup>2</sup>
-				</div>
-			</a>
-
-			<!-- Divider -->
-			<hr class="sidebar-divider my-0">
-
-			<!-- Nav Item - Dashboard -->
-			<li class="nav-item active"><a class="nav-link" href="index.html"> <i class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
-
-			<!-- Divider -->
-			<hr class="sidebar-divider">
-
-			<!-- Heading -->
-			<div class="sidebar-heading">Interface</div>
-
-			<!-- Nav Item - Pages Collapse Menu -->
-			<li class="nav-item"><a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"> <i class="fas fa-fw fa-cog"></i> <span>Components</span>
-			</a>
-				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header">Custom Components:</h6>
-						<a class="collapse-item" href="buttons.html">Buttons</a> <a class="collapse-item" href="cards.html">Cards</a>
-					</div>
-				</div></li>
-
-			<!-- Nav Item - Utilities Collapse Menu -->
-			<li class="nav-item"><a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities"> <i class="fas fa-fw fa-wrench"></i> <span>Utilities</span>
-			</a>
-				<div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header">Custom Utilities:</h6>
-						<a class="collapse-item" href="utilities-color.html">Colors</a> <a class="collapse-item" href="utilities-border.html">Borders</a> <a class="collapse-item" href="utilities-animation.html">Animations</a> <a class="collapse-item" href="utilities-other.html">Other</a>
-					</div>
-				</div></li>
-
-			<!-- Divider -->
-			<hr class="sidebar-divider">
-
-			<!-- Heading -->
-			<div class="sidebar-heading">Addons</div>
-
-			<!-- Nav Item - Pages Collapse Menu -->
-			<li class="nav-item"><a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages1" aria-expanded="true" aria-controls="collapsePages"> <i class="fas fa-fw fa-folder"></i> <span>Pages</span>
-			</a>
-				<div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header">Login Screens:</h6>
-						<a class="collapse-item" href="register.html">Register</a>
-						<h6 class="collapse-header">Other Pages:</h6>
-						<a class="collapse-item" href="404.html">404 Page</a> <a class="collapse-item" href="blank.html">Blank Page</a> <a class="collapse-item" href="blank.html">Blank Page</a> <a class="collapse-item" href="blank.html">Blank Page</a>
-					</div>
-				</div></li>
-			<li class="nav-item"><a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2" aria-expanded="true" aria-controls="collapsePages"> <i class="fas fa-fw fa-folder"></i> <span>회원관리</span>
-			</a>
-				<div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header">Login Screens:</h6>
-						<a class="collapse-item" href="register.html">Register</a>
-						<h6 class="collapse-header">Other Pages:</h6>
-						<a class="collapse-item" href="404.html">404 Page</a> <a class="collapse-item" href="blank.html">Blank Page</a> <a class="collapse-item" href="blank.html">Blank Page</a> <a class="collapse-item" href="blank.html">Blank Page</a>
-					</div>
-				</div></li>
-			<li class="nav-item"><a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages3" aria-expanded="true" aria-controls="collapsePages"> <i class="fas fa-fw fa-folder"></i> <span>상품관리</span>
-			</a>
-				<div id="collapsePages3" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header">Login Screens:</h6>
-						<a class="collapse-item" href="register.html">Register</a>
-						<h6 class="collapse-header">Other Pages:</h6>
-						<a class="collapse-item" href="404.html">404 Page</a> <a class="collapse-item" href="blank.html">Blank Page</a> <a class="collapse-item" href="blank.html">Blank Page</a> <a class="collapse-item" href="blank.html">Blank Page</a>
-					</div>
-				</div></li>
-			<li class="nav-item"><a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages4" aria-expanded="true" aria-controls="collapsePages"> <i class="fas fa-fw fa-folder"></i> <span>1:1문의관리</span>
-			</a>
-				<div id="collapsePages4" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header">Login Screens:</h6>
-						<a class="collapse-item" href="register.html">Register</a>
-						<h6 class="collapse-header">Other Pages:</h6>
-						<a class="collapse-item" href="404.html">404 Page</a> <a class="collapse-item" href="blank.html">Blank Page</a> <a class="collapse-item" href="blank.html">Blank Page</a> <a class="collapse-item" href="blank.html">Blank Page</a>
-					</div>
-				</div></li>
-			<li class="nav-item"><a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages5" aria-expanded="true" aria-controls="collapsePages"> <i class="fas fa-fw fa-folder"></i> <span>Q&a관리</span>
-			</a>
-				<div id="collapsePages5" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header">Login Screens:</h6>
-						<a class="collapse-item" href="register.html">Register</a>
-						<h6 class="collapse-header">Other Pages:</h6>
-						<a class="collapse-item" href="404.html">404 Page</a> <a class="collapse-item" href="blank.html">Blank Page</a> <a class="collapse-item" href="blank.html">Blank Page</a> <a class="collapse-item" href="blank.html">Blank Page</a>
-					</div>
-				</div></li>
-			<!-- Nav Item - Charts -->
-			<li class="nav-item"><a class="nav-link" href="charts.html"> <i class="fas fa-fw fa-chart-area"></i> <span>Charts</span></a></li>
-
-			<!-- Nav Item - Tables -->
-			<li class="nav-item"><a class="nav-link" href="tables.html"> <i class="fas fa-fw fa-table"></i> <span>Tables</span></a></li>
-
-			<!-- Divider -->
-			<hr class="sidebar-divider d-none d-md-block">
-
-			<!-- Sidebar Toggler (Sidebar) -->
-			<div class="text-center d-none d-md-inline">
-				<button class="rounded-circle border-0" id="sidebarToggle"></button>
-			</div>
-		</ul>
+		<%@include file="../../base/xdminHeader.jsp"%>
 		<div class="container">
 			<form method="post" action="/product/productIsrt">
 			<br><br>
 			<div class="row">
 				<div class="col mb-5">
-					<h5 class="m-0 font-weight-bold text-dark">회원 관리(등록)</h5>
+					<h5 class="m-0 font-weight-bold text-dark">상품 관리(등록)</h5>
 				</div>
 			</div>
+			<div class="col-sm-6 mt-3 mt-sm-0">
+        	<c:set var="type" value="2"/>		<!-- #-> -->
+        	<c:set var="name" value="uploadImg"/>		<!-- #-> -->
+        	<input type="hidden" id="<c:out value="${name }"/>MaxNumber" name="<c:out value="${name }"/>MaxNumber" value="0"/>
+        	<input type="hidden" id="<c:out value="${name }"/>DeleteSeq" name="<c:out value="${name }"/>DeleteSeq"/>
+        	<input type="hidden" id="<c:out value="${name }"/>DeletePathFile" name="<c:out value="${name }"/>DeletePathFile"/>
+            <label for="uploadImg" class="form-label input-file-button">이미지첨부</label>
+ 			<input class="form-control form-control-sm" id="<c:out value="${name }"/>" name="<c:out value="${name }"/>" type="file" multiple="multiple" style="display: none;" onChange="upload('<c:out value="${name }"/>', <c:out value="${type }"/>, 0, 1, 0, 0, 1);">
+			<div id="<c:out value="${name }"/>Preview" class="addScroll">
+				<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
+					<c:if test="${listUploaded.type eq type }">
+						<div id="imgDiv_<c:out value="${type }"/>_<c:out value="${listUploaded.sort }"/>" style="display: inline-block; height: 95px;">
+							<img src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" class="rounded" width= "85px" height="85px" style="cursor:pointer;" onClick="openViewer(<c:out value="${listUploaded.type }"/>, <c:out value="${listUploaded. sort }"/>);">
+							<div style="position: relative; top:-85px; left:5px"><span style="color: red; cursor:pointer;" onClick="delImgDiv('<c:out value="${name }"/>', <c:out value="${type }"/>,<c:out value="${listUploaded.sort }"/>, <c:out value="${listUploaded.seq }"/>, '<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>')">X</span></div>
+						</div>
+					</c:if>
+				</c:forEach>
+			</div>
+        </div>
 			
-			
-			
-		<div class="filebox clearfix">
+		<!-- <div class="filebox clearfix">
 			<button type="button" id="reset" calss="btn">리셋</button>
 			<div class="inputFile">
 				<label for="AddImgs" class="addImgBtn">+</label> <input type="file" id="AddImgs" class="upload-hidden" accept=".jpg, .png, .gif" multiple style="visibility: hidden; width: 10px;" >
@@ -173,10 +91,10 @@
 		</div>
 	
 		<div class="insert">
-   	<!-- <form method="POST" onsubmit="return false;" enctype="multipart/form-data"> -->
+   	<form method="POST" onsubmit="return false;" enctype="multipart/form-data">
        		<input type="file" onchange="addFile(this);" multiple />
         	<div class="file-list"></div>
-   <!--  </form> -->
+    </form>
 		</div>
 
   			<button type="button" onclick="validation()">^ㅡ^</button>
@@ -186,7 +104,7 @@
   			<label for="img2" class="form-label fa-solid fa-file fa-5x"></label>
   			<input class="form-control" type="file" multiple="multiple" id="img2" name="img2">
 			<br>
-			
+			 -->
 			<div class="row">	
 				<div class="col">
 					<p class="h6" color="#2E2E2E";>상품이름</p>
@@ -236,248 +154,184 @@
 	</div>
 	
 <script type="text/javascript">
-/* upload = function (objName, seq, TotalFile)
 
-var totalFileSize= 0;
-var obj = $("#" + objName + "")[].files;
-var fileCount = obj.length;
+const MAX_EACH_FILE_SIZE = 5 * 1024 * 1024;		//	5M
+const MAX_TOTAL_FILE_SIZE = 25 * 1024 * 1024;	//	25M
+const MAX_TOTAL_FILE_NUMBER = 5;				//	5
 
+function kbToMb(bytes) {
+    var e = Math.floor(Math.log(bytes)/Math.log(1024));
 
-validation = function(){
-	var obj = document.getElementById("img1").files;
-	var obj2 = document.getElementById("img2").files;
-	
-	var maxCount = 5;
-	var maxSizeOne = 2123094;
-	var maxSize = 0;
-	
-	alert(obj);
-	alert(obj.length);
-	
-	
-	for(var i=0; i<obj.length; i++){
-		var sum = 0;
-		sum += obj[i].size;
-		if(obj.length > maxCount){
-			alert('파일개수초과');
-			return false;
-		} else if(obj[i].size > maxSizeOne){
-			alert('개당파일용량초과')
-			return false;
-		} else if(sum > maxSize){
-			alert('총파일용량초과')
-			return false;
-		} else{
-			return true;
-		}
-		alert(obj[i].name + ":" + obj[i].size);
+    if(e == "-Infinity") return 0;
+    else return (bytes/Math.pow(1024, Math.floor(e))).toFixed(2).slice(0, -3);
+}
+
+// 이미지 전용
+var extArray1 = new Array();
+extArray1 = ["jpg","gif","png","jpeg","bmp","tif"];
+
+// 문서관련
+var extArray2 = new Array();
+extArray2 = ["txt","pdf","hwp","doc","docx","xls","xlsx","ppt","pptx","html"];
+
+checkUploadedTotalFileNumber = function(obj, allowedMaxTotalFileNumber, filesCount, uploadedFilesCount) {
+	if(allowedMaxTotalFileNumber < (filesCount + uploadedFilesCount)){
+		alert("전체 파일 갯수는 "+ allowedMaxTotalFileNumber +"개 까지 허용됩니다.");
+//		$("#file"+seq).val("");
+//		obj.val("");
+		return false;
 	}
-
-	
-	
-	
-	
-	
-	alert(obj2);
-	alert(obj2.length);
-	
-	for(var i=0; i<obj.length; i++){
-		alert(obj2[i].name + ":" + obj2[i].size);
-	}
-
 }
 
 
-
-	$('#reset').click(function(){
-		$('#Preview').empty();
-	  });
+checkUploadedExt = function(objName, seq, div) {
+	var ext = objName.split('.').pop().toLowerCase();
+	var extArray = eval("extArray" + div);
 	
+	if(extArray.indexOf(ext) == -1) {
+		alert("허용된 확장자가 아닙니다.");
+//		$("#file"+seq).val("");
+		return false;
+	}
+}
+
+
+checkUploadedEachFileSize = function(obj, seq, allowedEachFileSize) {
+
+	if(obj.size > allowedEachFileSize){
+		alert("각 첨부 파일 사이즈는 "+kbToMb(allowedEachFileSize)+"MB 이내로 등록 가능합니다.");
+		$("#file"+seq).val("");
+		return false;
+	}
+}
+
+
+checkUploadedTotalFileSize = function(seq, totalSize, allowedTotalFileSize) {
+	if(totalSize > allowedTotalFileSize){
+		alert("전체 용량은 "+kbToMb(allowedTotalFileSize)+"M를 넘을 수 없습니다.");
+		$("#file"+seq).val("");
+		return false;
+	}
+}
+/* file validiation e */
+
+upload = function(objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType) {
 	
-		$(function() {
-			//드래그 앤 드롭
-			$(".sortable").sortable(); //드래그
-
-			//이미지 등록
-			$("#AddImgs").change(
-					
-					
-							function(e) {
-								//div 내용 비워주기
-								
-
-								var files = e.target.files;
-								var arr = Array.prototype.slice.call(files);
-								//업로드 가능 파일인지 체크
-								for (var i = 0; i < files.length; i++) {
-									if (!checkExtension(files[i].name,
-											files[i].size)) {
-										return false;
-									}
-								}
-								preview(arr);
-								function checkExtension(fileName,fileSize){
-							          var regex = new RegExp("(.*?)\.(exe|sh|zip|alz|hwp)$");
-							          var maxSize = 20971520;  //20MB
-
-							          if(fileSize >= maxSize){
-							              alert('이미지 크기가 초과되었습니다.');
-							              $("#AddImgs").val("");  //파일 초기화
-							              return false;
-							          }
-
-							          if(regex.test(fileName)){
-							              alert('확장자명을 확인해주세요.');
-							              $("#AddImgs").val("");  //파일 초기화
-							              return false;
-							          }
-							          return true;
-							      }
-
-								function preview(arr) {
-									arr.forEach(function(f) {
-												//파일명이 길면 파일명...으로 처리
-												/*
-												var fileName = f.name;
-												if(fileName.length > 10){
-												    fileName = fileName.substring(0,7)+"...";
-												}
-												 */
-												 
-
-												//div에 이미지 추가
-												var str = '<li class="ui-state-default" id="imgChild">';
-												//str += '<span>'+fileName+'</span><br>';
-
-												//이미지 파일 미리보기
-												if (f.type.match('image.*')) {
-													//파일을 읽기 위한 FileReader객체 생성
-													var reader = new FileReader();
-													reader.onload = function(e) {
-
-														//파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
-														str += '<img src="'+ e.target.result +'" value="' + f.name + '" width=100 height=100>';
-														str += '<p>' + f.name + '</p>';
-														str += '<button type="button" class="delBtn" id="delImg">x</button>';
-														str += '</li>';
-														$(str).appendTo(
-																'#Preview');
-													}
-													reader.readAsDataURL(f);
-												} else {
-													//이미지 파일 아닐 경우 대체 이미지
-													/*
-													str += '<img src="/resources/img/fileImg.png" title="'+f.name+'" width=60 height=60 />';
-													$(str).appendTo('#Preview');
-													 */
-												}
-											})
-								}
-							})
-			//이미지 삭제
-			$(document).on("click", "#delImg", function() {
-				$("#imgChild").remove();
-			});
-
-		});
+//	objName 과 seq 는 jsp 내에서 유일 하여야 함.
+//	memberProfileImage: 1
+//	memberImage: 2
+//	memberFile : 3
+//	uiType: 1 => 이미지형
+//	uiType: 2 => 파일형
+//	uiType: 3 => 프로필형
+	var files = $("#" + objName +"")[0].files;
+	var filePreview = $("#" + objName +"Preview");
+	var numbering = [];
+	var maxNumber = 0;
+	
+	if(uiType == 1) {
+		var uploadedFilesCount = document.querySelectorAll("#" + objName + "Preview > div > img").length;
+		var tagIds = document.querySelectorAll("#" + objName + "Preview > div");
 		
-		var fileNo = 0;
-		var filesArr = new Array();
-
-		/* 첨부파일 추가 */
-		function addFile(obj){
-		    var maxFileCnt = 5;   // 첨부파일 최대 개수
-		    var attFileCnt = document.querySelectorAll('.filebox').length;    // 기존 추가된 첨부파일 개수
-		    var remainFileCnt = maxFileCnt - attFileCnt;    // 추가로 첨부가능한 개수
-		    var curFileCnt = obj.files.length;  // 현재 선택된 첨부파일 개수
-
-		    // 첨부파일 개수 확인
-		    if (curFileCnt > remainFileCnt) {
-		        alert("첨부파일은 최대 " + maxFileCnt + "개 까지 첨부 가능합니다.");
-		    } else {
-		        for (const file of obj.files) {
-		            // 첨부파일 검증
-		            if (validation(file)) {
-		                // 파일 배열에 담기
-		                var reader = new FileReader();
-		                reader.onload = function () {
-		                    filesArr.push(file);
-		                };
-		                reader.readAsDataURL(file);
-
-		                // 목록 추가
-		                let htmlData = '';
-		                htmlData += '<div id="file' + fileNo + '" class="filebox">';
-		                htmlData += '   <p class="name">' + file.name + '</p>';
-		                htmlData += '   <a class="delete" onclick="deleteFile(' + fileNo + ');"><i class="far fa-minus-square"></i></a>';
-		                htmlData += '</div>';
-		                $('.file-list').append(htmlData);
-		                fileNo++;
-		            } else {
-		                continue;
-		            }
-		        }
-		    }
-		    // 초기화
-		    document.querySelector("input[type=file]").value = "";
+		for(var i=0; i<tagIds.length; i++){
+			var tagId = tagIds[i].getAttribute("id").split("_");
+			numbering.push(tagId[2]);
 		}
-
-		/* 첨부파일 검증 */
-		function validation(obj){
-		    const fileTypes = ['application/pdf', 'image/gif', 'image/jpeg', 'image/png', 'image/bmp', 'image/tif', 'application/haansofthwp', 'application/x-hwp'];
-		    if (obj.name.length > 100) {
-		        alert("파일명이 100자 이상인 파일은 제외되었습니다.");
-		        return false;
-		    } else if (obj.size > (100 * 1024 * 1024)) {
-		        alert("최대 파일 용량인 100MB를 초과한 파일은 제외되었습니다.");
-		        return false;
-		    } else if (obj.name.lastIndexOf('.') == -1) {
-		        alert("확장자가 없는 파일은 제외되었습니다.");
-		        return false;
-		    } else if (!fileTypes.includes(obj.type)) {
-		        alert("첨부가 불가능한 파일은 제외되었습니다.");
-		        return false;
-		    } else {
-		        return true;
-		    }
+		
+		if(uploadedFilesCount > 0){
+			numbering.sort();
+			maxNumber = parseInt(numbering[numbering.length-1]) + parseInt(1);
 		}
-
-		/* 첨부파일 삭제 */
-		function deleteFile(num) {
-		    document.querySelector("#file" + num).remove();
-		    filesArr[num].is_delete = true;
+	} else if(uiType == 2){
+		var uploadedFilesCount = document.querySelectorAll("#" + objName + "Preview > li").length;
+		var tagIds = document.querySelectorAll("#" + objName + "Preview > li");
+		for(var i=0; i<tagIds.length; i++){
+			var tagId = tagIds[i].getAttribute("id").split("_");
+			numbering.push(tagId[2]);
 		}
+		
+		if(uploadedFilesCount > 0){
+			numbering.sort();
+			maxNumber = parseInt(numbering[numbering.length-1]) + parseInt(1);
+		}
+	} else {
+		// by pass
+	}
+	
+	$("#" + objName + "MaxNumber").val(maxNumber);
+	var totalFileSize = 0;
+	var filesCount = files.length;
+	var filesArray = [];
+	
+	allowedMaxTotalFileNumber = allowedMaxTotalFileNumber == 0 ? MAX_TOTAL_FILE_NUMBER : allowedMaxTotalFileNumber;
+	allowedEachFileSize = allowedEachFileSize == 0 ? MAX_EACH_FILE_SIZE : allowedEachFileSize;
+	allowedTotalFileSize = allowedTotalFileSize == 0 ? MAX_TOTAL_FILE_SIZE : allowedTotalFileSize;
+	
+	if(checkUploadedTotalFileNumber(files, allowedMaxTotalFileNumber, filesCount, uploadedFilesCount) == false) { return false; }
+	
+	for (var i=0; i<filesCount; i++) {
+		if(checkUploadedExt(files[i].name, seq, allowedExtdiv) == false) { return false; }
+		if(checkUploadedEachFileSize(files[i], seq, allowedEachFileSize) == false) { return false; }
+		totalFileSize += files[i].size;
+		
+		filesArray.push(files[i]);
+	}
+	if(checkUploadedTotalFileSize(seq, totalFileSize, allowedTotalFileSize) == false) { return false; }
+	
+	if (uiType == 1) {
+		for (var i=0; i<filesArray.length; i++) {
+			var file = filesArray[i];
+			var picReader = new FileReader();
+		    picReader.addEventListener("load", addEventListenerCustom (objName, seq, i, file, filePreview, maxNumber));
+		    picReader.readAsDataURL(file);
+		}			
+	} else if(uiType == 2) {
+		for (var i = 0 ; i < filesCount ; i++) {
+			addUploadLi(objName, seq, i, $("#" + objName +"")[0].files[i].name, filePreview, maxNumber);
+		}
+	} else if (uiType == 3) {
+		var fileReader = new FileReader();
+		 fileReader.onload = function () {
+			 $("#uploadImgProfilePreview").attr("src", fileReader.result);		/* #-> */
+		 }	
+		 fileReader.readAsDataURL($("#" + objName +"")[0].files[0]);
+	} else {
+		return false;
+	}
+	return false;
+}
 
-		/* 폼 전송 */
-		function submitForm() {
-		    // 폼데이터 담기
-		    var form = document.querySelector("form");
-		    var formData = new FormData(form);
-		    for (var i = 0; i < filesArr.length; i++) {
-		        // 삭제되지 않은 파일만 폼데이터에 담기
-		        if (!filesArr[i].is_delete) {
-		            formData.append("attach_file", filesArr[i]);
-		        }
-		    }
-
-		    $.ajax({
-		        method: 'POST',
-		        url: '/register',
-		        dataType: 'json',
-		        data: formData,
-		        async: true,
-		        timeout: 30000,
-		        cache: false,
-		        headers: {'cache-control': 'no-cache', 'pragma': 'no-cache'},
-		        success: function () {
-		            alert("파일업로드 성공");
-		        },
-		        error: function (xhr, desc, err) {
-		            alert('에러가 발생 하였습니다.');
-		            return;
-		        }
-		    })
-		} */
+addEventListenerCustom = function (objName, type, i, file, filePreview, maxNumber) { 
+	return function(event) {
+		var imageFile = event.target;
+		var sort = parseInt(maxNumber) + i;
+		var divImage = "";
+		divImage += '<div id="imgDiv_'+type+'_'+ sort +'" style="display: inline-block; height: 95px;">';
+		divImage += '	<img src="'+ imageFile.result +'" class="rounded" width= "85px" height="85px">';
+		divImage += '	<div style="position: relative; top:-85px; left:5px"><span style="color: red; cursor:pointer;" onClick="delImgDiv(0,' + type +','+ sort +')">X</span></div>';
+		divImage += '</div> ';
+		
+		filePreview.append(divImage);
+    };
+}
+delImgDiv = function(objName, type, sort, deleteSeq, pathFile) {
+	
+	$("#imgDiv_"+type+"_"+sort).remove();
+	
+	var objDeleteSeq = $('input[name='+ objName +'DeleteSeq]');
+	var objDeletePathFile = $('input[name='+ objName +'DeletePathFile]');
+	if(objDeleteSeq.val() == "") {
+		objDeleteSeq.val(deleteSeq);
+	} else {
+		objDeleteSeq.val(objDeleteSeq.val() + "," + deleteSeq);
+	}
+	
+	if(objDeletePathFile.val() == "") {
+		objDeletePathFile.val(pathFile);
+	} else {
+		objDeletePathFile.val(objDeletePathFile.val() + "," + pathFile);
+	}
+}
 </script>
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 	<!-- Bootstrap core JavaScript-->
