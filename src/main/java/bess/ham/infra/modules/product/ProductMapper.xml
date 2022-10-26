@@ -159,7 +159,7 @@
 			member_seq
    	 		,product_seq
    	 		,answerYn
-   	 		,title 
+   	 		,ifprQatitle 
    	 		,content 
     		,regdate 
 		)
@@ -177,6 +177,23 @@
 		SELECT last_insert_id()
 		</selectKey>
 	</insert>
+	
+	<select id="selectListUploaded" resultMap="resultMapObj">
+		SELECT 
+			seq
+			,type
+			,defaultNy
+			,sort
+			,path
+			,originalName
+			,uuidName
+		FROM nct.infrMemberUploaded
+		WHERE 1=1
+			AND delNy = 0
+			AND pseq = #{ifmmSeq}
+		ORDER BY
+			type, sort
+	</select>
 
 </mapper>	
 

@@ -9,6 +9,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.junefw.infra.modules.member.Member;
+
 import bess.ham.infra.modules.codegroup.CodeGroup;
 
 
@@ -68,5 +70,8 @@ public class ProductDao {
 		int result = sqlSession.insert(namespace + ".insertQa", dto);
 		return result;
 	}
+	
+//	uploaded
+	public int insertUploaded(Product dto) { return sqlSession.insert("Base" + ".insertUploaded", dto); }
 	
 }

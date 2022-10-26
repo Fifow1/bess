@@ -2,6 +2,8 @@ package bess.ham.infra.modules.product;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Product {
 	
 	//product
@@ -33,6 +35,13 @@ public class Product {
 	private Integer option;
 	private String optionSub;
 	private String product_seq;
+	
+	//fileupload
+	private MultipartFile[] uploadImg;
+	private Integer uploadImgMaxNumber;
+	private String[] uploadImgDeleteSeq;
+	private String[] uploadImgDeletePathFile;
+	
 	public Integer getCategory() {
 		return category;
 	}
@@ -164,6 +173,30 @@ public class Product {
 	}
 	public void setProduct_seq(String product_seq) {
 		this.product_seq = product_seq;
+	}
+	public MultipartFile[] getUploadImg() {
+		return uploadImg;
+	}
+	public void setUploadImg(MultipartFile[] uploadImg) {
+		this.uploadImg = uploadImg;
+	}
+	public Integer getUploadImgMaxNumber() {
+		return uploadImgMaxNumber;
+	}
+	public void setUploadImgMaxNumber(Integer uploadImgMaxNumber) {
+		this.uploadImgMaxNumber = uploadImgMaxNumber;
+	}
+	public String[] getUploadImgDeleteSeq() {
+		return uploadImgDeleteSeq;
+	}
+	public void setUploadImgDeleteSeq(String[] uploadImgDeleteSeq) {
+		this.uploadImgDeleteSeq = uploadImgDeleteSeq;
+	}
+	public String[] getUploadImgDeletePathFile() {
+		return uploadImgDeletePathFile;
+	}
+	public void setUploadImgDeletePathFile(String[] uploadImgDeletePathFile) {
+		this.uploadImgDeletePathFile = uploadImgDeletePathFile;
 	}
 	
 	
