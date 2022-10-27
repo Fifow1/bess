@@ -37,7 +37,7 @@
 			,#{ext}
 			,#{size}
 			,0
-			,#{regDateTime}
+			,NOW()
 			,#{pseq}
 		)
 	</insert>

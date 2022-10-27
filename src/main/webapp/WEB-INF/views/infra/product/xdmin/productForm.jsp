@@ -40,7 +40,7 @@
  	
 	.input-file-button{
 		padding: 4px 25px;
-		background-color:#FF6600;
+		background-color:#2E2E2E;
 		border-radius: 4px;
 		color: white;
 		cursor: pointer;
@@ -334,7 +334,7 @@ addEventListenerCustom = function (objName, type, i, file, filePreview, maxNumbe
 		var divImage = "";
 		divImage += '<div id="imgDiv_'+type+'_'+ sort +'" style="display: inline-block; height: 95px;">';
 		divImage += '	<img src="'+ imageFile.result +'" class="rounded" width= "85px" height="85px">';
-		divImage += '	<div style="position: relative; top:-85px; left:5px"><span style="color: red; cursor:pointer;" onClick="delImgDiv(0,' + type +','+ sort +')">X</span></div>';
+		divImage += '	<div style="position: relative; top:-85px; left:5px"><span style="color:#2E2E2E; cursor:pointer;" onClick="delImgDiv(0,' + type +','+ sort +')">X</span></div>';
 		divImage += '</div> ';
 		
 		filePreview.append(divImage);

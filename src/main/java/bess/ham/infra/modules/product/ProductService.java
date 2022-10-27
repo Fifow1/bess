@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.junefw.infra.modules.member.Member;
+import com.junefw.infra.modules.member.MemberVo;
 
 import bess.ham.infra.modules.code.Code;
 import bess.ham.infra.modules.code.CodeVo;
@@ -26,4 +28,6 @@ public interface ProductService {
 	
 	//file upload
 	public void uploadFiles(MultipartFile[] multipartFiles, Product dto, String tableName, int type, int maxNumber) throws Exception;
+	public void ueleteFiles(String[] deleteSeq, String[] deletePathFile, Product dto, String tableName) throws Exception;
+	List<Product> selectListUploaded(ProductVo vo) throws Exception; 
 }

@@ -9,6 +9,7 @@ import bess.ham.infra.common.base.Base;
 public class Product extends Base{
 	
 	//product
+	private String ifprSeq;
 	private Integer category;
 	private String title;
 	private Integer price;
@@ -32,7 +33,6 @@ public class Product extends Base{
 	private String member_seq;
 	
 	//productOption
-	private String ifprSeq;
 	private String ifpoSeq;
 	private Integer option;
 	private String optionSub;

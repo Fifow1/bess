@@ -23,7 +23,7 @@ public class ProductControllre {
 	
 	
 	@RequestMapping(value="productForm")
-	public String productForm(ProductVo vo,Model model) throws Exception{
+	public String productForm(ProductVo vo,Product dto,Model model) throws Exception{
 		
 		return "infra/product/xdmin/productForm";
 	}
@@ -36,6 +36,7 @@ public class ProductControllre {
 	@SuppressWarnings(value = { "all" })
 	@RequestMapping(value = "productIsrt")
 	public String ProductIsrt(ProductVo vo,Product dto,RedirectAttributes redirectAttributes) throws Exception{
+		System.out.println(dto.getIfprSeq());
 		service.insert(dto); 
 		vo.setIfprSeq(dto.getIfprSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);

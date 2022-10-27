@@ -74,7 +74,7 @@
 			,#{price}
 			,#{stock}
 		)
-		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+		<selectKey resultType="String" keyProperty="ifprSeq" order="AFTER">
 		SELECT last_insert_id()
 		</selectKey>
 	</insert>
