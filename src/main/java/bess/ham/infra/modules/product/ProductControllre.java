@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import bess.ham.infra.modules.member.Member;
 
 
 @Controller
@@ -24,17 +23,22 @@ public class ProductControllre {
 	
 	
 	@RequestMapping(value="productForm")
-	public String productForm(Model model) throws Exception{
+	public String productForm(ProductVo vo,Model model) throws Exception{
+		
 		return "infra/product/xdmin/productForm";
 	}
+	
 	@RequestMapping(value="productList")
 	public String productList(Model model) throws Exception{
 		return "infra/product/xdmin/productList";
 	}
 	
+	@SuppressWarnings(value = { "all" })
 	@RequestMapping(value = "productIsrt")
-	public String ProductIsrt(ProductVo vo,Product dto) throws Exception{
+	public String ProductIsrt(ProductVo vo,Product dto,RedirectAttributes redirectAttributes) throws Exception{
 		service.insert(dto); 
+		vo.setIfprSeq(dto.getIfprSeq());
+		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/product/productList";
 	}
 	

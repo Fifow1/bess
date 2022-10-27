@@ -4,7 +4,9 @@ import java.sql.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class Product {
+import bess.ham.infra.common.base.Base;
+
+public class Product extends Base{
 	
 	//product
 	private Integer category;
@@ -41,7 +43,7 @@ public class Product {
 	private Integer uploadImgMaxNumber;
 	private String[] uploadImgDeleteSeq;
 	private String[] uploadImgDeletePathFile;
-	
+	private Date regDateTime;
 	public Integer getCategory() {
 		return category;
 	}
@@ -198,7 +200,11 @@ public class Product {
 	public void setUploadImgDeletePathFile(String[] uploadImgDeletePathFile) {
 		this.uploadImgDeletePathFile = uploadImgDeletePathFile;
 	}
-	
-	
+	public Date getRegDateTime() {
+		return regDateTime;
+	}
+	public void setRegDateTime(Date regDateTime) {
+		this.regDateTime = regDateTime;
+	}
 	
 }

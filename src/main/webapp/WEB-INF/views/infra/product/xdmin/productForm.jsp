@@ -55,13 +55,14 @@
 
 		<%@include file="../../base/xdminHeader.jsp"%>
 		<div class="container">
-			<form method="post" action="/product/productIsrt">
+			<form method="post" name=form autocomplete="off" enctype="multipart/form-data">
 			<br><br>
 			<div class="row">
 				<div class="col mb-5">
 					<h5 class="m-0 font-weight-bold text-dark">상품 관리(등록)</h5>
 				</div>
 			</div>
+			<input type="hidden" name="ifprSeq" value="<c:out value="${item.ifprSeq}"/>" >
 			<div class="col-sm-6 mt-3 mt-sm-0">
         	<c:set var="type" value="2"/>		<!-- #-> -->
         	<c:set var="name" value="uploadImg"/>		<!-- #-> -->
@@ -145,16 +146,41 @@
 			</div><br>
 			<div class="row">
 				<div class="col d-flex justify-content-center">
-					<button type="submit" class="btn btn-dark" style="width: 200px;">등록하기</button>
+					<button type="button" class="btn btn-dark" style="width: 200px;" id="btnSave">등록하기</button>
 				</div>
 			</div>
 			<br><br><br><br><br><br>
 			</form>
 		</div>
 	</div>
+	<form name="formVo" id="formVo" method="post">
+<!-- *Vo.jsp s -->
+<%@include file="../user/productVo.jsp"%>
+<!-- *Vo.jsp e -->
+</form>
 	
 <script type="text/javascript">
-
+	var goUrlList = "/product/productList";
+	var goUrlInst = "/product/productIsrt";
+	var seq = $("input:hidden[name=ifprSeq]");
+	var formVo = $("form[name=formVo]");
+	var form = $("form[name=form]");
+	
+$("#btnSave").on("click", function(){
+		
+		if (seq.val() == "0" || seq.val() == ""){
+			alert('hi1');
+	   		// insert
+	   		/* if (validationInst() == false) return false; */
+ 			/* setCheckboxValue($("#ifmmEmailConsent"), $("#ifmmEmailConsentNy"));
+			setCheckboxValue($("#ifmmSmsConsent"), $("#ifmmSmsConsentNy")); */
+	   		form.attr("action",goUrlInst).submit();
+	   	} else {
+	   		alert('hi');
+	   	}
+	});
+	
+	
 const MAX_EACH_FILE_SIZE = 5 * 1024 * 1024;		//	5M
 const MAX_TOTAL_FILE_SIZE = 25 * 1024 * 1024;	//	25M
 const MAX_TOTAL_FILE_NUMBER = 5;				//	5

@@ -13,6 +13,49 @@
     	
     	limit #{rowNumToShow} offset #{startRnumForMysql}
     </sql>
+    <!-- uploaded s -->
+	<insert id="insertUploaded">
+		INSERT INTO ${tableName} (
+			type
+			,defaultNy
+			,sort
+			,path
+			,originalName
+			,uuidName
+			,ext
+			,size
+			,delYn
+			,regDateTime
+			,pseq
+		) values (
+			#{type}
+			,#{defaultNy}
+			,#{sort}
+			,#{path}
+			,#{originalName}
+			,#{uuidName}
+			,#{ext}
+			,#{size}
+			,0
+			,#{regDateTime}
+			,#{pseq}
+		)
+	</insert>
+	
+	
+	<delete id="deleteUploaded">
+		DELETE FROM ${tableName}
+		WHERE 1=1
+			AND seq = #{seq}
+	</delete>
+	
+	
+	<update id="ueleteUploaded">
+		UPDATE ${tableName} SET delNy = 1
+		WHERE 1=1
+			AND seq = #{seq}
+	</update>
+	<!-- uploaded e -->
 	
 	
 </mapper>	

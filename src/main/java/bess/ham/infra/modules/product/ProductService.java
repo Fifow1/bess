@@ -2,6 +2,9 @@ package bess.ham.infra.modules.product;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
+
 import bess.ham.infra.modules.code.Code;
 import bess.ham.infra.modules.code.CodeVo;
 
@@ -20,4 +23,7 @@ public interface ProductService {
 	
 	public List<Product> selectListQa(ProductVo vo) throws Exception;
 	public int insertQa(Product dto) throws Exception; 
+	
+	//file upload
+	public void uploadFiles(MultipartFile[] multipartFiles, Product dto, String tableName, int type, int maxNumber) throws Exception;
 }

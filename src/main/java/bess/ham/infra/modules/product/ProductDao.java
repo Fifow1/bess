@@ -1,6 +1,7 @@
 package bess.ham.infra.modules.product;
 
 
+
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -8,10 +9,6 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
-
-import com.junefw.infra.modules.member.Member;
-
-import bess.ham.infra.modules.codegroup.CodeGroup;
 
 
 
