@@ -149,7 +149,6 @@
 								<c:forEach items="${listCodeColor}" var="listColor" varStatus="statusColor">
 									<c:if test="${color eq listColor.CCseq}">
 										<input type="text" value="${listColor.CCname}"/>
-										
 										<button type="button" value="${listColor.CCname}" name="${listColor.CCname}"class="btn btn" onchange="colorCh(<c:out value="${listColor.CCname}"/>)"
 												style="height: 25px; width: 20px; border-radius: 100%; ">
 										</button>

@@ -2,6 +2,7 @@ package bess.ham.infra.modules.product;
 
 
 
+
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -9,6 +10,7 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+
 
 
 
@@ -70,5 +72,7 @@ public class ProductDao {
 	
 //	uploaded
 	public int insertUploaded(Product dto) { return sqlSession.insert("Base" + ".insertUploaded", dto); }
+	public int ueleteUploaded(Product dto) { return sqlSession.insert("Base" + ".ueleteUploaded", dto); }
+	public List<Product> selectListUploaded(ProductVo vo){ return sqlSession.selectList(namespace + ".selectListUploaded", vo); }
 	
 }

@@ -4,12 +4,6 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.junefw.infra.modules.member.Member;
-import com.junefw.infra.modules.member.MemberVo;
-
-import bess.ham.infra.modules.code.Code;
-import bess.ham.infra.modules.code.CodeVo;
-
 
 public interface ProductService {
 	public List<Product> selectListMain(ProductVo vo) throws Exception;

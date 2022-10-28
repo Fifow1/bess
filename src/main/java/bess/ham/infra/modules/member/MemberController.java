@@ -103,6 +103,11 @@ public class MemberController {
 		return "infra/member/user/memberLogin";
 	}
 
+	@RequestMapping(value = "xdminLogin")
+	public String xdminLogin(Model model) throws Exception {
+
+		return "infra/member/xdmin/xdminLogin";
+	}
 	/*
 	 * @ResponseBody
 	 * 

@@ -24,12 +24,14 @@ public class ProductControllre {
 	
 	@RequestMapping(value="productForm")
 	public String productForm(ProductVo vo,Product dto,Model model) throws Exception{
-		
 		return "infra/product/xdmin/productForm";
 	}
 	
 	@RequestMapping(value="productList")
-	public String productList(Model model) throws Exception{
+	public String productList(@ModelAttribute("vo") ProductVo vo,Product dto,Model model) throws Exception{
+		
+		List<Product> list = service.selectListShop(vo);
+		model.addAttribute("list", list);
 		return "infra/product/xdmin/productList";
 	}
 	

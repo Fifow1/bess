@@ -178,6 +178,34 @@
 		</selectKey>
 	</insert>
 	
+	<select id="selectListUploaded" resultMap="resultMapObj">
+		SELECT 
+			seq
+			,type
+			,defaultNy
+			,sort
+			,path
+			,originalName
+			,uuidName
+		FROM productUploaded
+		WHERE 1=1
+			AND delYn = 0
+			AND pseq = #{ifprSeq}
+		ORDER BY
+			type, sort
+	</select>
+	
+	<update id="update">
+		UPDATE product
+		SET
+			title = #{ifmmAdminNy}
+			,price = #{ifmmDormancyNy}
+			,stock = #{ifmmName}
+			
+			WHERE 1=1
+			AND ifmmSeq = #{ifmmSeq}
+	</update>
+	
 
 </mapper>	
 

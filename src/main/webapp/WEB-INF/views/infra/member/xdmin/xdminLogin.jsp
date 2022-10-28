@@ -42,10 +42,10 @@
 	<div style="width: 40%; height:1000px; float:left; margin-top: 350px;">
 		<div class="row">
 			<div class="col d-flex justify-content-center">
-				<p style="font-size: 80px; margin-right: 50px;" class="h1">Login(user)</p>
+				<p style="font-size: 80px; margin-right: 50px;" class="h1">Login(Admin)</p>
 			</div>
 		</div>
-		<!-- <div class="row">
+		<!-- div class="row">
 			<div class="col d-flex justify-content-center">
 				<hr style="border: solid 4px #2E2E2E; width:340px; opacity: .9; margin-right: 50px;">
 			</div>
@@ -205,7 +205,7 @@ $("#btnLogin").on("click", function(){
 						location.href = URL_INDEX_ADMIN;
 					} */
 					alert("로그인 성공");
-					location.href = '/main';	
+					location.href = '/mainXdmin';	
 					
 					
 				} else {
@@ -230,7 +230,7 @@ $("#btnLogout").on("click", function(){
 		/* ,data : $("#formLogin").serialize() */
 		,success: function(response) {
 			if(response.rt == "success") {
-				location.href = "/member/userLogin";
+				location.href = "/member/xdminLogin";
 			} else {
 				alert("회원없음");
 			}

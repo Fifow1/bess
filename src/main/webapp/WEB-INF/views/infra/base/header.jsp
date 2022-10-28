@@ -1,4 +1,4 @@
-	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="utf-8"%>
+	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="true"%>
 	<nav class="navbar navbar-expand-lg header">
 		<div class="container">
 			<div style="margin-top: 30px; margin-right: 70px;">

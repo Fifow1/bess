@@ -24,12 +24,12 @@
 <div style="margin-left: 550px; margin-top: 300px;">
 	<div style="width: 400px; height: 400px;display: inline-block;">
 		<div style="text-align: center;">
-			<button type="button" class="btn btn-outline-primary" style="width: 100%; height: 200px;" onclick="location.href='/main'"><h1>user</h1></button>
+			<button type="button" class="btn btn-outline-primary" style="width: 100%; height: 200px;" onclick="location.href='member/userLogin'"><h1>user</h1></button>
 		</div>
 	</div>
 	<div style="width: 400px; height: 400px;display: inline-block;">
 		<div style="text-align: center;">
-			<button type="button" class="btn btn-outline-primary" style="width: 100%; height: 200px;"><h1>admin</h1></button>
+			<button type="button" class="btn btn-outline-primary" style="width: 100%; height: 200px;" onclick="location.href='member/xdminLogin'"><h1>admin</h1></button>
 		</div>
 	</div>
 </div>  

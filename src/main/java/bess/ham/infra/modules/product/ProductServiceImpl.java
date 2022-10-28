@@ -8,16 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import bess.ham.infra.common.base.BaseServiceImpl;
+
 import bess.ham.infra.common.constants.Constants;
 import bess.ham.infra.common.util.UtilDateTime;
+import bess.ham.infra.modules.member.Member;
 
 
 
 
 
 @Service
-public class ProductServiceImpl extends BaseServiceImpl implements ProductService {
+public class ProductServiceImpl implements ProductService {
 		
 		@Autowired
 		ProductDao dao;
@@ -116,5 +117,24 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 			}
 		}
 		
+		@Override
+		public void ueleteFiles(String[] deleteSeq, String[] deletePathFile, Product dto, String tableName) throws Exception{
+			
+			for (int i=0; i<deleteSeq.length; i++) {
+//				File file = new File(Constants.UPLOAD_PATH_PREFIX_EXTERNAL + deletePathFile[i]);
+//				boolean result = file.delete();
+				
+//				if(result) {
+					dto.setSeq(deleteSeq[i]);
+					dto.setTableName(tableName);
+					dao.ueleteUploaded(dto);
+//				}
+			}
+		}
+		
+		@Override
+		public List<Product> selectListUploaded(ProductVo vo) throws Exception {
+			return dao.selectListUploaded(vo);
+		}
 	
 }

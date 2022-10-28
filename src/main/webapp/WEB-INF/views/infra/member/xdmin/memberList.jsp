@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -132,7 +132,7 @@
 					</div>
 					<div class="">
 						<div class="table-responsive">
-							<table class="table border-top" id="dataTable" width="100%" cellspacing="0">
+							<table class="table border-top table-hover" id="dataTable" width="100%" cellspacing="0">
 								<thead>
 									<tr style="color: black; font-weight: 600; background-color: #2E2E2E;">
 										<td style="text-align: center; width: 5%;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>

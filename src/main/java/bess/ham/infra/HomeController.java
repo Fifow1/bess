@@ -51,19 +51,6 @@ public class HomeController {
 		
 		
 		
-		@RequestMapping (value = "/a", method = RequestMethod.GET)
-		public String a(ProductVo vo,Product dto, Model model) throws Exception {
-			
-			List<Product> list = service.selectListMain(vo);
-			model.addAttribute("list", list);
-			
-			return "a";
-		}
-		
-		@RequestMapping (value = "/b", method = RequestMethod.GET)
-		public String b(Locale locale, Model model) {
-			return "b";
-		}
 		
 		@RequestMapping (value = "/") 
 		public String choose(Model model) throws Exception {
@@ -71,9 +58,16 @@ public class HomeController {
 		return "choose"; 
 		 }
 		
+		@RequestMapping (value = "mainXdmin") 
+		public String mainXdmin(ProductVo vo,Product dto,Model model) throws Exception {
+			  
+		
+		return "mainXdmin"; 
+		 }
+		
 		
 		@RequestMapping (value = "main") 
-		public String home(ProductVo vo,Product dto,Model model) throws Exception {
+		public String main(ProductVo vo,Product dto,Model model) throws Exception {
 			  
 		vo.setCategory(vo.getCategory() == null ? 34 : vo.getCategory());
 		List<Product> list = service.selectListMain(vo);

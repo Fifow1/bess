@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -63,25 +63,6 @@
 				</div>
 			</div>
 			<input type="hidden" name="ifprSeq" value="<c:out value="${item.ifprSeq}"/>" >
-			<div class="col-sm-6 mt-3 mt-sm-0">
-        	<c:set var="type" value="2"/>		<!-- #-> -->
-        	<c:set var="name" value="uploadImg"/>		<!-- #-> -->
-        	<input type="hidden" id="<c:out value="${name }"/>MaxNumber" name="<c:out value="${name }"/>MaxNumber" value="0"/>
-        	<input type="hidden" id="<c:out value="${name }"/>DeleteSeq" name="<c:out value="${name }"/>DeleteSeq"/>
-        	<input type="hidden" id="<c:out value="${name }"/>DeletePathFile" name="<c:out value="${name }"/>DeletePathFile"/>
-            <label for="uploadImg" class="form-label input-file-button">이미지첨부</label>
- 			<input class="form-control form-control-sm" id="<c:out value="${name }"/>" name="<c:out value="${name }"/>" type="file" multiple="multiple" style="display: none;" onChange="upload('<c:out value="${name }"/>', <c:out value="${type }"/>, 0, 1, 0, 0, 1);">
-			<div id="<c:out value="${name }"/>Preview" class="addScroll">
-				<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
-					<c:if test="${listUploaded.type eq type }">
-						<div id="imgDiv_<c:out value="${type }"/>_<c:out value="${listUploaded.sort }"/>" style="display: inline-block; height: 95px;">
-							<img src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" class="rounded" width= "85px" height="85px" style="cursor:pointer;" onClick="openViewer(<c:out value="${listUploaded.type }"/>, <c:out value="${listUploaded. sort }"/>);">
-							<div style="position: relative; top:-85px; left:5px"><span style="color: red; cursor:pointer;" onClick="delImgDiv('<c:out value="${name }"/>', <c:out value="${type }"/>,<c:out value="${listUploaded.sort }"/>, <c:out value="${listUploaded.seq }"/>, '<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>')">X</span></div>
-						</div>
-					</c:if>
-				</c:forEach>
-			</div>
-        </div>
 			
 		<!-- <div class="filebox clearfix">
 			<button type="button" id="reset" calss="btn">리셋</button>
@@ -108,12 +89,36 @@
 			 -->
 			<div class="row">	
 				<div class="col">
-					<p class="h6" color="#2E2E2E";>상품이름</p>
+					<p class="h6" color="#2E2E2E";>상품번호</p>
 					<input type="text" class="form-control" id="title" name="title" placeholder="한글,숫자">
 				</div>
 				<div class="col">
-					<p class="h6" color="#2E2E2E";>비밀번호</p>
-					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="영문(대소문자)숫자">
+					<p class="h6" color="#2E2E2E";>상품이름</p>
+					<input type="text" class="form-control" id="title" name="title">
+				</div>
+			</div><br>
+			<div class="row">	
+				<div class="col">
+					<p class="h6" color="#2E2E2E";>상품가격</p>
+					<input type="text" class="form-control" id="title" name="title" placeholder="한글,숫자">
+				</div>
+				<div class="col">
+					<p class="h6" color="#2E2E2E";>재고</p>
+					<input type="text" class="form-control" id="title" name="title">
+				</div>
+			</div><br>
+			<div class="row">
+				<div class="col">
+					<p class="h6" color="#2E2E2E";>카테고리</p>
+					<select class="form-select" aria-label="Default select example">
+						<option selected>선택해주세요</option>
+						<option value="">키보드</option>
+						<option value="">마우스패드</option>
+					</select>
+				</div>
+				<div class="col">
+					<p class="h6" color="#2E2E2E";>옵션</p>
+					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="숫자">
 				</div>
 			</div><br>
 			<div class="row">
@@ -126,16 +131,6 @@
 					</select>
 				</div>
 				<div class="col">
-					<p class="h6" color="#2E2E2E";>휴대번호</p>
-					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="숫자">
-				</div>
-			</div><br>
-			<div class="row">
-				<div class="col">
-					<p class="h6" color="#2E2E2E";>이메일</p>
-					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="숫자">
-				</div>
-				<div class="col">
 					<p class="h6" color="#2E2E2E";>삭제여부</p>
 					<select class="form-select" aria-label="Default select example">
 						<option selected>선택해주세요</option>
@@ -144,6 +139,28 @@
 					</select>
 				</div>
 			</div><br>
+			<div class="row">
+				<div class="col-sm-6 mt-3 mt-sm-0">
+		        	<c:set var="type" value="2"/>		<!-- #-> -->
+		        	<c:set var="name" value="uploadImg"/>		<!-- #-> -->
+		        	<input type="hidden" id="<c:out value="${name }"/>MaxNumber" name="<c:out value="${name }"/>MaxNumber" value="0"/>
+		        	<input type="hidden" id="<c:out value="${name }"/>DeleteSeq" name="<c:out value="${name }"/>DeleteSeq"/>
+		        	<input type="hidden" id="<c:out value="${name }"/>DeletePathFile" name="<c:out value="${name }"/>DeletePathFile"/>
+		            <label for="uploadImg" class="form-label input-file-button">이미지첨부</label>
+		 			<input class="form-control form-control-sm" id="<c:out value="${name }"/>" name="<c:out value="${name }"/>" type="file" multiple="multiple" style="display: none;" onChange="upload('<c:out value="${name }"/>', <c:out value="${type }"/>, 0, 1, 0, 0, 1);">
+					<div id="<c:out value="${name }"/>Preview" class="addScroll">
+						<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
+							<c:if test="${listUploaded.type eq type }">
+								<div id="imgDiv_<c:out value="${type }"/>_<c:out value="${listUploaded.sort }"/>" style="display: inline-block; height: 95px;">
+									<img src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" class="rounded" width= "85px" height="85px" style="cursor:pointer;" onClick="openViewer(<c:out value="${listUploaded.type }"/>, <c:out value="${listUploaded. sort }"/>);">
+									<div style="position: relative; top:-85px; left:5px"><span style="color: red; cursor:pointer;" onClick="delImgDiv('<c:out value="${name }"/>', <c:out value="${type }"/>,<c:out value="${listUploaded.sort }"/>, <c:out value="${listUploaded.seq }"/>, '<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>')">X</span></div>
+								</div>
+							</c:if>
+						</c:forEach>
+					</div>
+		        </div>
+			</div>
+			<br><br><br>
 			<div class="row">
 				<div class="col d-flex justify-content-center">
 					<button type="button" class="btn btn-dark" style="width: 200px;" id="btnSave">등록하기</button>

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -16,17 +16,21 @@
     <meta name="author" content="">
 
     <title>회원관리</title>
-
+	<!-- Datepicker -->
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
     <!-- Custom fonts for this template-->
     <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- Custom styles for this template-->
     <link href="/resources/css/1.css" rel="stylesheet">
+    <jsp:useBean id="CodeServiceImpl" class="bess.ham.infra.modules.code.CodeServiceImpl"/>
 </head>
 
 <body id="page-top">
-
+	
     <!-- Page Wrapper -->
 	<div id="wrapper" style="height:1500px;">
 
@@ -34,7 +38,8 @@
 		<%@include file="../../base/xdminHeader.jsp"%>
 
 		<div class="container" style="margin-right: 400px;">
-			<form action="/product/productForm">
+			<form action="/product/productForm" name="formList">
+			<c:set var="listCodeColor" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
 			<div style="height: 500px; width: 1400px">
 				<div style="margin-top: 100px; margin-bottom: 30px;">
 					<h5 class="m-0 font-weight-bold text-dark">상품관리</h5>
@@ -127,7 +132,7 @@
 					</div>
 				</div>
 				<div class="">
-					<div class="table-responsive">
+					<div class="table-responsive table-hover">
 						<table class="table border-top" id="dataTable" width="100%" cellspacing="0">
 							<thead class="border-bottom">
 								<tr style="color: black; font-weight: 600; background-color: #2E2E2E; ">
@@ -136,48 +141,39 @@
 									<th style="color:white; border-bottom: 0px; text-align: center;">상품사진</th>
 									<th style="color:white; border-bottom: 0px; text-align: center;">상품명</th>
 									<th style="color:white; border-bottom: 0px; text-align: center;">판매가</th>
+									<th style="color:white; border-bottom: 0px; text-align: center;">색상옵션</th>
 									<th style="color:white; border-bottom: 0px; text-align: center;">재고</th>
-									<th style="color:white; border-bottom: 0px; text-align: center;">안전재고</th>
-									<th style="color:white; border-bottom: 0px; text-align: center;">기능</th>
+								<!-- 	<th style="color:white; border-bottom: 0px; text-align: center;">안전재고</th> -->
+									<!-- <th style="color:white; border-bottom: 0px; text-align: center;">기능</th> -->
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td style="padding-top: 43px; text-align: center;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-									<td style="padding-top: 45px; text-align: center;">202112093801</td>
-									<td><img src="https://contents.sixshop.com/thumbnails/uploadedFiles/99160/product/image_1604025864342_1000.png" alt="Girl in a jacket" style="width: 160px; margin-left: 100px;"></td>
-									<td style="padding-top: 45px; text-align: center;">CAT’S EYE DESK MAT</td>
-									<td style="padding-top: 45px; text-align: center;">30000원</td>
-									<td style="padding-top: 45px; text-align: center;">100</td>
-									<td style="padding-top: 45px; text-align: center;">50</td>
-									<td style="padding-top: 40px; text-align: center;"><button type="button" class="btn btn-dark">수정</button>
-										<button type="button" class="btn btn-outline-dark">옵션</button>
-									</td>
-								</tr>
-								<tr>
-									<td style="padding-top: 43px; text-align: center;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-									<td style="padding-top: 45px; text-align: center;">202112093801</td>
-									<td><img src="https://contents.sixshop.com/thumbnails/uploadedFiles/99160/product/image_1604025864342_1000.png" alt="Girl in a jacket" style="width: 160px; margin-left: 100px;"></td>
-									<td style="padding-top: 45px; text-align: center;">CAT’S EYE DESK MAT</td>
-									<td style="padding-top: 45px; text-align: center;">30000원</td>
-									<td style="padding-top: 45px; text-align: center;">100</td>
-									<td style="padding-top: 45px; text-align: center;">50</td>
-									<td style="padding-top: 40px; text-align: center;"><button type="button" class="btn btn-dark">수정</button>
-										<button type="button" class="btn btn-outline-dark">옵션</button>
-									</td>
-								</tr>
-								<tr>
-									<td style="padding-top: 43px; text-align: center;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-									<td style="padding-top: 45px; text-align: center;">202112093801</td>
-									<td><img src="https://contents.sixshop.com/thumbnails/uploadedFiles/99160/product/image_1604025864342_1000.png" alt="Girl in a jacket" style="width: 160px;margin-left: 100px;"></td>
-									<td style="padding-top: 45px; text-align: center;">CAT’S EYE DESK MAT</td>
-									<td style="padding-top: 45px; text-align: center;">30000원</td>
-									<td style="padding-top: 45px; text-align: center;">100</td>
-									<td style="padding-top: 45px; text-align: center;">50</td>
-									<td style="padding-top: 40px; text-align: center;"><button type="button" class="btn btn-dark">수정</button>
-										<button type="button" class="btn btn-outline-dark">옵션</button>
-									</td>
-								</tr>
+								<c:forEach items="${list}" var="list" varStatus="status">
+									<tr onclick="location.href='javascript:goForm(<c:out value="${list.ifprSeq}"/>)'" style="cursor:hand">
+										<td style="padding-top:43px; text-align: center;"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+										<td style="padding-top: 45px; text-align: center;"><c:out value="${list.ifprSeq }"/></td>
+										<td><img src="https://contents.sixshop.com/thumbnails/uploadedFiles/99160/product/image_1604025864342_1000.png" alt="Girl in a jacket" style="width: 160px; margin-left: 100px;"></td>
+										<td style="padding-top: 45px; text-align: center;"><c:out value="${list.title }"/></td>
+										<td style="padding-top: 45px; text-align: center;"><c:out value="${list.price}"/></td>
+										<%-- <td style="padding-top: 45px; text-align: center;"><c:out value="${list.optionSub}"/></td> --%>
+										<td style="padding-top: 45px; text-align: center;">
+											<c:set var="data" value="${list.optionSub}" />
+											<c:set var="colorArray" value="${fn:split(data, ',') }" />
+											<c:forEach var="color" items="${colorArray }">
+												<c:forEach items="${listCodeColor}" var="listColor" varStatus="statusColor">
+													<c:if test="${color eq listColor.CCseq}">
+														<p style="display: inline-block; text-align: center;"><c:out value="${listColor.CCnameEn}" />,</p>
+													</c:if>
+												</c:forEach>
+											</c:forEach>
+										</td>
+										<td style="padding-top: 45px; text-align: center;"><c:out value="${list.stock}"/></td>
+										<!-- <td style="padding-top: 45px; text-align: center;">50</td> -->
+										<!-- <td style="padding-top: 40px; text-align: center;"><button type="button" class="btn btn-dark">수정</button>
+											<button type="button" class="btn btn-outline-dark">옵션</button>
+										</td> -->
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -193,14 +189,33 @@
 						</nav>
 					</div>
 					<div class="d-flex justify-content-end">
-						<button type="submit" class="btn btn-dark" onclick="href='/product/productForm'">등록</button>
+						<button type="submit" class="btn btn-dark" id="btnForm">등록</button>
 					</div>
 				</div>
 			</div>	
 		</form>
 		</div>
 	</div>
-
+	<script type="text/javascript">
+		var form = $("form[name=formList]");
+		var seq = $("input:hidden[name=ifprSeq]");
+		var goUrlPrForm="productForm/";
+		$(document).ready(function(){
+			$("optionSub").text(${listColor.CCname});
+			});
+		
+		$('#btnForm').on("click", function() {
+			goForm(0);                
+		});
+		
+		goForm = function(keyValue) {
+	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+	    	seq.val(keyValue);
+			form.attr("action", goUrlPrForm).submit();
+		}
+	
+	</script>
+	
     <!-- Bootstrap core JavaScript-->
     <script src="/resources/vendor/jquery/jquery.min.js"></script>
     <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
