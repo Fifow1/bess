@@ -64,13 +64,13 @@
 			<p style ="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">아이디</p>
 			<div class="row loginbtn d-flex justify-content-center">
 				<div class="col d-flex justify-content-center">
-					<input type="text" class="form-control" id="id" aria-describedby="emailHelp" style="width: 500px; height: 50px;">
+					<input type="text" class="form-control" id="id" value="lasldjf" style="width: 500px; height: 50px;">
 				</div>
 			</div>
 			<p style ="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">비밀번호</p>
 			<div class="row loginbtn d-flex justify-content-center">
 				<div class="col mb-3 d-flex justify-content-center">
-					<input type="password	" class="form-control" id="pw" aria-describedby="emailHelp" style="width: 500px; height: 50px;">
+					<input type="password" class="form-control" id="pw" value="la381" style="width: 500px; height: 50px;">
 				</div>
 			</div>
 			

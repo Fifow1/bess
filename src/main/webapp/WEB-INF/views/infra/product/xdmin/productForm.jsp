@@ -19,16 +19,15 @@
     <!-- Custom fonts for this template-->
     <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- Custom styles for this template-->
     <link href="/resources/css/1.css" rel="stylesheet">
-    
     
     <!-- Jquery CDN -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <!-- test -->
 <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <style type="text/css">
     	.addScroll{
 		overflow-y:auto;
@@ -59,7 +58,7 @@
 			<br><br>
 			<div class="row">
 				<div class="col mb-5">
-					<h5 class="m-0 font-weight-bold text-dark">상품 관리(등록)</h5>
+					<h3 class="m-0 font-weight-bold text-dark mb-5 mt-5">상품 관리(등록)</h3>
 				</div>
 			</div>
 			<input type="hidden" name="ifprSeq" value="<c:out value="${item.ifprSeq}"/>" >
@@ -90,7 +89,7 @@
 			<div class="row">	
 				<div class="col">
 					<p class="h6" color="#2E2E2E";>상품번호</p>
-					<input type="text" class="form-control" id="title" name="title" placeholder="한글,숫자">
+					<input type="text" id="disabledTextInput" class="form-control" name="title" placeholder="한글,숫자" readonly>
 				</div>
 				<div class="col">
 					<p class="h6" color="#2E2E2E";>상품이름</p>

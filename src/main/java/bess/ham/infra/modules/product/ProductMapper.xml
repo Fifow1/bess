@@ -34,6 +34,7 @@
             ,pr.price
             ,pr.stock
             ,pr.uploadDate
+            ,pro.option
 		    ,group_concat(pro .optionSub separator ',') AS 'optionSub'
 		from product pr
 		LEFT JOIN productOption pro 
@@ -88,6 +89,7 @@
             ,pr.price
             ,pr.stock
             ,pr.uploadDate
+            ,pro.option
 		    ,group_concat(pro .optionSub separator ',') AS 'optionSub'
 		from product pr
 		LEFT JOIN productOption pro 
