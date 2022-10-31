@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>회원관리</title>
+    <title>상품관리</title>
 
     <!-- Custom fonts for this template-->
     <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -23,11 +23,12 @@
     <link href="/resources/css/1.css" rel="stylesheet">
     
     <!-- Jquery CDN -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-<!-- test -->
-<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+	<!-- test -->
+	<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<jsp:useBean id="CodeServiceImpl" class="bess.ham.infra.modules.code.CodeServiceImpl"/>
     <style type="text/css">
     	.addScroll{
 		overflow-y:auto;
@@ -55,6 +56,8 @@
 		<%@include file="../../base/xdminHeader.jsp"%>
 		<div class="container">
 			<form method="post" name=form autocomplete="off" enctype="multipart/form-data">
+			<c:set var="listCodeCategory" value="${CodeServiceImpl.selectListCachedCode('8')}"/>
+			<c:set var="listCodeColor" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
 			<br><br>
 			<div class="row">
 				<div class="col mb-5">
@@ -110,14 +113,46 @@
 				<div class="col">
 					<p class="h6" color="#2E2E2E";>카테고리</p>
 					<select class="form-select" aria-label="Default select example">
+							<option selected>선택해주세요</option>
+							<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">
+								<option id="<c:out value="${listCategory.CCseq }"/>" value="<c:out value="${listCategory.CCseq }"/>" 
+									onclick="submit(<c:out value="${listCategory.CCseq }"/>)">
+									<c:out value="${listCategory.CCname }"/>
+								</option>
+							</c:forEach>
+					</select>
+				</div>
+			</div><br>
+			<div class="row">
+				<div class="col">
+					<p class="h6" color="#2E2E2E";>옵션</p>
+					<select class="form-select" aria-label="Default select example">
 						<option selected>선택해주세요</option>
-						<option value="">키보드</option>
-						<option value="">마우스패드</option>
+						<option selected>선택해주세요</option>
 					</select>
 				</div>
 				<div class="col">
+					<p class="h6" color="#2E2E2E";>옵션서브</p>
+					<select class="form-select" aria-label="Default select example">
+						<option selected>선택해주세요</option>
+						<option selected>선택해주세요</option>
+					</select>
+				</div>
+			</div><br>
+			<div class="row">
+				<div class="col">
 					<p class="h6" color="#2E2E2E";>옵션</p>
-					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="숫자">
+					<select class="form-select" aria-label="Default select example">
+						<option selected>선택해주세요</option>
+						<option selected>선택해주세요</option>
+					</select>
+				</div>
+				<div class="col">
+					<p class="h6" color="#2E2E2E";>옵션서브</p>
+					<select class="form-select" aria-label="Default select example">
+						<option selected>선택해주세요</option>
+						<option selected>선택해주세요</option>
+					</select>
 				</div>
 			</div><br>
 			<div class="row">
