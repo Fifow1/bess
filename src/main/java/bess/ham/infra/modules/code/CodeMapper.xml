@@ -78,27 +78,13 @@
 	<resultMap id="resultMapGroup" type="bess.ham.infra.modules.codegroup.CodeGroup"></resultMap>
 	
 	<select id="groupList" resultMap="resultMapGroup">
-	
 		SELECT 
 			seq as CCGseq
 			,groupName as CCGname
 		FROM codeGroup
 		WHERE 1=1
-
-		
 	</select>
 	
-<!--
-	<select id="selectOne" resultMap="resultMapObj">
-		SELECT
-			seq as CCseq
-			,codeName as CCname
-			,codeName_code as CCname_code
-			,delYn as CCdelYn
-		FROM code
-		WHERE 1=1
-		AND seq = #{shSeq}
-	</select> -->
 	
 	
 	

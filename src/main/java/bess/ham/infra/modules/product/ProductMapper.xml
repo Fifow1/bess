@@ -208,6 +208,14 @@
 			AND ifmmSeq = #{ifmmSeq}
 	</update>
 	
+	<select id="optionList" resultMap="resultMapGroup">
+		SELECT 
+			ifooseq
+			,ifooName
+		FROM lasldjf.option
+		WHERE 1=1;
+	</select>
+	
 
 </mapper>	
 

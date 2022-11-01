@@ -11,6 +11,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import bess.ham.infra.modules.code.Code;
+
 
 
 
@@ -68,6 +70,11 @@ public class ProductDao {
 	public int insertQa(Product dto) {
 		int result = sqlSession.insert(namespace + ".insertQa", dto);
 		return result;
+	}
+	
+	public List<Product> optionList(){
+		List<Product> list = sqlSession.selectList(namespace + ".optionList");
+		return list;
 	}
 	
 //	uploaded
