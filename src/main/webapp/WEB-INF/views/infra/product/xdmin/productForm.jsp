@@ -26,8 +26,13 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 	<!-- test -->
-	<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<!-- <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" /> -->
+	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> 
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 	<jsp:useBean id="CodeServiceImpl" class="bess.ham.infra.modules.code.CodeServiceImpl"/>
     <style type="text/css">
     	.addScroll{
@@ -58,6 +63,8 @@
 			<form method="post" name=form autocomplete="off" enctype="multipart/form-data">
 			<c:set var="listCodeCategory" value="${CodeServiceImpl.selectListCachedCode('8')}"/>
 			<c:set var="listCodeColor" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
+			<c:set var="listCodeSize" value="${CodeServiceImpl.selectListCachedCode('9')}"/>
+			<c:set var="listCodeOptionMain" value="${CodeServiceImpl.selectListCachedCode('10')}"/>
 			<br><br>
 			<div class="row">
 				<div class="col mb-5">
@@ -115,8 +122,7 @@
 					<select class="form-select" aria-label="Default select example">
 							<option selected>선택해주세요</option>
 							<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">
-								<option id="<c:out value="${listCategory.CCseq }"/>" value="<c:out value="${listCategory.CCseq }"/>" 
-									onclick="submit(<c:out value="${listCategory.CCseq }"/>)">
+								<option id="<c:out value="${listCategory.CCseq }"/>" value="<c:out value="${listCategory.CCseq }"/>"onchange="submit(<c:out value="${listCategory.CCseq }"/>)">
 									<c:out value="${listCategory.CCname }"/>
 								</option>
 							</c:forEach>
@@ -124,37 +130,34 @@
 				</div>
 			</div><br>
 			<div class="row">
-				<div class="col">
+				<div class="col-6">
 					<p class="h6" color="#2E2E2E";>옵션</p>
-					<select class="form-select" aria-label="Default select example">
+					<select class="form-select" aria-label="Default select example" id="optionMain">
 						<option selected>선택해주세요</option>
+						<c:forEach items="${listCodeOptionMain}" var="listOptionMain" varStatus="statusOptionMain">
+							<option id="<c:out value="${listOptionMain.CCseq }"/>" value="<c:out value="${listOptionMain.CCseq }"/>"onchange="submit(<c:out value="${listOptionMain.CCseq }"/>)">
+								<c:out value="${listOptionMain.CCname}"/>
+							</option>
+						</c:forEach>
+					</sele	ct>
+				</div>
+				<div class="col-5 pe-0">
+					<p class="h6" color="#2E2E2E";>옵션서브</p>
+					<select class="form-select" aria-label="Default select example" id="optionSub">
 						<option selected>선택해주세요</option>
+							<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">
+								<option id="<c:out value="${listCategory.CCseq }"/>" value="<c:out value="${listCategory.CCseq }"/>" 
+									onclick="submit(<c:out value="${listCategory.CCseq }"/>)">
+									<c:out value="${listCategory.CCname }"/>
+								</option>
+							</c:forEach>
 					</select>
 				</div>
-				<div class="col">
-					<p class="h6" color="#2E2E2E";>옵션서브</p>
-					<select class="form-select" aria-label="Default select example">
-						<option selected>선택해주세요</option>
-						<option selected>선택해주세요</option>
-					</select>
+				<div class="col-1 d-flex justify-content-center d-flex align-items-end ps-0">
+					<button type="button" onclick="add_div()" class="btn btn-dark"><i class="fa-solid fa-plus"></i></button>
 				</div>
 			</div><br>
-			<div class="row">
-				<div class="col">
-					<p class="h6" color="#2E2E2E";>옵션</p>
-					<select class="form-select" aria-label="Default select example">
-						<option selected>선택해주세요</option>
-						<option selected>선택해주세요</option>
-					</select>
-				</div>
-				<div class="col">
-					<p class="h6" color="#2E2E2E";>옵션서브</p>
-					<select class="form-select" aria-label="Default select example">
-						<option selected>선택해주세요</option>
-						<option selected>선택해주세요</option>
-					</select>
-				</div>
-			</div><br>
+			<div id="room_type"></div>
 			<div class="row">
 				<div class="col">
 					<p class="h6" color="#2E2E2E";>사용여부</p>
@@ -410,13 +413,88 @@ delImgDiv = function(objName, type, sort, deleteSeq, pathFile) {
 	}
 }
 </script>
-<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+
+<script type="text/javascript">	
+	
+	var remove_div = function(test){		
+		$("#"+test.id).remove();		
+	}
+	
+	var cnt = 1;
+	var add_div = function(){
+		var strMenu = "";
+        var test = cnt;
+    
+                 
+       /*  strMenu += '<div id="'+test+'" class="form-group">'
+	                + '<label for="image">제목'+test+'</label>'
+	                + '<input type="text" id="title'+test+'" name="title" class="form-control" ></input>'
+               		+ '<input type="button" id="test'+test+'" value="삭제" onclick="remove_div('+test+')">'
+                + '</div>';   */                        
+                                                
+		
+		
+		 strMenu +='<div id="'+ test +'"class="row">'
+					+'<div class="col-6">'
+					+'	<p class="h6" color="#2E2E2E";>옵션'+test+'</p>'
+					+'	<select class="form-select" aria-label="Default select example">'
+					+'		<option selected>선택해주세요</option>'
+					+'		<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">'
+					+'			<option id="<c:out value="${listCategory.CCseq }"/>" value="<c:out value="${listCategory.CCseq }"/>"onclick="submit(<c:out value="${listCategory.CCseq }"/>)"> '
+					+'				<c:out value="${listCategory.CCname }"/>'
+					+'			</option>'
+					+'		</c:forEach>'
+					+'	</select>'
+					+'</div>'
+					+'<div class="col-5 pe-0">'
+					+'	<p class="h6" color="#2E2E2E";>옵션서브</p>'
+					+'	<select class="form-select" aria-label="Default select example">'
+					+'		<option selected>선택해주세요</option>'
+					+'		<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">'
+					+'			<option id="<c:out value="${listCategory.CCseq }"/>" value="<c:out value="${listCategory.CCseq }"/>" onclick="submit(<c:out value="${listCategory.CCseq }"/>)">'
+					+'			<c:out value="${listCategory.CCname }"/>'
+					+'			</option>'
+					+'		</c:forEach>'
+					+'	</select>'
+					+'</div>'
+					+'<div class="col-1 d-flex justify-content-center d-flex align-items-end ps-0">'
+					+'	<button type="button" class="btn btn-danger" id="test'+test+'"  onclick="remove_div('+test+')"><i class="fa-solid fa-trash"></i></button>'
+					+'</div>'
+					+'</div>' 
+					+'<br>' 
+			$("#room_type").append(strMenu);
+			cnt ++; 
+		
+		
+	}
+$(document).ready(function() {	
+			
+});
+
+
+
+$(document).ready(function(){
+	$("#optionMain").change(function(){
+		console.log("값변경테스트: " + $(this).val());
+		alert($(this).val())
+		var opMainV = $(this).val();
+	});
+ });
+
+/* function submit(num) {
+ 	var li_val = $('#' + num).attr("value"); 
+	alert(li_val);
+	$('#valueC').val(li_val);
+	form.attr("action", goUrlPrList).submit();
+} */
+
+</script>	
 	<!-- Bootstrap core JavaScript-->
-    <script src="/resources/vendor/jquery/jquery.min.js"></script>
-    <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+   <script src="/resources/vendor/jquery/jquery.min.js"></script>
+   <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+   <!--  <script src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script> -->
 
     <!-- Custom scripts for all pages-->
     <!-- <script src="/resources/js/sb-admin-2.min.js"></script> -->
@@ -427,7 +505,7 @@ delImgDiv = function(objName, type, sort, deleteSeq, pathFile) {
     <!-- Page level custom scripts -->
     <script src="/resources/js/demo/chart-area-demo.js"></script>
     <script src="/resources/js/demo/chart-pie-demo.js"></script>
-    
+    <script src="https://kit.fontawesome.com/50704cc15b.js" crossorigin="anonymous"></script>	
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
     

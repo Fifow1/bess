@@ -2,7 +2,6 @@ package bess.ham.infra.modules.member;
 
 import java.util.List;
 
-import bess.ham.infra.modules.codegroup.CodeGroupVo;
 
 
 public interface MemberService {
