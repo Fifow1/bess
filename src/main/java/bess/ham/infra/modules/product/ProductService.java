@@ -20,6 +20,9 @@ public interface ProductService {
 	public List<Product> selectListQa(ProductVo vo) throws Exception;
 	public int insertQa(Product dto) throws Exception; 
 	
+	//option
+	public List<Product> optionList(Product dto) throws Exception;
+	
 	//file upload
 	public void uploadFiles(MultipartFile[] multipartFiles, Product dto, String tableName, int type, int maxNumber) throws Exception;
 	public void ueleteFiles(String[] deleteSeq, String[] deletePathFile, Product dto, String tableName) throws Exception;

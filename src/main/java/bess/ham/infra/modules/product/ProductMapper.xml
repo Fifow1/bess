@@ -208,9 +208,10 @@
 			AND ifmmSeq = #{ifmmSeq}
 	</update>
 	
-	<select id="optionList" resultMap="resultMapGroup">
+	
+	<select id="optionList" resultMap="resultMapObj">
 		SELECT 
-			ifooseq
+			ifooSeq
 			,ifooName
 		FROM lasldjf.option
 		WHERE 1=1;

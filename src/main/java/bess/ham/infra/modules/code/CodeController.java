@@ -26,8 +26,6 @@ public class CodeController {
 		
 	//	vo.setShOption(vo.getShOption() == 	null ? 2 : vo.getShOption());
 		vo.setShDelYn(vo.getShDelYn() == null ? 2 : vo.getShDelYn());
-		
-		
 		vo.setParamsPaging(service.selectOneCount(vo));
 	}
 	

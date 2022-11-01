@@ -136,5 +136,11 @@ public class ProductServiceImpl implements ProductService {
 		public List<Product> selectListUploaded(ProductVo vo) throws Exception {
 			return dao.selectListUploaded(vo);
 		}
+		
+	//option
+		@Override
+		public List<Product> optionList(Product dto) throws Exception {
+			return dao.optionList();
+		}
 	
 }

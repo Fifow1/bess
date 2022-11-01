@@ -44,6 +44,12 @@ public class Product extends Base{
 	private String[] uploadImgDeleteSeq;
 	private String[] uploadImgDeletePathFile;
 	private Date regDateTime;
+	
+	//option
+	private String ifooSeq;
+	private String ifooName;
+	
+	
 	public Integer getCategory() {
 		return category;
 	}
@@ -206,5 +212,18 @@ public class Product extends Base{
 	public void setRegDateTime(Date regDateTime) {
 		this.regDateTime = regDateTime;
 	}
+	public String getIfooSeq() {
+		return ifooSeq;
+	}
+	public void setIfooSeq(String ifooSeq) {
+		this.ifooSeq = ifooSeq;
+	}
+	public String getIfooName() {
+		return ifooName;
+	}
+	public void setIfooName(String ifooName) {
+		this.ifooName = ifooName;
+	}
+	
 	
 }
