@@ -24,6 +24,8 @@ public class ProductControllre {
 	
 	@RequestMapping(value="productForm")
 	public String productForm(ProductVo vo,Product dto,Model model) throws Exception{
+		List<Product> list = service.optionList(vo);
+		model.addAttribute("optionList", list);
 		return "infra/product/xdmin/productForm";
 	}
 	

@@ -129,34 +129,26 @@
 					</select>
 				</div>
 			</div><br>
+			<div id="room_type">
 			<div class="row">
 				<div class="col-6">
 					<p class="h6" color="#2E2E2E";>옵션</p>
-					<select class="form-select" aria-label="Default select example" id="optionMain">
+					<select class="form-select" aria-label="Default select example" name="optionMain" id="optionMain">
 						<option selected>선택해주세요</option>
-						<c:forEach items="${listCodeOptionMain}" var="listOptionMain" varStatus="statusOptionMain">
-							<option id="<c:out value="${listOptionMain.CCseq }"/>" value="<c:out value="${listOptionMain.CCseq }"/>"onchange="submit(<c:out value="${listOptionMain.CCseq }"/>)">
-								<c:out value="${listOptionMain.CCname}"/>
-							</option>
+						<c:forEach items="${optionList}" var="list" varStatus="status">
+							<option value="<c:out value="${list.ifooSeq}"></c:out>" ><c:out value="${list.ifooName}"/></option>
 						</c:forEach>
-					</sele	ct>
-				</div>
-				<div class="col-5 pe-0">
-					<p class="h6" color="#2E2E2E";>옵션서브</p>
-					<select class="form-select" aria-label="Default select example" id="optionSub">
-						<option selected>선택해주세요</option>
-							<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">
-								<option id="<c:out value="${listCategory.CCseq }"/>" value="<c:out value="${listCategory.CCseq }"/>" 
-									onclick="submit(<c:out value="${listCategory.CCseq }"/>)">
-									<c:out value="${listCategory.CCname }"/>
-								</option>
-							</c:forEach>
 					</select>
+				</div>
+				<div class="col-5">
+					<p class="h6" color="#2E2E2E";>옵션</p>
+					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
 				</div>
 				<div class="col-1 d-flex justify-content-center d-flex align-items-end ps-0">
 					<button type="button" onclick="add_div()" class="btn btn-dark"><i class="fa-solid fa-plus"></i></button>
 				</div>
-			</div><br>
+			</div>
+		</div><br>
 			<div id="room_type"></div>
 			<div class="row">
 				<div class="col">
@@ -420,73 +412,64 @@ delImgDiv = function(objName, type, sort, deleteSeq, pathFile) {
 		$("#"+test.id).remove();		
 	}
 	
-	var cnt = 1;
-	var add_div = function(){
+		var add_div = function(){
+		var cnt = 1;
 		var strMenu = "";
         var test = cnt;
-    
-                 
-       /*  strMenu += '<div id="'+test+'" class="form-group">'
-	                + '<label for="image">제목'+test+'</label>'
-	                + '<input type="text" id="title'+test+'" name="title" class="form-control" ></input>'
-               		+ '<input type="button" id="test'+test+'" value="삭제" onclick="remove_div('+test+')">'
-                + '</div>';   */                        
-                                                
+        
+        strMenu +='<div id="'+test+'"class="row">'
+		+'<div class="col-6">'
+		+'	<p class="h6" color="#2E2E2E";>옵션'+test+'</p>'
+		+'	<select class="form-select" aria-label="Default select example">'
+		+'		<option selected>선택해주세요</option>'
+		+'		<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">'
+		+'			<option id="<c:out value="${listCategory.CCseq }"/>" value="<c:out value="${listCategory.CCseq }"/>"onclick="submit(<c:out value="${listCategory.CCseq }"/>)"> '
+		+'				<c:out value="${listCategory.CCname }"/>'
+		+'			</option>'
+		+'		</c:forEach>'
+		+'	</select>'
+		+'</div>'
+		+'<div class="col-5 pe-0">'
+		+'	<p class="h6" color="#2E2E2E";>옵션서브</p>'
+		+'	<select class="form-select" aria-label="Default select example">'
+		+'		<option selected>선택해주세요</option>'
+		+'		<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">'
+		+'			<option id="<c:out value="${listCategory.CCseq }"/>" value="<c:out value="${listCategory.CCseq }"/>" onclick="submit(<c:out value="${listCategory.CCseq }"/>)">'
+		+'			<c:out value="${listCategory.CCname }"/>'
+		+'			</option>'
+		+'		</c:forEach>'
+		+'	</select>'
+		+'</div>'
+		+'<div class="col-1 d-flex justify-content-center d-flex align-items-end ps-0">'
+		+'	<button type="button" class="btn btn-danger" id="test'+test+'" onclick="remove_div('+test+')"><i class="fa-solid fa-trash"></i></button>'
+		+'</div>'
+		+'</div>' 
+		+'<br>' 
 		
+		$("#room_type").append(strMenu);
+		cnt ++; 
+		}
 		
-		 strMenu +='<div id="'+ test +'"class="row">'
-					+'<div class="col-6">'
-					+'	<p class="h6" color="#2E2E2E";>옵션'+test+'</p>'
-					+'	<select class="form-select" aria-label="Default select example">'
-					+'		<option selected>선택해주세요</option>'
-					+'		<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">'
-					+'			<option id="<c:out value="${listCategory.CCseq }"/>" value="<c:out value="${listCategory.CCseq }"/>"onclick="submit(<c:out value="${listCategory.CCseq }"/>)"> '
-					+'				<c:out value="${listCategory.CCname }"/>'
-					+'			</option>'
-					+'		</c:forEach>'
-					+'	</select>'
-					+'</div>'
-					+'<div class="col-5 pe-0">'
-					+'	<p class="h6" color="#2E2E2E";>옵션서브</p>'
-					+'	<select class="form-select" aria-label="Default select example">'
-					+'		<option selected>선택해주세요</option>'
-					+'		<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">'
-					+'			<option id="<c:out value="${listCategory.CCseq }"/>" value="<c:out value="${listCategory.CCseq }"/>" onclick="submit(<c:out value="${listCategory.CCseq }"/>)">'
-					+'			<c:out value="${listCategory.CCname }"/>'
-					+'			</option>'
-					+'		</c:forEach>'
-					+'	</select>'
-					+'</div>'
-					+'<div class="col-1 d-flex justify-content-center d-flex align-items-end ps-0">'
-					+'	<button type="button" class="btn btn-danger" id="test'+test+'"  onclick="remove_div('+test+')"><i class="fa-solid fa-trash"></i></button>'
-					+'</div>'
-					+'</div>' 
-					+'<br>' 
-			$("#room_type").append(strMenu);
-			cnt ++; 
-		
-		
-	}
 $(document).ready(function() {	
 			
 });
 
 
-
-$(document).ready(function(){
+ $(document).ready(function(){
 	$("#optionMain").change(function(){
 		console.log("값변경테스트: " + $(this).val());
 		alert($(this).val())
 		var opMainV = $(this).val();
 	});
- });
+ }); 
 
-/* function submit(num) {
+ 
+ function submit(num) {
  	var li_val = $('#' + num).attr("value"); 
 	alert(li_val);
 	$('#valueC').val(li_val);
 	form.attr("action", goUrlPrList).submit();
-} */
+} 
 
 </script>	
 	<!-- Bootstrap core JavaScript-->
