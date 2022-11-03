@@ -223,6 +223,7 @@
 								<button type="button" class="btn btn-outline-dark">삭제</button>
 							</div>
 							<div class="d-flex justify-content-end" style="float: right; width: 50%">
+								<button type="button" class="btn btn-success" id="btnExcel">엑셀</button>
 								<button type="button" class="btn btn-dark" style="background-color: #2E2E2E;" id="btnForm">등록</button>
 							</div>
 						</div>
@@ -239,6 +240,7 @@
 	
 		var goUrlList = "/codeGroup/codeGroupList"; /* #-> */
 		var goUrlForm = "/codeGroup/codeGroupForm";
+		var excelUri='/codeGroup/excelDownload'
 		
 		var seq = $("input:hidden[name=shSeq]");
 		var form = $("form[name=formList]");
@@ -257,9 +259,11 @@
 	    	seq.val(keyValue);
 			form.attr("action", goUrlForm).submit();
 		}
+		
+		$("#btnExcel").click(function() {
+			form.attr("action", excelUri).submit();
+		});
 	</script>
-	
-
 
 	<!-- Bootstrap core JavaScript-->
 	<script src="/resources/vendor/jquery/jquery.min.js"></script>

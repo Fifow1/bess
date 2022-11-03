@@ -50,6 +50,7 @@
 			<exclude-mapping path="/member/userRegForm" />
 			<exclude-mapping path="/member/xdminLogin" />
 			<exclude-mapping path="/rest/**"/>
+			<exclude-mapping path="/test/**"/>
 			<!-- <exclude-mapping path="/member/findIdPwdForm" /> -->
 			<beans:bean id="checkLoginSessionInterception" class="bess.ham.infra.common.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>

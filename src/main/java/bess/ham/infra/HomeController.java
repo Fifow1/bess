@@ -101,14 +101,16 @@ public class HomeController {
 		@RequestMapping(value = "/test/publicCorona1List")
 		public String publicCorona1List(Model model) throws Exception {
 			
-			System.out.println("asdfasdfasdf");
+			System.out.println("시작");
 			
-			String apiUrl = "http://apis.data.go.kr/1471000/CovidDagnsRgntProdExprtStusService/getCovidDagnsRgntProdExprtStusInq?serviceKey=dNLcjyriV9IBD5djvIMsq16GYwW%2F8N%2FCtnCNvRj66yaLV9jXKhipDNCJFDcDzorgqnVsJsz5gmYoibNbAG0sdw%3D%3D&numOfRows=3&pageNo=1&type=json";
+			String apiUrl = "http://apis.data.go.kr/B551011/KorService/locationBasedList?serviceKey=ovzp9DVxrdiO9z0MCBZj3qB7xo4MVgq7tVTzfboqegBR%2ByRQVtf%2BVpuEJAfXgkyLGv7q%2B%2Fw750%2BaesNksG6G4Q%3D%3D&numOfRows=10&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y&arrange=C&mapX=128.6922646449&mapY=35.9910080699&radius=10000";
 			
+			//??
 			URL url = new URL(apiUrl);
 			HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 			httpURLConnection.setRequestMethod("GET");
 			
+			//URL받기
 			BufferedReader bufferedReader;
 			if (httpURLConnection.getResponseCode() >= 200 && httpURLConnection.getResponseCode() <= 300) {
 				bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
@@ -116,6 +118,7 @@ public class HomeController {
 				bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getErrorStream()));
 			}
 			
+			//line에 저장
 			StringBuilder stringBuilder = new StringBuilder();
 			String line;
 			while ((line = bufferedReader.readLine()) != null) {
@@ -126,12 +129,12 @@ public class HomeController {
 			bufferedReader.close();
 			httpURLConnection.disconnect();
 
-			System.out.println("stringBuilder.toString(): " + stringBuilder.toString());
+			System.out.println("stringBuilder.toString(): " + stringBuilder.toString()); 
 			
 //			json object + array string -> java map
 			
 	        ObjectMapper objectMapper = new ObjectMapper();
-	        Map<String, Object> map = objectMapper.readValue(stringBuilder.toString(), Map.class);
+	        Map<String, Object> map = objectMapper.readValue(stringBuilder.toString(), Map.class);   // map = []
 	        
 	        System.out.println("######## Map");
 			for (String key : map.keySet()) {
@@ -139,47 +142,51 @@ public class HomeController {
 				System.out.println("[key]:" + key + ", [value]:" + value);
 			}
 			
-			Map<String, Object> header = new HashMap<String, Object>();
-			header = (Map<String, Object>) map.get("header");
+			Map<String, Object> response = new HashMap<String, Object>();
+			response = (Map<String, Object>) map.get("response");
 			
-			System.out.println("######## Header");
+			System.out.println("######## response");
+			for (String key : response.keySet()) {
+				String value = String.valueOf(response.get(key));	// ok
+				System.out.println("[key]:" + key + ", [value]:" + value);
+			}
+			
+			Map<String, Object> header = new HashMap<String, Object>();
+			header = (Map<String, Object>) response.get("header");
+			
+			System.out.println("######## header");
 			for (String key : header.keySet()) {
 				String value = String.valueOf(header.get(key));	// ok
 				System.out.println("[key]:" + key + ", [value]:" + value);
 			}
 			
-//			String aaa = (String) header.get("resultCode");
-			
-//			System.out.println("header.get(\"resultCode\"): " + header.get("resultCode"));
-//			System.out.println("header.get(\"resultMsg\"): " + header.get("resultMsg"));
 			
 			Map<String, Object> body = new HashMap<String, Object>();
-			body = (Map<String, Object>) map.get("body");
+			body = (Map<String, Object>) response.get("body");
+			
 			System.out.println("######## body");
 			for (String key : body.keySet()) {
 				String value = String.valueOf(body.get(key));	// ok
 				System.out.println("[key]:" + key + ", [value]:" + value);
 			}
 			
-			List<Home> items = new ArrayList<Home>();
-			items = (List<Home>) body.get("items");
+			Map<String, Object> items = new HashMap<String, Object>();
+			items = (Map<String, Object>) body.get("items");
 			
+			System.out.println("######## items");
+			for (String key : items.keySet()) {
+				String value = String.valueOf(items.get(key));	// ok
+				System.out.println("[key]:" + key + ", [value]:" + value);
+			}
 			
-			/*
-			 * System.out.println("######## items"); for (String key : items.keySet()) {
-			 * String value = String.valueOf(items.get(key)); // ok
-			 * System.out.println("[key]:" + key + ", [value]:" + value); }
-			 */
+			List<Home> item = new ArrayList<Home>();
+			item = (List<Home>) items.get("item");
+
 			
-			
-			System.out.println("items.size(): " + items.size());
-			
-//			for(Home item : items) {
-//				System.out.println(item.getMM());
-//			}
-			
+			model.addAllAttributes(response);
 			model.addAllAttributes(header);
 			model.addAllAttributes(body);
+			model.addAllAttributes(items);
 			
 			return "test";
 		}

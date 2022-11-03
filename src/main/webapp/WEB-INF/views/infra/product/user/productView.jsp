@@ -122,7 +122,10 @@
 				</div>
 		</form>
 		<div class="main" style="margin-right: 450px;">
-			<input id="tab1" type="radio" name="tabs" checked><label for="tab1" class="label_tab" style="padding-left: 140px; padding-right: 140px;">상품정보</label> <input id="tab2" type="radio" name="tabs"><label for="tab2" class="label_tab" style="padding-left: 140px; padding-right: 140px;">리뷰</label> <input id="tab3" type="radio" name="tabs"><label for="tab3" class="label_tab" style="padding-left: 140px; padding-right: 140px;">Q & A</label>
+			<input id="tab1" type="radio" name="tabs" checked>
+			<label for="tab1" class="label_tab" style="padding-left: 140px; padding-right: 140px;">상품정보</label>
+			<input id="tab2" type="radio" name="tabs"><label for="tab2" class="label_tab" style="padding-left: 140px; padding-right: 140px;">리뷰</label>
+			<input id="tab3" type="radio" name="tabs"><label for="tab3" class="label_tab" style="padding-left: 140px; padding-right: 140px;">Q & A</label>
 			<!-- <input id="tab4" type="radio" name="tabs"><label for="tab4"class="label_tab" style="padding-left:95px;padding-right: 95px;">주문정보</label> -->
 			<!-------------------------------------------------------------------상품정보------------------------------------------------------------------------------>
 			<section id="content1">
