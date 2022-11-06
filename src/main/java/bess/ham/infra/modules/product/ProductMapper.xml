@@ -28,25 +28,21 @@
 	<select id="selectListShop" resultMap="resultMapObj"> 
 		SELECT 
 			pr.seq as ifprSeq
-            ,pr.category
-            ,pr.title
-            ,pr.star
-            ,pr.price
-            ,pr.stock
-            ,pr.uploadDate
-            ,pro.option_seq
-		    ,group_concat(pro .optionSub separator ',') AS 'optionSub'
+			,pr.category
+			,pr.title
+			,pr.star
+			,pr.price
+			,pr.stock
+			,pr.uploadDate
+			,pro.optionMain
+			,group_concat(pro.optionSub separator ',') AS 'optionSub'
 		from product pr
-		LEFT JOIN productOption pro 
-		ON pr.seq = pro.product_seq
+		left JOIN productOption pro ON pr.seq = pro.product_seq
 		WHERE 1=1 
 		<if test="category != null and !category.equals('')">AND pr.category = #{category}</if>
 		group by product_seq
 		;
 <!-- 	
-	
-	
-	
 	
 		SELECT 
 			pr.seq AS ifprSeq
@@ -89,7 +85,7 @@
             ,pr.price
             ,pr.stock
             ,pr.uploadDate
-            ,pro.option_seq
+            ,pro.optionMain
 		    ,group_concat(pro .optionSub separator ',') AS 'optionSub'
 		from product pr
 		LEFT JOIN productOption pro 
@@ -207,17 +203,6 @@
 			WHERE 1=1
 			AND ifmmSeq = #{ifmmSeq}
 	</update>
-	
-	
-	<select id="optionList" resultMap="resultMapObj">
-		SELECT 
-			ifooSeq
-			,ifooName
-		FROM lasldjf.option
-		WHERE 1=1;
-	</select>
-	
-
 </mapper>	
 
 

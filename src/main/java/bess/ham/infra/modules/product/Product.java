@@ -34,7 +34,7 @@ public class Product extends Base{
 	
 	//productOption
 	private String ifpoSeq;
-	private Integer option;
+	private String optionMain;
 	private String optionSub;
 	private String product_seq;
 	
@@ -48,8 +48,12 @@ public class Product extends Base{
 	//option
 	private String ifooSeq;
 	private String ifooName;
-	
-	
+	public String getIfprSeq() {
+		return ifprSeq;
+	}
+	public void setIfprSeq(String ifprSeq) {
+		this.ifprSeq = ifprSeq;
+	}
 	public Integer getCategory() {
 		return category;
 	}
@@ -152,23 +156,17 @@ public class Product extends Base{
 	public void setMember_seq(String member_seq) {
 		this.member_seq = member_seq;
 	}
-	public String getIfprSeq() {
-		return ifprSeq;
-	}
-	public void setIfprSeq(String ifprSeq) {
-		this.ifprSeq = ifprSeq;
-	}
 	public String getIfpoSeq() {
 		return ifpoSeq;
 	}
 	public void setIfpoSeq(String ifpoSeq) {
 		this.ifpoSeq = ifpoSeq;
 	}
-	public Integer getOption() {
-		return option;
+	public String getOptionMain() {
+		return optionMain;
 	}
-	public void setOption(Integer option) {
-		this.option = option;
+	public void setOptionMain(String optionMain) {
+		this.optionMain = optionMain;
 	}
 	public String getOptionSub() {
 		return optionSub;
