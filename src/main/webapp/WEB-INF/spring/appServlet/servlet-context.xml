@@ -34,7 +34,7 @@
 	
 	
 	<!-- session interceptor s 2022.03.13 for logincheck -->
-	<interceptors>
+	<!-- <interceptors>
 		<interceptor>
 			<mapping path="/**"/>
 			<exclude-mapping path="/resources/**" />
@@ -49,12 +49,13 @@
 			<exclude-mapping path="/member/userRegFormSub" />
 			<exclude-mapping path="/member/userRegForm" />
 			<exclude-mapping path="/member/xdminLogin" />
+			<exclude-mapping path="/member/kakaoLoginProc" />
 			<exclude-mapping path="/rest/**"/>
 			<exclude-mapping path="/test/**"/>
-			<!-- <exclude-mapping path="/member/findIdPwdForm" /> -->
+			<exclude-mapping path="/member/findIdPwdForm" />
 			<beans:bean id="checkLoginSessionInterception" class="bess.ham.infra.common.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>
-	</interceptors>	
+	</interceptors>	 -->
 	<!-- session interceptor e 2022.03.13 for logincheck -->
 	
 	<!-- 객체를 자동으로 만들 기본 패키지 지정: 기본 패키지 아래의 특정하게 정의해 놓은 클래스를 자동 생성된다. -->

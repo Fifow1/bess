@@ -82,6 +82,19 @@ public class MemberServiceImpl implements MemberService {
 		return dao.selectListAdress(vo);
 	}
 	
+	
+	//카카오로그인
+	@Override
+	public Member snsLoginCheck(Member dto) throws Exception{
+		Member result = dao.snsLoginCheck(dto);
+		return result;
+	}
+	
+	@Override
+	public int kakaoInst(Member dto) throws Exception{
+		int result = dao.kakaoInst(dto);
+		return result;
+	} 
 	/*
 	 * @Override public int insertUserAdress(Member dto) throws Exception{ return
 	 * dao.insertUserAdress(dto); }

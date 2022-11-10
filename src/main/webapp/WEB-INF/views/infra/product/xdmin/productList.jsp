@@ -38,7 +38,8 @@
 		<%@include file="../../base/xdminHeader.jsp"%>
 
 		<div class="container" style="margin-right: 400px;">
-			<form action="/product/productForm" name="formList">
+			<form name="formList">
+			<input type="hidden" name="ifprSeq">
 			<c:set var="listCodeColor" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
 			<div style="height: 500px; width: 1400px">
 				<div style="margin-top: 100px; margin-bottom: 30px;">

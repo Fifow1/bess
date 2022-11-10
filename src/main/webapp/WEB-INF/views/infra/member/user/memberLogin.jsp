@@ -38,7 +38,6 @@
 <!------------------------------------------------------------------------------------------------------------------------------------------------->
 
 <div id="wrapper"style=" height: 1600px;">
-
 	<div style="width: 40%; height:1000px; float:left; margin-top: 350px;">
 		<div class="row">
 			<div class="col d-flex justify-content-center">
@@ -51,13 +50,7 @@
 			</div>
 		</div> -->
 	</div>
-
-
-
-
 	<div class="line"></div>
-
-
 	<div style="width: 60%; height: 800px; float: right; padding-top: 210px;">
 		<div class="container">
 			<p style ="margin-bottom: 50px; margin-left: 510px; font-weight: 900;font-size: 20px;">로그인</p>
@@ -91,16 +84,14 @@
 					<hr style="width: 212px; color: black;">
 				</div>
 			</div>
-
-
 			<div class="row">
 				<div class="col mb-0 d-flex justify-content-center">
 					<button type="button" class="btn btn-success border" style="width: 120px;">
 						<i class="fa-sharp fa-solid fa-n"></i>
 					</button>
-					<button type="button" class="btn btn-warning border ms-2" style="width: 120px;">
+					<a type="button" class="btn btn-warning border ms-2" id="kakaoBtn" style="width: 120px;">
 						<i class="fa-sharp fa-solid fa-comment"></i>
-					</button>
+					</a>
 					<button type="button" class="btn btn-danger border ms-2" style="width: 120px;">
 						<i class="fa-brands fa-google"></i>
 					</button>
@@ -109,9 +100,7 @@
 					</button>
 				</div>
 			</div>
-			
 			<!-- <button type="button" class="btn btn-danger border ms-2" id="btnLogout" style="width: 120px;">나가기</button> -->
-			
 			<div class="row">
 				<div class="col mb-2 mt-2 d-flex justify-content-center" style="padding-right: 370px;" onclick="location.href='./memberFindid_phone.html'">
 					<a href="#" class="link-dark ps-5">아이디를 잊어버리셨나요?</a>
@@ -124,13 +113,16 @@
 			</div>
 		</div>
 	</div>
-<%-- sessSeq: <c:out value="${sessSeq }"/><br>
-sessName: <c:out value="${sessName }"/><br>
-sessId: <c:out value="${sessId }"/><br> --%>
-
-
+	<form name="form">
+		<input type="hidden" name="snsId"/>
+		<input type="hidden" name="numPhone"/>
+		<input type="hidden" name="email"/>
+		<input type="hidden" name="gender"/>
+		<input type="hidden" name="token"/>
+	</form>
+sessSeq: <c:out value="${sessSeq }"/><br>
+sessId: <c:out value="${sessId }"/><br>
 		<!------------------------------------------------------------------- footer -------------------------------------------------------------------->
-
 	<div class="container-fluid footer">	
 		<div class="row" style="padding-top: 40px;">
 			<div class="col d-flex justify-content-center" style="padding-left: 90px; padding-bottom: 10px; padding-right:0px; ">
@@ -174,15 +166,13 @@ sessId: <c:out value="${sessId }"/><br> --%>
 			</div>
 			<div class="col">	
 				<p style="color: white; text-align: left;">영업시간 AM 10:00 ~ PM 17:00 (주말 및 공휴일 ㅣ휴뮤)<br><br>
-	
 					점심시간 AM 12:00 ~ PM 13:30</p>
 			</div>
 		</div>
 	</div>
 </div>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
-var goUrlMain = "/a";
-var form = $("form[name=form]");
 
 $("#btnLogin").on("click", function(){
 		/* if(validation() == false) return false; */
@@ -206,7 +196,6 @@ $("#btnLogin").on("click", function(){
 					} */
 					alert("로그인 성공");
 					location.href = '/main';	
-					
 					
 				} else {
 					alert("회원없음");
@@ -241,7 +230,75 @@ $("#btnLogout").on("click", function(){
 	});
 });
 
+Kakao.init('1c3e148b9d3b6d9eee46fb31507354ea'); // test 용
+console.log(Kakao.isInitialized());
+$("#kakaoBtn").on("click", function() {
+	/* Kakao.Auth.authorize({
+	      redirectUri: 'http://localhost:8080/member/kakaoCallback',
+	    }); */
+	
+	Kakao.Auth.login({
+	      success: function (response) {
+	        Kakao.API.request({
+	          url: '/v2/user/me',
+	          success: function (response) {
+	        	  
+	        	  var accessToken = Kakao.Auth.getAccessToken();
+	        	  Kakao.Auth.setAccessToken(accessToken);
 
+	        	  var account = response.kakao_account;
+	        	  
+	        	  console.log(response)
+	        	  console.log(accessToken);
+	        	  console.log("email : " + account.email);
+	        	  console.log("name : " + account.name);
+	        	  console.log("nickname : " + account.profile.nickname);
+	        	  console.log("picture : " + account.profile.thumbnail_image_url);
+	        	  console.log("picture : " + account.gender);
+					alert("11");
+	        	  $("input[name=snsId]").val("kakaoAccount");
+	        	  $("input[name=numPhone]").val(account.profile.phone_number);
+	        	  $("input[name=email]").val(account.email);
+	        	  //$("input[name=MBdob]").val(account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length));
+	        	  $("input[name=token]").val(accessToken);
+	        	  
+	        	  if (account.gender === "male") {
+	        		  $("input[name=MBgender]").val(4);
+      		  } else {
+      			  $("input[name=MBgender]").val(5);
+ 			  } 
+	        	  
+	        	 /*  $("form[name=form]").attr("action", "/member/kakaoLoginProc").submit(); */
+				alert("22");
+	        	  $.ajax({
+				async: true
+				,cache: false
+				,type:"POST"
+				,url: "/member/kakaoLoginProc"
+				,data: {"snsId": $("input[name=snsId]").val(), "numPhone": $("input[name=numPhone]").val(), "email": $("input[name=email]").val(), "gender": $("input[name=gender]").val(), "token": $("input[name=token]").val()}
+				,success : function(response) {
+					if (response.rt == "fail") {
+						alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
+						return false;
+					} else {
+						window.location.href = "/";
+					}
+				},
+				error : function(jqXHR, status, error) {
+					alert("알 수 없는 에러 [ " + error + " ]");
+				}
+			});
+	          },
+	          fail: function (error) {
+	            console.log(error)
+	          },
+	        })
+	      },
+	      fail: function (error) {
+	        console.log(error)
+	      },
+	    })
+});
 
 
 </script>

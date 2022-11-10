@@ -16,6 +16,7 @@ public class Product extends Base{
 	private Integer stock;
 	private Date UploadDate;
 	private Integer ifprDelYn;
+	private Integer ifprUseYn;
 	private Integer mainYn;
 	
 	// review
@@ -221,6 +222,12 @@ public class Product extends Base{
 	}
 	public void setIfooName(String ifooName) {
 		this.ifooName = ifooName;
+	}
+	public Integer getIfprUseYn() {
+		return ifprUseYn;
+	}
+	public void setIfprUseYn(Integer ifprUseYn) {
+		this.ifprUseYn = ifprUseYn;
 	}
 	
 	

@@ -169,6 +169,43 @@
 		AND id = #{id}
 		<if test="pw != null and !pw.equals('')">AND pw = #{pw}</if>
 	</select>
+	
+	<select id="snsLoginCheck" resultMap="resultMapObj">
+		SELECT
+			id
+			,email
+			,numPhone 
+		FROM member 
+		WHERE 1=1 
+		AND id = #{snsId}
+		AND email = #{email}
+	</select>
+	
+	<insert id="kakaoInst">
+		INSERT INTO member(
+			id
+	    	,gender
+	    	,email
+	    	,numPhone
+	    	,regdate
+	    	,delYn
+	    	,loginType
+		)
+		
+		VALUES (
+			#{snsId}
+			,#{gender}
+			,#{email}
+			,#{numPhone}
+			,NOW()
+			,0
+			,1
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+		SELECT last_insert_id()
+		</selectKey>
+	
+	</insert>
 
 </mapper>	
 

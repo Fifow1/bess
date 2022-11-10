@@ -62,8 +62,6 @@
 		<div class="container">
 			<form method="post" name=form autocomplete="off" enctype="multipart/form-data">
 			<c:set var="listCodeCategory" value="${CodeServiceImpl.selectListCachedCode('8')}"/>
-			<c:set var="listCodeColor" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
-			<c:set var="listCodeSize" value="${CodeServiceImpl.selectListCachedCode('9')}"/>
 			<c:set var="listCodeOptionMain" value="${CodeServiceImpl.selectListCachedCode('10')}"/>
 			<br><br>
 			<div class="row">
@@ -99,30 +97,34 @@
 			<div class="row">	
 				<div class="col">
 					<p class="h6" color="#2E2E2E";>상품번호</p>
-					<input type="text" id="disabledTextInput" class="form-control" name="title" placeholder="한글,숫자" readonly>
+					<input type="text" id="disabledTextInput" class="form-control" name="ifprSeq" placeholder="한글,숫자" value="<c:out value="${item.ifprSeq}"/>" readonly>
 				</div>
 				<div class="col">
 					<p class="h6" color="#2E2E2E";>상품이름</p>
-					<input type="text" class="form-control" id="title" name="title">
+					<input type="text" class="form-control" id="title" name="title" value="<c:out value="${item.title}"/>">
 				</div>
 			</div><br>
 			<div class="row">	
 				<div class="col">
 					<p class="h6" color="#2E2E2E";>상품가격</p>
-					<input type="text" class="form-control" id="title" name="title" placeholder="한글,숫자">
+					<input type="text" class="form-control" id="price" name="price" placeholder="한글,숫자" value="<c:out value="${item.price}"/>">
 				</div>
 				<div class="col">
 					<p class="h6" color="#2E2E2E";>재고</p>
-					<input type="text" class="form-control" id="title" name="title">
+					<input type="text" class="form-control" id="stock" name="stock" value="<c:out value="${item.stock}"/>">
 				</div>
 			</div><br>
 			<div class="row">
 				<div class="col">
 					<p class="h6" color="#2E2E2E";>카테고리</p>
-					<select class="form-select" aria-label="Default select example">
+					<select class="form-select" name="category" aria-label="Default select example">
 							<option selected>선택해주세요</option>
 							<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">
-								<option id="<c:out value="${listCategory.CCseq }"/>" value="<c:out value="${listCategory.CCseq }"/>"onchange="submit(<c:out value="${listCategory.CCseq }"/>)">
+								<option id="<c:out value="${listCategory.CCseq }"/>"
+										value="<c:out value="${listCategory.CCseq }"/>"
+										onchange="submit(<c:out value="${listCategory.CCseq }"/>)"
+										<c:if test="${item.category eq listCategory.CCseq}">selected</c:if>
+										>
 									<c:out value="${listCategory.CCname }"/>
 								</option>
 							</c:forEach>
@@ -132,39 +134,39 @@
 			<div id="room_type">
 			<div class="row">
 				<div class="col-6">
-					<p class="h6" color="#2E2E2E";>옵션</p>
-					<select class="form-select" aria-label="Default select example" name="optionMain" id="optionMain">
+					<p class="h6" color="#2E2E2E";>메인옵션</p>
+					<select class="form-select" aria-label="Default select example">
 						<option selected>선택해주세요</option>
-						<c:forEach items="${optionList}" var="list" varStatus="status">
-							<option value="<c:out value="${list.ifooSeq}"></c:out>" ><c:out value="${list.ifooName}"/></option>
+						<c:forEach items="${listCodeOptionMain}" var="listOptionMain" varStatus="statusOptionMain">
+								<option id="<c:out value="${listOptionMain.CCseq }"/>" value="<c:out value="${listOptionMain.CCname }"/>"> 
+									<c:out value="${listOptionMain.CCname }"/>
+								</option>
 						</c:forEach>
 					</select>
 				</div>
 				<div class="col-5">
-					<p class="h6" color="#2E2E2E";>옵션</p>
-					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+					<p class="h6" color="#2E2E2E";>서브옵션</p>
+					<input type="email" class="form-control" id="exampleInputEmail1">
 				</div>
 				<div class="col-1 d-flex justify-content-center d-flex align-items-end ps-0">
 					<button type="button" onclick="add_div()" class="btn btn-dark"><i class="fa-solid fa-plus"></i></button>
 				</div>
-			</div>
+			</div><br>
 		</div><br>
 			<div id="room_type"></div>
 			<div class="row">
 				<div class="col">
 					<p class="h6" color="#2E2E2E";>사용여부</p>
-					<select class="form-select" aria-label="Default select example">
-						<option selected>선택해주세요</option>
-						<option value="1">Y</option>
-						<option value="2">N</option>
+					<select class="form-select" name="ifprUseYn" id="ifprUseYn">
+						<option value="1" <c:if test="${item.ifprUseYn eq 1}">selected</c:if>>Y</option>
+						<option value="0" <c:if test="${item.ifprUseYn eq 0}">selected</c:if>>N</option>
 					</select>
 				</div>
 				<div class="col">
 					<p class="h6" color="#2E2E2E";>삭제여부</p>
-					<select class="form-select" aria-label="Default select example">
-						<option selected>선택해주세요</option>
-						<option value="1">Y</option>
-						<option value="2">N</option>
+					<select class="form-select" name="ifprDelYn" id="ifprDelYn">
+						<option value="1" <c:if test="${item.ifprDelYn eq 1}">selected</c:if>>Y</option>
+						<option value="0" <c:if test="${item.ifprDelYn eq 0}">selected</c:if>>N</option>
 					</select>
 				</div>
 			</div><br>
@@ -201,9 +203,9 @@
 	</div>
 	<form name="formVo" id="formVo" method="post">
 <!-- *Vo.jsp s -->
-<%@include file="../user/productVo.jsp"%>
+	<%@include file="../user/productVo.jsp"%>
 <!-- *Vo.jsp e -->
-</form>
+	</form>
 	
 <script type="text/javascript">
 	var goUrlList = "/product/productList";
@@ -407,70 +409,74 @@ delImgDiv = function(objName, type, sort, deleteSeq, pathFile) {
 </script>
 
 <script type="text/javascript">	
-	
-	var remove_div = function(test){		
-		$("#"+test.id).remove();		
-	}
-	
-		var add_div = function(){
-		var cnt = 1;
-		var strMenu = "";
-        var test = cnt;
-        
-        strMenu +='<div id="'+test+'"class="row">'
-		+'<div class="col-6">'
-		+'	<p class="h6" color="#2E2E2E";>옵션'+test+'</p>'
-		+'	<select class="form-select" aria-label="Default select example">'
-		+'		<option selected>선택해주세요</option>'
-		+'		<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">'
-		+'			<option id="<c:out value="${listCategory.CCseq }"/>" value="<c:out value="${listCategory.CCseq }"/>"onclick="submit(<c:out value="${listCategory.CCseq }"/>)"> '
-		+'				<c:out value="${listCategory.CCname }"/>'
-		+'			</option>'
-		+'		</c:forEach>'
-		+'	</select>'
-		+'</div>'
-		+'<div class="col-5 pe-0">'
-		+'	<p class="h6" color="#2E2E2E";>옵션서브</p>'
-		+'	<select class="form-select" aria-label="Default select example">'
-		+'		<option selected>선택해주세요</option>'
-		+'		<c:forEach items="${listCodeCategory}" var="listCategory" varStatus="statusCategory">'
-		+'			<option id="<c:out value="${listCategory.CCseq }"/>" value="<c:out value="${listCategory.CCseq }"/>" onclick="submit(<c:out value="${listCategory.CCseq }"/>)">'
-		+'			<c:out value="${listCategory.CCname }"/>'
-		+'			</option>'
-		+'		</c:forEach>'
-		+'	</select>'
-		+'</div>'
-		+'<div class="col-1 d-flex justify-content-center d-flex align-items-end ps-0">'
-		+'	<button type="button" class="btn btn-danger" id="test'+test+'" onclick="remove_div('+test+')"><i class="fa-solid fa-trash"></i></button>'
-		+'</div>'
-		+'</div>' 
-		+'<br>' 
-		
-		$("#room_type").append(strMenu);
-		cnt ++; 
-		}
-		
-$(document).ready(function() {	
-			
-});
-
-
- $(document).ready(function(){
+$(document).ready(function(){
 	$("#optionMain").change(function(){
 		console.log("값변경테스트: " + $(this).val());
 		alert($(this).val())
 		var opMainV = $(this).val();
+		if(opMainV == '기타'){
+			$("#optionMain").replaceWith("<input type='text' class='form-control'></input>");
+		}
 	});
  }); 
 
- 
- function submit(num) {
- 	var li_val = $('#' + num).attr("value"); 
-	alert(li_val);
-	$('#valueC').val(li_val);
-	form.attr("action", goUrlPrList).submit();
-} 
+var remove_div = function(sort){		
+	$('#'+sort.id).remove();
+}
 
+	var cnt = 1;
+	var add_div = function(){
+
+	var strMenu = "";
+    var sort = "H" + cnt;
+   	strMenu += '<div class="row mb-4" id="'+sort+'">'
+			   	+ '<div class="col-6">'
+			   	+ '		<p class="h6" color="#2E2E2E";>메인옵션'+sort+'</p>'
+			   	+ '		<select class="form-select" aria-label="Default select example" id="optionMain'+sort+'">'
+			   	+ '			<option selected>선택해주세요</option>'
+			   	+ '			<c:forEach items="${listCodeOptionMain}" var="listOptionMain" varStatus="statusOptionMain">'
+			   	+ '				<option id="<c:out value="${listOptionMain.CCseq }"/>'+sort+'" value="<c:out value="${listOptionMain.CCname }"/>" onchange="change(optionMain)"> '
+			   	+ '					<c:out value="${listOptionMain.CCname }"/>'
+			   	+ '				</option>'
+			   	+ '			</c:forEach>'
+			   	+ '		</select>'
+			   	+ '</div>'
+			   	+ '<div class="col-5">'
+			   	+ '		<p class="h6" color="#2E2E2E";>서브옵션</p>'
+			   	+ '		<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">'
+			   	+ '</div>'
+			 	+ '<div class="col-1 d-flex justify-content-center d-flex align-items-end ps-0">'
+           		+ '		<button type="button" class="btn btn-danger" id="'+sort+'" onclick="remove_div('+sort+')"><i class="fa-solid fa-trash"></i></button>'
+           		+ '</div>'                                            
+            	+ '</div>';                          
+	$("#room_type").append(strMenu);
+	cnt ++;
+	
+	$(document).ready(function(){
+		$("#"+"optionMain"+sort).change(function(){
+			console.log("값변경테스트: " + $(this).val());
+			alert($(this).val())
+			var opMainV = $(this).val();
+			if(opMainV == '기타'){
+				$("#"+"optionMain"+sort).replaceWith("<input type='text' class='form-control'></input>");
+			}
+		});
+	 });
+	
+/* 	var remove_div = function(sort){		
+		$('#'+sort.id).remove();		
+	}
+	
+ */}
+	
+	
+$(document).ready(function() {	
+		
+});
+
+
+
+ 
 </script>	
 	<!-- Bootstrap core JavaScript-->
    <script src="/resources/vendor/jquery/jquery.min.js"></script>

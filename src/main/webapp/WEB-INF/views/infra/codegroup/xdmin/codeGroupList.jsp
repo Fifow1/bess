@@ -241,7 +241,6 @@
 		var goUrlList = "/codeGroup/codeGroupList"; /* #-> */
 		var goUrlForm = "/codeGroup/codeGroupForm";
 		var excelUri='/codeGroup/excelDownload'
-		
 		var seq = $("input:hidden[name=shSeq]");
 		var form = $("form[name=formList]");
 		

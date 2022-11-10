@@ -5,6 +5,9 @@ public class Constants {
 	public static final int ROW_NUM_TO_SHOW = 10;
 	public static final int PAGE_NUM_TO_SHOW = 5;
 	
+	//카카오 로그인
+	public static final int SESSION_MINUTE = 1;
+	
 	public static final String URL_LOGINFORM = "/member/userLogin";
 	//utileDateTime
 	public static final String DATETIME_FORMAT_BASIC = "yyyy-MM-dd HH:mm:ss";

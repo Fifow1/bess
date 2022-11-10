@@ -73,11 +73,19 @@ public class MemberDao {
 	}
 	
 	public List<Member> selectListAdress(MemberVo vo) {
-		
 		List<Member> result = sqlSession.selectList(namespace +".selectListAdress", vo);
-		
 		return result;
-		
+	}
+	
+	//카카오 로그인
+	public Member snsLoginCheck(Member dto){
+		Member result = sqlSession.selectOne(namespace + ".snsLoginCheck", dto);
+		return result;
+				
+	}
+	public int kakaoInst(Member dto) {
+		int result = sqlSession.insert(namespace + ".kakaoInst", dto);
+		return result;
 	}
 	
 	

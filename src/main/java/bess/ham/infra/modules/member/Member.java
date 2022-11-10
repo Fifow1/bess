@@ -22,6 +22,10 @@ public class Member {
 	
 	private Integer IflgResultNy;
 	
+	private String snsId;
+	private Integer loginType;
+	private String token;
+	
 	// ifmmAdress
 	private String ifmmAdressSeq;
 	private String member_seq;
@@ -162,6 +166,24 @@ public class Member {
 	}
 	public void setUserYn(Integer userYn) {
 		this.userYn = userYn;
+	}
+	public Integer getLoginType() {
+		return loginType;
+	}
+	public void setLoginType(Integer loginType) {
+		this.loginType = loginType;
+	}
+	public String getSnsId() {
+		return snsId;
+	}
+	public void setSnsId(String snsId) {
+		this.snsId = snsId;
+	}
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 	

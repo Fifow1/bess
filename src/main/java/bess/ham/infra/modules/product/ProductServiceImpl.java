@@ -46,10 +46,6 @@ public class ProductServiceImpl implements ProductService {
 			return result;
 		}
 		
-		@Override
-		public List<Product> optionList(ProductVo vo) throws Exception {
-			return dao.optionList(vo);
-		}
 		
 		@Override
 		public Product optionOne(ProductVo vo) throws Exception{
@@ -137,10 +133,25 @@ public class ProductServiceImpl implements ProductService {
 			return dao.selectListUploaded(vo);
 		}
 		
-	//option
+		
 		@Override
-		public List<Product> optionList(Product dto) throws Exception {
-			return dao.optionList();
+		public int update(Product dto) throws Exception{
+			int result = dao.update(dto);
+			return result;
 		}
+		
+		
+		@Override
+		public int insertProductOption(Product dto) throws Exception{
+			int result = dao.insertProductOption(dto);
+			return result;
+		}
+		
+		@Override
+		public int updateProductOption(Product dto) throws Exception{
+			int result = dao.updateProductOption(dto);
+			return result;
+		}
+		
 	
 }

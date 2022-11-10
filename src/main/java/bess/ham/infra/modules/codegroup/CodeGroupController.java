@@ -34,11 +34,8 @@ public class CodeGroupController {
 	CodeGroupServiceImpl service;
 	
 	public void setSearchAndPaging(CodeGroupVo vo) throws Exception{
-		
 	//	vo.setShOption(vo.getShOption() == 	null ? 2 : vo.getShOption());
 		vo.setShDelYn(vo.getShDelYn() == null ? 0 : vo.getShDelYn());
-		
-		
 		vo.setParamsPaging(service.selectOneCount(vo));
 	}
 	
@@ -47,15 +44,10 @@ public class CodeGroupController {
 
 	@RequestMapping(value = "codeGroupList")
 	public String codeGroupList(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
-		
-
 			setSearchAndPaging(vo);
-		
 			List<CodeGroup> list = service.selectList(vo);
 			model.addAttribute("list", list);
 			System.out.println("C shd: " + vo.getShDelYn());
-			
-			
 		// viewResolver -> /WEB-INF/views/ + home + .jsp
 		return "infra/codegroup/xdmin/codeGroupList";
 	}	
@@ -69,15 +61,12 @@ public class CodeGroupController {
 	
 	@RequestMapping(value = "codeGroupForm")
 	public String codeGroupForm(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
-		
-		
 		List<CodeGroup> list = service.selectList(vo);
 		CodeGroup result = service.selectOne(vo);
 		model.addAttribute("item", result);
 		model.addAttribute("list", list);
 		System.out.println("getSeq: " + vo.getSeq());
 		System.out.println("getShSeq: " + vo.getShSeq());
-		
 		// viewResolver -> /WEB-INF/views/ + home + .jsp
 		return "infra/codegroup/xdmin/codeGroupForm";
 	}
@@ -97,7 +86,6 @@ public class CodeGroupController {
 	
 	@RequestMapping(value = "codeGroupIsrt")
 	public String codeGroupIsrt(CodeGroupVo vo,CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception{
-		
 		service.insert(dto); //**
 		vo.setShSeq(dto.getSeq()); //**
 		redirectAttributes.addFlashAttribute("vo",vo); //**
@@ -107,12 +95,9 @@ public class CodeGroupController {
 	
 	@RequestMapping(value = "codeGroupUpdt")
 	public String codeGroupUpdt(CodeGroupVo vo,CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception{
-		
-		
 		service.update(dto);
 		vo.setShSeq(dto.getSeq());
 		redirectAttributes.addFlashAttribute("vo",vo);
-		
 		return "redirect:/codeGroup/codeGroupForm";
 	}
 	

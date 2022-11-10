@@ -76,6 +76,7 @@
 		</selectKey>
 	</insert>
 	
+	
 	<select id="selectOne" resultMap="resultMapObj"> 
 		SELECT 
 			pr.seq as ifprSeq
@@ -196,12 +197,40 @@
 	<update id="update">
 		UPDATE product
 		SET
-			title = #{ifmmAdminNy}
-			,price = #{ifmmDormancyNy}
-			,stock = #{ifmmName}
-			
-			WHERE 1=1
-			AND ifmmSeq = #{ifmmSeq}
+			title = #{title}
+			,price = #{price}
+			,stock = #{stock}
+			,mainYn = #{mainYn}
+			,ifprUseYn = #{ifprUselYn}
+			,ifprDelYn = #{ifprDelYn}
+		WHERE 1=1
+		AND ifprSeq = #{ifprSeq}
+	</update>
+	
+	<insert id="insertProductOption">
+		INSERT INTO productOption(
+	    	,product_seq
+	    	,optionMain
+	    	,optionSub
+		)
+		
+		VALUES (
+			#{ifprSeq}
+			,#{optionMain}
+			,#{optionSub}
+		)
+		<selectKey resultType="String" keyProperty="ifpoSeq" order="AFTER">
+		SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<update id="updateProductOption">
+		UPDATE productOption
+		SET
+			optionMain = #{optionMain}
+			,optionSub = #{optionSub}
+		WHERE 1=1
+		AND ifprSeq = #{ifprSeq}
 	</update>
 </mapper>	
 

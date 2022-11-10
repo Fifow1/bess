@@ -36,11 +36,6 @@ public class ProductDao {
 		return list;
 	}
 	
-	public List<Product> optionList(ProductVo vo){
-		List<Product> list = sqlSession.selectList(namespace + ".optionList",vo);
-		return list;
-	}
-	
 	public int insert(Product dto) {
 		int result = sqlSession.insert(namespace + ".insert", dto);
 		return result;
@@ -72,14 +67,26 @@ public class ProductDao {
 		return result;
 	}
 	
-	public List<Product> optionList(){
-		List<Product> list = sqlSession.selectList(namespace + ".optionList");
-		return list;
-	}
 	
 //	uploaded
 	public int insertUploaded(Product dto) { return sqlSession.insert("Base" + ".insertUploaded", dto); }
 	public int ueleteUploaded(Product dto) { return sqlSession.insert("Base" + ".ueleteUploaded", dto); }
 	public List<Product> selectListUploaded(ProductVo vo){ return sqlSession.selectList(namespace + ".selectListUploaded", vo); }
+	
+	
+	public int update(Product dto) {
+		int result = sqlSession.update(namespace + ".update", dto);
+		return result;
+	}
+	
+	public int insertProductOption(Product dto) {
+		int result = sqlSession.insert(namespace + ".insertProductOption", dto);
+		return result;
+	}
+	
+	public int updateProductOption(Product dto) {
+		int result = sqlSession.update(namespace + ".updateProductOption", dto);
+		return result;
+	}
 	
 }

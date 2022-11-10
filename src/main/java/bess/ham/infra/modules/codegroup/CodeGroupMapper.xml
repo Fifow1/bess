@@ -39,7 +39,6 @@
 			AND delYn = 1
 			AND groupName LIKE CONCAT('%',#{shValue},'%')
 			 -->
-			
 		<include refid="Base.selectListUpperForMysql"/>
 		SELECT
 			CCG.seq

@@ -11,6 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 
+
 @Controller
 @RequestMapping (value="/product")
 public class ProductControllre {
@@ -24,23 +25,34 @@ public class ProductControllre {
 	
 	@RequestMapping(value="productForm")
 	public String productForm(ProductVo vo,Product dto,Model model) throws Exception{
-		List<Product> list = service.optionList(vo);
-		model.addAttribute("optionList", list);
+		if (vo.getIfprSeq().equals("0") || vo.getIfprSeq().equals("")) {
+//			insert
+		} else {
+//			update
+			Product item = service.selectOne(vo);
+			model.addAttribute("item", item);
+		}
+		Product item = service.selectOne(vo);
+		model.addAttribute("item",item);
 		return "infra/product/xdmin/productForm";
 	}
 	
 	@RequestMapping(value="productList")
 	public String productList(@ModelAttribute("vo") ProductVo vo,Product dto,Model model) throws Exception{
-		
 		List<Product> list = service.selectListShop(vo);
 		model.addAttribute("list", list);
 		return "infra/product/xdmin/productList";
 	}
 	
-	@SuppressWarnings(value = { "all" })
+	
+	public String ProductUpdt(ProductVo vo,Product dto,RedirectAttributes redirectAttributes) throws Exception{
+		service.update(dto); 
+		service.updateProductOption(dto);
+		return "redirect:/product/productList";
+	}
+	
 	@RequestMapping(value = "productIsrt")
 	public String ProductIsrt(ProductVo vo,Product dto,RedirectAttributes redirectAttributes) throws Exception{
-		System.out.println(dto.getIfprSeq());
 		service.insert(dto); 
 		vo.setIfprSeq(dto.getIfprSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
