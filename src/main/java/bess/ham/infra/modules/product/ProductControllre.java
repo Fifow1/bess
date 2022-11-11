@@ -31,9 +31,8 @@ public class ProductControllre {
 //			update
 			Product item = service.selectOne(vo);
 			model.addAttribute("item", item);
+			model.addAttribute("listUploaded", service.selectListUploaded(vo));
 		}
-		Product item = service.selectOne(vo);
-		model.addAttribute("item",item);
 		return "infra/product/xdmin/productForm";
 	}
 	
@@ -44,10 +43,10 @@ public class ProductControllre {
 		return "infra/product/xdmin/productList";
 	}
 	
-	
+	@RequestMapping(value="productUpdt")
 	public String ProductUpdt(ProductVo vo,Product dto,RedirectAttributes redirectAttributes) throws Exception{
 		service.update(dto); 
-		service.updateProductOption(dto);
+		/* service.updateProductOption(dto); */
 		return "redirect:/product/productList";
 	}
 	

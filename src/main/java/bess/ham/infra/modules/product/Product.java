@@ -44,6 +44,7 @@ public class Product extends Base{
 	private Integer uploadImgMaxNumber;
 	private String[] uploadImgDeleteSeq;
 	private String[] uploadImgDeletePathFile;
+	private Integer delYn;
 	private Date regDateTime;
 	
 	//option
@@ -90,6 +91,12 @@ public class Product extends Base{
 	}
 	public void setIfprDelYn(Integer ifprDelYn) {
 		this.ifprDelYn = ifprDelYn;
+	}
+	public Integer getIfprUseYn() {
+		return ifprUseYn;
+	}
+	public void setIfprUseYn(Integer ifprUseYn) {
+		this.ifprUseYn = ifprUseYn;
 	}
 	public Integer getMainYn() {
 		return mainYn;
@@ -223,12 +230,13 @@ public class Product extends Base{
 	public void setIfooName(String ifooName) {
 		this.ifooName = ifooName;
 	}
-	public Integer getIfprUseYn() {
-		return ifprUseYn;
+	public Integer getDelYn() {
+		return delYn;
 	}
-	public void setIfprUseYn(Integer ifprUseYn) {
-		this.ifprUseYn = ifprUseYn;
+	public void setDelYn(Integer delYn) {
+		this.delYn = delYn;
 	}
+
 	
 	
 }

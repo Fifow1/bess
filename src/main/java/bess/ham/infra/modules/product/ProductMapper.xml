@@ -186,6 +186,8 @@
 			,path
 			,originalName
 			,uuidName
+			,delYn
+			,pseq
 		FROM productUploaded
 		WHERE 1=1
 			AND delYn = 0
@@ -201,7 +203,7 @@
 			,price = #{price}
 			,stock = #{stock}
 			,mainYn = #{mainYn}
-			,ifprUseYn = #{ifprUselYn}
+			,ifprUseYn = #{ifprUseYn}
 			,ifprDelYn = #{ifprDelYn}
 		WHERE 1=1
 		AND ifprSeq = #{ifprSeq}

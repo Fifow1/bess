@@ -69,7 +69,6 @@
 					<h3 class="m-0 font-weight-bold text-dark mb-5 mt-5">상품 관리(등록)</h3>
 				</div>
 			</div>
-			<input type="hidden" name="ifprSeq" value="<c:out value="${item.ifprSeq}"/>" >
 			
 		<!-- <div class="filebox clearfix">
 			<button type="button" id="reset" calss="btn">리셋</button>
@@ -210,6 +209,7 @@
 <script type="text/javascript">
 	var goUrlList = "/product/productList";
 	var goUrlInst = "/product/productIsrt";
+	var goUrlUpdt = "/product/productUpdt";
 	var seq = $("input:hidden[name=ifprSeq]");
 	var formVo = $("form[name=formVo]");
 	var form = $("form[name=form]");
@@ -224,7 +224,7 @@ $("#btnSave").on("click", function(){
 			setCheckboxValue($("#ifmmSmsConsent"), $("#ifmmSmsConsentNy")); */
 	   		form.attr("action",goUrlInst).submit();
 	   	} else {
-	   		alert('hi');
+	   		form.attr("action", goUrlUpdt).submit();
 	   	}
 	});
 	

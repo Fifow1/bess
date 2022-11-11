@@ -136,8 +136,9 @@ public class ProductServiceImpl implements ProductService {
 		
 		@Override
 		public int update(Product dto) throws Exception{
-			int result = dao.update(dto);
-			return result;
+			dao.update(dto);
+			uploadFiles(dto.getUploadImg(), dto, "productUploaded", 2, dto.getUploadImgMaxNumber());
+			return 1;
 		}
 		
 		
