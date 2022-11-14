@@ -162,6 +162,7 @@
 						tmp += '	</div>';
 						tmp += '</div>';
 	            		$('#good').html(tmp);
+	            		console.log(data.list[i]);
             		
             		}
             	

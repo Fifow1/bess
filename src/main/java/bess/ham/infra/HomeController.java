@@ -85,13 +85,12 @@ public class HomeController {
 		public Map<String, Object> main(ProductVo vo,Model model) throws Exception {
 			/* 중요  */
 			Map<String, Object> returnMap = new HashMap<String, Object>(); 
-			
+			List<Product> listImg = service.selectListUploaded(vo);
 			List<Product> list = service.selectListMain(vo);
-			
 			returnMap.put("list", list);
+			returnMap.put("listImg", listImg);
+			
 			returnMap.put("rt", "success");
-			
-			
 			return returnMap;
 		}
 		

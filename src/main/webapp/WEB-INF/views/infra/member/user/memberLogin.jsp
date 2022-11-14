@@ -102,13 +102,13 @@
 			</div>
 			<!-- <button type="button" class="btn btn-danger border ms-2" id="btnLogout" style="width: 120px;">나가기</button> -->
 			<div class="row">
-				<div class="col mb-2 mt-2 d-flex justify-content-center" style="padding-right: 370px;" onclick="location.href='./memberFindid_phone.html'">
-					<a href="#" class="link-dark ps-5">아이디를 잊어버리셨나요?</a>
+				<div class="col mb-2 mt-2 d-flex justify-content-center" style="padding-right: 370px;" onclick="location.href='memberFindId_phone'">
+					<a href="#" class="link-dark ps-4">아이디를 잊어버리셨나요?</a>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col mb-0 d-flex justify-content-center" style="padding-right: 355px;" onclick="location.href='./memberFindpwd_phone.html'">
-					<a href="#" class="link-dark ps-5">비밀번호를 잊어버리셨나요?</a>
+				<div class="col mb-0 d-flex justify-content-center" style="padding-right: 355px;" onclick="location.href='memberFindPwd_phone'">
+					<a href="#" class="link-dark ps-4">비밀번호를 잊어버리셨나요?</a>
 				</div>
 			</div>
 		</div>

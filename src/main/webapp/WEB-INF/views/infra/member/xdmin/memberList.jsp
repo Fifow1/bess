@@ -186,9 +186,6 @@
 								</tbody>
 							</table>
 						</div>
-						<!-- pagination s -->
-						<%@include file="../../base/pagination.jsp"%>
-						<!-- pagination e -->
 						<div class="d-flex justify-content-end">
 							<button type="button" class="btn btn-dark" id="btnForm">등록</button>	
 						</div>
@@ -206,6 +203,10 @@
 		var seq = $("input:hidden[name=shSeq]");
 		var form = $("form[name=formList]");
 		
+		$(document).ready(function(){
+			
+			setLita();
+		});
 		goList = function(thisPage) {
 			$("input:hidden[name=thisPage]").val(thisPage);
 			form.attr("action", goUrlList).submit();
@@ -220,6 +221,50 @@
 	    	seq.val(keyValue);
 			form.attr("action", goUrlForm).submit();
 		}
+		
+		function setLita() {
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				/* ,dataType:"json" */
+				,url: goUrlLita
+				,data : $("#formList").serialize()
+				/* ,data : {  } */
+				,success: function(response) {
+					$("#lita").empty();
+					$("#lita").append(response);
+					window.location.hash = '#page' + page;
+					page++;
+
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
+		}
+		
+		$(window).bind('hashchange', function() { 
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				/* ,dataType:"json" */
+				,url: goUrlLita
+				,data : $("#formList").serialize()
+				/* ,data : {  } */
+				,success: function(response) {
+					$("#lita").empty();
+					$("#lita").append(response);
+					window.location.hash = '#page' + page;
+		
+
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
+		});
 	</script>
     <!-- Bootstrap core JavaScript-->
     <!-- jQuery -->

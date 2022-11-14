@@ -196,6 +196,8 @@
 			type, sort
 	</select>
 	
+	
+	
 	<update id="update">
 		UPDATE product
 		SET

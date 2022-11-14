@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 import bess.ham.infra.common.constants.Constants;
 import bess.ham.infra.modules.product.Product;
 import bess.ham.infra.modules.product.ProductServiceImpl;
@@ -47,6 +48,28 @@ public class MemberController {
 		List<Member> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		return "infra/member/xdmin/memberList";
+	}
+	
+	//ajax List,Lita
+	@RequestMapping(value = "memberAjaxList")
+	public String nationalityAjaxList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
+		
+		setSearchAndPaging(vo);
+
+		return "infra/member/xdmin/memberAjaxList";
+	}
+	
+	@RequestMapping(value = "memberAjaxLita")
+	public String nationalityAjaxLita(@ModelAttribute("vo") MemberVo  vo, Model model) throws Exception {
+		
+		vo.setParamsPaging(service.selectOneCount(vo));
+
+		if (vo.getTotalRows() > 0) {
+			List<Member> list = service.selectList(vo);
+			model.addAttribute("list", list);
+		}
+
+		return "infra/member/xdmin/memberAjaxLita";
 	}
 
 	@RequestMapping(value = "memberXdminForm")

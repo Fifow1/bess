@@ -106,7 +106,7 @@
 						<div class="match-message hide msg success">동일한 비밀번호가 입력되었습니다.</div>
 					</div>
 				</div>
-				<div class="row mb-0">
+				<div class="row mb-3">
 					<div class="col mb-0">
 						<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">성별&nbsp;&nbsp;(필수)</p>
 						<div class="form_radio_btn radio_male" style="float: left; margin-left: 310px;">
@@ -136,33 +136,47 @@
 						</div>
 					</div>
 				</div> -->
-				<!-- <div class="row mb-0">
+				<div class="row mb-0">
 					<div class="col">
 						<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">이메일&nbsp;&nbsp;(필수)</p>
 						<div class="form-floating d-flex justify-content-center">
 							<input type="text" class="form-control pt-1" id="user_email" style="width: 140px; height: 50px; margin-left: 120px; margin-right: 20px;">@
-							<input type="text" class="form-control pt-1" id="email_address" style="width: 140px; height: 50px; margin-left: 20px; margin-right: 20px;"> <select class="form-select pt-1" id="domain-list" style="width: 140px; height: 50px; margin-right: 20px;">
+							<input type="text" class="form-control pt-1" id="email_address" style="width: 140px; height: 50px; margin-left: 20px; margin-right: 20px;">
+							<select class="form-select pt-1" id="domain-list" style="width: 140px; height: 50px; margin-right: 20px;">
 								<option value="type">직접 입력</option>
 								<option value="naver.com">naver.com</option>
 								<option value="gmail.com">gmail.com</option>
 								<option value="daum.net">daum.net</option>
 							</select> 
-							<input type="text" class="form-control pt-1" id="email" name="email" style="width: 140px; height: 50px; margin-left: 20px; margin-right: 20px;">
-							<input type="hidden" id="emailAllowedNy" name="emailAllowedNy">
 							<button type="button" class="btn btn-dark" id="checkEmail" style="width: 100px; padding: 0px; background-color: #2E2E2E;">인증</button>
 						</div>
 					</div>
-				</div> -->
+				</div>
 				<div class="row mb-0">
+					<div class="col">
+						<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">인증번호</p>
+						<div class="form-floating d-flex justify-content-center">
+							<input type="text" class="form-control pt-1" id="email_address" style="width: 500px; height: 50px; margin-left: 20px; margin-right: 20px;">
+						</div>
+					</div>
+				</div>
+				<!-- <div class="row mb-3">
 					<div class="col">
 						<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">이메일&nbsp;&nbsp;(필수)</p>
 						<div class="form-floating d-flex justify-content-center">
 							<input type="text" name="email" id="email"class="form-control pt-1" style="width: 500px; height: 50px; margin-left: 120px; margin-right: 20px;">
+								<select class="form-control" name="userEmail2" id="userEmail2" >
+								<option>@naver.com</option>
+								<option>@daum.net</option>
+								<option>@gmail.com</option>
+								<option>@hanmail.com</option>
+								<option>직접입력</option>
+							</select>
 							<button type="button" class="btn btn-dark" id="checkEmail" style="width: 100px; padding: 0px; background-color: #2E2E2E;">인증</button>
 							<input type="hidden" id="emailAllowedNy" name="emailAllowedNy">
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<div class="row mb-0">
 					<div class="col">
 						<p style="margin-bottom: 4px; margin-left: 310px; font-weight: 900;">전화번호&nbsp;&nbsp;(필수)</p>
@@ -845,6 +859,24 @@
 		    
 		}
 	}  
+	
+	// email (https://devofroad.tistory.com/43)
+	$('#checkEmail').click(function() {
+		const eamil = $('#user_email').val() + '@' + $('#email_address').val(); // 이메일 주소값 얻어오기!
+		console.log('완성된 이메일 : ' + eamil); // 이메일 오는지 확인
+		const checkInput = $('.mail-check-input') // 인증번호 입력하는곳 
+		
+		$.ajax({
+			type : 'get',
+			url : '<c:url value ="/user/mailCheck?email="/>'+eamil, // GET방식이라 Url 뒤에 email을 뭍힐수있다.
+			success : function (data) {
+				console.log("data : " +  data);
+				checkInput.attr('disabled',false);
+				code =data;
+				alert('인증번호가 전송되었습니다.')
+			}			
+		}); // end ajax
+	});
 	</script>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Datepicker -->

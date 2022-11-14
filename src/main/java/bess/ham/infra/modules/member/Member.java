@@ -35,6 +35,8 @@ public class Member {
 	private String memo;
 	private Integer mainYn;
 	private Integer userYn;
+	
+	
 	public String getSeq() {
 		return seq;
 	}
