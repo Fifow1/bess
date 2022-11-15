@@ -86,7 +86,7 @@
 			</div>
 			<div class="row">
 				<div class="col mb-0 d-flex justify-content-center">
-					<button type="button" class="btn btn-success border" style="width: 120px;">
+					<button type="button" class="btn btn-success border" id="naverIdLogin" style="width: 120px;">
 						<i class="fa-sharp fa-solid fa-n"></i>
 					</button>
 					<a type="button" class="btn btn-warning border ms-2" id="kakaoBtn" style="width: 120px;">
@@ -113,15 +113,17 @@
 			</div>
 		</div>
 	</div>
+	<button id="btnLogout"><i class="fa-solid fa-right-from-bracket"></i></button>
 	<form name="form">
 		<input type="hidden" name="snsId"/>
 		<input type="hidden" name="numPhone"/>
 		<input type="hidden" name="email"/>
 		<input type="hidden" name="gender"/>
 		<input type="hidden" name="token"/>
+		<input type="hidden" name="snsImg"/>
 	</form>
-sessSeq: <c:out value="${sessSeq }"/><br>
-sessId: <c:out value="${sessId }"/><br>
+sessSeq: <c:out value="${sessSeq}"/><br>
+sessId: <c:out value="${sessId}"/><br>
 		<!------------------------------------------------------------------- footer -------------------------------------------------------------------->
 	<div class="container-fluid footer">	
 		<div class="row" style="padding-top: 40px;">
@@ -171,6 +173,7 @@ sessId: <c:out value="${sessId }"/><br>
 		</div>
 	</div>
 </div>
+<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
 
@@ -206,29 +209,6 @@ $("#btnLogin").on("click", function(){
 			}
 		});
 	});
-	
-$("#btnLogout").on("click", function(){
-	/* if(validation() == false) return false; */
-	
-	$.ajax({
-		async: true 
-		,cache: false
-		,type: "post"
-		/* ,dataType:"json" */
-		,url: "/member/logoutProc"
-		/* ,data : $("#formLogin").serialize() */
-		,success: function(response) {
-			if(response.rt == "success") {
-				location.href = "/member/userLogin";
-			} else {
-				alert("회원없음");
-			}
-		}
-		,error : function(jqXHR, textStatus, errorThrown){
-			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-		}
-	});
-});
 
 Kakao.init('1c3e148b9d3b6d9eee46fb31507354ea'); // test 용
 console.log(Kakao.isInitialized());
@@ -300,6 +280,71 @@ $("#kakaoBtn").on("click", function() {
 	    })
 });
 
+
+// nnnnnnnaaaaavvvveeeeerrrr
+
+		var naverLogin = new naver.LoginWithNaverId(
+			{
+				clientId: "UknTHyg5AxKlx93f9kKY",
+				callbackUrl: "http://localhost:8080/member/userLogin",
+				isPopup: false,
+				callbackHandle: true,
+				loginButton: {color: "green", type: 3, height: 40}
+			}
+		);
+		
+		$("#naverIdLogin").on("click", function() {
+    		naverLogin.init();
+			naverLogin.getLoginStatus(function (status) {
+				if (!status) {
+					setLoginStatus();
+				}
+			});
+		});
+		
+   		function setLoginStatus() {
+			if (naverLogin.user.gender == 'M'){
+				$("input[name=gender]").val(4);
+			} else {
+				$("input[name=gender]").val(5);
+			} 
+			
+			$.ajax({
+				async: true
+				,cache: false
+				,type:"POST"
+				,url: "/member/naverLoginProc"
+				,data: {"snsId": "네이버로그인", "numPhone": naverLogin.user.mobile, "email": naverLogin.user.email, "gender": $("input[name=gender]").val(),"snsImg": naverLogin.user.profile_image, "sns_id": naverLogin.user.id}
+				,success : function(response) {
+					if (response.rt == "fail") {
+						alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
+						return false;
+					} else {
+						window.location.href = "/";
+					}
+				},
+				error : function(jqXHR, status, error) {
+					alert("알 수 없는 에러 [ " + error + " ]");
+				}
+			});
+		}
+   		
+   		$("#logoutBtn").on("click", function() {
+			$.ajax({
+				type: "POST"
+				,url: "/member/logoutProc"
+				,data: {}
+				,success : function(response) {
+					if (response.rt == "success") {
+						window.location.href = "/";
+					} else {
+						localStorage.clear();
+						window.location.href = "/";
+					}
+				}
+			});
+		});
+    	/* naver login test e */
 
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

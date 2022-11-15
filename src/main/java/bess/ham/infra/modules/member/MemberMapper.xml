@@ -177,7 +177,6 @@
 			,numPhone 
 		FROM member 
 		WHERE 1=1 
-		AND id = #{snsId}
 		AND email = #{email}
 	</select>
 	

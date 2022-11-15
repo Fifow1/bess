@@ -10,11 +10,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 
 import bess.ham.infra.common.constants.Constants;
 import bess.ham.infra.modules.product.Product;
@@ -31,6 +31,14 @@ public class MemberController {
 // xdimn
 	@Autowired
 	MemberServiceImpl service;
+	
+	@GetMapping("/mailCheck")
+	@ResponseBody
+	public String mailCheck(String email) {
+		System.out.println("이메일 인증 요청이 들어옴!");
+		System.out.println("이메일 인증 이메일 : " + email);
+		return service.joinEmail(email);
+	}
 
 	public void setSearchAndPaging(MemberVo vo) throws Exception {
 
@@ -131,21 +139,6 @@ public class MemberController {
 	public String xdminLogin(Model model) throws Exception {
 
 		return "infra/member/xdmin/xdminLogin";
-	}
-	/*
-	 * @ResponseBody
-	 * 
-	 * @RequestMapping(value = "logoutProc") public Map<String, Object>
-	 * logoutProc(HttpSession httpSession) throws Exception { Map<String, Object>
-	 * returnMap = new HashMap<String, Object>(); UtilCookie.deleteCookie();
-	 * httpSession.invalidate(); returnMap.put("rt", "success"); return returnMap; }
-	 */
-
-	@RequestMapping(value = "logoutProc")
-	public String memberLogin(Model model,HttpSession httpSession) throws Exception {
-		
-		httpSession.invalidate();
-		return "infra/member/user/memberLogin";
 	}
 
 	
@@ -326,4 +319,35 @@ public class MemberController {
 	     httpSession.setAttribute("sessEmail", dto.getEmail());
 	     httpSession.setAttribute("sessSns", dto.getLoginType());
 	 }
+	 
+	@ResponseBody
+	@RequestMapping(value = "naverLoginProc")
+	public Map<String, Object> naverLoginProc(Member dto, HttpSession httpSession) throws Exception {
+	    Map<String, Object> returnMap = new HashMap<String, Object>();
+	    
+		Member kakaoLogin = service.snsLoginCheck(dto);
+		
+		if (kakaoLogin == null) {
+			service.kakaoInst(dto);
+			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+			// session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(), dto.getUser_div(), dto.getSnsImg(), dto.getSns_type(), httpSession);
+            session(dto, httpSession); 
+			returnMap.put("rt", "success");
+		} else {
+			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+			// session(kakaoLogin.getSeq(), kakaoLogin.getId(), kakaoLogin.getName(), kakaoLogin.getEmail(), kakaoLogin.getUser_div(), kakaoLogin.getSnsImg(), kakaoLogin.getSns_type(), httpSession);
+			session(kakaoLogin, httpSession);
+			returnMap.put("rt", "success");
+		}
+		return returnMap;
+	}
+	//email
+	
+	@RequestMapping(value = "logoutProc")
+	public String memberLogin(Model model,HttpSession httpSession) throws Exception {
+		
+		httpSession.invalidate();
+		return "infra/member/user/memberLogin";
+	}
+	 
 }

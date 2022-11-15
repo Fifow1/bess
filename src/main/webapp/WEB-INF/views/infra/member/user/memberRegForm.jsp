@@ -475,7 +475,7 @@
 		  }
 		
 		}); */
-		$("#checkEmail").click(function email() {
+/* 		$("#checkEmail").click(function email() {
 			if(!email_check($("#email").val())){
 				alert("이메일 형식에 맞게 입력해주세요");
 				document.getElementById("email").classList.remove('is-valid');
@@ -491,7 +491,7 @@
 			}
 		});	
 		
-		
+		 */
 	 
 	 
 	 
@@ -876,6 +876,26 @@
 				alert('인증번호가 전송되었습니다.')
 			}			
 		}); // end ajax
+	});
+	
+	// 인증번호 비교 
+	// blur -> focus가 벗어나는 경우 발생
+	$('.mail-check-input').blur(function () {
+		const inputCode = $(this).val();
+		const $resultMsg = $('#mail-check-warn');
+		
+		if(inputCode === code){
+			$resultMsg.html('인증번호가 일치합니다.');
+			$resultMsg.css('color','green');
+			$('#mail-Check-Btn').attr('disabled',true);
+			$('#userEamil1').attr('readonly',true);
+			$('#userEamil2').attr('readonly',true);
+			$('#userEmail2').attr('onFocus', 'this.initialSelect = this.selectedIndex');
+	         $('#userEmail2').attr('onChange', 'this.selectedIndex = this.initialSelect');
+		}else{
+			$resultMsg.html('인증번호가 불일치 합니다. 다시 확인해주세요!.');
+			$resultMsg.css('color','red');
+		}
 	});
 	</script>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
