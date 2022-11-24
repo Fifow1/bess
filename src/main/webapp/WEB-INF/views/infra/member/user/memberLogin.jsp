@@ -121,6 +121,7 @@
 		<input type="hidden" name="gender"/>
 		<input type="hidden" name="token"/>
 		<input type="hidden" name="snsImg"/>
+		<input type="hidden" name="snsImg"/>
 	</form>
 sessSeq: <c:out value="${sessSeq}"/><br>
 sessId: <c:out value="${sessId}"/><br>
@@ -228,14 +229,15 @@ $("#kakaoBtn").on("click", function() {
 
 	        	  var account = response.kakao_account;
 	        	  
-	        	  console.log(response)
+	        	/*   console.log(response)
 	        	  console.log(accessToken);
 	        	  console.log("email : " + account.email);
 	        	  console.log("name : " + account.name);
 	        	  console.log("nickname : " + account.profile.nickname);
 	        	  console.log("picture : " + account.profile.thumbnail_image_url);
 	        	  console.log("picture : " + account.gender);
-					alert("11");
+				alert("11");
+					 */
 	        	  $("input[name=snsId]").val("kakaoAccount");
 	        	  $("input[name=numPhone]").val(account.profile.phone_number);
 	        	  $("input[name=email]").val(account.email);
@@ -254,14 +256,14 @@ $("#kakaoBtn").on("click", function() {
 				async: true
 				,cache: false
 				,type:"POST"
-				,url: "/member/kakaoLoginProc"
+				,url: "/member/snsLoginProc"
 				,data: {"snsId": $("input[name=snsId]").val(), "numPhone": $("input[name=numPhone]").val(), "email": $("input[name=email]").val(), "gender": $("input[name=gender]").val(), "token": $("input[name=token]").val()}
 				,success : function(response) {
 					if (response.rt == "fail") {
 						alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
 						return false;
 					} else {
-						window.location.href = "/";
+						window.location.href = "/main";
 					}
 				},
 				error : function(jqXHR, status, error) {
@@ -280,7 +282,6 @@ $("#kakaoBtn").on("click", function() {
 	    })
 });
 
-
 // nnnnnnnaaaaavvvveeeeerrrr
 
 		var naverLogin = new naver.LoginWithNaverId(
@@ -292,11 +293,11 @@ $("#kakaoBtn").on("click", function() {
 				loginButton: {color: "green", type: 3, height: 40}
 			}
 		);
-		
 		$("#naverIdLogin").on("click", function() {
     		naverLogin.init();
 			naverLogin.getLoginStatus(function (status) {
-				if (!status) {
+				if (status) {
+					alert("ㅎㅎ")
 					setLoginStatus();
 				}
 			});
@@ -313,7 +314,7 @@ $("#kakaoBtn").on("click", function() {
 				async: true
 				,cache: false
 				,type:"POST"
-				,url: "/member/naverLoginProc"
+				,url: "/member/snsLoginProc"
 				,data: {"snsId": "네이버로그인", "numPhone": naverLogin.user.mobile, "email": naverLogin.user.email, "gender": $("input[name=gender]").val(),"snsImg": naverLogin.user.profile_image, "sns_id": naverLogin.user.id}
 				,success : function(response) {
 					if (response.rt == "fail") {
@@ -336,7 +337,7 @@ $("#kakaoBtn").on("click", function() {
 				,data: {}
 				,success : function(response) {
 					if (response.rt == "success") {
-						window.location.href = "/";
+						window.location.href = "/aa";
 					} else {
 						localStorage.clear();
 						window.location.href = "/";

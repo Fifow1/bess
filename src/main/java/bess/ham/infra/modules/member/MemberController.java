@@ -5,12 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -31,15 +32,17 @@ public class MemberController {
 // xdimn
 	@Autowired
 	MemberServiceImpl service;
-	
-	@GetMapping("/mailCheck")
-	@ResponseBody
-	public String mailCheck(String email) {
-		System.out.println("이메일 인증 요청이 들어옴!");
-		System.out.println("이메일 인증 이메일 : " + email);
-		return service.joinEmail(email);
-	}
 
+	@Inject
+	MailSendService mailSendService;  //@Service를 붙였었다.
+	
+	@RequestMapping("/join/mailAuth")
+	@ResponseBody
+	public String mailAuth(String mail, HttpServletResponse resp) throws Exception {
+	    String authKey = mailSendService.sendAuthMail(mail); //사용자가 입력한 메일주소로 메일을 보냄
+	    return authKey;
+	}
+	
 	public void setSearchAndPaging(MemberVo vo) throws Exception {
 
 		// vo.setShOption(vo.getShOption() == null ? 2 : vo.getShOption());
@@ -289,25 +292,20 @@ public class MemberController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "kakaoLoginProc")
-	public Map<String, Object> kakaoLoginProc(Member dto, HttpSession httpSession) throws Exception {
+	@RequestMapping(value = "snsLoginProc")
+	public Map<String, Object> snsLoginProc(Member dto, HttpSession httpSession) throws Exception {
 	    Map<String, Object> returnMap = new HashMap<String, Object>();
 	    
-		Member kakaoLogin = service.snsLoginCheck(dto);
+		Member snsLogin = service.snsLoginCheck(dto);
 		
-		 System.out.println("test : " + dto.getToken());
-		
-		if (kakaoLogin == null) {
-			service.kakaoInst(dto);
-			
+		if (snsLogin == null) {
+			service.snsInst(dto);
 			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
-			// session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(), dto.getUser_div(), dto.getSnsImg(), dto.getSns_type(), httpSession);
             session(dto, httpSession); 
 			returnMap.put("rt", "success");
 		} else {
 			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
-			// session(kakaoLogin.getSeq(), kakaoLogin.getId(), kakaoLogin.getName(), kakaoLogin.getEmail(), kakaoLogin.getUser_div(), kakaoLogin.getSnsImg(), kakaoLogin.getSns_type(), httpSession);
-			session(kakaoLogin, httpSession);
+			session(snsLogin, httpSession);
 			returnMap.put("rt", "success");
 		}
 		return returnMap;
@@ -320,27 +318,28 @@ public class MemberController {
 	     httpSession.setAttribute("sessSns", dto.getLoginType());
 	 }
 	 
-	@ResponseBody
-	@RequestMapping(value = "naverLoginProc")
-	public Map<String, Object> naverLoginProc(Member dto, HttpSession httpSession) throws Exception {
-	    Map<String, Object> returnMap = new HashMap<String, Object>();
-	    
-		Member kakaoLogin = service.snsLoginCheck(dto);
-		
-		if (kakaoLogin == null) {
-			service.kakaoInst(dto);
-			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
-			// session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(), dto.getUser_div(), dto.getSnsImg(), dto.getSns_type(), httpSession);
-            session(dto, httpSession); 
-			returnMap.put("rt", "success");
-		} else {
-			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
-			// session(kakaoLogin.getSeq(), kakaoLogin.getId(), kakaoLogin.getName(), kakaoLogin.getEmail(), kakaoLogin.getUser_div(), kakaoLogin.getSnsImg(), kakaoLogin.getSns_type(), httpSession);
-			session(kakaoLogin, httpSession);
-			returnMap.put("rt", "success");
-		}
-		return returnMap;
-	}
+	 
+		/*
+		 * @ResponseBody
+		 * 
+		 * @RequestMapping(value = "naverLoginProc") public Map<String, Object>
+		 * naverLoginProc(Member dto, HttpSession httpSession) throws Exception {
+		 * Map<String, Object> returnMap = new HashMap<String, Object>();
+		 * 
+		 * Member kakaoLogin = service.snsLoginCheck(dto);
+		 * 
+		 * if (kakaoLogin == null) { service.kakaoInst(dto);
+		 * httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); //
+		 * session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(),
+		 * dto.getUser_div(), dto.getSnsImg(), dto.getSns_type(), httpSession);
+		 * session(dto, httpSession); returnMap.put("rt", "success"); } else {
+		 * httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); //
+		 * session(kakaoLogin.getSeq(), kakaoLogin.getId(), kakaoLogin.getName(),
+		 * kakaoLogin.getEmail(), kakaoLogin.getUser_div(), kakaoLogin.getSnsImg(),
+		 * kakaoLogin.getSns_type(), httpSession); session(kakaoLogin, httpSession);
+		 * returnMap.put("rt", "success"); } return returnMap; }
+		 */
+	
 	//email
 	
 	@RequestMapping(value = "logoutProc")

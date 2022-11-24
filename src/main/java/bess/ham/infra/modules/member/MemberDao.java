@@ -83,8 +83,8 @@ public class MemberDao {
 		return result;
 				
 	}
-	public int kakaoInst(Member dto) {
-		int result = sqlSession.insert(namespace + ".kakaoInst", dto);
+	public int snsInst(Member dto) {
+		int result = sqlSession.insert(namespace + ".snsInst", dto);
 		return result;
 	}
 	

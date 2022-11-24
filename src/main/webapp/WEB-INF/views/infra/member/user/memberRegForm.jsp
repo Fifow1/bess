@@ -4,7 +4,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
 <%@ page session="true"%>
-
 <!Doctype html>
 <html>
 <head>
@@ -14,7 +13,6 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,14 +50,7 @@
 				</div>
 			</div>
 		</div>
-
-
-
-
 		<div class="line"></div>
-
-
-
 		<div style="width: 60%; height: 1700px; float: right; padding-top: 200px;">
 			<div class="container">
 				<form method="post" name="form">
@@ -148,7 +139,7 @@
 								<option value="gmail.com">gmail.com</option>
 								<option value="daum.net">daum.net</option>
 							</select> 
-							<button type="button" class="btn btn-dark" id="checkEmail" style="width: 100px; padding: 0px; background-color: #2E2E2E;">인증</button>
+							<button type="button" class="btn btn-dark" id="mailAuth" style="width: 100px; padding: 0px; background-color: #2E2E2E;">인증</button>
 						</div>
 					</div>
 				</div>
@@ -475,7 +466,7 @@
 		  }
 		
 		}); */
-/* 		$("#checkEmail").click(function email() {
+	$("#checkEmail").click(function email() {
 			if(!email_check($("#email").val())){
 				alert("이메일 형식에 맞게 입력해주세요");
 				document.getElementById("email").classList.remove('is-valid');
@@ -491,7 +482,7 @@
 			}
 		});	
 		
-		 */
+	
 	 
 	 
 	 
@@ -860,43 +851,24 @@
 		}
 	}  
 	
-	// email (https://devofroad.tistory.com/43)
-	$('#checkEmail').click(function() {
-		const eamil = $('#user_email').val() + '@' + $('#email_address').val(); // 이메일 주소값 얻어오기!
-		console.log('완성된 이메일 : ' + eamil); // 이메일 오는지 확인
-		const checkInput = $('.mail-check-input') // 인증번호 입력하는곳 
-		
-		$.ajax({
-			type : 'get',
-			url : '<c:url value ="/user/mailCheck?email="/>'+eamil, // GET방식이라 Url 뒤에 email을 뭍힐수있다.
-			success : function (data) {
-				console.log("data : " +  data);
-				checkInput.attr('disabled',false);
-				code =data;
-				alert('인증번호가 전송되었습니다.')
-			}			
-		}); // end ajax
-	});
+
 	
-	// 인증번호 비교 
-	// blur -> focus가 벗어나는 경우 발생
-	$('.mail-check-input').blur(function () {
-		const inputCode = $(this).val();
-		const $resultMsg = $('#mail-check-warn');
-		
-		if(inputCode === code){
-			$resultMsg.html('인증번호가 일치합니다.');
-			$resultMsg.css('color','green');
-			$('#mail-Check-Btn').attr('disabled',true);
-			$('#userEamil1').attr('readonly',true);
-			$('#userEamil2').attr('readonly',true);
-			$('#userEmail2').attr('onFocus', 'this.initialSelect = this.selectedIndex');
-	         $('#userEmail2').attr('onChange', 'this.selectedIndex = this.initialSelect');
-		}else{
-			$resultMsg.html('인증번호가 불일치 합니다. 다시 확인해주세요!.');
-			$resultMsg.css('color','red');
-		}
-	});
+	//mail인증하기 버튼 클릭 
+	$("#mailAuth").on("click",function(e){
+		const email = $('#user_email').val() + '@' + $('#email_address').val();
+	    isMailAuthed=true;
+	    $.ajax({
+	        url : "/member/join/mailAuth" 
+	        ,data : {"mail" : email}
+	        ,success: function(data){
+	           alert(data);
+	        },error : function(req,status,err){
+	        	alert('오류');
+	            console.log(req);
+	        }
+	    });//ajax
+	});//mailCheck
+	
 	</script>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Datepicker -->

@@ -172,15 +172,18 @@
 	
 	<select id="snsLoginCheck" resultMap="resultMapObj">
 		SELECT
-			id
+			seq
+			,id
 			,email
 			,numPhone 
+			,loginType
 		FROM member 
 		WHERE 1=1 
+		AND loginType != 0	
 		AND email = #{email}
 	</select>
 	
-	<insert id="kakaoInst">
+	<insert id="snsInst">
 		INSERT INTO member(
 			id
 	    	,gender

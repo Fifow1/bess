@@ -28,7 +28,7 @@ public interface MemberService {
 	public List<Member> selectListAdress(MemberVo vo) throws Exception;
 	
 	//카카오로그인
-	public int kakaoInst(Member dto) throws Exception; 
+	public int snsInst(Member dto) throws Exception; 
 	public Member snsLoginCheck(Member dto) throws Exception;
 	
 	/* public int insertUserAdress(Member dto) throws Exception; */

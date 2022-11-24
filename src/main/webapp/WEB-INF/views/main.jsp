@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="true"%>
 <%@ page session="true" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -137,7 +138,7 @@
             ,cache : false
             ,data : {
                 /*  id : $(this).val() */
-                "kind":kind,    // 버튼의 value값에 따라 작동합니다.
+              /*   "kind":kind,    */ // 버튼의 value값에 따라 작동합니다.
                 /* 중요  */
                 category : kind 
                 

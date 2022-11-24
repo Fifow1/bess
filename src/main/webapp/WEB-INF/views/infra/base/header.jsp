@@ -22,6 +22,7 @@
 						</button>
 					</c:when>
 					<c:otherwise>
+						<c:out value="${sessId}"/>
 						<button type="submit" class="btn btn" style="height: 25px; width: 20px; border-radius: 100%; background-color: #2C63AF" onclick="location.href='/member/memberMypage_myinfo?shSeq=<c:out value="${sessSeq}"/>'"></button>
 						<button onclick="location.href='/member/logoutProc'"><i class="fa-solid fa-right-from-bracket"></i></button>
 					</c:otherwise>
