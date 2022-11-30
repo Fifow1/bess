@@ -196,7 +196,14 @@ public class CodeGroupController {
 	
 	
 	
-	
+	// ORACLE TEST
+	@RequestMapping(value = "/oracle")
+	public String countriesOracle(@ModelAttribute("vo") CodeGroup dto, Model model) throws Exception {
+			List<CodeGroup> list = service.selectListOracle(dto);
+			model.addAttribute("list", list);
+		// viewResolver -> /WEB-INF/views/ + home + .jsp
+		return "infra/codegroup/xdmin/countriesListOracle";
+	}
 	
 	
 	

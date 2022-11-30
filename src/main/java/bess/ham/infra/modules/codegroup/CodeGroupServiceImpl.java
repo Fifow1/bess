@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 
+
 @Service
 public class CodeGroupServiceImpl implements CodeGroupService{
 
@@ -49,6 +50,12 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 	@Override
 	public int selectOneCount(CodeGroupVo vo) throws Exception {
 		return  dao.selectOneCount(vo);
+	}
+	
+	@Override
+	public List<CodeGroup> selectListOracle(CodeGroup dto) throws Exception {
+		List<CodeGroup> list = dao.selectListOracle(dto);
+		return list;
 	}
 	
 }

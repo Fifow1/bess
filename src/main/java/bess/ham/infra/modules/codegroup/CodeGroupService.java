@@ -3,6 +3,7 @@ package bess.ham.infra.modules.codegroup;
 import java.util.List;
 
 
+
 public interface CodeGroupService {
 	
 	public List<CodeGroup> selectList(CodeGroupVo vo) throws Exception; 
@@ -10,4 +11,5 @@ public interface CodeGroupService {
 	public int insert(CodeGroup dto) throws Exception; 
 	public int update(CodeGroup dto) throws Exception;
 	public int selectOneCount(CodeGroupVo vo) throws Exception;
+	public List<CodeGroup> selectListOracle(CodeGroup dto) throws Exception;
 }

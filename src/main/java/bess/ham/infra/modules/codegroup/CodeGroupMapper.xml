@@ -109,6 +109,7 @@
 			seq = #{seq}
 	</update>
 	
-	
-	
+	<select id="selectListOracle" resultMap="resultMapObj">
+		select * from hr.COUNTRIES
+	</select>
 </mapper>	

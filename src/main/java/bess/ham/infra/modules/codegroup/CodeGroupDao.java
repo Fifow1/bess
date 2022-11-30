@@ -24,6 +24,11 @@ public class CodeGroupDao {
 	@Resource(name = "sqlSession")
 	private SqlSession sqlSession;
 	
+	@Inject
+	//
+	@Resource(name = "sqlSessionOracle")
+	private SqlSession sqlSessionOracle;
+	
 	private static String namespace = "bess.ham.infra.modules.codegroup.CodeGroupMapper";
 	
 	public List<CodeGroup> selectList(CodeGroupVo vo){ 
@@ -58,5 +63,11 @@ public class CodeGroupDao {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
 	
+	
+	// ORACLE TSETE
+	public List<CodeGroup> selectListOracle(CodeGroup dto){ 
+		List<CodeGroup> list = sqlSessionOracle.selectList(namespace +".selectListOracle",dto);
+		return list;
+	}
 	
 }

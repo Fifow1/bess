@@ -97,11 +97,9 @@ public class MemberController {
 
 	@RequestMapping(value = "memberXdminIsrt")
 	public String memberIsrt(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
-
 		service.insert(dto);
 		vo.setShSeq(dto.getSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
-
 		return "redirect:/member/memberForm";
 	}
 
@@ -295,9 +293,7 @@ public class MemberController {
 	@RequestMapping(value = "snsLoginProc")
 	public Map<String, Object> snsLoginProc(Member dto, HttpSession httpSession) throws Exception {
 	    Map<String, Object> returnMap = new HashMap<String, Object>();
-	    
 		Member snsLogin = service.snsLoginCheck(dto);
-		
 		if (snsLogin == null) {
 			service.snsInst(dto);
 			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
@@ -310,7 +306,6 @@ public class MemberController {
 		}
 		return returnMap;
 	}
-
 	 public void session(Member dto, HttpSession httpSession) {
 	     httpSession.setAttribute("sessSeq", dto.getSeq());    
 	     httpSession.setAttribute("sessId", dto.getId());

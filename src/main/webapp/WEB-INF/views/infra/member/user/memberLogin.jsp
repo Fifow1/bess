@@ -176,6 +176,7 @@ sessId: <c:out value="${sessId}"/><br>
 </div>
 <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 <script>
 
 $("#btnLogin").on("click", function(){

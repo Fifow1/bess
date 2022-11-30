@@ -18,6 +18,11 @@ public class CodeGroup {
 	private String CCGseq;
 	private String CCGname;
 	
+	// oracle test
+	private String COUNTRY_ID;
+	private String COUNTRY_NAME;
+	private Integer REGION_ID;
+	
 	
 	
 // ------------------------------------------------
@@ -86,6 +91,24 @@ public class CodeGroup {
 	}
 	public void setCCGname(String cCGname) {
 		CCGname = cCGname;
+	}
+	public String getCOUNTRY_ID() {
+		return COUNTRY_ID;
+	}
+	public void setCOUNTRY_ID(String cOUNTRY_ID) {
+		COUNTRY_ID = cOUNTRY_ID;
+	}
+	public String getCOUNTRY_NAME() {
+		return COUNTRY_NAME;
+	}
+	public void setCOUNTRY_NAME(String cOUNTRY_NAME) {
+		COUNTRY_NAME = cOUNTRY_NAME;
+	}
+	public Integer getREGION_ID() {
+		return REGION_ID;
+	}
+	public void setREGION_ID(Integer rEGION_ID) {
+		REGION_ID = rEGION_ID;
 	}
 	
 	
